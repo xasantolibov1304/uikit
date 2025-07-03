@@ -46,8 +46,8 @@ class InputField extends StatefulWidget {
     this.size = InputFieldSize.large,
     this.status = InputFieldStatus.info,
     //
-    this.enabled = true,
-    this.readOnly = false,
+    this.isEnabled = true,
+    this.isReadOnly = false,
     this.autofocus = false,
     this.obscureText = false,
     this.isRequired = false,
@@ -89,8 +89,8 @@ class InputField extends StatefulWidget {
   final String? captionText;
   final String? captionHelperText;
 
-  final bool enabled;
-  final bool readOnly;
+  final bool isEnabled;
+  final bool isReadOnly;
   final bool autofocus;
   final bool obscureText;
   final bool isRequired;
@@ -157,7 +157,7 @@ class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: widget.enabled ? 1 : 0.5,
+      opacity: widget.isEnabled ? 1 : 0.5,
       child: FormField(
         validator: widget.validator,
         initialValue: controller.text,
@@ -200,8 +200,8 @@ class _InputFieldState extends State<InputField> {
                           //
                           focusNode: focusNode,
                           controller: controller,
-                          enabled: widget.enabled,
-                          readOnly: widget.readOnly,
+                          enabled: widget.isEnabled,
+                          readOnly: widget.isReadOnly,
                           autofocus: widget.autofocus,
                           textAlign: widget.textAlign,
                           cursorHeight: 16,
@@ -276,7 +276,7 @@ class _InputFieldState extends State<InputField> {
                   ),
                 ),
               ),
-              _captionWidget(),
+              _captionWidget,
             ],
           );
         },
@@ -286,7 +286,7 @@ class _InputFieldState extends State<InputField> {
 
   Color get _borderColor {
     final isFocused = focusNode.hasFocus;
-    if (!widget.enabled) {
+    if (!widget.isEnabled) {
       return Colors.transparent;
     }
     switch (widget.status) {
@@ -297,16 +297,16 @@ class _InputFieldState extends State<InputField> {
       case InputFieldStatus.success:
         return context.fieldColors.success;
       default:
-        return isFocused && widget.enabled
+        return isFocused && widget.isEnabled
             ? context.fieldColors.borderFocused
             : Colors.transparent;
     }
   }
 
   Widget get _loading {
-    return const MyProgressIndicator(
+    return MyProgressIndicator(
       size: _iconSize,
-      color: Colors.black,
+      color: context.iconColors.primary,
     );
   }
 
@@ -336,7 +336,7 @@ class _InputFieldState extends State<InputField> {
       hintStyle: context.input.placeholder.copyWith(
         color: context.textColors.tertiary,
       ),
-      hintText: widget.enabled ? widget.hintText : null,
+      hintText: widget.isEnabled ? widget.hintText : null,
       label: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -359,7 +359,7 @@ class _InputFieldState extends State<InputField> {
     );
   }
 
-  Widget _captionWidget() {
+  Widget get _captionWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
@@ -412,7 +412,7 @@ class _InputFieldState extends State<InputField> {
   }
 
   Color get _captionIconColor {
-    if (!widget.enabled) {
+    if (!widget.isEnabled) {
       return context.iconColors.muted;
     }
     switch (widget.status) {
@@ -428,7 +428,7 @@ class _InputFieldState extends State<InputField> {
   }
 
   Color get _captionColor {
-    if (!widget.enabled) {
+    if (!widget.isEnabled) {
       return Colors.black.withValues(alpha: 0.5);
     }
     switch (widget.status) {

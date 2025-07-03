@@ -176,8 +176,8 @@ class _MyHomePageState extends State<MyHomePage> {
               text:
                   'Description sample with detailed info for “Notice” component Description sample with detailed info for “Notice” component Description sample with  Description sample with detailed info for “Notice” component Description sample with detailed info for “Notice” component Description sample with ',
               style: context.body.main,
-              buttonText: 'Button',
-              onTap: () {},
+              startButtonText: 'Button',
+              endButtonText: 'Button2',
             ),
           ],
         ),
