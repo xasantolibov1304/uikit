@@ -1,0 +1,59 @@
+name: iman_uikit
+description: UI kit
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Navigation
+  auto_route: ^10.0.1
+
+  # Widgets
+  badges: ^3.1.2
+  lottie: ^3.3.1
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.17
+  pull_to_refresh: ^2.0.0
+  pin_code_fields: ^8.0.1
+  top_snackbar_flutter: ^3.2.0
+  cached_network_image: ^3.3.1
+
+  # Utils
+  intl: any
+  sms_autofill: ^2.4.1
+  in_date_utils: ^1.2.1
+  flutter_multi_formatter: ^2.13.0
+  mask_text_input_formatter: ^2.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  import_sorter: ^4.6.0
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.10.0
+
+flutter_gen:
+  output: lib/gen
+  integrations:
+    flutter_svg: true
+    lottie: true
+  assets:
+    enabled: true
+    outputs:
+      class_name: UikitAssets
+      package_parameter_enabled: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons16/
+    - assets/icons20/
+    - assets/icons24/
