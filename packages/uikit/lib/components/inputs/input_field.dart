@@ -12,6 +12,7 @@ import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _iconSize = 24.0;
+const _leadingIconSize = 40.0;
 
 enum InputFieldSize {
   small(48),
@@ -185,12 +186,9 @@ class _InputFieldState extends State<InputField> {
                     children: [
                       if (widget.leadingIcon != null) ...[
                         SizedBox(
-                          width: _iconSize,
-                          height: _iconSize,
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: widget.leadingIcon!,
-                          ),
+                          width: _leadingIconSize,
+                          height: _leadingIconSize,
+                          child: widget.leadingIcon!,
                         ),
                         const SizedBox(width: 8),
                       ],
@@ -305,7 +303,7 @@ class _InputFieldState extends State<InputField> {
 
   Widget get _loading {
     return MyProgressIndicator(
-      size: _iconSize,
+      size: 20,
       color: context.iconColors.primary,
     );
   }

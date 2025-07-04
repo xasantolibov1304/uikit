@@ -45,9 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
           children: <Widget>[
             uikit.Button(
               text: 'Open Buttons Example',
@@ -67,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 16),
             uikit.Button(
+              // count: 3,
               text: 'Open ButtonCell Example',
               onTap: () {
                 Navigator.of(context).push(
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // initialValue: 'test',
               isLoading: true,
               isRequired: true,
-              label: 'Email sdfajklf ds;jas',
+              label: 'Email',
               // status: uikit.InputFieldStatus.info,
               size: uikit.InputFieldSize.large,
               captionHelperText: 'helper text',
@@ -125,6 +125,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.black,
                 ),
               ),
+            ),
+            const SizedBox(height: 16),
+            uikit.PhoneTextField(
+              label: 'Phone number',
+              leadingIcon: Container(
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(
+                  Icons.phone,
+                  color: Colors.black,
+                ),
+              ),
+              onChanged: (value) {
+                print(value);
+              },
+              onContactsTap: () {},
             ),
             const SizedBox(height: 16),
             Row(
@@ -164,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 16),
-            uikit.Notice.error(
+            uikit.Notice.info(
               // title: 'Title',
               description:
                   'Description fdsjkl fklf slk jklsd jafkljas ;lfj;as jsladfj a;ls j j s l j;',
