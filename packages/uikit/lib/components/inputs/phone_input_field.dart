@@ -22,10 +22,15 @@ class PhoneTextField extends StatefulWidget {
     //
     this.focusNode,
     //
-    this.isLoading = true,
+    this.captionText,
+    this.captionHelperText,
+    this.captionIconPath,
+    //
+    this.isLoading = false,
     this.isRequired = true,
     this.autofocus = false,
     this.isEnabled = true,
+    this.readonly = false,
     this.leadingIcon,
     this.validator,
     this.onContactsTap,
@@ -38,10 +43,15 @@ class PhoneTextField extends StatefulWidget {
 
   final FocusNode? focusNode;
 
+  final String? captionText;
+  final String? captionHelperText;
+  final String? captionIconPath;
+
+  final bool isLoading;
   final bool isEnabled;
   final bool autofocus;
+  final bool readonly;
   final bool isRequired;
-  final bool isLoading;
 
   final String? Function(String?)? validator;
 
@@ -98,6 +108,7 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       hintText: hintText,
       label: widget.label,
       controller: controller,
+      readonly: widget.readonly,
       isEnabled: widget.isEnabled,
       isLoading: widget.isLoading,
       autofocus: widget.autofocus,
@@ -105,7 +116,10 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       validator: widget.validator,
       isRequired: widget.isRequired,
       leadingIcon: widget.leadingIcon,
+      captionText: widget.captionText,
       keyboardType: TextInputType.phone,
+      captionIconPath: widget.captionIconPath,
+      captionHelperText: widget.captionHelperText,
       trailingIcon: widget.onContactsTap != null
           ? MyGestureDetector(
               onTap: widget.onContactsTap,

@@ -31,6 +31,8 @@ enum InputFieldStatus {
   info,
 }
 
+final formKey = GlobalKey<FormState>();
+
 class InputField extends StatefulWidget {
   const InputField({
     this.label,
@@ -48,7 +50,7 @@ class InputField extends StatefulWidget {
     this.status = InputFieldStatus.info,
     //
     this.isEnabled = true,
-    this.isReadOnly = false,
+    this.readonly = false,
     this.autofocus = false,
     this.obscureText = false,
     this.isRequired = false,
@@ -91,7 +93,7 @@ class InputField extends StatefulWidget {
   final String? captionHelperText;
 
   final bool isEnabled;
-  final bool isReadOnly;
+  final bool readonly;
   final bool autofocus;
   final bool obscureText;
   final bool isRequired;
@@ -122,25 +124,24 @@ class InputField extends StatefulWidget {
 }
 
 class _InputFieldState extends State<InputField> {
-  //
-  late FocusNode focusNode;
-  late TextEditingController controller;
-
-  bool get showClear =>
-      widget.canClear && focusNode.hasFocus && controller.text.isNotEmpty;
+  late FocusNode _focusNode;
+  late TextEditingController _controller;
+  bool _hasFocus = false;
 
   @override
   void initState() {
-    focusNode = widget.focusNode ?? FocusNode();
-    controller = widget.controller ?? TextEditingController();
-
-    controller.text = widget.initialValue ?? '';
+    super.initState();
+    _focusNode = widget.focusNode ?? FocusNode();
+    _controller = widget.controller ?? TextEditingController();
 
     if (widget.canClear) {
-      controller.addListener(updateState);
-      focusNode.addListener(updateState);
+      _controller.addListener(updateState);
+      _focusNode.addListener(updateState);
     }
-    super.initState();
+
+    _controller.text = widget.initialValue ?? '';
+
+    _focusNode.addListener(_onFocusChange);
   }
 
   void updateState() => {if (mounted) setState(() {})};
@@ -148,167 +149,180 @@ class _InputFieldState extends State<InputField> {
   @override
   void dispose() {
     if (widget.canClear) {
-      controller.removeListener(updateState);
-      focusNode.removeListener(updateState);
+      _controller.removeListener(updateState);
+      _focusNode.removeListener(updateState);
     }
-    focusNode.dispose();
+    _focusNode.dispose();
+    _controller.dispose();
     super.dispose();
+  }
+
+  void _onFocusChange() {
+    _hasFocus = _focusNode.hasFocus;
+    updateState();
+  }
+
+  void _onClear() {
+    _controller.clear();
+    widget.onChanged?.call('');
   }
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
       opacity: widget.isEnabled ? 1 : 0.5,
-      child: FormField(
-        validator: widget.validator,
-        initialValue: controller.text,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        builder: (FormFieldState<String> field) {
-          return Column(
-            children: [
-              GestureDetector(
-                onTap: focusNode.requestFocus,
-                behavior: HitTestBehavior.opaque,
-                child: Container(
-                  height: widget.size.size,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 2,
-                      color: _borderColor,
-                    ),
-                    color: context.fieldColors.background,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16),
-                    ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FormField(
+            key: formKey,
+            validator: widget.validator,
+            initialValue: widget.initialValue,
+            builder: (FormFieldState<Object?> formFieldState) {
+              return Container(
+                height: widget.size.size,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: _borderColor,
                   ),
-                  child: Row(
-                    children: [
-                      if (widget.leadingIcon != null) ...[
-                        SizedBox(
-                          width: _leadingIconSize,
-                          height: _leadingIconSize,
-                          child: widget.leadingIcon!,
-                        ),
-                        const SizedBox(width: 8),
-                      ],
-                      Expanded(
-                        child: TextField(
-                          decoration: _decoration,
-                          //
-                          focusNode: focusNode,
-                          controller: controller,
-                          enabled: widget.isEnabled,
-                          readOnly: widget.isReadOnly,
-                          autofocus: widget.autofocus,
-                          textAlign: widget.textAlign,
-                          cursorHeight: 16,
-                          cursorColor: Colors.black,
-                          obscureText: widget.obscureText,
-                          style: context.input.placeholder,
-                          keyboardType: widget.keyboardType,
-                          textInputAction: widget.textInputAction,
-                          textCapitalization: widget.textCapitalization,
-                          //
-                          minLines: widget.minLines,
-                          maxLines: widget.maxLines,
-                          maxLength: widget.maxLength,
-                          buildCounter: buildCounter,
-                          inputFormatters: widget.inputFormatters,
-                          //
-                          onTap: widget.onTap,
-                          onChanged: widget.onChanged,
-                          onEditingComplete: widget.onEditingComplete,
-                          //
-                          textAlignVertical: TextAlignVertical.center,
-                          magnifierConfiguration:
-                              TextMagnifierConfiguration.disabled,
+                  color: context.fieldColors.background,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Row(
+                  children: [
+                    if (widget.leadingIcon != null) ...[
+                      SizedBox(
+                        width: _leadingIconSize,
+                        height: _leadingIconSize,
+                        child: widget.leadingIcon!,
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                    Expanded(
+                      child: TextField(
+                        cursorHeight: 16,
+                        onTap: widget.onTap,
+                        focusNode: _focusNode,
+                        controller: _controller,
+                        enabled: widget.isEnabled,
+                        minLines: widget.minLines,
+                        maxLines: widget.maxLines,
+                        maxLength: widget.maxLength,
+                        cursorColor: Colors.black,
+                        readOnly: widget.readonly,
+                        autofocus: widget.autofocus,
+                        onChanged: widget.onChanged,
+                        textAlign: widget.textAlign,
+                        obscureText: widget.obscureText,
+                        style: context.input.placeholder,
+                        keyboardType: widget.keyboardType,
+                        decoration: _buildInputDecoration,
+                        inputFormatters: widget.inputFormatters,
+                        textInputAction: widget.textInputAction,
+                        onEditingComplete: widget.onEditingComplete,
+                        textAlignVertical: TextAlignVertical.center,
+                        textCapitalization: widget.textCapitalization,
+                      ),
+                    ),
+                    if (widget.suffixLabel != null ||
+                        widget.suffixValue != null) ...[
+                      _buildSuffix(),
+                      const SizedBox(width: 12),
+                    ],
+                    if (widget.isLoading) ...[
+                      const SizedBox(width: 8),
+                      MyProgressIndicator(
+                        size: 20,
+                        color: context.iconColors.primary,
+                      ),
+                    ],
+                    if (_shouldShowClear()) ...[
+                      const SizedBox(width: 8),
+                      _buildClearButton(),
+                    ],
+                    if (widget.trailingIcon != null) ...[
+                      const SizedBox(width: 8),
+                      SizedBox(
+                        width: _iconSize,
+                        height: _iconSize,
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: widget.trailingIcon!,
                         ),
                       ),
-                      if (widget.suffixLabel != null ||
-                          widget.suffixValue != null) ...[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            if (widget.suffixLabel != null) ...[
-                              Text(
-                                widget.suffixLabel!,
-                                style: context.input.label.copyWith(
-                                  color: context.textColors.tertiary,
-                                ),
-                              ),
-                            ],
-                            if (widget.suffixValue != null) ...[
-                              Text(
-                                widget.suffixValue ?? '',
-                                style: context.input.placeholder.copyWith(
-                                  color: context.textColors.tertiary,
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
-                        const SizedBox(width: 12),
-                      ],
-                      if (widget.isLoading) ...[
-                        const SizedBox(width: 8),
-                        _loading,
-                      ],
-                      if (showClear) ...[
-                        const SizedBox(width: 8),
-                        _clearButton,
-                      ],
-                      if (widget.trailingIcon != null) ...[
-                        const SizedBox(width: 8),
-                        SizedBox(
-                          width: _iconSize,
-                          height: _iconSize,
-                          child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: widget.trailingIcon!,
-                          ),
-                        ),
-                      ],
                     ],
-                  ),
+                  ],
                 ),
-              ),
-              _captionWidget,
-            ],
-          );
-        },
+              );
+            },
+          ),
+          _buildCaption(),
+        ],
       ),
     );
   }
 
-  Color get _borderColor {
-    final isFocused = focusNode.hasFocus;
-    if (!widget.isEnabled) {
-      return Colors.transparent;
-    }
-    switch (widget.status) {
-      case InputFieldStatus.error:
-        return context.fieldColors.error;
-      case InputFieldStatus.warning:
-        return context.fieldColors.warning;
-      case InputFieldStatus.success:
-        return context.fieldColors.success;
-      default:
-        return isFocused && widget.isEnabled
-            ? context.fieldColors.borderFocused
-            : Colors.transparent;
-    }
-  }
-
-  Widget get _loading {
-    return MyProgressIndicator(
-      size: 20,
-      color: context.iconColors.primary,
+  InputDecoration get _buildInputDecoration {
+    return InputDecoration(
+      labelStyle: context.input.label,
+      helperStyle: context.input.caption,
+      counterStyle: context.input.caption,
+      contentPadding: const EdgeInsets.all(4),
+      hintStyle: context.input.placeholder.copyWith(
+        color: context.textColors.tertiary,
+      ),
+      label: widget.label != null ? _buildLabel() : null,
+      hintText: widget.isEnabled ? widget.hintText : null,
     );
   }
 
-  Widget get _clearButton {
+  Widget _buildLabel() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          widget.label!,
+          style: context.input.placeholder.copyWith(
+            color: context.textColors.tertiary,
+          ),
+        ),
+        if (widget.isRequired)
+          Text(
+            '*',
+            style: context.input.placeholder.copyWith(
+              color: context.textColors.error,
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildSuffix() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (widget.suffixLabel != null)
+          Text(
+            widget.suffixLabel!,
+            style: context.input.label.copyWith(
+              color: context.textColors.tertiary,
+            ),
+          ),
+        if (widget.suffixValue != null)
+          Text(
+            widget.suffixValue!,
+            style: context.input.placeholder.copyWith(
+              color: context.textColors.tertiary,
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildClearButton() {
     return SizedBox(
       width: _iconSize,
       height: _iconSize,
@@ -320,44 +334,14 @@ class _InputFieldState extends State<InputField> {
     );
   }
 
-  void _onClear() {
-    controller.clear();
-    widget.onChanged?.call('');
-  }
+  Widget _buildCaption() {
+    final validationText = _validateInputText();
+    final hasCaption = widget.captionText != null ||
+        widget.captionHelperText != null ||
+        widget.captionIconPath != null;
 
-  InputDecoration get _decoration {
-    return InputDecoration(
-      labelStyle: context.input.label,
-      helperStyle: context.input.caption,
-      counterStyle: context.input.caption,
-      contentPadding: const EdgeInsets.all(4),
-      hintStyle: context.input.placeholder.copyWith(
-        color: context.textColors.tertiary,
-      ),
-      hintText: widget.isEnabled ? widget.hintText : null,
-      label: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.label ?? '',
-            style: context.input.placeholder.copyWith(
-              color: context.textColors.tertiary,
-            ),
-          ),
-          if (widget.isRequired)
-            Text(
-              '*',
-              style: context.input.placeholder.copyWith(
-                color: context.textColors.error,
-              ),
-            ),
-        ],
-      ),
-    );
-  }
+    if (!hasCaption && validationText == null) return const SizedBox.shrink();
 
-  Widget get _captionWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
@@ -366,42 +350,37 @@ class _InputFieldState extends State<InputField> {
           const SizedBox(height: 6),
           Row(
             children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    if (widget.captionIconPath != null) ...[
-                      SvgPicture.asset(
-                        widget.captionIconPath!,
-                        width: 16,
-                        height: 16,
-                        fit: BoxFit.contain,
-                        package: UikitAssets.package,
-                        colorFilter: ColorFilter.mode(
-                          _captionIconColor,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                    ],
-                    Text(
-                      widget.captionText ?? '',
-                      style: context.input.caption.copyWith(
-                        color: _captionColor,
-                      ),
-                      maxLines: 2,
-                    ),
-                  ],
+              if (widget.captionIconPath != null) ...[
+                SvgPicture.asset(
+                  widget.captionIconPath!,
+                  width: 16,
+                  height: 16,
+                  fit: BoxFit.contain,
+                  package: UikitAssets.package,
+                  colorFilter: ColorFilter.mode(
+                    _captionColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              if (widget.captionHelperText != null) ...[
-                Text(
-                  widget.captionHelperText ?? '',
+                const SizedBox(width: 4),
+              ],
+              Expanded(
+                child: Text(
+                  validationText ?? widget.captionText ?? '',
+                  maxLines: 1,
                   style: context.input.caption.copyWith(
                     color: _captionColor,
                   ),
-                  maxLines: 2,
                 ),
-              ],
+              ),
+              if (widget.captionHelperText != null)
+                Text(
+                  widget.captionHelperText!,
+                  maxLines: 1,
+                  style: context.input.caption.copyWith(
+                    color: _captionColor,
+                  ),
+                ),
             ],
           ),
         ],
@@ -409,27 +388,32 @@ class _InputFieldState extends State<InputField> {
     );
   }
 
-  Color get _captionIconColor {
-    if (!widget.isEnabled) {
-      return context.iconColors.muted;
-    }
-    switch (widget.status) {
+  InputFieldStatus get _inputStatus {
+    final hasValidationError = _validateInputText() != null;
+    return hasValidationError ? InputFieldStatus.error : widget.status;
+  }
+
+  Color get _borderColor {
+    if (!widget.isEnabled) return Colors.transparent;
+
+    if (_hasFocus) return context.fieldColors.borderFocused;
+
+    switch (_inputStatus) {
       case InputFieldStatus.error:
-        return context.textColors.error;
+        return context.fieldColors.error;
       case InputFieldStatus.warning:
-        return context.textColors.warning;
+        return context.fieldColors.warning;
       case InputFieldStatus.success:
-        return context.textColors.success;
+        return context.fieldColors.success;
       default:
-        return context.iconColors.primary;
+        return Colors.transparent;
     }
   }
 
   Color get _captionColor {
-    if (!widget.isEnabled) {
-      return Colors.black.withValues(alpha: 0.5);
-    }
-    switch (widget.status) {
+    if (!widget.isEnabled) return context.textColors.tertiary;
+
+    switch (_inputStatus) {
       case InputFieldStatus.error:
         return context.textColors.error;
       case InputFieldStatus.warning:
@@ -437,16 +421,16 @@ class _InputFieldState extends State<InputField> {
       case InputFieldStatus.success:
         return context.textColors.success;
       default:
-        return Colors.black.withValues(alpha: 0.5);
+        return context.textColors.tertiary;
     }
   }
 
-  Widget? buildCounter(
-    BuildContext context, {
-    required int currentLength,
-    required int? maxLength,
-    required bool isFocused,
-  }) {
-    return null;
+  bool _shouldShowClear() {
+    return widget.canClear && _hasFocus && _controller.text.isNotEmpty;
+  }
+
+  String? _validateInputText() {
+    if (widget.validator == null) return null;
+    return widget.validator!(_controller.text);
   }
 }

@@ -129,6 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 16),
             uikit.PhoneTextField(
               label: 'Phone number',
+              captionText: 'Caption Text',
+              captionHelperText: 'Caption Helper Text',
+              captionIconPath: UikitAssets.icons24.calendar.path,
               leadingIcon: Container(
                 width: 20,
                 height: 20,
@@ -141,9 +144,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               onChanged: (value) {
-                print(value);
+                debugPrint(value);
               },
               onContactsTap: () {},
+            ),
+            const SizedBox(height: 16),
+            uikit.IdInputField(
+              label: 'ID',
+              onScanTap: () {},
+              onChanged: (value) {
+                debugPrint(value);
+              },
+              captionText: 'Caption Text',
+              captionHelperText: 'Caption Helper Text',
+              captionIconPath: UikitAssets.icons24.calendar.path,
             ),
             const SizedBox(height: 16),
             Row(

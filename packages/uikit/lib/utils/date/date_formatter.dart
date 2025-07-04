@@ -17,29 +17,35 @@ const _hhmma = 'hh:mm a';
 class MyDateFormatter {
   const MyDateFormatter._();
 
-  /// e.g 22.10.24
+  /// e.g 22.10.2024
+  /// (dd.MM.yyyy)
   static String fddMMyyyyDot(DateTime? date) => format(date, _ddMMyyyyDot);
   static DateTime? pddMMyyyyDot(String? date) => parse(date, _ddMMyyyyDot);
 
-  /// e.g 22-10-2024
+  /// e.g 22-10-2024 (dd-MM-yyyy)
+  /// (dd-MM-yyyy)
   static String fddMMyyyyDash(DateTime? date) => format(date, _ddMMyyyyDash);
   static DateTime? pddMMyyyyDash(String? date) => parse(date, _ddMMyyyyDash);
 
   /// e.g 22/10/2024
+  /// (dd/MM/yyyy)
   static String fddMMyyyySlash(DateTime? date) => format(date, _ddMMyyyySlash);
   static DateTime? pddMMyyyySlash(String? date) => parse(date, _ddMMyyyySlash);
 
   /// e.g 22/10/2024 22:00
+  /// (dd/MM/yyyy HH:mm)
   static String fddMMyyyyHHmmSlash(DateTime? date) =>
       format(date, _ddMMyyyyHHmmSlash);
   static DateTime? pddMMyyyyHHmmSlash(String? date) =>
       parse(date, _ddMMyyyyHHmmSlash);
 
   /// e.g 22:00
+  /// (hh:mm)
   static String fhhmm(DateTime? date) => format(date, _hhmm);
   static DateTime? phhmm(String? date) => parse(date, _hhmm);
 
   /// e.g 10:00 PM
+  /// (hh:mm a)
   static String fhhmma(DateTime? date) => format(date, _hhmma);
   static DateTime? phhmma(String? date) => parse(date, _hhmma);
 

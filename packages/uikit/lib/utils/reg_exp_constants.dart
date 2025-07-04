@@ -18,4 +18,13 @@ class MyRegExps {
 
   /// Matches expiration date format: MM/YY where MM is 01–12 and YY is two digits.
   static RegExp get expirationDate => RegExp(r'^(0[1-9]|1[0-2])\/(\d{2})$');
+
+  /// Matches a valid passport data number format: "AA1234567"
+  static final uzIdNumberRegExp = RegExp(r'^[A-Z]{2}\d{7}$');
+
+  /// Matches a valid passport serial number format: "AA"
+  static final uzIdNumberSerialRegExp = RegExp(r'^[A-Z]{2}');
+
+  /// Matches a valid PINFL number format: "12345678901234"
+  static final pinflRegExp = RegExp(r'^\d{14}$');
 }

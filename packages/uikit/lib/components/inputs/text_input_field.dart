@@ -20,7 +20,7 @@ class TextInputField extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.autofocus = false,
-    this.isReadOnly = false,
+    this.readonly = false,
     this.isRequired = false,
     this.trailingIcon,
     super.key,
@@ -48,7 +48,7 @@ class TextInputField extends StatelessWidget {
   final bool isLoading;
   final bool isEnabled;
   final bool autofocus;
-  final bool isReadOnly;
+  final bool readonly;
   final bool isRequired;
 
   final Widget? trailingIcon;
@@ -58,6 +58,7 @@ class TextInputField extends StatelessWidget {
     return InputField(
       label: label,
       status: status,
+      readonly: readonly,
       hintText: hintText,
       isLoading: isLoading,
       isEnabled: isEnabled,
@@ -65,7 +66,6 @@ class TextInputField extends StatelessWidget {
       onChanged: onChanged,
       validator: validator,
       focusNode: focusNode,
-      isReadOnly: isReadOnly,
       isRequired: isRequired,
       controller: controller,
       captionText: captionText,
