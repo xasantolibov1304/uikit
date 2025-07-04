@@ -149,15 +149,24 @@ class _MyHomePageState extends State<MyHomePage> {
               onContactsTap: () {},
             ),
             const SizedBox(height: 16),
-            uikit.IdInputField(
+            uikit.PasswordInputField(
               label: 'ID',
-              onScanTap: () {},
               onChanged: (value) {
                 debugPrint(value);
               },
               captionText: 'Caption Text',
               captionHelperText: 'Caption Helper Text',
               captionIconPath: UikitAssets.icons24.calendar.path,
+            ),
+            const SizedBox(height: 16),
+            uikit.PasswordInputField(
+              validator: (value) {
+                return 'Password is required';
+              },
+              label: 'Password',
+              onChanged: (value) {
+                debugPrint(value);
+              },
             ),
             const SizedBox(height: 16),
             Row(

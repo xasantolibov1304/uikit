@@ -5,23 +5,32 @@ class TextInputField extends StatelessWidget {
   const TextInputField({
     required this.label,
     this.hintText,
+    //
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
+    //
     this.status = InputFieldStatus.info,
+    //
     this.initialValue,
     this.controller,
+    //
     this.onChanged,
     this.validator,
+    //
     this.focusNode,
+    //
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     this.textCapitalization = TextCapitalization.sentences,
+    //
     this.isLoading = false,
     this.isEnabled = true,
     this.autofocus = false,
     this.readonly = false,
     this.isRequired = false,
+    this.canClear = false,
+    //
     this.trailingIcon,
     super.key,
   });
@@ -37,8 +46,7 @@ class TextInputField extends StatelessWidget {
 
   final String? initialValue;
   final TextEditingController? controller;
-  final void Function(String)? onChanged;
-  final String? Function(String?)? validator;
+
   final FocusNode? focusNode;
 
   final TextInputType keyboardType;
@@ -50,8 +58,12 @@ class TextInputField extends StatelessWidget {
   final bool autofocus;
   final bool readonly;
   final bool isRequired;
+  final bool canClear;
 
   final Widget? trailingIcon;
+
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +72,7 @@ class TextInputField extends StatelessWidget {
       status: status,
       readonly: readonly,
       hintText: hintText,
+      canClear: canClear,
       isLoading: isLoading,
       isEnabled: isEnabled,
       autofocus: autofocus,

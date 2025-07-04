@@ -5,28 +5,40 @@ import 'package:iman_uikit/gen/assets.gen.dart';
 
 class IdInputField extends StatelessWidget {
   const IdInputField({
-    required this.label,
+    this.label,
     this.hintText,
+    this.controller,
+    this.initialValue,
+    this.suffixLabel,
+    this.suffixValue,
+    //
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
+    //
     this.status = InputFieldStatus.info,
-    this.initialValue,
-    this.onChanged,
-    this.validator,
+    //
+    this.isEnabled = true,
+    this.readonly = false,
+    this.autofocus = false,
+    this.isRequired = false,
+    this.isLoading = false,
+    //
     this.focusNode,
     this.textInputAction = TextInputAction.done,
-    this.isLoading = false,
-    this.isEnabled = true,
-    this.autofocus = false,
-    this.readonly = false,
-    this.isRequired = false,
+    //
     this.onScanTap,
+    required this.onChanged,
+    this.validator,
     super.key,
   });
 
   final String? label;
   final String? hintText;
+  final String? initialValue;
+  final String? suffixLabel;
+  final String? suffixValue;
+  final TextEditingController? controller;
 
   final String? captionIconPath;
   final String? captionText;
@@ -34,20 +46,18 @@ class IdInputField extends StatelessWidget {
 
   final InputFieldStatus status;
 
-  final String? initialValue;
-  final void Function(String)? onChanged;
-  final String? Function(String?)? validator;
-  final FocusNode? focusNode;
+  final bool isEnabled;
+  final bool readonly;
+  final bool autofocus;
+  final bool isRequired;
+  final bool isLoading;
 
+  final FocusNode? focusNode;
   final TextInputAction textInputAction;
 
-  final bool isLoading;
-  final bool isEnabled;
-  final bool autofocus;
-  final bool readonly;
-  final bool isRequired;
-
   final VoidCallback? onScanTap;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {

@@ -31,8 +31,6 @@ enum InputFieldStatus {
   info,
 }
 
-final formKey = GlobalKey<FormState>();
-
 class InputField extends StatefulWidget {
   const InputField({
     this.label,
@@ -175,7 +173,6 @@ class _InputFieldState extends State<InputField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FormField(
-            key: formKey,
             validator: widget.validator,
             initialValue: widget.initialValue,
             builder: (FormFieldState<Object?> formFieldState) {

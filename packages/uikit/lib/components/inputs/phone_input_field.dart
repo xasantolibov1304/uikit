@@ -16,47 +16,52 @@ const _uzPhoneMask = '+000 00 000 00 00';
 
 class PhoneTextField extends StatefulWidget {
   const PhoneTextField({
-    required this.label,
-    required this.onChanged,
+    this.label,
+    this.hintText,
     this.initialValue,
+    //
+    this.captionIconPath,
+    this.captionText,
+    this.captionHelperText,
+    //
+    this.isEnabled = true,
+    this.readonly = false,
+    this.autofocus = false,
+    this.isRequired = true,
+    this.canClear = false,
+    this.isLoading = false,
     //
     this.focusNode,
     //
-    this.captionText,
-    this.captionHelperText,
-    this.captionIconPath,
-    //
-    this.isLoading = false,
-    this.isRequired = true,
-    this.autofocus = false,
-    this.isEnabled = true,
-    this.readonly = false,
     this.leadingIcon,
+    //
+    this.onChanged,
     this.validator,
     this.onContactsTap,
     super.key,
   });
 
-  final String label;
-  final ValueChanged<String>? onChanged;
+  final String? label;
+  final String? hintText;
   final String? initialValue;
+
+  final String? captionIconPath;
+  final String? captionText;
+  final String? captionHelperText;
+
+  final bool isEnabled;
+  final bool readonly;
+  final bool autofocus;
+  final bool isRequired;
+  final bool canClear;
+  final bool isLoading;
 
   final FocusNode? focusNode;
 
-  final String? captionText;
-  final String? captionHelperText;
-  final String? captionIconPath;
-
-  final bool isLoading;
-  final bool isEnabled;
-  final bool autofocus;
-  final bool readonly;
-  final bool isRequired;
-
-  final String? Function(String?)? validator;
-
   final Widget? leadingIcon;
 
+  final ValueChanged<String>? onChanged;
+  final String? Function(String?)? validator;
   final VoidCallback? onContactsTap;
 
   @override
@@ -109,6 +114,7 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       label: widget.label,
       controller: controller,
       readonly: widget.readonly,
+      canClear: widget.canClear,
       isEnabled: widget.isEnabled,
       isLoading: widget.isLoading,
       autofocus: widget.autofocus,

@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
+import 'package:iman_uikit/components/inputs/input_field.dart';
+import 'package:iman_uikit/gen/assets.gen.dart';
+
+class PasswordInputField extends StatefulWidget {
+  const PasswordInputField({
+    this.label,
+    this.hintText,
+    this.controller,
+    this.initialValue,
+    this.suffixLabel,
+    this.suffixValue,
+    //
+    this.captionIconPath,
+    this.captionText,
+    this.captionHelperText,
+    //
+    this.status = InputFieldStatus.info,
+    //
+    this.isEnabled = true,
+    this.readonly = false,
+    this.autofocus = false,
+    this.isRequired = false,
+    this.canClear = true,
+    this.isLoading = false,
+    //
+    this.focusNode,
+    this.textInputAction = TextInputAction.done,
+    //
+    this.onChanged,
+    this.validator,
+    super.key,
+  });
+
+  final String? label;
+  final String? hintText;
+  final String? initialValue;
+  final String? suffixLabel;
+  final String? suffixValue;
+  final TextEditingController? controller;
+
+  final InputFieldStatus status;
+
+  final String? captionIconPath;
+  final String? captionText;
+  final String? captionHelperText;
+
+  final bool isEnabled;
+  final bool readonly;
+  final bool autofocus;
+  final bool isRequired;
+  final bool canClear;
+  final bool isLoading;
+
+  final FocusNode? focusNode;
+  final TextInputAction textInputAction;
+
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+
+  @override
+  State<PasswordInputField> createState() => _PasswordInputFieldState();
+}
+
+class _PasswordInputFieldState extends State<PasswordInputField> {
+  bool _isVisible = false;
+
+  void _toggleVisibility() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InputField(
+      label: widget.label,
+      status: widget.status,
+      obscureText: !_isVisible,
+      hintText: widget.hintText,
+      readonly: widget.readonly,
+      canClear: widget.canClear,
+      isLoading: widget.isLoading,
+      isEnabled: widget.isEnabled,
+      autofocus: widget.autofocus,
+      validator: widget.validator,
+      focusNode: widget.focusNode,
+      onChanged: widget.onChanged,
+      isRequired: widget.isRequired,
+      captionText: widget.captionText,
+      initialValue: widget.initialValue,
+      trailingIcon: MyGestureDetector(
+        onTap: _toggleVisibility,
+        child: _isVisible
+            ? UikitAssets.icons24.eye.svg()
+            : UikitAssets.icons24.eyeSlash.svg(),
+      ),
+      captionIconPath: widget.captionIconPath,
+      textInputAction: widget.textInputAction,
+      captionHelperText: widget.captionHelperText,
+      textCapitalization: TextCapitalization.characters,
+      keyboardType:
+          _isVisible ? TextInputType.visiblePassword : TextInputType.text,
+    );
+  }
+}
