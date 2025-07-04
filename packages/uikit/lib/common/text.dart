@@ -53,14 +53,14 @@ class _TextWidgetState extends State<TextWidget> {
                 firstChild: Text(
                   widget.text,
                   maxLines: widget.maxLines,
-                  style: widget.style ?? context.body.main,
                   overflow: TextOverflow.ellipsis,
+                  style: widget.style ?? context.bodyTextStyle.main,
                 ),
                 secondChild: Column(
                   children: [
                     Text(
                       widget.text,
-                      style: widget.style ?? context.body.main,
+                      style: widget.style ?? context.bodyTextStyle.main,
                     ),
                     if (_isExpanded) ...[
                       const SizedBox(height: 36),
@@ -97,7 +97,7 @@ class _TextWidgetState extends State<TextWidget> {
                 ),
                 child: Text(
                   _isExpanded ? widget.endButtonText! : widget.startButtonText!,
-                  style: context.button.main.copyWith(
+                  style: context.buttonTextStyle.main.copyWith(
                     color: context.textColors.success,
                   ),
                 ),

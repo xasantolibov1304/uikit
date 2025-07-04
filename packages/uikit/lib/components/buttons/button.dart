@@ -135,26 +135,21 @@ class Button extends StatelessWidget {
                       height: _badgeSize,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: ShaderMask(
-                          blendMode: BlendMode.srcOut,
-                          shaderCallback: (bounds) {
-                            return LinearGradient(
-                              colors: [
-                                _badgeColor(context),
-                                _badgeColor(context),
-                              ],
-                            ).createShader(bounds);
-                          },
+                        child: ColorFiltered(
+                          colorFilter: ColorFilter.mode(
+                            _badgeColor(context),
+                            BlendMode.srcOut,
+                          ),
                           child: Center(
                             child: Text(
                               '$count',
-                              textAlign: TextAlign.center,
-                              style: context.button.count,
+                              maxLines: 1,
+                              style: context.buttonTextStyle.count,
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ],
               )
@@ -186,7 +181,7 @@ class Button extends StatelessWidget {
     return Text(
       subtext ?? '',
       overflow: TextOverflow.ellipsis,
-      style: context.button.subtext.copyWith(
+      style: context.buttonTextStyle.subtext.copyWith(
         color: _textColor(context),
       ),
     );
@@ -220,7 +215,7 @@ class Button extends StatelessWidget {
   ///
 
   TextStyle _textStyle(BuildContext context) {
-    return context.button.main.copyWith(
+    return context.buttonTextStyle.main.copyWith(
       color: _textColor(context),
     );
   }

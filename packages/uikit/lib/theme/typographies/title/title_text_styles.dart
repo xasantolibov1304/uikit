@@ -12,6 +12,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
     required this.medium3,
     required this.large1,
     required this.large2,
+    required this.extraLarge,
   });
 
   /// fontSize: 16, height: 20/16, weight: 500
@@ -41,6 +42,9 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
   /// fontSize: 22, height: 24/22, weight: 600
   final TextStyle large2;
 
+  /// fontSize: 32, height: 36/32, weight: 500
+  final TextStyle extraLarge;
+
   @override
   ThemeExtension<TitleTextStyles> copyWith({
     TextStyle? compact1,
@@ -52,6 +56,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
     TextStyle? medium3,
     TextStyle? large1,
     TextStyle? large2,
+    TextStyle? extraLarge,
   }) {
     return TitleTextStyles(
       compact1: compact1 ?? this.compact1,
@@ -63,6 +68,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
       medium3: medium3 ?? this.medium3,
       large1: large1 ?? this.large1,
       large2: large2 ?? this.large2,
+      extraLarge: extraLarge ?? this.extraLarge,
     );
   }
 
@@ -82,6 +88,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
       medium3: TextStyle.lerp(medium3, other.medium3, t)!,
       large1: TextStyle.lerp(large1, other.large1, t)!,
       large2: TextStyle.lerp(large2, other.large2, t)!,
+      extraLarge: TextStyle.lerp(extraLarge, other.extraLarge, t)!,
     );
   }
 }

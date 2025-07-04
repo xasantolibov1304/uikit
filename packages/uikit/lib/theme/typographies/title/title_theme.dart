@@ -77,5 +77,12 @@ TitleTextStyles _generateTypographyFromBrightness(Brightness brightness) {
       letterSpacing: 0,
       fontWeight: FontWeight.w600,
     ),
+    extraLarge: TextStyle(
+      color: color,
+      fontSize: 32,
+      height: 36 / 32,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w500,
+    ),
   );
 }

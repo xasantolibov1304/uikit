@@ -87,7 +87,7 @@ class Filter extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     title!,
-                    style: context.label.medium1.copyWith(
+                    style: context.labelTextStyle.medium1.copyWith(
                       color: _color,
                     ),
                   ),

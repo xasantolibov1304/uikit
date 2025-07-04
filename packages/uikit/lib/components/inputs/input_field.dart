@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 // Package imports:
 import 'package:flutter_svg/svg.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/indicators/progress_indicator.dart';
@@ -213,7 +214,7 @@ class _InputFieldState extends State<InputField> {
                         onChanged: widget.onChanged,
                         textAlign: widget.textAlign,
                         obscureText: widget.obscureText,
-                        style: context.input.placeholder,
+                        style: context.inputTextStyle.placeholder,
                         keyboardType: widget.keyboardType,
                         decoration: _buildInputDecoration,
                         inputFormatters: widget.inputFormatters,
@@ -263,11 +264,11 @@ class _InputFieldState extends State<InputField> {
 
   InputDecoration get _buildInputDecoration {
     return InputDecoration(
-      labelStyle: context.input.label,
-      helperStyle: context.input.caption,
-      counterStyle: context.input.caption,
+      labelStyle: context.inputTextStyle.label,
+      helperStyle: context.inputTextStyle.caption,
+      counterStyle: context.inputTextStyle.caption,
       contentPadding: const EdgeInsets.all(4),
-      hintStyle: context.input.placeholder.copyWith(
+      hintStyle: context.inputTextStyle.placeholder.copyWith(
         color: context.textColors.tertiary,
       ),
       label: widget.label != null ? _buildLabel() : null,
@@ -281,14 +282,14 @@ class _InputFieldState extends State<InputField> {
       children: [
         Text(
           widget.label!,
-          style: context.input.placeholder.copyWith(
+          style: context.inputTextStyle.placeholder.copyWith(
             color: context.textColors.tertiary,
           ),
         ),
         if (widget.isRequired)
           Text(
             '*',
-            style: context.input.placeholder.copyWith(
+            style: context.inputTextStyle.placeholder.copyWith(
               color: context.textColors.error,
             ),
           ),
@@ -304,14 +305,14 @@ class _InputFieldState extends State<InputField> {
         if (widget.suffixLabel != null)
           Text(
             widget.suffixLabel!,
-            style: context.input.label.copyWith(
+            style: context.inputTextStyle.label.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
         if (widget.suffixValue != null)
           Text(
             widget.suffixValue!,
-            style: context.input.placeholder.copyWith(
+            style: context.inputTextStyle.placeholder.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
@@ -323,8 +324,7 @@ class _InputFieldState extends State<InputField> {
     return SizedBox(
       width: _iconSize,
       height: _iconSize,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+      child: MyGestureDetector(
         onTap: _onClear,
         child: UikitAssets.icons24.closeCircle.svg(),
       ),
@@ -365,7 +365,7 @@ class _InputFieldState extends State<InputField> {
                 child: Text(
                   validationText ?? widget.captionText ?? '',
                   maxLines: 1,
-                  style: context.input.caption.copyWith(
+                  style: context.inputTextStyle.caption.copyWith(
                     color: _captionColor,
                   ),
                 ),
@@ -374,7 +374,7 @@ class _InputFieldState extends State<InputField> {
                 Text(
                   widget.captionHelperText!,
                   maxLines: 1,
-                  style: context.input.caption.copyWith(
+                  style: context.inputTextStyle.caption.copyWith(
                     color: _captionColor,
                   ),
                 ),

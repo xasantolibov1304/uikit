@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: <Widget>[
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 16),
             uikit.Button(
-              // count: 3,
+              count: 10,
               text: 'Open ButtonCell Example',
               onTap: () {
                 Navigator.of(context).push(
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
             uikit.Accordion(
               title: Text(
                 'Title',
-                style: context.body.medium2.copyWith(
+                style: context.bodyTextStyle.medium2.copyWith(
                   color: Colors.black,
                 ),
               ),
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onButtonTap: () {},
               content: Text(
                 'If we have a long text, we can use this option to accomplish the goal',
-                style: context.label.main.copyWith(
+                style: context.labelTextStyle.main.copyWith(
                   color: Colors.black,
                 ),
               ),
@@ -161,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 16),
             uikit.PasswordInputField(
               validator: (value) {
-                return 'Password is required';
+                return 'error';
               },
               label: 'Password',
               onChanged: (value) {
@@ -217,9 +217,35 @@ class _MyHomePageState extends State<MyHomePage> {
             uikit.TextWidget(
               text:
                   'Description sample with detailed info for “Notice” component Description sample with detailed info for “Notice” component Description sample with  Description sample with detailed info for “Notice” component Description sample with detailed info for “Notice” component Description sample with ',
-              style: context.body.main,
+              style: context.bodyTextStyle.main,
               startButtonText: 'Button',
               endButtonText: 'Button2',
+            ),
+            uikit.InfoField(
+              label: 'Label',
+              value: 'Value',
+              suffixValue: 'Suffix Value',
+              captionText: 'Caption Text',
+              trailingIcon: UikitAssets.icons24.info.svg(),
+              valueThrough: 'Value ',
+              suffixValueThrough: 'Suffix',
+              size: uikit.InfoFieldSize.small,
+              leftIcon: Icon(
+                Icons.info,
+                color: Colors.black,
+              ),
+              rightIcon: Icon(
+                Icons.info,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 16),
+            uikit.PromoBanner(
+              title: 'Title',
+              description: 'Description',
+              imageUrl:
+                  'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?semt=ais_hybrid&w=740',
+              onClose: () {},
             ),
           ],
         ),

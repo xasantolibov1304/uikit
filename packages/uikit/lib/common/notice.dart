@@ -81,7 +81,8 @@ class Notice extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: _backgroundColor(context),
+        // color: _backgroundColor(context),
+        color: context.surfaceColors.tertiary,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +96,7 @@ class Notice extends StatelessWidget {
                 if (title != null) ...[
                   Text(
                     title!,
-                    style: context.title.main1,
+                    style: context.titleTextStyle.main1,
                   ),
                 ],
                 if (title != null && description != null) ...[
@@ -104,7 +105,7 @@ class Notice extends StatelessWidget {
                 if (description != null) ...[
                   Text(
                     description!,
-                    style: context.body.main.copyWith(
+                    style: context.bodyTextStyle.main.copyWith(
                       color: context.textColors.secondary,
                     ),
                   ),
@@ -178,18 +179,18 @@ class Notice extends StatelessWidget {
     }
   }
 
-  Color _backgroundColor(BuildContext context) {
-    switch (_type) {
-      case NoticeType.neutral:
-        return context.surfaceColors.tertiary.withValues(alpha: 0.1);
-      case NoticeType.info:
-        return context.surfaceColors.info.withValues(alpha: 0.1);
-      case NoticeType.error:
-        return context.surfaceColors.error.withValues(alpha: 0.1);
-      case NoticeType.warning:
-        return context.surfaceColors.warning.withValues(alpha: 0.1);
-      case NoticeType.success:
-        return context.surfaceColors.success.withValues(alpha: 0.1);
-    }
-  }
+  // Color _backgroundColor(BuildContext context) {
+  //   switch (_type) {
+  //     case NoticeType.neutral:
+  //       return context.surfaceColors.tertiary.withValues(alpha: 0.1);
+  //     case NoticeType.info:
+  //       return context.surfaceColors.info.withValues(alpha: 0.1);
+  //     case NoticeType.error:
+  //       return context.surfaceColors.error.withValues(alpha: 0.1);
+  //     case NoticeType.warning:
+  //       return context.surfaceColors.warning.withValues(alpha: 0.1);
+  //     case NoticeType.success:
+  //       return context.surfaceColors.success.withValues(alpha: 0.1);
+  //   }
+  // }
 }

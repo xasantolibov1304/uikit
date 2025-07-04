@@ -5,39 +5,40 @@ import 'package:flutter/material.dart';
 import 'package:iman_uikit/theme/typographies/typographies.dart';
 
 extension AppTypographyThemeDataExtension on ThemeData {
-  DisplayTextStyles get display =>
+  DisplayTextStyles get displayTextStyle =>
       extension<DisplayTextStyles>() ?? lightDisplayTextStyle;
 
-  TitleTextStyles get title =>
+  TitleTextStyles get titleTextStyle =>
       extension<TitleTextStyles>() ?? lightTitleTextStyles;
 
-  SubtitleTextStyles get subtitle =>
+  SubtitleTextStyles get subtitleTextStyle =>
       extension<SubtitleTextStyles>() ?? lightSubtitleTextStyles;
 
-  LabelTextStyles get label =>
+  LabelTextStyles get labelTextStyle =>
       extension<LabelTextStyles>() ?? lightLabelTextStyles;
 
-  BodyTextStyles get body => extension<BodyTextStyles>() ?? lightBodyTextStyles;
+  BodyTextStyles get bodyTextStyle =>
+      extension<BodyTextStyles>() ?? lightBodyTextStyles;
 
-  ButtonTextStyles get button =>
+  ButtonTextStyles get buttonTextStyle =>
       extension<ButtonTextStyles>() ?? lightButtonTextStyles;
 
-  InputTextStyles get input =>
+  InputTextStyles get inputTextStyle =>
       extension<InputTextStyles>() ?? lightInputTextStyles;
 }
 
 extension AppTypographyThemeDataContextExtension on BuildContext {
-  DisplayTextStyles get display => Theme.of(this).display;
+  DisplayTextStyles get displayTextStyle => Theme.of(this).displayTextStyle;
 
-  TitleTextStyles get title => Theme.of(this).title;
+  TitleTextStyles get titleTextStyle => Theme.of(this).titleTextStyle;
 
-  SubtitleTextStyles get subtitle => Theme.of(this).subtitle;
+  SubtitleTextStyles get subtitleTextStyle => Theme.of(this).subtitleTextStyle;
 
-  LabelTextStyles get label => Theme.of(this).label;
+  LabelTextStyles get labelTextStyle => Theme.of(this).labelTextStyle;
 
-  BodyTextStyles get body => Theme.of(this).body;
+  BodyTextStyles get bodyTextStyle => Theme.of(this).bodyTextStyle;
 
-  ButtonTextStyles get button => Theme.of(this).button;
+  ButtonTextStyles get buttonTextStyle => Theme.of(this).buttonTextStyle;
 
-  InputTextStyles get input => Theme.of(this).input;
+  InputTextStyles get inputTextStyle => Theme.of(this).inputTextStyle;
 }

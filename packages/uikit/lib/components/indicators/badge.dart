@@ -48,7 +48,7 @@ class MyBadge extends StatelessWidget {
       badgeAnimation: const badges.BadgeAnimation.scale(),
       badgeContent: Text(
         '${count > _maxCount ? '$_maxCount+' : count}',
-        style: context.label.medium2.copyWith(
+        style: context.labelTextStyle.medium2.copyWith(
           height: _textHeight,
           color: _textColor(context),
         ),
