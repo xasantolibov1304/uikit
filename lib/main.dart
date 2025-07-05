@@ -240,6 +240,13 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
+            uikit.TimeInputField(
+              label: 'Time',
+              onChanged: (value) {
+                debugPrint(value);
+              },
+            ),
+            const SizedBox(height: 16),
             uikit.PromoBanner(
               title: 'For describing something useful',
               description:
