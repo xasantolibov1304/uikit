@@ -15,10 +15,10 @@ SurfaceColors _generatePaletteFromBrightness(Brightness brightness) {
       secondary: Palette.coolGray[10]!,
       tertiary: Palette.gray[0]!,
       muted: Palette.gray[30]!,
-      info: Palette.cyan[40]!,
-      error: Palette.red[40]!,
-      warning: Palette.yellow[30]!,
-      success: Palette.green[40]!,
+      info: Palette.cyan[10]!,
+      error: Palette.red[10]!,
+      warning: Palette.yellow[10]!,
+      success: Palette.green[10]!,
     );
   } else {
     return SurfaceColors(

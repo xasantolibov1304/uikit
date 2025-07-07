@@ -1,53 +1,65 @@
-// Dart imports:
-import 'dart:math';
-
 // Flutter imports:
 import 'package:flutter/services.dart';
 
 // Package imports:
+import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:intl/intl.dart';
 
-const _ddMMyyyyDot = 'dd.MM.yyyy';
-const _ddMMyyyySlash = 'dd/MM/yyyy';
-const _ddMMyyyyHHmmSlash = 'dd/MM/yyyy HH:mm';
-const _ddMMyyyyDash = 'dd-MM-yyyy';
-const _hhmm = 'hh:mm';
-const _hhmma = 'hh:mm a';
+// Project imports:
+import 'package:iman_uikit/utils/date/date_format_constants.dart';
 
 class MyDateFormatter {
   const MyDateFormatter._();
 
   /// e.g 22.10.2024
   /// (dd.MM.yyyy)
-  static String fddMMyyyyDot(DateTime? date) => format(date, _ddMMyyyyDot);
-  static DateTime? pddMMyyyyDot(String? date) => parse(date, _ddMMyyyyDot);
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
+  static String fddMMyyyyDot(DateTime? date) => format(date, ddMMyyyyDot);
+  static DateTime? pddMMyyyyDot(String? date) => parse(date, ddMMyyyyDot);
 
-  /// e.g 22-10-2024 (dd-MM-yyyy)
+  /// e.g 22-10-2024
   /// (dd-MM-yyyy)
-  static String fddMMyyyyDash(DateTime? date) => format(date, _ddMMyyyyDash);
-  static DateTime? pddMMyyyyDash(String? date) => parse(date, _ddMMyyyyDash);
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
+  static String fddMMyyyyDash(DateTime? date) => format(date, ddMMyyyyDash);
+  static DateTime? pddMMyyyyDash(String? date) => parse(date, ddMMyyyyDash);
 
   /// e.g 22/10/2024
   /// (dd/MM/yyyy)
-  static String fddMMyyyySlash(DateTime? date) => format(date, _ddMMyyyySlash);
-  static DateTime? pddMMyyyySlash(String? date) => parse(date, _ddMMyyyySlash);
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
+  static String fddMMyyyySlash(DateTime? date) => format(date, ddMMyyyySlash);
+  static DateTime? pddMMyyyySlash(String? date) => parse(date, ddMMyyyySlash);
 
   /// e.g 22/10/2024 22:00
   /// (dd/MM/yyyy HH:mm)
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
   static String fddMMyyyyHHmmSlash(DateTime? date) =>
-      format(date, _ddMMyyyyHHmmSlash);
+      format(date, ddMMyyyyHHmmSlash);
   static DateTime? pddMMyyyyHHmmSlash(String? date) =>
-      parse(date, _ddMMyyyyHHmmSlash);
+      parse(date, ddMMyyyyHHmmSlash);
 
   /// e.g 22:00
   /// (hh:mm)
-  static String fhhmm(DateTime? date) => format(date, _hhmm);
-  static DateTime? phhmm(String? date) => parse(date, _hhmm);
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
+  static String fhhmm(DateTime? date) => format(date, hhmm);
+  static DateTime? phhmm(String? date) => parse(date, hhmm);
 
   /// e.g 10:00 PM
   /// (hh:mm a)
-  static String fhhmma(DateTime? date) => format(date, _hhmma);
-  static DateTime? phhmma(String? date) => parse(date, _hhmma);
+  ///
+  /// [format] - format the date
+  /// [parse] - parse the date
+  static String fhhmma(DateTime? date) => format(date, hhmma);
+  static DateTime? phhmma(String? date) => parse(date, hhmma);
 
   ///
   /// Parse date from string
@@ -64,34 +76,18 @@ class MyDateFormatter {
 }
 
 class DateTextFormatter extends TextInputFormatter {
-  static const _maxChars = 8;
+  DateTextFormatter({
+    this.formatPattern = ddMMyyyyDot,
+  });
 
-  DateTextFormatter({String seperator = '.'}) : _seperator = seperator;
-
-  final String _seperator;
+  final String formatPattern;
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    var text = _format(newValue.text, _seperator);
-    return newValue.copyWith(text: text, selection: updateCursorPosition(text));
-  }
-
-  String _format(String value, String seperator) {
-    value = value.replaceAll(seperator, '');
-    var newString = '';
-
-    for (int i = 0; i < min(value.length, _maxChars); i++) {
-      newString += value[i];
-      if ((i == 1 || i == 3) && i != value.length - 1) {
-        newString += seperator;
-      }
-    }
-
-    return newString;
-  }
-
-  TextSelection updateCursorPosition(String text) {
-    return TextSelection.fromPosition(TextPosition(offset: text.length));
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    return MaskedInputFormatter(dateFormatToMask[formatPattern] ?? '##.##.####')
+        .formatEditUpdate(oldValue, newValue);
   }
 }

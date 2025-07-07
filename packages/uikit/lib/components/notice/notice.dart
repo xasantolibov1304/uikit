@@ -14,55 +14,17 @@ enum NoticeType {
 }
 
 class Notice extends StatelessWidget {
-  const Notice.neutral({
+  const Notice({
     this.title,
     this.description,
     this.onDismiss,
     this.buttonText,
+    this.backgroundType = NoticeType.neutral,
+    this.iconType = NoticeType.neutral,
     this.buttonType = ButtonType.primary,
     this.onButtonTap,
     super.key,
-  }) : _type = NoticeType.neutral;
-
-  const Notice.info({
-    this.title,
-    this.description,
-    this.onDismiss,
-    this.buttonText,
-    this.buttonType = ButtonType.primary,
-    this.onButtonTap,
-    super.key,
-  }) : _type = NoticeType.info;
-
-  const Notice.error({
-    this.title,
-    this.description,
-    this.onDismiss,
-    this.buttonText,
-    this.buttonType = ButtonType.primary,
-    this.onButtonTap,
-    super.key,
-  }) : _type = NoticeType.error;
-
-  const Notice.warning({
-    this.title,
-    this.description,
-    this.onDismiss,
-    this.buttonText,
-    this.buttonType = ButtonType.primary,
-    this.onButtonTap,
-    super.key,
-  }) : _type = NoticeType.warning;
-
-  const Notice.success({
-    this.title,
-    this.description,
-    this.onDismiss,
-    this.buttonText,
-    this.buttonType = ButtonType.primary,
-    this.onButtonTap,
-    super.key,
-  }) : _type = NoticeType.success;
+  });
 
   final String? title;
   final String? description;
@@ -73,16 +35,16 @@ class Notice extends StatelessWidget {
   final ButtonType buttonType;
   final VoidCallback? onButtonTap;
 
-  final NoticeType _type;
+  final NoticeType backgroundType;
+  final NoticeType iconType;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: _backgroundColor(context),
         borderRadius: BorderRadius.circular(16),
-        // color: _backgroundColor(context),
-        color: context.surfaceColors.tertiary,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +102,7 @@ class Notice extends StatelessWidget {
   }
 
   Widget _icon(BuildContext context) {
-    switch (_type) {
+    switch (iconType) {
       case NoticeType.neutral:
         return UikitAssets.icons24.infoFilled.svg(
           colorFilter: ColorFilter.mode(
@@ -165,7 +127,7 @@ class Notice extends StatelessWidget {
   }
 
   Color _iconColor(BuildContext context) {
-    switch (_type) {
+    switch (iconType) {
       case NoticeType.neutral:
         return context.iconColors.tertiary;
       case NoticeType.info:
@@ -179,18 +141,18 @@ class Notice extends StatelessWidget {
     }
   }
 
-  // Color _backgroundColor(BuildContext context) {
-  //   switch (_type) {
-  //     case NoticeType.neutral:
-  //       return context.surfaceColors.tertiary.withValues(alpha: 0.1);
-  //     case NoticeType.info:
-  //       return context.surfaceColors.info.withValues(alpha: 0.1);
-  //     case NoticeType.error:
-  //       return context.surfaceColors.error.withValues(alpha: 0.1);
-  //     case NoticeType.warning:
-  //       return context.surfaceColors.warning.withValues(alpha: 0.1);
-  //     case NoticeType.success:
-  //       return context.surfaceColors.success.withValues(alpha: 0.1);
-  //   }
-  // }
+  Color _backgroundColor(BuildContext context) {
+    switch (backgroundType) {
+      case NoticeType.neutral:
+        return context.surfaceColors.tertiary;
+      case NoticeType.info:
+        return context.surfaceColors.info;
+      case NoticeType.error:
+        return context.surfaceColors.error;
+      case NoticeType.warning:
+        return context.surfaceColors.warning;
+      case NoticeType.success:
+        return context.surfaceColors.success;
+    }
+  }
 }

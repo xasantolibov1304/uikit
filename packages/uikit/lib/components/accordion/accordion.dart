@@ -21,6 +21,8 @@ class Accordion extends StatefulWidget {
   final Widget title;
   final Widget? content;
   final String? buttonText;
+
+  /// Show button.
   final VoidCallback? onButtonTap;
 
   @override

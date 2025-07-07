@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:iman_uikit/uikit.dart';
 
 class TextWidget extends StatefulWidget {
@@ -84,23 +87,17 @@ class _TextWidgetState extends State<TextWidget> {
                 _isExpanded = !_isExpanded;
                 updateState();
               },
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: RadialGradient(
-                    colors: [
-                      context.backgroundColors.primary,
-                      context.backgroundColors.primary.withValues(alpha: 0.8),
-                    ],
-                  ),
-                ),
-                child: Text(
-                  _isExpanded ? widget.endButtonText! : widget.startButtonText!,
-                  style: context.buttonTextStyle.main.copyWith(
-                    color: context.textColors.success,
-                  ),
-                ),
+              child: Button(
+                size: ButtonSize.small,
+                type: ButtonType.secondary,
+                text: _isExpanded
+                    ? widget.endButtonText!
+                    : widget.startButtonText!,
+                onTap: () {
+                  _isExpanded = !_isExpanded;
+                  updateState();
+                },
+                padding: const EdgeInsets.symmetric(horizontal: 8),
               ),
             ),
           ),

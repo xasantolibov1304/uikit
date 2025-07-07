@@ -1,8 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+
+// Project imports:
 import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:iman_uikit/utils/date/date_format_constants.dart';
+import 'package:iman_uikit/utils/date/date_formatter.dart';
 
 class TimeInputField extends StatelessWidget {
   const TimeInputField({
@@ -64,7 +68,6 @@ class TimeInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return InputField(
       label: label,
-      hintText: hintText,
       readonly: readonly,
       canClear: canClear,
       isLoading: isLoading,
@@ -78,13 +81,14 @@ class TimeInputField extends StatelessWidget {
       initialValue: initialValue,
       textInputAction: textInputAction,
       keyboardType: TextInputType.datetime,
+      hintText: hintText ?? hhmm.toLowerCase(),
       trailingIcon: onSelectTimeTap != null
           ? MyGestureDetector(
               onTap: onSelectTimeTap,
               child: UikitAssets.icons24.clock.svg(),
             )
           : null,
-      inputFormatters: [MaskedInputFormatter('##:##')],
+      inputFormatters: [DateTextFormatter(formatPattern: hhmm)],
     );
   }
 }

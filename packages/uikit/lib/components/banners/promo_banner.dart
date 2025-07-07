@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
 import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
@@ -17,6 +22,7 @@ class PromoBanner extends StatelessWidget {
     this.imageUrl,
     this.onClose,
     this.height = 145,
+    this.margin = EdgeInsets.zero,
     this.type = PromoBannerType.aside,
     super.key,
   });
@@ -24,19 +30,32 @@ class PromoBanner extends StatelessWidget {
   final String title;
   final String? description;
   final String? imageUrl;
+
+  /// Show close button on the top right corner.
   final VoidCallback? onClose;
 
+  /// [PromoBannerType.filled] - the banner has a background image.
+  ///
+  /// [PromoBannerType.aside] - the banner has a background image and a description.
   final PromoBannerType type;
 
+  /// Default height of the banner is 145.
   final double height;
+
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: context.backgroundColors.primary,
+        border: Border.all(
+          color: context.fieldColors.border,
+          width: 1,
+        ),
       ),
       child: Stack(
         children: [
@@ -54,17 +73,22 @@ class PromoBanner extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
                         style: context.titleTextStyle.medium1,
                       ),
-                      const SizedBox(height: 12),
-                      Text(
-                        description ?? '',
-                        style: context.subtitleTextStyle.medium2,
-                      ),
+                      if (description != null) ...[
+                        const SizedBox(height: 12),
+                        Expanded(
+                          child: Text(
+                            description ?? '',
+                            style: context.subtitleTextStyle.medium2,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

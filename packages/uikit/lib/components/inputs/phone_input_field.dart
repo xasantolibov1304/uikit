@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/utils/string_helper.dart';
@@ -71,7 +71,7 @@ class PhoneTextField extends StatefulWidget {
 }
 
 class _PhoneTextFieldState extends State<PhoneTextField> {
-  late TextEditingController controller;
+  TextEditingController? controller;
   String? phoneCode = _phoneCode;
 
   @override
@@ -89,18 +89,10 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
     if (widget.initialValue != null && widget.initialValue!.isNotEmpty) {
       final countyData = PhoneCodes.getCountryDataByPhone(widget.initialValue!);
       phoneCode = countyData!.phoneCode!;
-
       final phone = formatAsPhoneNumber(widget.initialValue!)!;
       final result = phone.replaceFirst('+$phoneCode', '');
-
-      controller.text = result;
+      controller?.text = result;
     }
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   @override

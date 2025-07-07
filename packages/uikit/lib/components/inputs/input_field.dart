@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 
 // Package imports:
 import 'package:flutter_svg/svg.dart';
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/indicators/progress_indicator.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
@@ -82,6 +82,9 @@ class InputField extends StatefulWidget {
   final String? initialValue;
   final String? suffixLabel;
   final String? suffixValue;
+
+  /// Don't dispose this controller!
+  /// It will be disposed by the InputField itself
   final TextEditingController? controller;
 
   final InputFieldSize size;

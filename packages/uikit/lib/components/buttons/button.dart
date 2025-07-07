@@ -61,9 +61,17 @@ class Button extends StatelessWidget {
   final Widget? iconEnd;
 
   final String? subtext;
+
+  /// Show count badge on the button.
   final int? count;
 
   final ButtonType type;
+
+  /// [ButtonSize.small] - 40px
+  ///
+  /// [ButtonSize.medium] - 48px
+  ///
+  /// [ButtonSize.large] - 56px
   final ButtonSize size;
 
   final void Function()? onTap;
@@ -74,6 +82,8 @@ class Button extends StatelessWidget {
 
   final bool isLoading;
   final bool showText;
+
+  /// Show subtext on the button when [isLoading] is true.
   final bool showSubtext;
   final bool isEnabled;
 

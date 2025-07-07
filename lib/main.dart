@@ -206,7 +206,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             const SizedBox(height: 16),
-            uikit.Notice.info(
+            uikit.Notice(
+              iconType: uikit.NoticeType.warning,
+              backgroundType: uikit.NoticeType.neutral,
               // title: 'Title',
               description:
                   'Description fdsjkl fklf slk jklsd jafkljas ;lfj;as jsladfj a;ls j j s l j;',
@@ -241,11 +243,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 16),
             uikit.DateInputField(
-              label: 'Date',
+              label: 'Date Time',
               onChanged: (value) {
                 debugPrint(value);
               },
               onSelectDateTap: () {},
+            ),
+            uikit.TimeInputField(
+              label: 'Time Time',
+              onChanged: (value) {
+                debugPrint(value);
+              },
+              onSelectTimeTap: () {},
             ),
             const SizedBox(height: 16),
             uikit.PromoBanner(
@@ -261,6 +270,35 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Select',
               onSelectTap: () {},
             ),
+            const SizedBox(height: 16),
+            uikit.PromoBannerCarousel(
+              children: [
+                uikit.PromoBanner(
+                  title: 'For describing something useful',
+                  description:
+                      'Чтобы воспользоваться подпиской необходимо скачать приложение IMAN',
+                  imageUrl:
+                      'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?semt=ais_hybrid&w=740',
+                  onClose: () {},
+                ),
+                uikit.PromoBanner(
+                  title: 'For describing something useful',
+                  description:
+                      'Чтобы воспользоваться подпиской необходимо скачать приложение IMAN',
+                  imageUrl:
+                      'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?semt=ais_hybrid&w=740',
+                  onClose: () {},
+                ),
+                uikit.PromoBanner(
+                  title: 'For describing something useful',
+                  description:
+                      'Чтобы воспользоваться подпиской необходимо скачать приложение IMAN',
+                  imageUrl:
+                      'https://img.freepik.com/free-vector/night-ocean-landscape-full-moon-stars-shine_107791-7397.jpg?semt=ais_hybrid&w=740',
+                  onClose: () {},
+                ),
+              ],
+            )
           ],
         ),
       ),

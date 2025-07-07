@@ -9,3 +9,4 @@ export 'banners/promo_banner.dart';
 export 'fields/info_field.dart';
 export 'accordion/accordion.dart';
 export 'filters/filter.dart';
+export 'banners/promo_banner_carousel.dart';

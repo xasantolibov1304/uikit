@@ -40,6 +40,7 @@ class MyBadge extends StatelessWidget {
     return badges.Badge(
       showBadge: count > 0,
       badgeStyle: badges.BadgeStyle(
+        elevation: 0,
         shape: badges.BadgeShape.square,
         badgeColor: _badgeColor(context),
         borderRadius: BorderRadius.circular(20),

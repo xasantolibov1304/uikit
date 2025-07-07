@@ -65,12 +65,12 @@ class Filter extends StatelessWidget {
             onTap: onTap,
             padding: _padding,
             focusNode: focusNode,
-            color: const Color(0xFFF2F4F7),
-            splashColor: const Color(0xFFB6B6B6),
+            color: context.buttonColors.secondary,
+            splashColor: context.buttonColors.secondaryPressed,
             border: focusNode?.hasFocus == true
                 ? Border.all(
                     width: 1.5,
-                    color: const Color(0xFF00DB2C),
+                    color: context.buttonColors.positive,
                   )
                 : null,
             borderRadius: BorderRadius.circular(100),
@@ -110,6 +110,9 @@ class Filter extends StatelessWidget {
   }
 
   double get _end {
+    if (count > 9) {
+      return -15;
+    }
     switch (_type) {
       case FilterType.tab:
       case FilterType.filter:
