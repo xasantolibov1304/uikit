@@ -16,9 +16,10 @@ const _uzPhoneMask = '+000 00 000 00 00';
 
 class PhoneTextField extends StatefulWidget {
   const PhoneTextField({
-    this.label,
+    required this.label,
     this.hintText,
     this.initialValue,
+    this.controller,
     //
     this.captionIconPath,
     this.captionText,
@@ -44,6 +45,7 @@ class PhoneTextField extends StatefulWidget {
   final String? label;
   final String? hintText;
   final String? initialValue;
+  final TextEditingController? controller;
 
   final String? captionIconPath;
   final String? captionText;
@@ -69,13 +71,13 @@ class PhoneTextField extends StatefulWidget {
 }
 
 class _PhoneTextFieldState extends State<PhoneTextField> {
-  //
-  final controller = TextEditingController();
+  late TextEditingController controller;
   String? phoneCode = _phoneCode;
 
   @override
   void initState() {
     super.initState();
+    controller = widget.controller ?? TextEditingController();
     _setMaskedInitPhone();
   }
 

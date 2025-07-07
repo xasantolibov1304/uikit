@@ -5,15 +5,14 @@ class TextInputField extends StatelessWidget {
   const TextInputField({
     required this.label,
     this.hintText,
+    this.initialValue,
+    this.controller,
     //
     this.captionIconPath,
     this.captionText,
     this.captionHelperText,
     //
     this.status = InputFieldStatus.info,
-    //
-    this.initialValue,
-    this.controller,
     //
     this.onChanged,
     this.validator,
@@ -37,15 +36,14 @@ class TextInputField extends StatelessWidget {
 
   final String? label;
   final String? hintText;
+  final String? initialValue;
+  final TextEditingController? controller;
 
   final String? captionIconPath;
   final String? captionText;
   final String? captionHelperText;
 
   final InputFieldStatus status;
-
-  final String? initialValue;
-  final TextEditingController? controller;
 
   final FocusNode? focusNode;
 

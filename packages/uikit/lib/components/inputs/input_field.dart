@@ -36,8 +36,8 @@ class InputField extends StatefulWidget {
   const InputField({
     this.label,
     this.hintText,
-    this.controller,
     this.initialValue,
+    this.controller,
     this.suffixLabel,
     this.suffixValue,
     //

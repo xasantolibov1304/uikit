@@ -5,12 +5,10 @@ import 'package:iman_uikit/gen/assets.gen.dart';
 
 class IdInputField extends StatelessWidget {
   const IdInputField({
-    this.label,
+    required this.label,
     this.hintText,
     this.controller,
     this.initialValue,
-    this.suffixLabel,
-    this.suffixValue,
     //
     this.captionIconPath,
     this.captionText,
@@ -36,8 +34,6 @@ class IdInputField extends StatelessWidget {
   final String? label;
   final String? hintText;
   final String? initialValue;
-  final String? suffixLabel;
-  final String? suffixValue;
   final TextEditingController? controller;
 
   final String? captionIconPath;
@@ -72,6 +68,7 @@ class IdInputField extends StatelessWidget {
       validator: validator,
       focusNode: focusNode,
       onChanged: onChanged,
+      controller: controller,
       isRequired: isRequired,
       captionText: captionText,
       initialValue: initialValue,

@@ -240,11 +240,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 16),
-            uikit.TimeInputField(
-              label: 'Time',
+            uikit.DateInputField(
+              label: 'Date',
               onChanged: (value) {
                 debugPrint(value);
               },
+              onSelectDateTap: () {},
             ),
             const SizedBox(height: 16),
             uikit.PromoBanner(

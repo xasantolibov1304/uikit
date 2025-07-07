@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
+import 'package:iman_uikit/gen/assets.gen.dart';
 
 class TimeInputField extends StatelessWidget {
   const TimeInputField({
     required this.label,
     this.hintText,
+    this.initialValue,
+    this.controller,
     //
     this.captionIconPath,
     this.captionText,
@@ -13,9 +17,7 @@ class TimeInputField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
-    this.initialValue,
-    this.controller,
-    //
+    this.onSelectTimeTap,
     this.onChanged,
     this.validator,
     //
@@ -35,15 +37,14 @@ class TimeInputField extends StatelessWidget {
 
   final String? label;
   final String? hintText;
+  final String? initialValue;
+  final TextEditingController? controller;
 
   final String? captionIconPath;
   final String? captionText;
   final String? captionHelperText;
 
   final InputFieldStatus status;
-
-  final String? initialValue;
-  final TextEditingController? controller;
 
   final FocusNode? focusNode;
   final TextInputAction textInputAction;
@@ -55,6 +56,7 @@ class TimeInputField extends StatelessWidget {
   final bool isRequired;
   final bool canClear;
 
+  final VoidCallback? onSelectTimeTap;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
 
@@ -76,6 +78,12 @@ class TimeInputField extends StatelessWidget {
       initialValue: initialValue,
       textInputAction: textInputAction,
       keyboardType: TextInputType.datetime,
+      trailingIcon: onSelectTimeTap != null
+          ? MyGestureDetector(
+              onTap: onSelectTimeTap,
+              child: UikitAssets.icons24.clock.svg(),
+            )
+          : null,
       inputFormatters: [MaskedInputFormatter('##:##')],
     );
   }

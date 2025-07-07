@@ -7,10 +7,8 @@ class PasswordInputField extends StatefulWidget {
   const PasswordInputField({
     this.label,
     this.hintText,
-    this.controller,
     this.initialValue,
-    this.suffixLabel,
-    this.suffixValue,
+    this.controller,
     //
     this.captionIconPath,
     this.captionText,
@@ -36,8 +34,6 @@ class PasswordInputField extends StatefulWidget {
   final String? label;
   final String? hintText;
   final String? initialValue;
-  final String? suffixLabel;
-  final String? suffixValue;
   final TextEditingController? controller;
 
   final InputFieldStatus status;
