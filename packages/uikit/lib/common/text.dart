@@ -37,6 +37,14 @@ class _TextWidgetState extends State<TextWidget> {
     _isExpanded = !widget.isCollapsed;
   }
 
+  @override
+  void didUpdateWidget(TextWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isCollapsed != widget.isCollapsed) {
+      _isExpanded = !widget.isCollapsed;
+    }
+  }
+
   void updateState() => {if (mounted) setState(() {})};
 
   @override

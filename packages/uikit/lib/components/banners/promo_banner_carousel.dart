@@ -49,92 +49,118 @@ class PromoBannerCarousel extends StatefulWidget {
 
 class _PromoBannerCarouselState extends State<PromoBannerCarousel> {
   late final PageController _pageController;
-  late int _currentPage;
+  int _currentPage = 0;
   Timer? _autoplayTimer;
 
   @override
   void initState() {
     super.initState();
-    _currentPage = 0;
     _pageController = PageController(
       viewportFraction: widget.viewportFraction,
     );
-
-    if (widget.autoplay) {
-      _autoplayTimer = Timer.periodic(
-        widget.autoplayInterval,
-        (_) => _autoPlay(),
-      );
-    }
-  }
-
-  void _autoPlay() {
-    if (!mounted || !widget.autoplay) return;
-    final nextPage = (_currentPage + 1) % widget.children.length;
-    _pageController.animateToPage(
-      nextPage,
-      duration: _animationDuration,
-      curve: Curves.easeInOut,
-    );
-    _currentPage = nextPage;
-    updateState();
+    _startAutoplay();
   }
 
   void updateState() => {if (mounted) setState(() {})};
 
   @override
+  void didUpdateWidget(PromoBannerCarousel oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.autoplay != oldWidget.autoplay) {
+      _handleAutoplayChange();
+    }
+  }
+
+  @override
   void dispose() {
-    _autoplayTimer?.cancel();
+    _stopAutoplay();
     _pageController.dispose();
     super.dispose();
   }
 
+  void _handleAutoplayChange() {
+    if (widget.autoplay) {
+      _startAutoplay();
+    } else {
+      _stopAutoplay();
+    }
+  }
+
+  void _startAutoplay() {
+    if (!widget.autoplay || widget.children.isEmpty) return;
+
+    _stopAutoplay();
+    _autoplayTimer = Timer.periodic(
+      widget.autoplayInterval,
+      (_) {
+        if (!mounted || !widget.autoplay || widget.children.isEmpty) return;
+
+        final nextPage = (_currentPage + 1) % widget.children.length;
+        _pageController.animateToPage(
+          nextPage,
+          duration: _animationDuration,
+          curve: Curves.easeInOut,
+        );
+      },
+    );
+  }
+
+  void _stopAutoplay() {
+    _autoplayTimer?.cancel();
+    _autoplayTimer = null;
+  }
+
+  void _onPageChanged(int index) {
+    if (_currentPage != index) {
+      _currentPage = index;
+      updateState();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (widget.children.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    final length = widget.children.length;
+
     return Column(
       children: [
-        if (widget.children.isNotEmpty) ...[
-          SizedBox(
-            height: widget.children.first.height,
-            child: PageView.builder(
-              padEnds: false,
-              controller: _pageController,
-              itemCount: widget.children.length,
-              onPageChanged: (index) {
-                _currentPage = index;
-                updateState();
-              },
-              itemBuilder: (_, index) {
-                final isLast = index == widget.children.length - 1;
-                return Padding(
-                    padding:
-                        EdgeInsets.only(right: isLast ? 0 : widget.spacing),
-                    child: widget.children[index]);
-              },
-            ),
+        SizedBox(
+          height: widget.children.first.height,
+          child: PageView.builder(
+            padEnds: false,
+            itemCount: length,
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            itemBuilder: (context, index) {
+              final isLast = index == length - 1;
+              return Padding(
+                padding: EdgeInsets.only(right: isLast ? 0 : widget.spacing),
+                child: widget.children[index],
+              );
+            },
           ),
-        ],
+        ),
         if (widget.showIndicator) ...[
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              widget.children.length,
-              (index) {
-                final isActive = index == _currentPage;
-                return AnimatedContainer(
-                  width: _indicatorSize,
-                  height: _indicatorSize,
-                  duration: _animationDuration,
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isActive
-                        ? context.textColors.secondary
-                        : context.textColors.muted,
-                  ),
-                );
-              },
+              length,
+              (index) => AnimatedContainer(
+                width: _indicatorSize,
+                height: _indicatorSize,
+                duration: _animationDuration,
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: index == _currentPage
+                      ? context.textColors.secondary
+                      : context.textColors.muted,
+                ),
+              ),
             ),
           ),
         ],
