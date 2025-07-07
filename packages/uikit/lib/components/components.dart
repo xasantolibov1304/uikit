@@ -4,3 +4,8 @@ export 'buttons/gesture_detector.dart';
 export 'buttons/ink_well.dart';
 export 'indicators/progress_indicator.dart';
 export 'inputs/inputs.dart';
+export 'notice/notice.dart';
+export 'banners/promo_banner.dart';
+export 'fields/info_field.dart';
+export 'accordion/accordion.dart';
+export 'filters/filter.dart';

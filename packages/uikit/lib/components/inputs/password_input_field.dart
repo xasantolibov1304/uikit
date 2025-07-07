@@ -63,10 +63,11 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   bool _isVisible = false;
 
   void _toggleVisibility() {
-    setState(() {
-      _isVisible = !_isVisible;
-    });
+    _isVisible = !_isVisible;
+    updateState();
   }
+
+  void updateState() => {if (mounted) setState(() {})};
 
   @override
   Widget build(BuildContext context) {
