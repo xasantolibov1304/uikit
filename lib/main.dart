@@ -36,8 +36,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _value = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.ButtonCellExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
-              count: 10,
             ),
             _buildExampleButton(
               'Notice Example',
@@ -74,7 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.NoticeExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Accordion Example',
@@ -83,7 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.AccordionExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Filters Example',
@@ -92,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.FiltersExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Banners Example',
@@ -101,7 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.BannersExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Fields Example',
@@ -110,7 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.FieldsExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Inputs Example',
@@ -119,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.InputsExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
             _buildExampleButton(
               'Text Example',
@@ -128,57 +118,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.TextExamplePage(),
                 ),
               ),
-              type: uikit.ButtonType.secondary,
             ),
-            uikit.RadioCard(
-              title: 'Radio Card',
-              subtitle: 'Switcher Card',
-              value: _value,
-              groupValue: _value,
-              onChanged: (value) => setState(() => _value = value ?? false),
-              isLoading: true,
+            uikit.AmountInputField(
+              label: 'Currency Input Field',
+              hintText: 'Enter currency',
+              currency: ' сум',
             ),
-            const SizedBox(height: 16),
-            uikit.SwitcherCard(
-              title: 'Switcher Card',
-              subtitle: 'Switcher Card',
-              value: _value,
-              onChanged: (value) => setState(() => _value = value),
+            uikit.ExpireDateTextField(
+              label: 'Expire Date Input Field',
+              hintText: 'Enter expire date',
             ),
-            const SizedBox(height: 16),
-            uikit.CheckboxCard(
-              isLoading: true,
-              title: 'Checkbox Card',
-              subtitle: 'Switcher Card',
-              value: _value,
-              onChanged: (value) => setState(() => _value = value ?? false),
-            ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildExampleButton(
-    String text,
-    VoidCallback onTap, {
-    uikit.ButtonType type = uikit.ButtonType.primary,
-    int? count,
-  }) {
+  Widget _buildExampleButton(String text, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: uikit.Button(
         text: text,
         onTap: onTap,
-        type: type,
-        count: count,
-        iconEnd: Icon(
-          Icons.arrow_forward_ios,
-          color: Theme.of(context).brightness == Brightness.light
-              ? Colors.white
-              : Colors.black,
-        ),
       ),
     );
   }

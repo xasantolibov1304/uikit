@@ -68,11 +68,12 @@ class TimeInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return InputField(
       label: label,
+      status: status,
       readonly: readonly,
       canClear: canClear,
+      autofocus: autofocus,
       isLoading: isLoading,
       isEnabled: isEnabled,
-      autofocus: autofocus,
       onChanged: onChanged,
       validator: validator,
       focusNode: focusNode,

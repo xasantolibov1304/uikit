@@ -204,9 +204,11 @@ class _InputFieldState extends State<InputField> {
                     Expanded(
                       child: TextField(
                         cursorHeight: 16,
+                        autocorrect: false,
                         onTap: widget.onTap,
                         focusNode: _focusNode,
                         controller: _controller,
+                        enableSuggestions: false,
                         enabled: widget.isEnabled,
                         minLines: widget.minLines,
                         maxLines: widget.maxLines,
@@ -216,12 +218,13 @@ class _InputFieldState extends State<InputField> {
                         autofocus: widget.autofocus,
                         onChanged: widget.onChanged,
                         textAlign: widget.textAlign,
+                        buildCounter: _buildCounter,
                         obscureText: widget.obscureText,
-                        style: context.inputTextStyle.placeholder,
                         keyboardType: widget.keyboardType,
                         decoration: _buildInputDecoration,
                         inputFormatters: widget.inputFormatters,
                         textInputAction: widget.textInputAction,
+                        style: context.inputTextStyle.placeholder,
                         onEditingComplete: widget.onEditingComplete,
                         textAlignVertical: TextAlignVertical.center,
                         textCapitalization: widget.textCapitalization,
@@ -431,5 +434,14 @@ class _InputFieldState extends State<InputField> {
   String? _validateInputText() {
     if (widget.validator == null) return null;
     return widget.validator!(_controller.text);
+  }
+
+  Widget? _buildCounter(
+    BuildContext context, {
+    required int currentLength,
+    required int? maxLength,
+    required bool isFocused,
+  }) {
+    return null;
   }
 }

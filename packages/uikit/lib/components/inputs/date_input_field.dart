@@ -67,6 +67,7 @@ class DateInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return InputField(
       label: label,
+      status: status,
       readonly: readonly,
       canClear: canClear,
       isLoading: isLoading,
