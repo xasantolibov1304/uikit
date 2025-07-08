@@ -32,22 +32,17 @@ class CheckboxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        MyGestureDetector(
-          onTap: isEnabled ? _onTap : null,
-          child: Container(
-            width: _checkboxSize,
-            height: _checkboxSize,
-            padding: EdgeInsets.all(size == CheckboxSize.small ? 2 : 0),
-            child: AnimatedSwitcher(
-              duration: _animationDuration,
-              child: _buildCheckboxIcon(context),
-            ),
-          ),
+    return MyGestureDetector(
+      onTap: isEnabled ? _onTap : null,
+      child: Container(
+        width: _checkboxSize,
+        height: _checkboxSize,
+        padding: EdgeInsets.all(size == CheckboxSize.small ? 2 : 0),
+        child: AnimatedSwitcher(
+          duration: _animationDuration,
+          child: _buildCheckboxIcon(context),
         ),
-      ],
+      ),
     );
   }
 
@@ -68,33 +63,21 @@ class CheckboxWidget extends StatelessWidget {
   }
 
   Widget _buildCheckboxIcon(BuildContext context) {
+    final color = ColorFilter.mode(
+      isEnabled
+          ? (value == true
+              ? context.borderColors.success
+              : context.borderColors.secondary)
+          : context.borderColors.primary,
+      BlendMode.srcIn,
+    );
+
     if (value == null) {
-      return UikitAssets.icons24.checkboxTristate.svg(
-        colorFilter: ColorFilter.mode(
-          isEnabled
-              ? context.borderColors.success
-              : context.borderColors.primary,
-          BlendMode.srcIn,
-        ),
-      );
+      return UikitAssets.icons24.checkboxTristate.svg(colorFilter: color);
     } else if (value == true) {
-      return UikitAssets.icons24.checkboxOn.svg(
-        colorFilter: ColorFilter.mode(
-          isEnabled
-              ? context.borderColors.success
-              : context.borderColors.primary,
-          BlendMode.srcIn,
-        ),
-      );
+      return UikitAssets.icons24.checkboxOn.svg(colorFilter: color);
     } else {
-      return UikitAssets.icons24.checkboxOff.svg(
-        colorFilter: ColorFilter.mode(
-          isEnabled
-              ? context.borderColors.secondary
-              : context.borderColors.primary,
-          BlendMode.srcIn,
-        ),
-      );
+      return UikitAssets.icons24.checkboxOff.svg(colorFilter: color);
     }
   }
 }

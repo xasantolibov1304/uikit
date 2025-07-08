@@ -10,18 +10,21 @@ class Switcher extends StatelessWidget {
   const Switcher({
     required this.value,
     required this.onChanged,
+    this.readonly = false,
     this.isEnabled = true,
     super.key,
   });
 
   final bool value;
   final void Function(bool) onChanged;
+
+  final bool readonly;
   final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: isEnabled ? 1 : 0.5,
+      opacity: readonly ? 0.5 : 1,
       child: SizedBox(
         width: _switchSize.width,
         height: _switchSize.height,
@@ -29,10 +32,16 @@ class Switcher extends StatelessWidget {
           fit: BoxFit.contain,
           child: CupertinoSwitch(
             value: value,
-            onChanged: onChanged,
-            thumbColor: context.systemColors.white,
-            activeTrackColor: context.borderColors.success,
-            inactiveTrackColor: context.surfaceColors.grey,
+            onChanged: readonly ? null : onChanged,
+            thumbColor: isEnabled
+                ? context.systemColors.white
+                : context.borderColors.primary,
+            activeTrackColor: isEnabled
+                ? context.borderColors.success
+                : context.surfaceColors.muted,
+            inactiveTrackColor: isEnabled
+                ? context.surfaceColors.muted
+                : context.borderColors.secondary,
           ),
         ),
       ),

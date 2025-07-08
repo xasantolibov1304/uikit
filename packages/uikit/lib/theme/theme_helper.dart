@@ -303,6 +303,18 @@ ThemeData createThemeData({
         overlayColor: WidgetStateProperty.all(systemColors.transparent),
       ),
 
+      /// Radio Theme
+      radioTheme: RadioThemeData(
+        splashRadius: 24,
+        fillColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return borderColors.success;
+          }
+          return borderColors.secondary;
+        }),
+        overlayColor: WidgetStateProperty.all(systemColors.black),
+      ),
+
       /// Bottom Sheet Theme
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: backgroundColors.primary,

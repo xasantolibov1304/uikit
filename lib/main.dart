@@ -130,6 +130,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               type: uikit.ButtonType.secondary,
             ),
+            uikit.RadioCard(
+              title: 'Radio Card',
+              subtitle: 'Switcher Card',
+              value: _value,
+              groupValue: _value,
+              onChanged: (value) => setState(() => _value = value ?? false),
+              isLoading: true,
+            ),
+            const SizedBox(height: 16),
             uikit.SwitcherCard(
               title: 'Switcher Card',
               subtitle: 'Switcher Card',
@@ -144,6 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
               value: _value,
               onChanged: (value) => setState(() => _value = value ?? false),
             ),
+            const SizedBox(height: 16),
           ],
         ),
       ),
