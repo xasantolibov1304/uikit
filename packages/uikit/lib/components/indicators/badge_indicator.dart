@@ -18,14 +18,15 @@ enum BadgeType {
   info,
 }
 
-class MyBadge extends StatelessWidget {
-  const MyBadge.danger({
+class BadgeIndicator extends StatelessWidget {
+  const BadgeIndicator({
     required this.count,
     this.child,
     this.top = -8,
     this.end = -10,
+    this.type = BadgeType.info,
     super.key,
-  }) : _type = BadgeType.danger;
+  });
 
   final int count;
   final Widget? child;
@@ -33,7 +34,7 @@ class MyBadge extends StatelessWidget {
   final double top;
   final double end;
 
-  final BadgeType _type;
+  final BadgeType type;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,7 @@ class MyBadge extends StatelessWidget {
   }
 
   Color _textColor(BuildContext context) {
-    switch (_type) {
+    switch (type) {
       case BadgeType.danger:
       case BadgeType.success:
       case BadgeType.warning:
@@ -70,7 +71,7 @@ class MyBadge extends StatelessWidget {
   }
 
   Color _badgeColor(BuildContext context) {
-    switch (_type) {
+    switch (type) {
       case BadgeType.danger:
         return context.statusColors.error;
       case BadgeType.success:

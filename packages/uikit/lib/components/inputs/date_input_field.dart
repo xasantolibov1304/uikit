@@ -83,7 +83,7 @@ class DateInputField extends StatelessWidget {
       keyboardType: TextInputType.datetime,
       inputFormatters: [DateTextFormatter()],
       trailingIcon: onSelectDateTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: onSelectDateTap,
               child: UikitAssets.icons24.calendar.svg(),
             )

@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class MyInkWell extends StatelessWidget {
-  const MyInkWell({
+class CommonInkWell extends StatelessWidget {
+  const CommonInkWell({
     required this.child,
     this.onTap,
     //

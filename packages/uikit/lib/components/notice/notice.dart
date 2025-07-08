@@ -91,7 +91,7 @@ class Notice extends StatelessWidget {
           ),
           if (onDismiss != null) ...[
             const SizedBox(width: 24),
-            MyGestureDetector(
+            CommonGestureDetector(
               onTap: onDismiss,
               child: UikitAssets.icons24.closeCircle.svg(),
             ),

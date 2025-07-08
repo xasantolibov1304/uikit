@@ -89,7 +89,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
         styles: TextStyleMatcher(
           definitionList: <TextPartStyleDefinition>[
             TextPartStyleDefinition(
-              pattern: MyRegExps.onlyDigits.pattern,
+              pattern: CommonRegExps.onlyDigits.pattern,
               style: context.inputTextStyle.placeholder,
             ),
             TextPartStyleDefinition(
@@ -130,7 +130,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
         ),
       ],
       trailingIcon: widget.onSelectCurrencyTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: widget.onSelectCurrencyTap,
               child: UikitAssets.icons24.calendar.svg(),
             )

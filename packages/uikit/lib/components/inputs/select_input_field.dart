@@ -100,7 +100,7 @@ class _SelectInputFieldState extends State<SelectInputField> {
       leadingIcon: widget.leadingIcon,
       initialValue: widget.initialValue,
       trailingIcon: widget.onSelectTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: _handleSelectTap,
               child: _isExpanded
                   ? UikitAssets.icons24.chevronUp.svg()

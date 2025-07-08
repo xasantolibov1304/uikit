@@ -6,18 +6,18 @@ import 'package:intl/intl.dart';
 import 'reg_exp_constants.dart';
 import 'validate_helper.dart';
 
-abstract class MyStringHelper {
-  const MyStringHelper._();
+abstract class StringHelper {
+  const StringHelper._();
 
   static String removeNonNumbers(String data) {
-    return data.replaceAll(MyRegExps.nonDigit, '');
+    return data.replaceAll(CommonRegExps.nonDigit, '');
   }
 
   static String phoneMask(String? data, {bool obfuscate = false}) {
     if (data == null) return '';
 
     String text = removeNonNumbers(data);
-    if (!MyValidationHelper.isPhone(text)) return data;
+    if (!ValidationHelper.isPhone(text)) return data;
 
     final mask = formatAsPhoneNumber(text)!;
     if (obfuscate) {

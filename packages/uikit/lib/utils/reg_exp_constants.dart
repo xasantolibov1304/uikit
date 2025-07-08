@@ -1,5 +1,5 @@
-class MyRegExps {
-  const MyRegExps._();
+class CommonRegExps {
+  const CommonRegExps._();
 
   /// Matches only digits (e.g., "123456"), no spaces, letters, or symbols.
   static RegExp get onlyDigits => RegExp(r'^\d+$');

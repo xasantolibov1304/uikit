@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:iman_uikit/uikit.dart';
 
-class MyProgressIndicator extends StatelessWidget {
-  const MyProgressIndicator({
+class CommonProgressIndicator extends StatelessWidget {
+  const CommonProgressIndicator({
     this.size = 20,
     this.strokeWidth = 3,
     //

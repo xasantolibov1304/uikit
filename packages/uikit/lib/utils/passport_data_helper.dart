@@ -8,7 +8,8 @@ class PassportDataUtil {
   const PassportDataUtil._();
 
   static bool isPinflValid(String pinfl) {
-    if (pinfl.length != _pinflLength || !MyRegExps.onlyDigits.hasMatch(pinfl)) {
+    if (pinfl.length != _pinflLength ||
+        !CommonRegExps.onlyDigits.hasMatch(pinfl)) {
       return false;
     }
     final result = parsePinfl(pinfl);
@@ -34,17 +35,17 @@ class PassportDataUtil {
   }
 
   static bool isPassportValid(String? number) {
-    return MyRegExps.uzIdNumberRegExp.hasMatch(number ?? '');
+    return CommonRegExps.uzIdNumberRegExp.hasMatch(number ?? '');
   }
 
   static bool isPassportSerialValid(String? serial) {
-    return MyRegExps.uzIdNumberSerialRegExp.hasMatch(serial ?? '');
+    return CommonRegExps.uzIdNumberSerialRegExp.hasMatch(serial ?? '');
   }
 
   static String getDateOfBirthByPinfl(String pinfl) {
     final result = parsePinfl(pinfl);
 
-    return MyDateFormatter.fddMMyyyyDot(
+    return DateFormatterHelper.fddMMyyyyDot(
       DateTime(result.year, result.month, result.day),
     );
   }

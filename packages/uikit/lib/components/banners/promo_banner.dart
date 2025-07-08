@@ -113,7 +113,7 @@ class PromoBanner extends StatelessWidget {
             Positioned(
               top: 16,
               right: 16,
-              child: MyGestureDetector(
+              child: CommonGestureDetector(
                 onTap: onClose,
                 child: UikitAssets.icons24.closeCircle.svg(),
               ),

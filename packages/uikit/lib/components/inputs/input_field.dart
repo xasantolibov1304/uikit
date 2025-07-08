@@ -237,7 +237,7 @@ class _InputFieldState extends State<InputField> {
                     ],
                     if (widget.isLoading) ...[
                       const SizedBox(width: 8),
-                      MyProgressIndicator(
+                      CommonProgressIndicator(
                         color: context.iconColors.primary,
                       ),
                     ],
@@ -329,7 +329,7 @@ class _InputFieldState extends State<InputField> {
     return SizedBox(
       width: _iconSize,
       height: _iconSize,
-      child: MyGestureDetector(
+      child: CommonGestureDetector(
         onTap: _onClear,
         child: UikitAssets.icons24.closeCircle.svg(),
       ),

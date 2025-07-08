@@ -68,7 +68,7 @@ class RadioCard extends StatelessWidget {
           ),
           if (isLoading) ...[
             const SizedBox(width: 8),
-            const MyProgressIndicator(),
+            const CommonProgressIndicator(),
           ],
           if (trailingIcon != null) ...[
             const SizedBox(width: 8),

@@ -1,7 +1,7 @@
 // Date utilities
 export 'date/date_format_constants.dart';
 export 'date/date_formatter.dart';
-export 'date/date_helper.dart';
+export 'date/date_utils_helper.dart';
 
 // General utilities
 export 'media_helper.dart';

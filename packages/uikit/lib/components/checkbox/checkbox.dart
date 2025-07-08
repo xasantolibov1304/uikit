@@ -34,7 +34,7 @@ class CheckboxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyGestureDetector(
+    return CommonGestureDetector(
       onTap: isEnabled ? _onTap : null,
       child: Container(
         width: _checkboxSize,

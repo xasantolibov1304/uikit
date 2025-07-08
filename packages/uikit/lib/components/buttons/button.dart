@@ -93,7 +93,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(microseconds: 250),
-      child: MyInkWell(
+      child: CommonInkWell(
         width: width,
         margin: margin,
         padding: padding,
@@ -167,7 +167,7 @@ class Button extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MyProgressIndicator(
+                  CommonProgressIndicator(
                     size: _loadingSize,
                     color: _textColor(context),
                   ),

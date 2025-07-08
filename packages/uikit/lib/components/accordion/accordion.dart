@@ -63,7 +63,7 @@ class _AccordionState extends State<Accordion>
 
   @override
   Widget build(BuildContext context) {
-    return MyInkWell(
+    return CommonInkWell(
       onTap: _toggle,
       color: context.fieldColors.background,
       borderRadius: BorderRadius.circular(16),

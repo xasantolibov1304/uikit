@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MySystemUiOverlayStyle {
+class AppSystemUiOverlayStyle {
   static void initialize(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
       Theme.of(context).brightness == Brightness.light ? light : dark,

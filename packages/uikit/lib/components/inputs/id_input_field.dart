@@ -79,7 +79,7 @@ class IdInputField extends StatelessWidget {
       captionText: captionText,
       initialValue: initialValue,
       trailingIcon: onScanTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: onScanTap,
               child: UikitAssets.icons24.scan.svg(),
             )

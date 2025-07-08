@@ -166,8 +166,8 @@ ThemeData createThemeData({
         elevation: 0,
         centerTitle: true,
         systemOverlayStyle: brightness == Brightness.light
-            ? MySystemUiOverlayStyle.light
-            : MySystemUiOverlayStyle.dark,
+            ? AppSystemUiOverlayStyle.light
+            : AppSystemUiOverlayStyle.dark,
         titleTextStyle: titleTextStyles.large1.bold.copyWith(
           color: textColors.primary,
         ),

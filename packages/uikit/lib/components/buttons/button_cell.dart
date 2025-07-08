@@ -123,7 +123,7 @@ class _AnchorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyGestureDetector(
+    return CommonGestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),

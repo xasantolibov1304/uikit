@@ -8,8 +8,8 @@ import 'package:intl/intl.dart';
 // Project imports:
 import 'package:iman_uikit/utils/date/date_format_constants.dart';
 
-class MyDateFormatter {
-  const MyDateFormatter._();
+class DateFormatterHelper {
+  const DateFormatterHelper._();
 
   /// e.g 22.10.2024
   /// (dd.MM.yyyy)

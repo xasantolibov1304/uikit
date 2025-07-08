@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class MyGestureDetector extends StatelessWidget {
-  const MyGestureDetector({
+class CommonGestureDetector extends StatelessWidget {
+  const CommonGestureDetector({
     required this.child,
     this.onTap,
     this.onLongPress,

@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class MyFocusRemover extends StatelessWidget {
-  const MyFocusRemover({
+class FocusRemover extends StatelessWidget {
+  const FocusRemover({
     required this.child,
     super.key,
   });

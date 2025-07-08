@@ -90,7 +90,7 @@ class _TextWidgetState extends State<TextWidget> {
           Positioned(
             right: 16,
             bottom: 4,
-            child: MyGestureDetector(
+            child: CommonGestureDetector(
               onTap: () {
                 _isExpanded = !_isExpanded;
                 updateState();

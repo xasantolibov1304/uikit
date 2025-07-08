@@ -4,10 +4,10 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 // Project imports:
 import 'reg_exp_constants.dart';
 
-class MyTextMasks {
-  const MyTextMasks._();
+class TextMasks {
+  const TextMasks._();
 
-  static final _filter = {'#': MyRegExps.onlyDigits};
+  static final _filter = {'#': CommonRegExps.onlyDigits};
 
   static MaskTextInputFormatter pinfl([String? initialValue]) {
     return MaskTextInputFormatter(
@@ -21,7 +21,7 @@ class MyTextMasks {
     return MaskTextInputFormatter(
       initialText: initialValue,
       mask: '#### #### #### ####',
-      filter: {'#': MyRegExps.digitOrAsterisk},
+      filter: {'#': CommonRegExps.digitOrAsterisk},
     );
   }
 

@@ -90,7 +90,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       isRequired: widget.isRequired,
       captionText: widget.captionText,
       initialValue: widget.initialValue,
-      trailingIcon: MyGestureDetector(
+      trailingIcon: CommonGestureDetector(
         onTap: _toggleVisibility,
         child: _isVisible
             ? UikitAssets.icons24.eye.svg()

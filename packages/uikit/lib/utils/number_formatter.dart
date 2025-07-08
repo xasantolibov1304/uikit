@@ -2,8 +2,8 @@
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:intl/intl.dart';
 
-abstract class MyNumberFormatter {
-  const MyNumberFormatter._();
+abstract class NumberFormatterHelper {
+  const NumberFormatterHelper._();
 
   static String? prettier(data, {int fractionDigits = 2}) {
     double? number = data is double ? data : double.tryParse('$data');

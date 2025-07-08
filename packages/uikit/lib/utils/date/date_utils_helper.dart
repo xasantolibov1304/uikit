@@ -1,8 +1,8 @@
 // Package imports:
 import 'package:in_date_utils/in_date_utils.dart';
 
-class MyDateHelper {
-  const MyDateHelper._();
+class DateUtilsHelper {
+  const DateUtilsHelper._();
 
   static DateTime get today {
     final today = DateTime.now();

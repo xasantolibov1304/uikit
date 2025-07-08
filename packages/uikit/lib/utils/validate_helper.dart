@@ -4,10 +4,10 @@ import 'package:flutter_multi_formatter/flutter_multi_formatter.dart'
 // Project imports:
 import 'reg_exp_constants.dart';
 
-abstract class MyValidationHelper {
-  const MyValidationHelper._();
+abstract class ValidationHelper {
+  const ValidationHelper._();
 
-  static bool isEmail(String value) => MyRegExps.email.hasMatch(value);
+  static bool isEmail(String value) => CommonRegExps.email.hasMatch(value);
 
   static bool isPassword(String value) => value.length >= 5;
 
@@ -17,7 +17,7 @@ abstract class MyValidationHelper {
       formatter.isCardNumberValid(cardNumber: value);
 
   static bool isExpireDate(String value) {
-    if (!MyRegExps.expirationDate.hasMatch(value)) return false;
+    if (!CommonRegExps.expirationDate.hasMatch(value)) return false;
 
     final parts = value.split('/');
     if (parts.length != 2) return false;

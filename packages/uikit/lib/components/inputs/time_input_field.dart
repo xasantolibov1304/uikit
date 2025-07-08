@@ -84,7 +84,7 @@ class TimeInputField extends StatelessWidget {
       keyboardType: TextInputType.datetime,
       hintText: hintText ?? hhmm.toLowerCase(),
       trailingIcon: onSelectTimeTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: onSelectTimeTap,
               child: UikitAssets.icons24.clock.svg(),
             )

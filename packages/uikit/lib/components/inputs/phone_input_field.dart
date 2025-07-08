@@ -121,7 +121,7 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       captionIconPath: widget.captionIconPath,
       captionHelperText: widget.captionHelperText,
       trailingIcon: widget.onContactsTap != null
-          ? MyGestureDetector(
+          ? CommonGestureDetector(
               onTap: widget.onContactsTap,
               child: UikitAssets.icons24.contact.svg(),
             )
@@ -129,7 +129,7 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       inputFormatters: mask != null ? [mask] : null,
       onChanged: (value) {
         widget.onChanged?.call(
-          MyStringHelper.removeNonNumbers('$phoneCode$value'),
+          StringHelper.removeNonNumbers('$phoneCode$value'),
         );
       },
     );

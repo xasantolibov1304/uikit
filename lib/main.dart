@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return uikit.MyFocusRemover(
+    return uikit.FocusRemover(
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: uikit.lightTheme,
@@ -118,15 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   builder: (context) => const uikit.TextExamplePage(),
                 ),
               ),
-            ),
-            uikit.AmountInputField(
-              label: 'Currency Input Field',
-              hintText: 'Enter currency',
-              currency: ' сум',
-            ),
-            uikit.ExpireDateTextField(
-              label: 'Expire Date Input Field',
-              hintText: 'Enter expire date',
             ),
           ],
         ),
