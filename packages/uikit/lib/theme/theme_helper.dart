@@ -222,6 +222,19 @@ ThemeData createThemeData({
         color: WidgetStateProperty.all(systemColors.black),
       ),
 
+      /// ---- Switcher Theme ----
+      switchTheme: SwitchThemeData(
+        trackColor: WidgetStateProperty.all(
+          surfaceColors.primary,
+        ),
+        thumbColor: WidgetStateProperty.all(
+          surfaceColors.tertiary,
+        ),
+        trackOutlineColor: WidgetStateProperty.all(
+          surfaceColors.primary,
+        ),
+      ),
+
       /// ---- Button Theme ----
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(
@@ -272,24 +285,22 @@ ThemeData createThemeData({
 
       /// Checkbox Theme
       checkboxTheme: CheckboxThemeData(
-        overlayColor: WidgetStateProperty.resolveWith(
-          (states) => states.contains(WidgetState.disabled)
-              ? Colors.transparent
-              : systemColors.black,
+        splashRadius: 24,
+        side: BorderSide(
+          width: 2,
+          color: borderColors.secondary,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        side: BorderSide(
-          color: systemColors.transparent,
-          width: 2,
-        ),
-        checkColor: WidgetStateProperty.all(Colors.white),
-        fillColor: WidgetStateProperty.resolveWith(
-          (states) => states.contains(WidgetState.selected)
-              ? systemColors.red
-              : Colors.transparent,
-        ),
+        checkColor: WidgetStateProperty.all(systemColors.white),
+        fillColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return borderColors.success;
+          }
+          return systemColors.transparent;
+        }),
+        overlayColor: WidgetStateProperty.all(systemColors.transparent),
       ),
 
       /// Bottom Sheet Theme

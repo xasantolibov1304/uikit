@@ -66,6 +66,18 @@ class $AssetsIcons24Gen {
   SvgGenImage get checkCircle =>
       const SvgGenImage('assets/icons24/check_circle.svg');
 
+  /// File path: assets/icons24/checkbox_off.svg
+  SvgGenImage get checkboxOff =>
+      const SvgGenImage('assets/icons24/checkbox_off.svg');
+
+  /// File path: assets/icons24/checkbox_on.svg
+  SvgGenImage get checkboxOn =>
+      const SvgGenImage('assets/icons24/checkbox_on.svg');
+
+  /// File path: assets/icons24/checkbox_tristate.svg
+  SvgGenImage get checkboxTristate =>
+      const SvgGenImage('assets/icons24/checkbox_tristate.svg');
+
   /// File path: assets/icons24/chevron_down.svg
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons24/chevron_down.svg');
@@ -117,6 +129,9 @@ class $AssetsIcons24Gen {
     arrowLeft,
     calendar,
     checkCircle,
+    checkboxOff,
+    checkboxOn,
+    checkboxTristate,
     chevronDown,
     chevronUp,
     clock,

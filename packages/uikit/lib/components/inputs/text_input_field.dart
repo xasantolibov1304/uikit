@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/inputs/input_field.dart';
@@ -25,6 +26,8 @@ class TextInputField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     this.textCapitalization = TextCapitalization.sentences,
+    //
+    this.inputFormatters,
     //
     this.isLoading = false,
     this.isEnabled = true,
@@ -53,6 +56,8 @@ class TextInputField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final TextCapitalization textCapitalization;
+
+  final List<TextInputFormatter>? inputFormatters;
 
   final bool isLoading;
   final bool isEnabled;
@@ -87,6 +92,7 @@ class TextInputField extends StatelessWidget {
       keyboardType: keyboardType,
       trailingIcon: trailingIcon,
       captionIconPath: captionIconPath,
+      inputFormatters: inputFormatters,
       textInputAction: textInputAction,
       captionHelperText: captionHelperText,
       textCapitalization: textCapitalization,

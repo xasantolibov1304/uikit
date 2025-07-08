@@ -235,7 +235,6 @@ class _InputFieldState extends State<InputField> {
                     if (widget.isLoading) ...[
                       const SizedBox(width: 8),
                       MyProgressIndicator(
-                        size: 20,
                         color: context.iconColors.primary,
                       ),
                     ],
@@ -267,10 +266,10 @@ class _InputFieldState extends State<InputField> {
 
   InputDecoration get _buildInputDecoration {
     return InputDecoration(
+      contentPadding: const EdgeInsets.all(4),
       labelStyle: context.inputTextStyle.label,
       helperStyle: context.inputTextStyle.caption,
       counterStyle: context.inputTextStyle.caption,
-      contentPadding: const EdgeInsets.all(4),
       hintStyle: context.inputTextStyle.placeholder.copyWith(
         color: context.textColors.tertiary,
       ),

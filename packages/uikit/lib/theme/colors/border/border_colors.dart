@@ -5,6 +5,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
   const BorderColors({
     required this.primary,
     required this.secondary,
+    required this.tertiary,
     required this.muted,
     required this.info,
     required this.error,
@@ -15,6 +16,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
 
   final Color primary;
   final Color secondary;
+  final Color tertiary;
   final Color muted;
   final Color info;
   final Color error;
@@ -26,6 +28,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
   ThemeExtension<BorderColors> copyWith({
     Color? primary,
     Color? secondary,
+    Color? tertiary,
     Color? muted,
     Color? info,
     Color? error,
@@ -36,6 +39,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
       BorderColors(
         primary: primary ?? this.primary,
         secondary: secondary ?? this.secondary,
+        tertiary: tertiary ?? this.tertiary,
         muted: muted ?? this.muted,
         info: info ?? this.info,
         error: error ?? this.error,
@@ -55,6 +59,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
     return BorderColors(
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
+      tertiary: Color.lerp(tertiary, other.tertiary, t)!,
       muted: Color.lerp(muted, other.muted, t)!,
       info: Color.lerp(info, other.info, t)!,
       error: Color.lerp(error, other.error, t)!,

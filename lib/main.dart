@@ -36,6 +36,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _value = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,6 +129,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               type: uikit.ButtonType.secondary,
+            ),
+            uikit.SwitcherCard(
+              title: 'Switcher Card',
+              subtitle: 'Switcher Card',
+              value: _value,
+              onChanged: (value) => setState(() => _value = value),
+            ),
+            const SizedBox(height: 16),
+            uikit.CheckboxCard(
+              isLoading: true,
+              title: 'Checkbox Card',
+              subtitle: 'Switcher Card',
+              value: _value,
+              onChanged: (value) => setState(() => _value = value ?? false),
             ),
           ],
         ),

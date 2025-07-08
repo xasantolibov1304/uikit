@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/text_highlight.dart';
 import 'package:iman_uikit/components/buttons/button.dart';
 import 'package:iman_uikit/components/buttons/gesture_detector.dart';
+import 'package:iman_uikit/components/text/text_highlight.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
@@ -78,7 +78,7 @@ class ButtonCell extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
           ],
           if (anchorTitle != null) ...[
             _AnchorWidget(
@@ -86,7 +86,7 @@ class ButtonCell extends StatelessWidget {
               onTap: onAnchorTap,
               icon: anchorIcon,
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
           ],
           _ButtonWidget(
             direction: direction,
@@ -98,7 +98,7 @@ class ButtonCell extends StatelessWidget {
             onTertiaryTap: onTertiaryTap,
           ),
           if (informativeTitle != null) ...[
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             _InformativeWidget(
               title: informativeTitle!,
               icon: informativeIcon,
@@ -135,7 +135,7 @@ class _AnchorWidget extends StatelessWidget {
               style: context.labelTextStyle.medium1,
             ),
             if (icon != null) ...[
-              SizedBox(width: 6),
+              const SizedBox(width: 6),
               SizedBox(
                 width: _iconSize,
                 height: _iconSize,
@@ -188,7 +188,7 @@ class _ButtonWidget extends StatelessWidget {
                     ),
                   ],
                   if (secondaryText != null) ...[
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Button(
                       text: secondaryText!,
                       onTap: onSecondaryTap,
@@ -208,7 +208,7 @@ class _ButtonWidget extends StatelessWidget {
                     ),
                   ],
                   if (secondaryText != null) ...[
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Button(
                         text: secondaryText!,
@@ -220,7 +220,7 @@ class _ButtonWidget extends StatelessWidget {
                 ],
               ),
         if (tertiaryText != null) ...[
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Button(
             text: tertiaryText!,
             type: ButtonType.ghost,
@@ -258,7 +258,7 @@ class _InformativeWidget extends StatelessWidget {
                 child: icon!,
               ),
             ),
-            SizedBox(width: 6),
+            const SizedBox(width: 6),
           ],
           Text(
             title,

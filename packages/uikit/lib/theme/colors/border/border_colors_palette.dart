@@ -13,22 +13,24 @@ BorderColors _generatePaletteFromBrightness(Brightness brightness) {
     return BorderColors(
       primary: Palette.gray[20]!,
       secondary: Palette.gray[40]!,
+      tertiary: Palette.gray[70]!,
       muted: Palette.gray[20]!,
       info: Palette.cyan[60]!,
       error: Palette.red[70]!,
-      warning: Palette.yellow[60]!,
-      success: Palette.green[60]!,
+      warning: Palette.yellow[40]!,
+      success: Palette.green[50]!,
       invert: Palette.gray[0]!,
     );
   } else {
     return BorderColors(
       primary: Palette.gray[20]!,
       secondary: Palette.gray[40]!,
+      tertiary: Palette.gray[40]!,
       muted: Palette.gray[20]!,
       info: Palette.cyan[60]!,
       error: Palette.red[70]!,
       warning: Palette.yellow[60]!,
-      success: Palette.green[60]!,
+      success: Palette.green[70]!,
       invert: Palette.gray[0]!,
     );
   }
