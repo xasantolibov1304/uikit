@@ -20,9 +20,6 @@ class ExpireDateTextField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
-    this.onChanged,
-    this.validator,
-    //
     this.focusNode,
     //
     this.textInputAction = TextInputAction.done,
@@ -34,6 +31,8 @@ class ExpireDateTextField extends StatelessWidget {
     this.isRequired = true,
     this.canClear = true,
     //
+    this.onChanged,
+    this.validator,
     super.key,
   });
 

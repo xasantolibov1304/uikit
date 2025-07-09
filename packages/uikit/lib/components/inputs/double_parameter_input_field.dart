@@ -1,9 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 
@@ -22,18 +22,18 @@ class DoubleParameterInputField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
+    this.focusNode,
+    //
+    this.keyboardType = TextInputType.text,
+    this.textInputAction = TextInputAction.done,
+    this.textCapitalization = TextCapitalization.sentences,
+    //
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
     this.isRequired = true,
     this.isLoading = false,
     this.canClear = true,
-    //
-    this.focusNode,
-    //
-    this.keyboardType = TextInputType.text,
-    this.textInputAction = TextInputAction.done,
-    this.textCapitalization = TextCapitalization.sentences,
     //
     this.inputFormatters,
     //

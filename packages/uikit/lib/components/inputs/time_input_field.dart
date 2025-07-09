@@ -21,10 +21,6 @@ class TimeInputField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
-    this.onSelectTimeTap,
-    this.onChanged,
-    this.validator,
-    //
     this.focusNode,
     //
     this.textInputAction = TextInputAction.done,
@@ -35,6 +31,10 @@ class TimeInputField extends StatelessWidget {
     this.readonly = false,
     this.isRequired = true,
     this.canClear = true,
+    //
+    this.onSelectTimeTap,
+    this.onChanged,
+    this.validator,
     //
     super.key,
   });

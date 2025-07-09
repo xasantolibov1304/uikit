@@ -19,16 +19,16 @@ class PasswordInputField extends StatefulWidget {
     //
     this.status = InputFieldStatus.info,
     //
+    this.focusNode,
+    //
+    this.textInputAction = TextInputAction.done,
+    //
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
     this.isRequired = true,
     this.canClear = true,
     this.isLoading = false,
-    //
-    this.focusNode,
-    //
-    this.textInputAction = TextInputAction.done,
     //
     this.onChanged,
     this.validator,

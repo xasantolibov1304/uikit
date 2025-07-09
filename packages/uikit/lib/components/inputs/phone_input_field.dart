@@ -25,14 +25,14 @@ class PhoneTextField extends StatefulWidget {
     this.captionText,
     this.captionHelperText,
     //
+    this.focusNode,
+    //
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
     this.isRequired = true,
     this.canClear = false,
     this.isLoading = false,
-    //
-    this.focusNode,
     //
     this.leadingIcon,
     //

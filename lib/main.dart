@@ -47,11 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: <Widget>[
-            uikit.DoubleParameterInputField(
+            uikit.CurrencyInputField(
               label: 'Label',
-              suffixLabel: 'Suffix Label',
-              suffixValue: 'Suffix Value',
-              onSelectTap: () {},
+              currency: ' USD',
+              onSelectCurrencyTap: () {},
             ),
             const SizedBox(height: 16),
             _buildExampleButton(

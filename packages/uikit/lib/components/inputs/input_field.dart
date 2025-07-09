@@ -48,6 +48,12 @@ class InputField extends StatefulWidget {
     this.size = InputFieldSize.large,
     this.status = InputFieldStatus.info,
     //
+    this.focusNode,
+    this.textAlign = TextAlign.start,
+    this.textInputAction,
+    this.keyboardType = TextInputType.text,
+    this.textCapitalization = TextCapitalization.sentences,
+    //
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
@@ -55,12 +61,6 @@ class InputField extends StatefulWidget {
     this.isRequired = false,
     this.canClear = true,
     this.isLoading = false,
-    //
-    this.focusNode,
-    this.textAlign = TextAlign.start,
-    this.textInputAction,
-    this.keyboardType = TextInputType.text,
-    this.textCapitalization = TextCapitalization.sentences,
     //
     this.minLines,
     this.maxLines = 1,
@@ -94,6 +94,12 @@ class InputField extends StatefulWidget {
   final String? captionText;
   final String? captionHelperText;
 
+  final FocusNode? focusNode;
+  final TextAlign textAlign;
+  final TextInputType keyboardType;
+  final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
+
   final bool isEnabled;
   final bool readonly;
   final bool autofocus;
@@ -101,12 +107,6 @@ class InputField extends StatefulWidget {
   final bool isRequired;
   final bool canClear;
   final bool isLoading;
-
-  final FocusNode? focusNode;
-  final TextAlign textAlign;
-  final TextInputType keyboardType;
-  final TextInputAction? textInputAction;
-  final TextCapitalization textCapitalization;
 
   final int? minLines;
   final int maxLines;
@@ -245,14 +245,7 @@ class _InputFieldState extends State<InputField> {
                     ],
                     if (widget.trailingIcon != null) ...[
                       const SizedBox(width: 8),
-                      SizedBox(
-                        width: _iconSize,
-                        height: _iconSize,
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: widget.trailingIcon!,
-                        ),
-                      ),
+                      widget.trailingIcon!,
                     ],
                   ],
                 ),

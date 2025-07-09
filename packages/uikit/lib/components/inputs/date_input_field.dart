@@ -20,10 +20,6 @@ class DateInputField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
-    this.onSelectDateTap,
-    this.onChanged,
-    this.validator,
-    //
     this.focusNode,
     //
     this.textInputAction = TextInputAction.done,
@@ -35,6 +31,9 @@ class DateInputField extends StatelessWidget {
     this.isRequired = true,
     this.canClear = true,
     //
+    this.onSelectDateTap,
+    this.onChanged,
+    this.validator,
     super.key,
   });
 

@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/controllers/stylable_input_field_controller.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_part_style_definition.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_style_matcher.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 import 'package:iman_uikit/utils/reg_exp_constants.dart';
@@ -33,10 +31,6 @@ class AmountInputField extends StatefulWidget {
     //
     this.status = InputFieldStatus.info,
     //
-    this.onSelectCurrencyTap,
-    this.onChanged,
-    this.validator,
-    //
     this.focusNode,
     //
     this.textInputAction = TextInputAction.done,
@@ -48,6 +42,10 @@ class AmountInputField extends StatefulWidget {
     this.isRequired = true,
     this.canClear = true,
     //
+    this.trailingIcon,
+    //
+    this.onChanged,
+    this.validator,
     super.key,
   });
 
@@ -75,7 +73,8 @@ class AmountInputField extends StatefulWidget {
   final bool isRequired;
   final bool canClear;
 
-  final VoidCallback? onSelectCurrencyTap;
+  final Widget? trailingIcon;
+
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
 
@@ -120,6 +119,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
       controller: _amountController,
       isRequired: widget.isRequired,
       initialValue: widget.initialValue,
+      trailingIcon: widget.trailingIcon,
       textInputAction: widget.textInputAction,
       keyboardType: TextInputType.visiblePassword,
       inputFormatters: [
@@ -129,12 +129,6 @@ class _AmountInputFieldState extends State<AmountInputField> {
           thousandSeparator: ThousandSeparator.Space,
         ),
       ],
-      trailingIcon: widget.onSelectCurrencyTap != null
-          ? CommonGestureDetector(
-              onTap: widget.onSelectCurrencyTap,
-              child: UikitAssets.icons24.calendar.svg(),
-            )
-          : null,
       maxLength: _maxLength + (widget.currency?.length ?? 0),
     );
   }

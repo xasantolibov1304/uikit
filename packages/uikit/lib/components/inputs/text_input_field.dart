@@ -27,14 +27,14 @@ class TextInputField extends StatelessWidget {
     this.textInputAction = TextInputAction.done,
     this.textCapitalization = TextCapitalization.sentences,
     //
-    this.inputFormatters,
-    //
     this.isLoading = false,
     this.isEnabled = true,
     this.autofocus = false,
     this.readonly = false,
     this.isRequired = false,
     this.canClear = true,
+    //
+    this.inputFormatters,
     //
     this.trailingIcon,
     super.key,

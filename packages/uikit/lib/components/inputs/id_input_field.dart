@@ -19,6 +19,10 @@ class IdInputField extends StatelessWidget {
     //
     this.status = InputFieldStatus.info,
     //
+    this.focusNode,
+    //
+    this.textInputAction = TextInputAction.done,
+    //
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
@@ -26,9 +30,6 @@ class IdInputField extends StatelessWidget {
     this.isLoading = false,
     this.canClear = true,
     //
-    this.focusNode,
-    //
-    this.textInputAction = TextInputAction.done,
     //
     this.onScanTap,
     this.onChanged,

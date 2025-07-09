@@ -19,16 +19,16 @@ class SelectInputField extends StatefulWidget {
     //
     this.status = InputFieldStatus.info,
     //
+    this.focusNode,
+    //
+    this.textInputAction = TextInputAction.done,
+    //
     this.isEnabled = true,
     this.readonly = true,
     this.autofocus = false,
     this.isRequired = true,
     this.isLoading = false,
     this.canClear = false,
-    //
-    this.focusNode,
-    //
-    this.textInputAction = TextInputAction.done,
     //
     this.leadingIcon,
     //
