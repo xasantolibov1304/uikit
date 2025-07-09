@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/buttons/gesture_detector.dart';
-import 'package:iman_uikit/components/indicators/progress_indicator.dart';
+import 'package:iman_uikit/components/indicators/loading_indicator.dart';
 import 'package:iman_uikit/components/radio/radio.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
@@ -68,7 +68,7 @@ class RadioCard extends StatelessWidget {
             ),
             if (isLoading) ...[
               const SizedBox(width: 8),
-              const CommonProgressIndicator(),
+              const LoadingIndicator(),
             ],
             if (trailingIcon != null) ...[
               const SizedBox(width: 8),

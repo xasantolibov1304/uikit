@@ -167,7 +167,7 @@ class Button extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CommonProgressIndicator(
+                  LoadingIndicator(
                     size: _loadingSize,
                     color: _textColor(context),
                   ),

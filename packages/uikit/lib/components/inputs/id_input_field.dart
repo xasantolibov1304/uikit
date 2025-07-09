@@ -22,11 +22,12 @@ class IdInputField extends StatelessWidget {
     this.isEnabled = true,
     this.readonly = false,
     this.autofocus = false,
-    this.isRequired = false,
+    this.isRequired = true,
     this.isLoading = false,
     this.canClear = true,
     //
     this.focusNode,
+    //
     this.textInputAction = TextInputAction.done,
     //
     this.onScanTap,

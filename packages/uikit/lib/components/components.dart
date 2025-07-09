@@ -25,7 +25,7 @@ export 'fields/info_field.dart';
 export 'filters/filter.dart';
 
 // Indicators
-export 'indicators/progress_indicator.dart';
+export 'indicators/loading_indicator.dart';
 export 'inputs/inputs.dart';
 
 // Notice

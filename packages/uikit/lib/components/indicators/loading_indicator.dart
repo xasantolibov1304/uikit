@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:iman_uikit/uikit.dart';
 
-class CommonProgressIndicator extends StatelessWidget {
-  const CommonProgressIndicator({
+class LoadingIndicator extends StatelessWidget {
+  const LoadingIndicator({
     this.size = 20,
     this.strokeWidth = 3,
     //
@@ -32,7 +32,7 @@ class CommonProgressIndicator extends StatelessWidget {
           strokeWidth: strokeWidth,
           strokeCap: StrokeCap.round,
           valueColor: AlwaysStoppedAnimation<Color>(
-            color ?? context.systemColors.black,
+            color ?? context.iconColors.primary,
           ),
         ),
       ),

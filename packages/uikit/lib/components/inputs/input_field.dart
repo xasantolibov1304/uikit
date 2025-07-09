@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/buttons/gesture_detector.dart';
-import 'package:iman_uikit/components/indicators/progress_indicator.dart';
+import 'package:iman_uikit/components/indicators/loading_indicator.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
@@ -237,9 +237,7 @@ class _InputFieldState extends State<InputField> {
                     ],
                     if (widget.isLoading) ...[
                       const SizedBox(width: 8),
-                      CommonProgressIndicator(
-                        color: context.iconColors.primary,
-                      ),
+                      const LoadingIndicator(),
                     ],
                     if (_shouldShowClear()) ...[
                       const SizedBox(width: 8),
@@ -270,10 +268,15 @@ class _InputFieldState extends State<InputField> {
   InputDecoration get _buildInputDecoration {
     return InputDecoration(
       contentPadding: const EdgeInsets.all(4),
-      labelStyle: context.inputTextStyle.label,
+      labelStyle: context.inputTextStyle.placeholder.copyWith(
+        color: context.textColors.tertiary,
+      ),
       helperStyle: context.inputTextStyle.caption,
       counterStyle: context.inputTextStyle.caption,
       hintStyle: context.inputTextStyle.placeholder.copyWith(
+        color: context.textColors.tertiary,
+      ),
+      floatingLabelStyle: context.inputTextStyle.label.copyWith(
         color: context.textColors.tertiary,
       ),
       label: widget.label != null ? _buildLabel() : null,

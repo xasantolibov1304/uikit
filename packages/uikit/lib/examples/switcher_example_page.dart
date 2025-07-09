@@ -201,6 +201,55 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
             ),
             const SizedBox(height: 24),
 
+            // Switcher Card Positions Preview
+            _buildSectionTitle('Switcher Card Positions'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  SwitcherCard(
+                    title: 'Switcher at End (Default)',
+                    subtitle:
+                        'This is the default position with switcher at the end',
+                    value: true,
+                    onChanged: (value) {},
+                    position: SwitcherCardPosition.end,
+                  ),
+                  const SizedBox(height: 12),
+                  SwitcherCard(
+                    title: 'Switcher at Start',
+                    subtitle:
+                        'This card has the switcher positioned at the start',
+                    value: false,
+                    onChanged: (value) {},
+                    position: SwitcherCardPosition.start,
+                  ),
+                  const SizedBox(height: 12),
+                  SwitcherCard(
+                    title: 'Another End Position Example',
+                    subtitle: 'Another example with switcher at the end',
+                    value: true,
+                    onChanged: (value) {},
+                    position: SwitcherCardPosition.end,
+                  ),
+                  const SizedBox(height: 12),
+                  SwitcherCard(
+                    title: 'Another Start Position Example',
+                    subtitle: 'Another example with switcher at the start',
+                    value: false,
+                    onChanged: (value) {},
+                    position: SwitcherCardPosition.start,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+
             // Switcher Controls Section
             _buildSectionTitle('Switcher Controls'),
             _buildSwitcherControls(),

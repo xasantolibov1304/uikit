@@ -31,7 +31,7 @@ class ExpireDateTextField extends StatelessWidget {
     this.isEnabled = true,
     this.autofocus = false,
     this.readonly = false,
-    this.isRequired = false,
+    this.isRequired = true,
     this.canClear = true,
     //
     super.key,
