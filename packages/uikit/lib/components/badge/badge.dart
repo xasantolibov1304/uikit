@@ -64,7 +64,7 @@ class BadgeWidget extends StatelessWidget {
                 horizontal: 8,
               ),
               decoration: BoxDecoration(
-                color: context.surfaceColors.grey,
+                color: context.surfaceColors.tertiary,
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Text(

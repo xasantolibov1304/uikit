@@ -65,21 +65,33 @@ class CheckboxWidget extends StatelessWidget {
   }
 
   Widget _buildCheckboxIcon(BuildContext context) {
-    final color = ColorFilter.mode(
-      isEnabled
-          ? (value == true
-              ? context.borderColors.success
-              : context.borderColors.secondary)
-          : context.borderColors.primary,
-      BlendMode.srcIn,
-    );
-
     if (value == null) {
-      return UikitAssets.icons24.checkboxTristate.svg(colorFilter: color);
+      return UikitAssets.icons24.checkboxTristate.svg(
+        colorFilter: ColorFilter.mode(
+          isEnabled
+              ? context.borderColors.success
+              : context.borderColors.primary,
+          BlendMode.srcIn,
+        ),
+      );
     } else if (value == true) {
-      return UikitAssets.icons24.checkboxOn.svg(colorFilter: color);
+      return UikitAssets.icons24.checkboxOn.svg(
+        colorFilter: ColorFilter.mode(
+          isEnabled
+              ? context.borderColors.success
+              : context.borderColors.primary,
+          BlendMode.srcIn,
+        ),
+      );
     } else {
-      return UikitAssets.icons24.checkboxOff.svg(colorFilter: color);
+      return UikitAssets.icons24.checkboxOff.svg(
+        colorFilter: ColorFilter.mode(
+          isEnabled
+              ? context.borderColors.secondary
+              : context.borderColors.primary,
+          BlendMode.srcIn,
+        ),
+      );
     }
   }
 }

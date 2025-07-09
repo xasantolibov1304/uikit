@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _radioSize = 10.0;
@@ -20,23 +21,26 @@ class RadioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      padding: const EdgeInsets.all(3),
-      duration: const Duration(milliseconds: 150),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          width: 2,
-          color: _borderColor(context),
-        ),
-      ),
+    return CommonGestureDetector(
+      onTap: isEnabled ? () => onChanged(!value) : null,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        width: _radioSize,
-        height: _radioSize,
+        padding: const EdgeInsets.all(3),
+        duration: const Duration(milliseconds: 150),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: _radioColor(context),
+          border: Border.all(
+            width: 2,
+            color: _borderColor(context),
+          ),
+        ),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: _radioSize,
+          height: _radioSize,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: _radioColor(context),
+          ),
         ),
       ),
     );

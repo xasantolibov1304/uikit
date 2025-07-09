@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/widgets.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/switcher/switcher.dart';
@@ -23,35 +24,38 @@ class SwitcherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.surfaceColors.primary,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: context.titleTextStyle.main1,
-                ),
-                if (subtitle != null)
+    return CommonGestureDetector(
+      onTap: () => onChanged(!value),
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.surfaceColors.primary,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    subtitle!,
-                    style: context.subtitleTextStyle.compact2.regular,
+                    title,
+                    style: context.titleTextStyle.main1,
                   ),
-              ],
+                  if (subtitle != null)
+                    Text(
+                      subtitle!,
+                      style: context.subtitleTextStyle.compact2.regular,
+                    ),
+                ],
+              ),
             ),
-          ),
-          Switcher(
-            value: value,
-            onChanged: onChanged,
-          ),
-        ],
+            Switcher(
+              value: value,
+              onChanged: onChanged,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -124,6 +124,26 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
                     label: 'Select Input',
                     onSelectTap: () => _showSnackBar('Select tapped!'),
                   ),
+                  const SizedBox(height: 16),
+                  AccountInputField(
+                    label: 'Account Input',
+                    onChanged: (value) => debugPrint('Account: $value'),
+                  ),
+                  const SizedBox(height: 16),
+                  AmountInputField(
+                    label: 'Amount Input',
+                    onChanged: (value) => debugPrint('Amount: $value'),
+                  ),
+                  const SizedBox(height: 16),
+                  ExpireDateTextField(
+                    label: 'Expire Date Input',
+                    onChanged: (value) => debugPrint('Expire Date: $value'),
+                  ),
+                  const SizedBox(height: 16),
+                  TextInputField(
+                    label: 'Text Input Field',
+                    onChanged: (value) => debugPrint('Text Input: $value'),
+                  ),
                 ],
               ),
             ),

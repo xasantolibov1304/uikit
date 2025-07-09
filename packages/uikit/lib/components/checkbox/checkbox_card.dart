@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/widgets.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/checkbox/checkbox.dart';
@@ -33,51 +34,54 @@ class CheckboxCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.surfaceColors.primary,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CheckboxWidget(
-                  value: value,
-                  tristate: tristate,
-                  onChanged: onChanged,
-                  size: CheckboxSize.small,
-                ),
-                const SizedBox(width: 12),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: context.titleTextStyle.main1,
-                    ),
-                    if (subtitle != null)
+    return CommonGestureDetector(
+      onTap: () => onChanged(!value),
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.surfaceColors.primary,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CheckboxWidget(
+                    value: value,
+                    tristate: tristate,
+                    onChanged: onChanged,
+                    size: CheckboxSize.small,
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        subtitle!,
-                        style: context.subtitleTextStyle.compact2.regular,
+                        title,
+                        style: context.titleTextStyle.main1,
                       ),
-                  ],
-                ),
-              ],
+                      if (subtitle != null)
+                        Text(
+                          subtitle!,
+                          style: context.subtitleTextStyle.compact2.regular,
+                        ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          if (isLoading) ...[
-            const SizedBox(width: 8),
-            const CommonProgressIndicator(),
+            if (isLoading) ...[
+              const SizedBox(width: 8),
+              const CommonProgressIndicator(),
+            ],
+            if (trailingIcon != null) ...[
+              const SizedBox(width: 8),
+              trailingIcon!,
+            ],
           ],
-          if (trailingIcon != null) ...[
-            const SizedBox(width: 8),
-            trailingIcon!,
-          ],
-        ],
+        ),
       ),
     );
   }

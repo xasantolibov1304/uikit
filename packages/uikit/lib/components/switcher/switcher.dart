@@ -32,7 +32,7 @@ class Switcher extends StatelessWidget {
           fit: BoxFit.contain,
           child: CupertinoSwitch(
             value: value,
-            onChanged: readonly ? null : onChanged,
+            onChanged: readonly || !isEnabled ? null : onChanged,
             thumbColor: isEnabled
                 ? context.systemColors.white
                 : context.borderColors.primary,

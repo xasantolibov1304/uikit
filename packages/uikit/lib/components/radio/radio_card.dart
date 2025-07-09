@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:flutter/widgets.dart';
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
 import 'package:iman_uikit/components/indicators/progress_indicator.dart';
@@ -12,7 +13,6 @@ class RadioCard extends StatelessWidget {
   const RadioCard({
     required this.title,
     required this.value,
-    required this.groupValue,
     required this.onChanged,
     this.subtitle,
     this.isLoading = false,
@@ -22,7 +22,6 @@ class RadioCard extends StatelessWidget {
 
   final String title;
   final String? subtitle;
-  final bool groupValue;
   final bool value;
   final void Function(bool?) onChanged;
 
@@ -32,49 +31,52 @@ class RadioCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.surfaceColors.primary,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                RadioWidget(
-                  value: value,
-                  onChanged: onChanged,
-                ),
-                const SizedBox(width: 12),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: context.titleTextStyle.main1,
-                    ),
-                    if (subtitle != null)
+    return CommonGestureDetector(
+      onTap: () => onChanged(!value),
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.surfaceColors.primary,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  RadioWidget(
+                    value: value,
+                    onChanged: onChanged,
+                  ),
+                  const SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        subtitle!,
-                        style: context.subtitleTextStyle.compact2.regular,
+                        title,
+                        style: context.titleTextStyle.main1,
                       ),
-                  ],
-                ),
-              ],
+                      if (subtitle != null)
+                        Text(
+                          subtitle!,
+                          style: context.subtitleTextStyle.compact2.regular,
+                        ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          if (isLoading) ...[
-            const SizedBox(width: 8),
-            const CommonProgressIndicator(),
+            if (isLoading) ...[
+              const SizedBox(width: 8),
+              const CommonProgressIndicator(),
+            ],
+            if (trailingIcon != null) ...[
+              const SizedBox(width: 8),
+              trailingIcon!,
+            ],
           ],
-          if (trailingIcon != null) ...[
-            const SizedBox(width: 8),
-            trailingIcon!,
-          ],
-        ],
+        ),
       ),
     );
   }

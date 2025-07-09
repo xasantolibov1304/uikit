@@ -119,14 +119,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Row(
-              children: [
-                uikit.BadgeWidget(
-                  title: 'Badge',
-                  type: uikit.BadgeWidgetType.primary,
-                  count: 10,
+            _buildExampleButton(
+              'Badge Example',
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const uikit.BadgeExamplePage(),
                 ),
-              ],
+              ),
+            ),
+            _buildExampleButton(
+              'Checkbox Example',
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const uikit.CheckboxExamplePage(),
+                ),
+              ),
+            ),
+            _buildExampleButton(
+              'Switcher Example',
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const uikit.SwitcherExamplePage(),
+                ),
+              ),
+            ),
+            _buildExampleButton(
+              'Radio Buttons Example',
+              () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const uikit.RadioExamplePage(),
+                ),
+              ),
             ),
           ],
         ),
