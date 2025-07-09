@@ -42,8 +42,8 @@ class Button extends StatelessWidget {
     this.size = ButtonSize.large,
     this.type = ButtonType.primary,
     //
-    this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
     //
     this.isLoading = false,
     this.showText = true,

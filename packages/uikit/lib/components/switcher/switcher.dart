@@ -1,10 +1,18 @@
 // Flutter imports:
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
-const _switchSize = Size(52, 32);
+const _switchWidth = 68.0;
+const _switchHeight = 32.0;
+
+const _thumbWidth = 40.0;
+const _thumbHeight = 28.0;
+const _thumbPadding = 2.0;
+
+const _animationDuration = Duration(milliseconds: 200);
 
 class Switcher extends StatelessWidget {
   const Switcher({
@@ -23,28 +31,61 @@ class Switcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: readonly ? 0.5 : 1,
-      child: SizedBox(
-        width: _switchSize.width,
-        height: _switchSize.height,
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: CupertinoSwitch(
-            value: value,
-            onChanged: readonly || !isEnabled ? null : onChanged,
-            thumbColor: isEnabled
-                ? context.systemColors.white
-                : context.borderColors.primary,
-            activeTrackColor: isEnabled
-                ? context.borderColors.success
-                : context.surfaceColors.muted,
-            inactiveTrackColor: isEnabled
-                ? context.surfaceColors.muted
-                : context.borderColors.secondary,
+    final trackColor = value
+        ? (isEnabled
+            ? context.borderColors.success
+            : context.surfaceColors.muted)
+        : (isEnabled
+            ? context.surfaceColors.muted
+            : context.borderColors.secondary);
+    final thumbColor =
+        isEnabled ? context.systemColors.white : context.borderColors.primary;
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Opacity(
+          opacity: readonly ? 0.5 : 1.0,
+          child: CommonGestureDetector(
+            onTap: (readonly || !isEnabled) ? null : () => onChanged(!value),
+            child: AnimatedContainer(
+              width: _switchWidth,
+              height: _switchHeight,
+              duration: _animationDuration,
+              padding: const EdgeInsets.all(_thumbPadding),
+              decoration: BoxDecoration(
+                color: trackColor,
+                borderRadius: BorderRadius.circular(_switchHeight / 2),
+              ),
+              child: Stack(
+                children: [
+                  AnimatedAlign(
+                    curve: Curves.easeInOut,
+                    duration: _animationDuration,
+                    alignment:
+                        value ? Alignment.centerRight : Alignment.centerLeft,
+                    child: Container(
+                      width: _thumbWidth,
+                      height: _thumbHeight,
+                      decoration: BoxDecoration(
+                        color: thumbColor,
+                        borderRadius: BorderRadius.circular(_thumbHeight / 2),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                            color: Colors.black.withValues(alpha: 0.15),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

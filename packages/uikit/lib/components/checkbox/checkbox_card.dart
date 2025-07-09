@@ -1,13 +1,12 @@
 // Flutter imports:
 import 'package:flutter/widgets.dart';
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/components/buttons/gesture_detector.dart';
 import 'package:iman_uikit/components/checkbox/checkbox.dart';
 import 'package:iman_uikit/components/indicators/progress_indicator.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/theme/typographies/typographies.dart';
 
 class CheckboxCard extends StatelessWidget {
   const CheckboxCard({

@@ -25,6 +25,3 @@ export 'button/button_theme.dart';
 // Input
 export 'input/input_text_styles.dart';
 export 'input/input_theme.dart';
-
-// Text style extension
-export 'text_style_extension.dart';

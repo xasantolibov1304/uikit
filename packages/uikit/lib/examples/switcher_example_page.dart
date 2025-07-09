@@ -47,7 +47,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Switcher(
+                  SwitcherMini(
                     value: _value,
                     onChanged: (value) => setState(() => _value = value),
                     isEnabled: _isEnabled,
@@ -78,7 +78,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Enabled ON'),
-                      Switcher(
+                      SwitcherMini(
                         value: true,
                         onChanged: (value) {},
                       ),
@@ -89,7 +89,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Enabled OFF'),
-                      Switcher(
+                      SwitcherMini(
                         value: false,
                         onChanged: (value) {},
                       ),
@@ -100,7 +100,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Disabled ON'),
-                      Switcher(
+                      SwitcherMini(
                         value: true,
                         onChanged: (value) {},
                         isEnabled: false,
@@ -112,7 +112,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Disabled OFF'),
-                      Switcher(
+                      SwitcherMini(
                         value: false,
                         onChanged: (value) {},
                         isEnabled: false,
@@ -124,7 +124,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Readonly ON'),
-                      Switcher(
+                      SwitcherMini(
                         value: true,
                         onChanged: (value) {},
                         readonly: true,
@@ -136,7 +136,7 @@ class _SwitcherExamplePageState extends State<SwitcherExamplePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Readonly OFF'),
-                      Switcher(
+                      SwitcherMini(
                         value: false,
                         onChanged: (value) {},
                         readonly: true,

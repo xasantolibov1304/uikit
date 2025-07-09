@@ -31,12 +31,16 @@ export 'inputs/inputs.dart';
 // Notice
 export 'notice/notice.dart';
 
+// Title
+export 'title/title.dart';
+
 // Radio
 export 'radio/radio.dart';
 export 'radio/radio_card.dart';
 
 // Switcher
 export 'switcher/switcher.dart';
+export 'switcher/switcher_mini.dart';
 export 'switcher/switcher_card.dart';
 
 // Text

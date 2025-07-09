@@ -1,7 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:iman_uikit/theme/typographies/typographies.dart';
 
 // Project imports:
 import 'package:iman_uikit/uikit.dart';

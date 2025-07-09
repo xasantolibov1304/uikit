@@ -73,7 +73,7 @@ TitleTextStyles _generateTypographyFromBrightness(Brightness brightness) {
     large2: TextStyle(
       color: color,
       fontSize: 22,
-      height: 24 / 22,
+      height: 28 / 22,
       letterSpacing: 0,
       fontWeight: FontWeight.w600,
     ),

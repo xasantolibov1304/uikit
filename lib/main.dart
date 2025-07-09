@@ -47,6 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: <Widget>[
+            uikit.TitleWidget(
+              title: 'Title – Page',
+              subtitle: 'Description for Title – Page Component in Design',
+              buttonText: 'Button',
+              onButtonTap: () {},
+              size: uikit.TitleWidgetSize.medium,
+              trailingIcon: const Icon(Icons.arrow_forward_ios),
+            ),
+            const SizedBox(height: 16),
             _buildExampleButton(
               'Buttons Example',
               () => Navigator.of(context).push(

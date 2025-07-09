@@ -39,7 +39,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
   /// fontSize: 20, height: 24/20, weight: 600
   final TextStyle large1;
 
-  /// fontSize: 22, height: 24/22, weight: 600
+  /// fontSize: 22, height: 28/22, weight: 600
   final TextStyle large2;
 
   /// fontSize: 32, height: 36/32, weight: 500

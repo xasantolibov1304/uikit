@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/colors/colors.dart';
 import 'package:iman_uikit/theme/gradients/gradients.dart';
 import 'package:iman_uikit/theme/system_overlay.dart';

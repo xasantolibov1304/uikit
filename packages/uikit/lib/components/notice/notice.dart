@@ -81,7 +81,6 @@ class Notice extends StatelessWidget {
                         text: buttonText!,
                         onTap: onButtonTap,
                         size: ButtonSize.small,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
                     ],
                   ),
