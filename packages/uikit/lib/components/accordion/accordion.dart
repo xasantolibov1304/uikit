@@ -104,6 +104,7 @@ class _AccordionState extends State<Accordion>
                         text: widget.buttonText!,
                         onTap: widget.onButtonTap,
                         textColor: context.textColors.success,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
                     ],
                   ),

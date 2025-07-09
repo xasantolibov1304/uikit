@@ -1,6 +1,9 @@
 // Accordion
 export 'accordion/accordion.dart';
 
+// Badge
+export 'badge/badge.dart';
+
 // Banners
 export 'banners/promo_banner.dart';
 export 'banners/promo_banner_carousel.dart';

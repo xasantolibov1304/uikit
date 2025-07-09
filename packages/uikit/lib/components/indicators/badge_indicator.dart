@@ -11,7 +11,7 @@ import 'package:iman_uikit/theme/color_theme_data.dart';
 const _textHeight = 1.4;
 const _maxCount = 99;
 
-enum BadgeType {
+enum BadgeIndicatorType {
   danger,
   success,
   warning,
@@ -24,7 +24,7 @@ class BadgeIndicator extends StatelessWidget {
     this.child,
     this.top = -8,
     this.end = -10,
-    this.type = BadgeType.info,
+    this.type = BadgeIndicatorType.info,
     super.key,
   });
 
@@ -34,7 +34,7 @@ class BadgeIndicator extends StatelessWidget {
   final double top;
   final double end;
 
-  final BadgeType type;
+  final BadgeIndicatorType type;
 
   @override
   Widget build(BuildContext context) {
@@ -62,23 +62,23 @@ class BadgeIndicator extends StatelessWidget {
 
   Color _textColor(BuildContext context) {
     switch (type) {
-      case BadgeType.danger:
-      case BadgeType.success:
-      case BadgeType.warning:
-      case BadgeType.info:
+      case BadgeIndicatorType.danger:
+      case BadgeIndicatorType.success:
+      case BadgeIndicatorType.warning:
+      case BadgeIndicatorType.info:
         return context.textColors.invert;
     }
   }
 
   Color _badgeColor(BuildContext context) {
     switch (type) {
-      case BadgeType.danger:
+      case BadgeIndicatorType.danger:
         return context.statusColors.error;
-      case BadgeType.success:
+      case BadgeIndicatorType.success:
         return context.statusColors.success;
-      case BadgeType.warning:
+      case BadgeIndicatorType.warning:
         return context.statusColors.warning;
-      case BadgeType.info:
+      case BadgeIndicatorType.info:
         return context.statusColors.info;
     }
   }

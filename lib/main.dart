@@ -119,6 +119,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            Row(
+              children: [
+                uikit.BadgeWidget(
+                  title: 'Badge',
+                  type: uikit.BadgeWidgetType.primary,
+                  count: 10,
+                ),
+              ],
+            ),
           ],
         ),
       ),

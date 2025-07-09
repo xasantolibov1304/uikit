@@ -61,7 +61,7 @@ class Filter extends StatelessWidget {
           top: _top,
           end: _end,
           count: count,
-          type: BadgeType.danger,
+          type: BadgeIndicatorType.danger,
           child: CommonInkWell(
             onTap: onTap,
             padding: _padding,
