@@ -87,7 +87,7 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
               child: Column(
                 children: [
                   InputField(
-                    label: 'Text Input',
+                    label: 'Input Field',
                     hintText: 'Enter text',
                     onChanged: (value) => debugPrint('Text: $value'),
                   ),
@@ -132,6 +132,7 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
                   const SizedBox(height: 16),
                   AmountInputField(
                     label: 'Amount Input',
+                    currency: ' UZS',
                     onChanged: (value) => debugPrint('Amount: $value'),
                   ),
                   const SizedBox(height: 16),

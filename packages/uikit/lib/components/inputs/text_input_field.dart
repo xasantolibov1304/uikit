@@ -34,7 +34,7 @@ class TextInputField extends StatelessWidget {
     this.autofocus = false,
     this.readonly = false,
     this.isRequired = false,
-    this.canClear = false,
+    this.canClear = true,
     //
     this.trailingIcon,
     super.key,
