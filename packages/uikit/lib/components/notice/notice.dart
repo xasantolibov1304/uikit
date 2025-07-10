@@ -1,9 +1,12 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:iman_uikit/common/gesture_detector.dart';
+import 'package:iman_uikit/components/buttons/button.dart';
 
 // Project imports:
 import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/uikit.dart';
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+import 'package:iman_uikit/theme/color_theme_data.dart';
 
 enum NoticeType {
   neutral,

@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/amount_input_field.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';

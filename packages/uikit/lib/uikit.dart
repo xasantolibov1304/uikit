@@ -3,3 +3,4 @@ export 'components/components.dart';
 export 'theme/theme.dart';
 export 'examples/examples.dart';
 export 'utils/utils.dart';
+export 'gen/assets.gen.dart';

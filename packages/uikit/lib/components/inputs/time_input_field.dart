@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/common/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/utils/date/date_format_constants.dart';

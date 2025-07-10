@@ -1,6 +1,9 @@
 // Accordion
 export 'accordion/accordion.dart';
 
+// Avatar
+export 'avatar/avatar.dart';
+
 // Badge
 export 'badge/badge.dart';
 
@@ -11,8 +14,6 @@ export 'banners/promo_banner_carousel.dart';
 // Buttons
 export 'buttons/button.dart';
 export 'buttons/button_cell.dart';
-export '../common/gesture_detector.dart';
-export '../common/ink_well.dart';
 
 // Checkbox
 export 'checkbox/checkbox.dart';
@@ -30,6 +31,9 @@ export 'inputs/inputs.dart';
 
 // Notice
 export 'notice/notice.dart';
+
+// Tab Bar
+export 'tab_bar/tab_bar.dart';
 
 // Title
 export 'title/title.dart';

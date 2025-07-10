@@ -35,7 +35,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
+          uikit.AvatarWidget.placeholder(
+            isOnline: true,
+            statusIcon: uikit.UikitAssets.icons24.user.svg(),
+          ),
           _buildExampleButton(
             'Time Picker Example',
             () => uikit.CustomBottomSheet.showStaticBottomSheet(

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/buttons/button.dart';
 import 'package:iman_uikit/common/gesture_detector.dart';
+import 'package:iman_uikit/components/buttons/button.dart';
 import 'package:iman_uikit/components/text/text_highlight.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
