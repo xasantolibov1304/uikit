@@ -41,9 +41,6 @@ extension AppTypographyThemeDataExtension on ThemeData {
 
   ButtonTextStyles get buttonTextStyle =>
       extension<ButtonTextStyles>() ?? lightButtonTextStyles;
-
-  InputTextStyles get inputTextStyle =>
-      extension<InputTextStyles>() ?? lightInputTextStyles;
 }
 
 extension AppTypographyThemeDataContextExtension on BuildContext {
@@ -58,6 +55,4 @@ extension AppTypographyThemeDataContextExtension on BuildContext {
   BodyTextStyles get bodyTextStyle => Theme.of(this).bodyTextStyle;
 
   ButtonTextStyles get buttonTextStyle => Theme.of(this).buttonTextStyle;
-
-  InputTextStyles get inputTextStyle => Theme.of(this).inputTextStyle;
 }

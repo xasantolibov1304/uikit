@@ -113,7 +113,7 @@ class TitleWidget extends StatelessWidget {
       case TitleWidgetSize.small:
         return context.titleTextStyle.main2.bold;
       case TitleWidgetSize.medium:
-        return context.titleTextStyle.medium3.bold;
+        return context.titleTextStyle.medium2.bold;
       case TitleWidgetSize.large:
         return context.titleTextStyle.large2.bold;
     }

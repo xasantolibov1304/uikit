@@ -89,12 +89,12 @@ class _AmountInputFieldState extends State<AmountInputField> {
           definitionList: <TextPartStyleDefinition>[
             TextPartStyleDefinition(
               pattern: CommonRegExps.onlyDigits.pattern,
-              style: context.inputTextStyle.placeholder,
+              style: context.titleTextStyle.main1,
             ),
             TextPartStyleDefinition(
               pattern: widget.currency ?? '',
               style: widget.currencyStyle ??
-                  context.inputTextStyle.suffix.copyWith(
+                  context.bodyTextStyle.compact2.copyWith(
                     color: context.textColors.tertiary,
                   ),
             ),

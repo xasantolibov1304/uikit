@@ -43,122 +43,123 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: <Widget>[
-            uikit.CurrencyInputField(
-              label: 'Label',
-              currency: ' USD',
-              onSelectCurrencyTap: () {},
-            ),
-            const SizedBox(height: 16),
-            _buildExampleButton(
-              'Buttons Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.ButtonsExamplePage(),
-                ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: <Widget>[
+          _buildExampleButton(
+            'Time Picker Example',
+            () => uikit.CustomBottomSheet.showStaticBottomSheet(
+              context,
+              child: uikit.TimePickerSheet(
+                buttonText: 'Select',
               ),
             ),
-            _buildExampleButton(
-              'Button Cell Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.ButtonCellExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Buttons Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.ButtonsExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Notice Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.NoticeExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Button Cell Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.ButtonCellExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Accordion Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.AccordionExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Notice Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.NoticeExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Filters Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.FiltersExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Accordion Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.AccordionExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Banners Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.BannersExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Filters Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.FiltersExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Fields Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.FieldsExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Banners Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.BannersExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Inputs Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.InputsExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Fields Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.FieldsExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Text Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.TextExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Inputs Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.InputsExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Badge Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.BadgeExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Text Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.TextExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Checkbox Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.CheckboxExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Badge Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.BadgeExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Switcher Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.SwitcherExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Checkbox Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.CheckboxExamplePage(),
               ),
             ),
-            _buildExampleButton(
-              'Radio Buttons Example',
-              () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const uikit.RadioExamplePage(),
-                ),
+          ),
+          _buildExampleButton(
+            'Switcher Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.SwitcherExamplePage(),
               ),
             ),
-          ],
-        ),
+          ),
+          _buildExampleButton(
+            'Radio Buttons Example',
+            () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const uikit.RadioExamplePage(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

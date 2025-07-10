@@ -40,7 +40,6 @@ final lightTheme = createThemeData(
   labelTextStyles: lightLabelTextStyles,
   bodyTextStyles: lightBodyTextStyles,
   buttonTextStyles: lightButtonTextStyles,
-  inputTextStyles: lightInputTextStyles,
 );
 
 final darkTheme = createThemeData(
@@ -73,7 +72,6 @@ final darkTheme = createThemeData(
   labelTextStyles: darkLabelTextStyles,
   bodyTextStyles: darkBodyTextStyles,
   buttonTextStyles: darkButtonTextStyles,
-  inputTextStyles: darkInputTextStyles,
 );
 
 ThemeData createThemeData({
@@ -100,7 +98,6 @@ ThemeData createThemeData({
   required LabelTextStyles labelTextStyles,
   required BodyTextStyles bodyTextStyles,
   required ButtonTextStyles buttonTextStyles,
-  required InputTextStyles inputTextStyles,
 }) =>
     ThemeData(
       brightness: brightness,
@@ -141,7 +138,7 @@ ThemeData createThemeData({
         bodySmall: bodyTextStyles.compact1,
         labelLarge: labelTextStyles.large,
         labelMedium: labelTextStyles.medium1,
-        labelSmall: labelTextStyles.main,
+        labelSmall: labelTextStyles.main1,
       ),
       primaryTextTheme: TextTheme(
         displayLarge: displayTextStyles.large,
@@ -158,7 +155,7 @@ ThemeData createThemeData({
         bodySmall: bodyTextStyles.compact1,
         labelLarge: labelTextStyles.large,
         labelMedium: labelTextStyles.medium1,
-        labelSmall: labelTextStyles.main,
+        labelSmall: labelTextStyles.main1,
       ),
 
       /// ---- App Bar Theme ----

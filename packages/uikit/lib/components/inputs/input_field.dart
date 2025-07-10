@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
+import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/components/indicators/loading_indicator.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
@@ -222,9 +222,9 @@ class _InputFieldState extends State<InputField> {
                         obscureText: widget.obscureText,
                         keyboardType: widget.keyboardType,
                         decoration: _buildInputDecoration,
+                        style: context.titleTextStyle.main1,
                         inputFormatters: widget.inputFormatters,
                         textInputAction: widget.textInputAction,
-                        style: context.inputTextStyle.placeholder,
                         onEditingComplete: widget.onEditingComplete,
                         textAlignVertical: TextAlignVertical.center,
                         textCapitalization: widget.textCapitalization,
@@ -261,15 +261,15 @@ class _InputFieldState extends State<InputField> {
   InputDecoration get _buildInputDecoration {
     return InputDecoration(
       contentPadding: const EdgeInsets.all(4),
-      labelStyle: context.inputTextStyle.placeholder.copyWith(
+      labelStyle: context.titleTextStyle.main1.copyWith(
         color: context.textColors.tertiary,
       ),
-      helperStyle: context.inputTextStyle.caption,
-      counterStyle: context.inputTextStyle.caption,
-      hintStyle: context.inputTextStyle.placeholder.copyWith(
+      helperStyle: context.subtitleTextStyle.compact2,
+      counterStyle: context.subtitleTextStyle.compact2,
+      hintStyle: context.titleTextStyle.main1.copyWith(
         color: context.textColors.tertiary,
       ),
-      floatingLabelStyle: context.inputTextStyle.label.copyWith(
+      floatingLabelStyle: context.labelTextStyle.main1.copyWith(
         color: context.textColors.tertiary,
       ),
       label: widget.label != null ? _buildLabel() : null,
@@ -283,14 +283,14 @@ class _InputFieldState extends State<InputField> {
       children: [
         Text(
           widget.label!,
-          style: context.inputTextStyle.placeholder.copyWith(
+          style: context.titleTextStyle.main1.copyWith(
             color: context.textColors.tertiary,
           ),
         ),
         if (widget.isRequired)
           Text(
             '*',
-            style: context.inputTextStyle.placeholder.copyWith(
+            style: context.titleTextStyle.main1.copyWith(
               color: context.textColors.error,
             ),
           ),
@@ -306,14 +306,14 @@ class _InputFieldState extends State<InputField> {
         if (widget.suffixLabel != null)
           Text(
             widget.suffixLabel!,
-            style: context.inputTextStyle.label.copyWith(
+            style: context.labelTextStyle.main1.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
         if (widget.suffixValue != null)
           Text(
             widget.suffixValue!,
-            style: context.inputTextStyle.placeholder.copyWith(
+            style: context.titleTextStyle.main1.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
@@ -366,7 +366,7 @@ class _InputFieldState extends State<InputField> {
                 child: Text(
                   validationText ?? widget.captionText ?? '',
                   maxLines: 1,
-                  style: context.inputTextStyle.caption.copyWith(
+                  style: context.subtitleTextStyle.compact2.copyWith(
                     color: _captionColor,
                   ),
                 ),
@@ -375,7 +375,7 @@ class _InputFieldState extends State<InputField> {
                 Text(
                   widget.captionHelperText!,
                   maxLines: 1,
-                  style: context.inputTextStyle.caption.copyWith(
+                  style: context.subtitleTextStyle.compact2.copyWith(
                     color: _captionColor,
                   ),
                 ),

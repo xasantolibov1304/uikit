@@ -75,7 +75,7 @@ class InfoField extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: context.labelTextStyle.main.copyWith(
+                  style: context.labelTextStyle.main1.copyWith(
                     color: context.textColors.tertiary,
                   ),
                 ),

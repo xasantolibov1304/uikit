@@ -21,7 +21,3 @@ export 'body/body_theme.dart';
 // Button
 export 'button/button_text_styles.dart';
 export 'button/button_theme.dart';
-
-// Input
-export 'input/input_text_styles.dart';
-export 'input/input_theme.dart';

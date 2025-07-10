@@ -49,7 +49,7 @@ class _AccordionExamplePageState extends State<AccordionExamplePage> {
                 ),
                 content: Text(
                   _content,
-                  style: context.labelTextStyle.main.copyWith(
+                  style: context.labelTextStyle.main1.copyWith(
                     color: Colors.black,
                   ),
                 ),

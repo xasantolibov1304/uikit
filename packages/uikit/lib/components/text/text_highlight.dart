@@ -92,7 +92,7 @@ class TextHighlight extends StatelessWidget {
   TextSpan _normalSpan(BuildContext context, String value) {
     return TextSpan(
       text: value,
-      style: textStyle ?? context.labelTextStyle.main,
+      style: textStyle ?? context.labelTextStyle.main1,
     );
   }
 

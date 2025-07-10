@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/components/buttons/gesture_detector.dart';
+import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/components/inputs/amount_input_field.dart';
 import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
@@ -99,7 +99,7 @@ class CurrencyInputField extends StatelessWidget {
                 const SizedBox(width: 4),
                 Text(
                   (currency ?? '').trim(),
-                  style: context.inputTextStyle.placeholder,
+                  style: context.titleTextStyle.main1,
                 ),
                 const SizedBox(width: 6),
                 CommonGestureDetector(

@@ -117,7 +117,7 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
                   TimeInputField(
                     label: 'Time Input',
                     onChanged: (value) => debugPrint('Time: $value'),
-                    onSelectTimeTap: () => _showSnackBar('Time picker tapped!'),
+                    // onSelectTimeTap: () => _showSnackBar('Time picker tapped!'),
                   ),
                   const SizedBox(height: 16),
                   SelectInputField(

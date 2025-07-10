@@ -14,12 +14,19 @@ LabelTextStyles _generateTypographyFromBrightness(Brightness brightness) {
       ? lightTextColors.primary
       : darkTextColors.primary;
   return LabelTextStyles(
-    main: TextStyle(
+    main1: TextStyle(
       color: color,
       fontSize: 13,
       height: 16 / 13,
       letterSpacing: 0,
       fontWeight: FontWeight.w400,
+    ),
+    main2: TextStyle(
+      color: color,
+      fontSize: 13,
+      height: 16 / 13,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w500,
     ),
     medium1: TextStyle(
       color: color,
@@ -31,9 +38,9 @@ LabelTextStyles _generateTypographyFromBrightness(Brightness brightness) {
     medium2: TextStyle(
       color: color,
       fontSize: 14,
-      height: 20 / 14,
+      height: 16 / 14,
       letterSpacing: 0,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
     ),
     large: TextStyle(
       color: color,
