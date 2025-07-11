@@ -56,6 +56,24 @@ class StylableInputFieldController extends TextEditingController {
     return TextSpan(style: style, children: textSpanChildren);
   }
 
+  void setText(String text) {
+    String? existingSuffix;
+    for (final styleDefinition in styles.definitionList) {
+      final pattern = RegExp(styleDefinition.pattern, caseSensitive: false);
+      final matches = pattern.allMatches(this.text);
+      for (final match in matches) {
+        final matchedText = match.group(0);
+        if (matchedText != null && this.text.endsWith(matchedText)) {
+          existingSuffix = matchedText;
+          break;
+        }
+      }
+      if (existingSuffix != null) break;
+    }
+
+    this.text = existingSuffix != null ? '$text$existingSuffix' : text;
+  }
+
   void _addTextSpan(
     List<InlineSpan> textSpanChildren,
     String? textToBeStyled,

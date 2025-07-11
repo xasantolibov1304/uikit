@@ -36,6 +36,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  double value = 50;
+  String time = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +49,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
-          uikit.AvatarWidget.placeholder(
-            isOnline: true,
-            statusIcon: uikit.UikitAssets.icons24.user.svg(),
-          ),
+          const SizedBox(height: 16),
           _buildExampleButton(
             'Time Picker Example',
             () => uikit.CustomBottomSheet.showStaticBottomSheet(
               context,
               child: uikit.TimePickerSheet(
                 buttonText: 'Select',
+                onTimeSelected: (time) {
+                  setState(() {
+                    this.time = time.toString();
+                  });
+                },
               ),
             ),
           ),

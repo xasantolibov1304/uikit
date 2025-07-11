@@ -76,9 +76,12 @@ class CurrencyInputField extends StatelessWidget {
       label: label,
       hintText: hintText,
       currency: currency,
+      captionText: captionText,
       initialValue: initialValue,
       decimalPlaces: decimalPlaces,
       currencyStyle: currencyStyle,
+      captionIconPath: captionIconPath,
+      captionHelperText: captionHelperText,
       trailingIcon: onSelectCurrencyTap != null
           ? Row(
               mainAxisSize: MainAxisSize.min,

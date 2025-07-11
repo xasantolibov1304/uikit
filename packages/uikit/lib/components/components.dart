@@ -32,6 +32,9 @@ export 'inputs/inputs.dart';
 // Notice
 export 'notice/notice.dart';
 
+// Sliders
+export 'sliders/input_slider.dart';
+
 // Tab Bar
 export 'tab_bar/tab_bar.dart';
 

@@ -77,8 +77,11 @@ class DateInputField extends StatelessWidget {
       focusNode: focusNode,
       controller: controller,
       isRequired: isRequired,
+      captionText: captionText,
       initialValue: initialValue,
+      captionIconPath: captionIconPath,
       textInputAction: textInputAction,
+      captionHelperText: captionHelperText,
       keyboardType: TextInputType.datetime,
       inputFormatters: [DateTextFormatter()],
       trailingIcon: onSelectDateTap != null

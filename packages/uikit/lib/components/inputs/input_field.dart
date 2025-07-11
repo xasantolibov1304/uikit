@@ -146,6 +146,11 @@ class _InputFieldState extends State<InputField> {
     _focusNode.addListener(_onFocusChange);
   }
 
+  void _onFocusChange() {
+    _hasFocus = _focusNode.hasFocus;
+    updateState();
+  }
+
   void updateState() => {if (mounted) setState(() {})};
 
   @override
@@ -157,16 +162,6 @@ class _InputFieldState extends State<InputField> {
     _focusNode.dispose();
     _controller.dispose();
     super.dispose();
-  }
-
-  void _onFocusChange() {
-    _hasFocus = _focusNode.hasFocus;
-    updateState();
-  }
-
-  void _onClear() {
-    _controller.clear();
-    widget.onChanged?.call('');
   }
 
   @override
@@ -330,6 +325,11 @@ class _InputFieldState extends State<InputField> {
         child: UikitAssets.icons24.closeCircle.svg(),
       ),
     );
+  }
+
+  void _onClear() {
+    _controller.clear();
+    widget.onChanged?.call('');
   }
 
   Widget _buildCaption() {

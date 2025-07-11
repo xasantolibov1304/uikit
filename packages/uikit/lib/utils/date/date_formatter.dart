@@ -50,8 +50,8 @@ class DateFormatterHelper {
   ///
   /// [format] - format the date
   /// [parse] - parse the date
-  static String fhhmm(DateTime? date) => format(date, hhmm);
-  static DateTime? phhmm(String? date) => parse(date, hhmm);
+  static String fHHmm(DateTime? date) => format(date, hhmm);
+  static DateTime? pHHmm(String? date) => parse(date, hhmm);
 
   /// e.g 10:00 PM
   /// (hh:mm a)

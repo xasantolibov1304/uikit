@@ -118,9 +118,12 @@ class _AmountInputFieldState extends State<AmountInputField> {
       focusNode: widget.focusNode,
       controller: _amountController,
       isRequired: widget.isRequired,
+      captionText: widget.captionText,
       initialValue: widget.initialValue,
       trailingIcon: widget.trailingIcon,
+      captionIconPath: widget.captionIconPath,
       textInputAction: widget.textInputAction,
+      captionHelperText: widget.captionHelperText,
       keyboardType: TextInputType.visiblePassword,
       inputFormatters: [
         CurrencyInputFormatter(

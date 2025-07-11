@@ -12,14 +12,14 @@ class TimePickerSheet extends StatefulWidget {
   const TimePickerSheet({
     required this.buttonText,
     this.initialDateTime,
-    this.onSelect,
+    this.onTimeSelected,
     super.key,
   });
 
   final String buttonText;
 
   final DateTime? initialDateTime;
-  final void Function(DateTime)? onSelect;
+  final void Function(DateTime)? onTimeSelected;
 
   @override
   State<TimePickerSheet> createState() => _TimePickerSheetState();
@@ -77,10 +77,13 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
                   left: 0,
                   right: 0,
                   height: _itemExtent,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: CupertinoColors.tertiarySystemFill,
-                      borderRadius: BorderRadius.circular(8),
+                  child: IgnorePointer(
+                    ignoring: true,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: CupertinoColors.tertiarySystemFill,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                   ),
                 ),
@@ -99,7 +102,7 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
   }
 
   void _onSelect() {
-    widget.onSelect?.call(dateTime);
+    widget.onTimeSelected?.call(dateTime);
     Navigator.of(context).pop(dateTime);
   }
 }

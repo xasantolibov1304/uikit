@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:iman_uikit/common/bottom_sheets/bottom_sheet.dart';
+import 'package:iman_uikit/common/bottom_sheets/date_picker/time_picker.dart';
 
 // Project imports:
 import 'package:iman_uikit/common/gesture_detector.dart';
@@ -32,7 +34,7 @@ class TimeInputField extends StatelessWidget {
     this.isRequired = true,
     this.canClear = true,
     //
-    this.onSelectTimeTap,
+    this.selectTimeButtonText,
     this.onChanged,
     this.validator,
     //
@@ -60,13 +62,14 @@ class TimeInputField extends StatelessWidget {
   final bool isRequired;
   final bool canClear;
 
-  final VoidCallback? onSelectTimeTap;
+  final String? selectTimeButtonText;
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return InputField(
+      key: ValueKey(initialValue),
       label: label,
       status: status,
       readonly: readonly,
@@ -79,13 +82,23 @@ class TimeInputField extends StatelessWidget {
       focusNode: focusNode,
       controller: controller,
       isRequired: isRequired,
+      captionText: captionText,
       initialValue: initialValue,
+      captionIconPath: captionIconPath,
       textInputAction: textInputAction,
       keyboardType: TextInputType.datetime,
+      captionHelperText: captionHelperText,
       hintText: hintText ?? hhmm.toLowerCase(),
-      trailingIcon: onSelectTimeTap != null
+      trailingIcon: selectTimeButtonText != null
           ? CommonGestureDetector(
-              onTap: onSelectTimeTap,
+              onTap: () => CustomBottomSheet.showStaticBottomSheet(
+                context,
+                child: TimePickerSheet(
+                  buttonText: selectTimeButtonText!,
+                  onTimeSelected: (time) =>
+                      onChanged?.call(DateFormatterHelper.fHHmm(time)),
+                ),
+              ),
               child: UikitAssets.icons24.clock.svg(),
             )
           : null,
