@@ -45,13 +45,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
           const SizedBox(height: 16),
+          _buildExampleButton(
+            'Snackbar Example',
+            () => uikit.showTopSnack(
+              context,
+              uikit.Snack.info('Hello', 'This is a success message'),
+            ),
+          ),
           _buildExampleButton(
             'Time Picker Example',
             () => uikit.CustomBottomSheet.showStaticBottomSheet(

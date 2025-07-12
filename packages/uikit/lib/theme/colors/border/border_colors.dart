@@ -12,6 +12,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
     required this.warning,
     required this.success,
     required this.invert,
+    required this.black,
   });
 
   final Color primary;
@@ -23,6 +24,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
   final Color warning;
   final Color success;
   final Color invert;
+  final Color black;
 
   @override
   ThemeExtension<BorderColors> copyWith({
@@ -35,6 +37,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
     Color? warning,
     Color? success,
     Color? invert,
+    Color? black,
   }) =>
       BorderColors(
         primary: primary ?? this.primary,
@@ -46,6 +49,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
         warning: warning ?? this.warning,
         success: success ?? this.success,
         invert: invert ?? this.invert,
+        black: black ?? this.black,
       );
 
   @override
@@ -66,6 +70,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
       warning: Color.lerp(warning, other.warning, t)!,
       success: Color.lerp(success, other.success, t)!,
       invert: Color.lerp(invert, other.invert, t)!,
+      black: Color.lerp(black, other.black, t)!,
     );
   }
 }

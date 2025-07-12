@@ -25,7 +25,7 @@ final lightTheme = createThemeData(
   fieldColors: lightFieldColors,
 
   /// ---- Gradients ----
-  appGradients: PaynetGradients(
+  appGradients: AppGradients(
     toast: lightToastGradients,
     shimmer: lightShimmerGradients,
     button: lightButtonGradients,
@@ -57,7 +57,7 @@ final darkTheme = createThemeData(
   fieldColors: darkFieldColors,
 
   /// ---- Gradients ----
-  appGradients: PaynetGradients(
+  appGradients: AppGradients(
     toast: darkToastGradients,
     shimmer: darkShimmerGradients,
     button: darkButtonGradients,
@@ -89,7 +89,7 @@ ThemeData createThemeData({
   required FieldColors fieldColors,
 
   /// ---- Gradients ----
-  required PaynetGradients appGradients,
+  required AppGradients appGradients,
 
   /// ---- Typographies ----
   required DisplayTextStyles displayTextStyles,

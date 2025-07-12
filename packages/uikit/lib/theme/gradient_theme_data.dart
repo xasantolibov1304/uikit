@@ -10,9 +10,9 @@ import 'package:iman_uikit/theme/gradients/shimmer_gradients_theme.dart';
 import 'package:iman_uikit/theme/gradients/toast_gradients_theme.dart';
 
 extension GradientThemeDataExtension on ThemeData {
-  PaynetGradients get appGradients =>
-      extension<PaynetGradients>() ??
-      PaynetGradients(
+  AppGradients get appGradients =>
+      extension<AppGradients>() ??
+      AppGradients(
         toast: lightToastGradients,
         shimmer: lightShimmerGradients,
         button: lightButtonGradients,
@@ -21,6 +21,6 @@ extension GradientThemeDataExtension on ThemeData {
       );
 }
 
-extension CradientThemeDataContextExtension on BuildContext {
-  PaynetGradients get appGradients => Theme.of(this).appGradients;
+extension GradientThemeDataContextExtension on BuildContext {
+  AppGradients get appGradients => Theme.of(this).appGradients;
 }

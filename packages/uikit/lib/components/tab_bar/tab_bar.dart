@@ -48,7 +48,7 @@ class CommonTabBar extends StatelessWidget {
         indicator: BoxDecoration(
           color: context.surfaceColors.tertiary,
           borderRadius: BorderRadius.circular(8),
-          boxShadow: [BoxShadows.shadowA10, BoxShadows.shadowA5],
+          boxShadow: CommonShadows.compactShadow,
         ),
         tabs: tabLabels
             .map((item) => Tab(text: item, height: _defaultHeight))

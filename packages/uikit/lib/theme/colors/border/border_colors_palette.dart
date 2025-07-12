@@ -20,6 +20,7 @@ BorderColors _generatePaletteFromBrightness(Brightness brightness) {
       warning: Palette.yellow[40]!,
       success: Palette.green[50]!,
       invert: Palette.gray[0]!,
+      black: Palette.gray[100]!,
     );
   } else {
     return BorderColors(
@@ -32,6 +33,7 @@ BorderColors _generatePaletteFromBrightness(Brightness brightness) {
       warning: Palette.yellow[60]!,
       success: Palette.green[70]!,
       invert: Palette.gray[0]!,
+      black: Palette.gray[100]!,
     );
   }
 }

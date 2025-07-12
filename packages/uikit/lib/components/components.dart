@@ -39,9 +39,6 @@ export 'sliders/double_slider.dart';
 // Tab Bar
 export 'tab_bar/tab_bar.dart';
 
-// Title
-export 'title/title.dart';
-
 // Radio
 export 'radio/radio.dart';
 export 'radio/radio_card.dart';
@@ -54,3 +51,9 @@ export 'switcher/switcher_card.dart';
 // Text
 export 'text/text.dart';
 export 'text/text_highlight.dart';
+
+// Title
+export 'title/title.dart';
+
+// Toast
+export 'toast/snackbar.dart';

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:iman_uikit/theme/gradients/gradients.dart';
 
-class PaynetGradients extends ThemeExtension<PaynetGradients> {
-  const PaynetGradients({
+class AppGradients extends ThemeExtension<AppGradients> {
+  const AppGradients({
     required this.toast,
     required this.shimmer,
     required this.button,
@@ -20,14 +20,14 @@ class PaynetGradients extends ThemeExtension<PaynetGradients> {
   final CardGradients card;
 
   @override
-  ThemeExtension<PaynetGradients> copyWith({
+  ThemeExtension<AppGradients> copyWith({
     ToastGradients? toast,
     ShimmerGradients? shimmer,
     ButtonGradients? button,
     BackgroundGradients? background,
     CardGradients? card,
   }) {
-    return PaynetGradients(
+    return AppGradients(
       toast: toast ?? this.toast,
       shimmer: shimmer ?? this.shimmer,
       button: button ?? this.button,
@@ -37,15 +37,15 @@ class PaynetGradients extends ThemeExtension<PaynetGradients> {
   }
 
   @override
-  PaynetGradients lerp(
-    covariant ThemeExtension<PaynetGradients>? other,
+  AppGradients lerp(
+    covariant ThemeExtension<AppGradients>? other,
     double t,
   ) {
-    if (other == null || other is! PaynetGradients) {
+    if (other == null || other is! AppGradients) {
       return this;
     }
 
-    return PaynetGradients(
+    return AppGradients(
       toast: toast.lerp(other.toast, t),
       shimmer: shimmer.lerp(other.shimmer, t),
       button: button.lerp(other.button, t),
