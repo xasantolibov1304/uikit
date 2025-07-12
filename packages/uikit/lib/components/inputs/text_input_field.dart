@@ -16,6 +16,7 @@ class TextInputField extends StatelessWidget {
     this.captionText,
     this.captionHelperText,
     //
+    this.size = InputFieldSize.large,
     this.status = InputFieldStatus.info,
     //
     this.onChanged,
@@ -49,6 +50,7 @@ class TextInputField extends StatelessWidget {
   final String? captionText;
   final String? captionHelperText;
 
+  final InputFieldSize size;
   final InputFieldStatus status;
 
   final FocusNode? focusNode;
@@ -74,6 +76,7 @@ class TextInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InputField(
+      size: size,
       label: label,
       status: status,
       readonly: readonly,

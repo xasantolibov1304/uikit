@@ -70,12 +70,20 @@ class CurrencyInputField extends StatelessWidget {
 
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return AmountInputField(
       label: label,
+      status: status,
       hintText: hintText,
       currency: currency,
+      readonly: readonly,
+      canClear: canClear,
+      isLoading: isLoading,
+      isEnabled: isEnabled,
+      autofocus: autofocus,
+      onChanged: onChanged,
       captionText: captionText,
       initialValue: initialValue,
       decimalPlaces: decimalPlaces,

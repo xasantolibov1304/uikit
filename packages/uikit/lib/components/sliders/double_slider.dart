@@ -7,7 +7,7 @@ import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _thumbSize = Size(28, 28);
 
-class DoubleSlider extends StatefulWidget {
+class DoubleSlider extends StatelessWidget {
   const DoubleSlider({
     required this.min,
     required this.max,
@@ -24,34 +24,7 @@ class DoubleSlider extends StatefulWidget {
 
   final int? divisions;
 
-  final ValueChanged<RangeValues> onChanged;
-
-  @override
-  State<DoubleSlider> createState() => _DoubleSliderState();
-}
-
-class _DoubleSliderState extends State<DoubleSlider> {
-  late RangeValues _currentValues;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentValues = widget.values;
-  }
-
-  @override
-  void didUpdateWidget(covariant DoubleSlider oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.values != widget.values) {
-      _currentValues = widget.values;
-    }
-  }
-
-  String _formatLabel(double value) {
-    final percent =
-        ((value - widget.min) / (widget.max - widget.min) * 100).round();
-    return '$percent%';
-  }
+  final void Function(RangeValues) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +42,7 @@ class _DoubleSliderState extends State<DoubleSlider> {
         ),
         showValueIndicator: ShowValueIndicator.always,
         trackShape: const RoundedRectSliderTrackShape(),
+        minThumbSeparation: (max - min) / 2,
         valueIndicatorColor: context.surfaceColors.tertiary,
         valueIndicatorStrokeColor: context.borderColors.primary,
         valueIndicatorTextStyle: context.titleTextStyle.compact1,
@@ -76,30 +50,22 @@ class _DoubleSliderState extends State<DoubleSlider> {
         overlayColor: context.borderColors.success.withValues(alpha: 0.1),
       ),
       child: RangeSlider(
-          min: widget.min,
-          max: widget.max,
-          values: _currentValues,
-          divisions: widget.divisions,
-          labels: RangeLabels(
-            _formatLabel(_currentValues.start),
-            _formatLabel(_currentValues.end),
-          ),
-          onChanged: (RangeValues values) {
-            setState(() {
-              if (values.end - values.start >= 10) {
-                _currentValues = values;
-              } else {
-                if (_currentValues.start == values.start) {
-                  _currentValues = RangeValues(
-                      _currentValues.start, _currentValues.start + 10);
-                } else {
-                  _currentValues =
-                      RangeValues(_currentValues.end - 10, _currentValues.end);
-                }
-              }
-            });
-          }),
+        min: min,
+        max: max,
+        values: values,
+        divisions: divisions,
+        labels: RangeLabels(
+          _formatLabel(values.start),
+          _formatLabel(values.end),
+        ),
+        onChanged: onChanged,
+      ),
     );
+  }
+
+  String _formatLabel(double value) {
+    final percent = ((value - min) / (max - min) * 100).round();
+    return '$percent%';
   }
 }
 

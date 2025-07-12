@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-
 // Project imports:
+import 'package:iman_uikit/components/inputs/amount_input_field.dart';
 import 'package:iman_uikit/components/inputs/controllers/stylable_input_field_controller.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_part_style_definition.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_style_matcher.dart';
@@ -106,7 +104,7 @@ class _SliderInputFieldState extends State<SliderInputField> {
             pattern: widget.currency ?? '',
             style: widget.currencyStyle ??
                 context.bodyTextStyle.compact2.copyWith(
-                  color: context.textColors.tertiary,
+                  color: context.textColors.muted,
                 ),
           ),
         ],
@@ -132,34 +130,24 @@ class _SliderInputFieldState extends State<SliderInputField> {
         }
       },
       value: double.parse(widget.initialValue ?? widget.minValue.toString()),
-      child: InputField(
+      child: AmountInputField(
         label: widget.label,
         status: widget.status,
+        hintText: widget.hintText,
+        currency: widget.currency,
         readonly: widget.readonly,
         canClear: widget.canClear,
-        hintText: widget.hintText,
         isLoading: widget.isLoading,
         isEnabled: widget.isEnabled,
         autofocus: widget.autofocus,
         onChanged: widget.onChanged,
-        validator: widget.validator,
-        focusNode: widget.focusNode,
-        controller: _sliderController,
-        isRequired: widget.isRequired,
         captionText: widget.captionText,
         initialValue: widget.initialValue,
-        trailingIcon: widget.trailingIcon,
-        keyboardType: TextInputType.number,
-        textInputAction: widget.textInputAction,
+        decimalPlaces: widget.decimalPlaces,
+        currencyStyle: widget.currencyStyle,
         captionIconPath: widget.captionIconPath,
         captionHelperText: widget.captionHelperText,
-        inputFormatters: [
-          CurrencyInputFormatter(
-            mantissaLength: widget.decimalPlaces,
-            trailingSymbol: widget.currency ?? '',
-            thousandSeparator: ThousandSeparator.Space,
-          ),
-        ],
+        trailingIcon: widget.trailingIcon,
       ),
     );
   }

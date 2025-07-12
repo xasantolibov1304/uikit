@@ -95,7 +95,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
               pattern: widget.currency ?? '',
               style: widget.currencyStyle ??
                   context.bodyTextStyle.compact2.copyWith(
-                    color: context.textColors.tertiary,
+                    color: context.textColors.muted,
                   ),
             ),
           ],

@@ -1,9 +1,9 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/common/bottom_sheets/scroll_indicator.dart';
-import 'package:iman_uikit/common/gesture_detector.dart';
 
 // Project imports:
+import 'package:iman_uikit/common/bottom_sheets/scroll_indicator.dart';
+import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/common/safe_area.dart';
 import 'package:iman_uikit/components/indicators/loading_indicator.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';

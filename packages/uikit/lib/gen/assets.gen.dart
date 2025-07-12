@@ -119,6 +119,9 @@ class $AssetsIcons24Gen {
   /// File path: assets/icons24/scan.svg
   SvgGenImage get scan => const SvgGenImage('assets/icons24/scan.svg');
 
+  /// File path: assets/icons24/search.svg
+  SvgGenImage get search => const SvgGenImage('assets/icons24/search.svg');
+
   /// File path: assets/icons24/user.svg
   SvgGenImage get user => const SvgGenImage('assets/icons24/user.svg');
 
@@ -147,6 +150,7 @@ class $AssetsIcons24Gen {
     infoFilled,
     reload,
     scan,
+    search,
     user,
     warningTriangle,
   ];

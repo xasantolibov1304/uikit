@@ -39,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double value = 50;
   String time = '';
 
+  RangeValues rangeValues = const RangeValues(0, 100);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,18 +49,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         title: Text(widget.title),
       ),
       body: ListView(
-        // padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: <Widget>[
-          uikit.DoubleSlider(
-            min: 0,
-            max: 100,
-            values: RangeValues(value, value),
-            onChanged: (values) {
-              setState(() {
-                value = values.end;
-              });
-            },
-          ),
           const SizedBox(height: 16),
           _buildExampleButton(
             'Time Picker Example',
