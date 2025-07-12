@@ -9,7 +9,8 @@ class CustomBottomSheet {
   static Future<T?> showStaticBottomSheet<T>(
     BuildContext context, {
     required Widget child,
-    bool withIndicator = true,
+    String? title,
+    bool hasIndicator = true,
     double? fixedHeight,
   }) {
     return showModalBottomSheet(
@@ -17,8 +18,9 @@ class CustomBottomSheet {
       useSafeArea: true,
       isScrollControlled: true,
       builder: (BuildContext context) => StaticBottomSheet(
-        withIndicator: withIndicator,
+        hasIndicator: hasIndicator,
         fixedHeight: fixedHeight,
+        title: title,
         child: child,
       ),
     );
@@ -30,6 +32,7 @@ class CustomBottomSheet {
     String? title,
     List<Widget> slivers = const [],
     bool isLoading = false,
+    bool hasIndicator = true,
     double minChildSize = 0.5,
     double maxChildSize = 0.95,
     double initialChildSize = 0.5,
@@ -42,6 +45,7 @@ class CustomBottomSheet {
         title: title,
         slivers: slivers,
         isLoading: isLoading,
+        hasIndicator: hasIndicator,
         minChildSize: minChildSize,
         maxChildSize: maxChildSize,
         initialChildSize: initialChildSize,

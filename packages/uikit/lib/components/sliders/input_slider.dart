@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _dividerSize = Size(2, 3);
@@ -48,10 +51,10 @@ class InputSlider extends StatelessWidget {
       data: SliderTheme.of(context).copyWith(
         trackHeight: 2,
         thumbColor: context.borderColors.success,
-        thumbShape: RectangularSliderThumbShape(),
+        thumbShape: _RectangularSliderThumbShape(),
         trackShape: RectangularSliderTrackShape(),
         overlayShape: SliderComponentShape.noOverlay,
-        tickMarkShape: RectangularSliderDividerShape(
+        tickMarkShape: _RectangularSliderDividerShape(
           dividerColor: context.borderColors.secondary,
         ),
         activeTrackColor: context.borderColors.success,
@@ -71,8 +74,8 @@ class InputSlider extends StatelessWidget {
   }
 }
 
-class RectangularSliderDividerShape extends SliderTickMarkShape {
-  RectangularSliderDividerShape({
+class _RectangularSliderDividerShape extends SliderTickMarkShape {
+  _RectangularSliderDividerShape({
     required this.dividerColor,
   });
 
@@ -112,8 +115,8 @@ class RectangularSliderDividerShape extends SliderTickMarkShape {
   }
 }
 
-class RectangularSliderThumbShape extends SliderComponentShape {
-  const RectangularSliderThumbShape();
+class _RectangularSliderThumbShape extends SliderComponentShape {
+  const _RectangularSliderThumbShape();
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {

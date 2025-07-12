@@ -34,6 +34,7 @@ export 'notice/notice.dart';
 
 // Sliders
 export 'sliders/input_slider.dart';
+export 'sliders/double_slider.dart';
 
 // Tab Bar
 export 'tab_bar/tab_bar.dart';

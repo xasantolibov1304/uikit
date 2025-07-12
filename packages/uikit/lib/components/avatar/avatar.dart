@@ -1,10 +1,12 @@
 // Flutter imports:
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
 
 // Project imports:
+import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _defaultSize = 44.0;

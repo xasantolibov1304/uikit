@@ -152,6 +152,17 @@ class $AssetsIcons24Gen {
   ];
 }
 
+class $AssetsIcons32Gen {
+  const $AssetsIcons32Gen();
+
+  /// File path: assets/icons32/close_circle.svg
+  SvgGenImage get closeCircle =>
+      const SvgGenImage('assets/icons32/close_circle.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [closeCircle];
+}
+
 class UikitAssets {
   const UikitAssets._();
 
@@ -160,6 +171,7 @@ class UikitAssets {
   static const $AssetsIcons16Gen icons16 = $AssetsIcons16Gen();
   static const $AssetsIcons20Gen icons20 = $AssetsIcons20Gen();
   static const $AssetsIcons24Gen icons24 = $AssetsIcons24Gen();
+  static const $AssetsIcons32Gen icons32 = $AssetsIcons32Gen();
 }
 
 class SvgGenImage {

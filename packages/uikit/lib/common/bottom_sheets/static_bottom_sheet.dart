@@ -1,25 +1,29 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:iman_uikit/common/bottom_sheets/scroll_indicator.dart';
 
 // Project imports:
 import 'package:iman_uikit/common/focus_remover.dart';
 import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/common/safe_area.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 import 'package:iman_uikit/utils/media_helper.dart';
 
 class StaticBottomSheet extends StatelessWidget {
   const StaticBottomSheet({
     required this.child,
-    this.withIndicator = true,
+    this.title,
+    this.hasIndicator = true,
     this.fixedHeight,
     super.key,
   });
 
   final Widget child;
+  final String? title;
 
-  final bool withIndicator;
+  final bool hasIndicator;
   final double? fixedHeight;
 
   @override
@@ -37,19 +41,25 @@ class StaticBottomSheet extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // if (withIndicator)
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(vertical: 8),
-            //   child: PackageAssets.icons64.scrollElement.svg(),
-            // ),
+            if (hasIndicator) const ScrollIndicator(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                if (title != null) ...[
+                  Expanded(
+                    child: Text(
+                      title!,
+                      textAlign: TextAlign.center,
+                      style: context.titleTextStyle.large1,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                ],
                 CommonGestureDetector(
-                  padding: const EdgeInsets.all(12),
                   onTap: () => Navigator.of(context).pop(),
-                  child: UikitAssets.icons24.closeCircle.svg(),
+                  child: UikitAssets.icons32.closeCircle.svg(),
                 ),
+                const SizedBox(width: 16),
               ],
             ),
             const SizedBox(height: 12),
