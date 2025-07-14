@@ -13,15 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return uikit.FocusRemover(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: uikit.lightTheme,
-        darkTheme: uikit.darkTheme,
-        themeMode: ThemeMode.light,
-        debugShowCheckedModeBanner: false,
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: uikit.lightTheme,
+      darkTheme: uikit.darkTheme,
+      themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -38,7 +36,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   double value = 50;
   String time = '';
-
+  int currentPage = 0;
   RangeValues rangeValues = const RangeValues(0, 100);
 
   @override
@@ -51,7 +49,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: <Widget>[
+          uikit.PageIndicator(
+            currentPage: 4,
+            totalPages: 4,
+          ),
           const SizedBox(height: 16),
+          uikit.NumericalPageIndicator(
+            currentPage: currentPage,
+            totalPages: 99,
+            onPageChanged: (page) {
+              setState(() {
+                currentPage = page;
+              });
+            },
+          ),
           _buildExampleButton(
             'Snackbar Example',
             () => uikit.showTopSnack(

@@ -82,6 +82,14 @@ class $AssetsIcons24Gen {
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons24/chevron_down.svg');
 
+  /// File path: assets/icons24/chevron_left.svg
+  SvgGenImage get chevronLeft =>
+      const SvgGenImage('assets/icons24/chevron_left.svg');
+
+  /// File path: assets/icons24/chevron_right.svg
+  SvgGenImage get chevronRight =>
+      const SvgGenImage('assets/icons24/chevron_right.svg');
+
   /// File path: assets/icons24/chevron_up.svg
   SvgGenImage get chevronUp =>
       const SvgGenImage('assets/icons24/chevron_up.svg');
@@ -139,6 +147,8 @@ class $AssetsIcons24Gen {
     checkboxOn,
     checkboxTristate,
     chevronDown,
+    chevronLeft,
+    chevronRight,
     chevronUp,
     clock,
     closeCircle,
