@@ -41,11 +41,11 @@ class $AssetsIcons20Gen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-    arrowUpDown,
-    chevronDown,
-    slider02,
-    slider03,
-  ];
+        arrowUpDown,
+        chevronDown,
+        slider02,
+        slider03,
+      ];
 }
 
 class $AssetsIcons24Gen {
@@ -139,31 +139,31 @@ class $AssetsIcons24Gen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-    arrowDown,
-    arrowLeft,
-    calendar,
-    checkCircle,
-    checkboxOff,
-    checkboxOn,
-    checkboxTristate,
-    chevronDown,
-    chevronLeft,
-    chevronRight,
-    chevronUp,
-    clock,
-    closeCircle,
-    closeSquare,
-    contact,
-    eye,
-    eyeSlash,
-    info,
-    infoFilled,
-    reload,
-    scan,
-    search,
-    user,
-    warningTriangle,
-  ];
+        arrowDown,
+        arrowLeft,
+        calendar,
+        checkCircle,
+        checkboxOff,
+        checkboxOn,
+        checkboxTristate,
+        chevronDown,
+        chevronLeft,
+        chevronRight,
+        chevronUp,
+        clock,
+        closeCircle,
+        closeSquare,
+        contact,
+        eye,
+        eyeSlash,
+        info,
+        infoFilled,
+        reload,
+        scan,
+        search,
+        user,
+        warningTriangle,
+      ];
 }
 
 class $AssetsIcons32Gen {
@@ -190,10 +190,10 @@ class UikitAssets {
 
 class SvgGenImage {
   const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = false;
+      : _isVecFormat = false;
 
   const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-    : _isVecFormat = true;
+      : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -250,8 +250,7 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter:
-          colorFilter ??
+      colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,

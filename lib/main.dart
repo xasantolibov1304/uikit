@@ -1,4 +1,6 @@
 // Flutter imports:
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -13,13 +15,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: uikit.lightTheme,
-      darkTheme: uikit.darkTheme,
-      themeMode: ThemeMode.light,
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (BuildContext context) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          useInheritedMediaQuery: true,
+          theme: uikit.lightTheme,
+          darkTheme: uikit.darkTheme,
+          themeMode: ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+      },
     );
   }
 }
