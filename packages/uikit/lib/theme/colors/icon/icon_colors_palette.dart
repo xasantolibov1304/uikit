@@ -14,11 +14,11 @@ IconColors _generatePaletteFromBrightness(Brightness brightness) {
       primary: Palette.gray[100]!,
       secondary: Palette.gray[70]!,
       tertiary: Palette.gray[50]!,
-      muted: Palette.gray[20]!,
+      muted: Palette.gray[30]!,
       info: Palette.cyan[60]!,
-      error: Palette.red[70]!,
-      warning: Palette.yellow[60]!,
-      success: Palette.green[60]!,
+      error: Palette.red[60]!,
+      warning: Palette.yellow[40]!,
+      success: Palette.green[50]!,
       invert: Palette.gray[0]!,
     );
   } else {
@@ -26,11 +26,11 @@ IconColors _generatePaletteFromBrightness(Brightness brightness) {
       primary: Palette.gray[100]!,
       secondary: Palette.gray[70]!,
       tertiary: Palette.gray[50]!,
-      muted: Palette.gray[20]!,
+      muted: Palette.gray[30]!,
       info: Palette.cyan[60]!,
-      error: Palette.red[70]!,
-      warning: Palette.yellow[60]!,
-      success: Palette.green[60]!,
+      error: Palette.red[60]!,
+      warning: Palette.yellow[40]!,
+      success: Palette.green[50]!,
       invert: Palette.gray[0]!,
     );
   }

@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _pageIndicatorSize = 10.0;
@@ -26,7 +29,9 @@ class PageIndicator extends StatelessWidget {
             duration: _animationDuration,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: context.borderColors.secondary,
+              color: (i + 1) == currentPage
+                  ? context.borderColors.secondary
+                  : context.surfaceColors.grey,
             ),
             margin: EdgeInsets.symmetric(horizontal: 6),
           ),

@@ -29,9 +29,15 @@ class $AssetsIcons20Gen {
   SvgGenImage get arrowUpDown =>
       const SvgGenImage('assets/icons20/arrow_up_down.svg');
 
+  /// File path: assets/icons20/check.svg
+  SvgGenImage get check => const SvgGenImage('assets/icons20/check.svg');
+
   /// File path: assets/icons20/chevron_down.svg
   SvgGenImage get chevronDown =>
       const SvgGenImage('assets/icons20/chevron_down.svg');
+
+  /// File path: assets/icons20/close.svg
+  SvgGenImage get close => const SvgGenImage('assets/icons20/close.svg');
 
   /// File path: assets/icons20/slider_02.svg
   SvgGenImage get slider02 => const SvgGenImage('assets/icons20/slider_02.svg');
@@ -39,13 +45,19 @@ class $AssetsIcons20Gen {
   /// File path: assets/icons20/slider_03.svg
   SvgGenImage get slider03 => const SvgGenImage('assets/icons20/slider_03.svg');
 
+  /// File path: assets/icons20/warning.svg
+  SvgGenImage get warning => const SvgGenImage('assets/icons20/warning.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
-        arrowUpDown,
-        chevronDown,
-        slider02,
-        slider03,
-      ];
+    arrowUpDown,
+    check,
+    chevronDown,
+    close,
+    slider02,
+    slider03,
+    warning,
+  ];
 }
 
 class $AssetsIcons24Gen {
@@ -139,31 +151,31 @@ class $AssetsIcons24Gen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        arrowDown,
-        arrowLeft,
-        calendar,
-        checkCircle,
-        checkboxOff,
-        checkboxOn,
-        checkboxTristate,
-        chevronDown,
-        chevronLeft,
-        chevronRight,
-        chevronUp,
-        clock,
-        closeCircle,
-        closeSquare,
-        contact,
-        eye,
-        eyeSlash,
-        info,
-        infoFilled,
-        reload,
-        scan,
-        search,
-        user,
-        warningTriangle,
-      ];
+    arrowDown,
+    arrowLeft,
+    calendar,
+    checkCircle,
+    checkboxOff,
+    checkboxOn,
+    checkboxTristate,
+    chevronDown,
+    chevronLeft,
+    chevronRight,
+    chevronUp,
+    clock,
+    closeCircle,
+    closeSquare,
+    contact,
+    eye,
+    eyeSlash,
+    info,
+    infoFilled,
+    reload,
+    scan,
+    search,
+    user,
+    warningTriangle,
+  ];
 }
 
 class $AssetsIcons32Gen {
@@ -190,10 +202,10 @@ class UikitAssets {
 
 class SvgGenImage {
   const SvgGenImage(this._assetName, {this.size, this.flavors = const {}})
-      : _isVecFormat = false;
+    : _isVecFormat = false;
 
   const SvgGenImage.vec(this._assetName, {this.size, this.flavors = const {}})
-      : _isVecFormat = true;
+    : _isVecFormat = true;
 
   final String _assetName;
   final Size? size;
@@ -250,7 +262,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ??
+      colorFilter:
+          colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,

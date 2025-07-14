@@ -29,6 +29,7 @@ export 'filters/filter.dart';
 export 'indicators/loading_indicator.dart';
 export 'indicators/page_indicator.dart';
 export 'indicators/numerical_page_indicator.dart';
+export 'indicators/step_indicator.dart';
 export 'inputs/inputs.dart';
 
 // Notice
