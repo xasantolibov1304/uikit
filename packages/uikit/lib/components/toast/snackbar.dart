@@ -108,44 +108,50 @@ void showTopSnack(
     SnackBar(
       elevation: 0,
       duration: _snackDuration,
-      behavior: SnackBarBehavior.floating,
-      backgroundColor: context.borderColors.black,
+      backgroundColor: Colors.transparent,
+      padding: EdgeInsets.symmetric(horizontal: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      content: Row(
-        children: [
-          snack._icon(context),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  snack.title,
-                  style: context.titleTextStyle.compact1.copyWith(
-                    color: context.textColors.invert,
-                  ),
-                ),
-                if (snack.message != null) ...[
-                  const SizedBox(height: 4),
+      content: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: context.borderColors.black,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            snack._icon(context),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    snack.message ?? '',
-                    style: context.bodyTextStyle.main.copyWith(
-                      color: context.textColors.tertiary,
+                    snack.title,
+                    style: context.titleTextStyle.compact1.copyWith(
+                      color: context.textColors.invert,
                     ),
                   ),
+                  if (snack.message != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      snack.message ?? '',
+                      style: context.bodyTextStyle.main.copyWith(
+                        color: context.textColors.tertiary,
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-          const SizedBox(width: 12),
-          CommonGestureDetector(
-            onTap: ScaffoldMessenger.of(context).removeCurrentSnackBar,
-            child: UikitAssets.icons24.closeCircle.svg(),
-          ),
-        ],
+            const SizedBox(width: 12),
+            CommonGestureDetector(
+              onTap: ScaffoldMessenger.of(context).removeCurrentSnackBar,
+              child: UikitAssets.icons24.closeCircle.svg(),
+            ),
+          ],
+        ),
       ),
     ),
   );

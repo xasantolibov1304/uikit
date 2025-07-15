@@ -57,7 +57,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            uikit.CustomTooltip(),
+            // uikit.CustomDropdownMenu(
+            //   child: Text('Dropdown'),
+            //   items: ['1', '2', '3'],
+            // ),
             uikit.StepIndicator(
               currentIndex: 3,
               steps: [

@@ -19,6 +19,9 @@ export 'buttons/button_cell.dart';
 export 'checkbox/checkbox.dart';
 export 'checkbox/checkbox_card.dart';
 
+// Dropdown
+export 'dropdown/dropdown.dart';
+
 // Fields
 export 'fields/info_field.dart';
 
@@ -60,3 +63,6 @@ export 'title/title.dart';
 
 // Toast
 export 'toast/snackbar.dart';
+
+// Tooltip
+export 'tooltip/tooltip.dart';
