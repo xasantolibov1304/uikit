@@ -74,11 +74,11 @@ class _SelectInputFieldState extends State<SelectInputField> {
 
   void _handleSelectTap() {
     _isExpanded = !_isExpanded;
-    updateState();
+    _updateState();
     widget.onSelectTap?.call();
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   Widget build(BuildContext context) {

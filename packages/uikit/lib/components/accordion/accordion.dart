@@ -53,7 +53,7 @@ class _AccordionState extends State<Accordion>
     );
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   void dispose() {
@@ -118,7 +118,7 @@ class _AccordionState extends State<Accordion>
 
   void _toggle() {
     _opened = !_opened;
-    updateState();
+    _updateState();
 
     if (_opened) {
       _expandController.forward();

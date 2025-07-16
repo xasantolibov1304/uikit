@@ -21,6 +21,7 @@ export 'checkbox/checkbox_card.dart';
 
 // Dropdown
 export 'dropdown/dropdown.dart';
+export 'dropdown/modal_menu.dart';
 
 // Fields
 export 'fields/info_field.dart';

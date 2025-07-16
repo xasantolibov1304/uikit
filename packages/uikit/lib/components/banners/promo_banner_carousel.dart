@@ -61,7 +61,7 @@ class _PromoBannerCarouselState extends State<PromoBannerCarousel> {
     _startAutoplay();
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   void didUpdateWidget(PromoBannerCarousel oldWidget) {
@@ -114,7 +114,7 @@ class _PromoBannerCarouselState extends State<PromoBannerCarousel> {
   void _onPageChanged(int index) {
     if (_currentPage != index) {
       _currentPage = index;
-      updateState();
+      _updateState();
     }
   }
 

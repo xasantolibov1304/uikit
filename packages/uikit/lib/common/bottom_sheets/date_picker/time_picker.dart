@@ -34,7 +34,7 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
     dateTime = widget.initialDateTime ?? DateTime.now();
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
                   itemExtent: _itemExtent,
                   onDateTimeChanged: (date) {
                     dateTime = date;
-                    updateState();
+                    _updateState();
                   },
                   selectionOverlayBuilder: (
                     _, {

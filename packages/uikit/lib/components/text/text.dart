@@ -45,7 +45,7 @@ class _TextWidgetState extends State<TextWidget> {
     }
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class _TextWidgetState extends State<TextWidget> {
             child: CommonGestureDetector(
               onTap: () {
                 _isExpanded = !_isExpanded;
-                updateState();
+                _updateState();
               },
               child: Button(
                 size: ButtonSize.small,
@@ -103,7 +103,7 @@ class _TextWidgetState extends State<TextWidget> {
                     : widget.startButtonText!,
                 onTap: () {
                   _isExpanded = !_isExpanded;
-                  updateState();
+                  _updateState();
                 },
                 padding: const EdgeInsets.symmetric(horizontal: 8),
               ),

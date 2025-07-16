@@ -136,8 +136,8 @@ class _InputFieldState extends State<InputField> {
     _controller = widget.controller ?? TextEditingController();
 
     if (widget.canClear) {
-      _controller.addListener(updateState);
-      _focusNode.addListener(updateState);
+      _controller.addListener(_updateState);
+      _focusNode.addListener(_updateState);
     }
 
     _controller.text = widget.initialValue ?? '';
@@ -147,16 +147,16 @@ class _InputFieldState extends State<InputField> {
 
   void _onFocusChange() {
     _hasFocus = _focusNode.hasFocus;
-    updateState();
+    _updateState();
   }
 
-  void updateState() => {if (mounted) setState(() {})};
+  void _updateState() => {if (mounted) setState(() {})};
 
   @override
   void dispose() {
     if (widget.canClear) {
-      _controller.removeListener(updateState);
-      _focusNode.removeListener(updateState);
+      _controller.removeListener(_updateState);
+      _focusNode.removeListener(_updateState);
     }
     _focusNode.dispose();
     _controller.dispose();
