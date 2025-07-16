@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
   final Widget child;
@@ -42,9 +43,8 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
         child: Stack(
           children: [
             Positioned(
-              left: offset.dx,
-              top: offset.dy + size.height + 8,
-              width: 400,
+              // left: offset.dx,
+              // top: offset.dy + size.height + 8,
               child: Material(
                 color: Colors.transparent,
                 child: Container(
@@ -53,7 +53,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.15),
+                        color: Colors.black.withValues(alpha: 0.15),
                         blurRadius: 16,
                         offset: const Offset(0, 4),
                       ),
@@ -75,11 +75,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
                                   },
                                   child: Text(
                                     item,
-                                    style: const TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black,
-                                    ),
+                                    style: context.titleTextStyle.compact1,
                                   ),
                                 ),
                               ))
