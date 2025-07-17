@@ -12,3 +12,8 @@ export 'inputs_example_page.dart';
 export 'radio_example_page.dart';
 export 'switcher_example_page.dart';
 export 'text_example_page.dart';
+export 'snackbar_example_page.dart';
+export 'sliders_example_page.dart';
+export 'tab_bar_example_page.dart';
+export 'indicators_example_page.dart';
+export 'dropdowns_example_page.dart';

@@ -116,8 +116,8 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
                   const SizedBox(height: 16),
                   TimeInputField(
                     label: 'Time Input',
+                    selectTimeButtonText: 'Select Time',
                     onChanged: (value) => debugPrint('Time: $value'),
-                    // onSelectTimeTap: () => _showSnackBar('Time picker tapped!'),
                   ),
                   const SizedBox(height: 16),
                   SelectInputField(

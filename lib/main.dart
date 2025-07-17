@@ -59,46 +59,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            uikit.CustomTooltip(),
-            // uikit.CustomDropdownMenu(
-            //   child: Text('Dropdown'),
-            //   items: ['1', '2', '3'],
-            // ),
-            uikit.StepIndicator(
-              currentIndex: 3,
-              steps: [
-                uikit.StepData(
-                  label: 'Step 1',
-                  state: uikit.StepStateType.completed,
-                ),
-                uikit.StepData(
-                  label: 'Step 2',
-                  state: uikit.StepStateType.completed,
-                ),
-                uikit.StepData(
-                  label: 'Step 3',
-                  state: uikit.StepStateType.error,
-                ),
-              ],
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
-                  uikit.PageIndicator(
-                    currentPage: 1,
-                    totalPages: 4,
-                  ),
-                  const SizedBox(height: 16),
-                  uikit.NumericalPageIndicator(
-                    currentPage: currentPage,
-                    totalPages: 99,
-                    onPageChanged: (page) {
-                      setState(() {
-                        currentPage = page;
-                      });
-                    },
-                  ),
                   _buildExampleButton(
                     'Snackbar Example',
                     () => uikit.showTopSnack(
@@ -223,6 +187,48 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const uikit.RadioExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Snackbar Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const uikit.SnackbarExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Sliders Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const uikit.SlidersExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Tab Bar Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const uikit.TabBarExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Indicators Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const uikit.IndicatorsExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Dropdowns Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const uikit.DropdownsExamplePage(),
                       ),
                     ),
                   ),
