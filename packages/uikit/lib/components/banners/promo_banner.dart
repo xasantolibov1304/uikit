@@ -85,7 +85,7 @@ class PromoBanner extends StatelessWidget {
                         Expanded(
                           child: Text(
                             description ?? '',
-                            style: context.subtitleTextStyle.medium2,
+                            style: context.bodyTextStyle.compact2,
                           ),
                         ),
                       ],

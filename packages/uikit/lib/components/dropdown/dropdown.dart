@@ -83,8 +83,7 @@ class _CommonDropdownState extends State<CommonDropdown> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: widget.items.length,
-                    padding: widget.menuPadding ??
-                        const EdgeInsets.symmetric(vertical: 4),
+                    padding: widget.menuPadding ?? const EdgeInsets.all(10),
                     itemBuilder: (context, index) {
                       final item = widget.items[index];
 
@@ -94,8 +93,7 @@ class _CommonDropdownState extends State<CommonDropdown> {
                           widget.onSelected?.call(item);
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
                               UikitAssets.icons20.check.svg(

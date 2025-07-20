@@ -48,10 +48,15 @@ class InputField extends StatefulWidget {
     this.status = InputFieldStatus.info,
     //
     this.focusNode,
-    this.textAlign = TextAlign.start,
     this.textInputAction,
+    this.textAlign = TextAlign.start,
     this.keyboardType = TextInputType.text,
+    this.textAlignVertical = TextAlignVertical.center,
     this.textCapitalization = TextCapitalization.sentences,
+    this.floatingLabelBehavior = FloatingLabelBehavior.auto,
+    this.iconsCrossAxisAlignment = CrossAxisAlignment.center,
+    //
+    this.contentPadding = const EdgeInsets.symmetric(horizontal: 12),
     //
     this.isEnabled = true,
     this.readonly = false,
@@ -64,6 +69,7 @@ class InputField extends StatefulWidget {
     this.minLines,
     this.maxLines = 1,
     this.maxLength,
+    this.showCounter = false,
     this.inputFormatters,
     //
     this.leadingIcon,
@@ -97,7 +103,12 @@ class InputField extends StatefulWidget {
   final TextAlign textAlign;
   final TextInputType keyboardType;
   final TextInputAction? textInputAction;
+  final TextAlignVertical textAlignVertical;
   final TextCapitalization textCapitalization;
+  final FloatingLabelBehavior floatingLabelBehavior;
+  final CrossAxisAlignment iconsCrossAxisAlignment;
+
+  final EdgeInsets? contentPadding;
 
   final bool isEnabled;
   final bool readonly;
@@ -110,6 +121,7 @@ class InputField extends StatefulWidget {
   final int? minLines;
   final int maxLines;
   final int? maxLength;
+  final bool showCounter;
   final List<TextInputFormatter>? inputFormatters;
 
   final Widget? leadingIcon;
@@ -128,6 +140,7 @@ class _InputFieldState extends State<InputField> {
   late FocusNode _focusNode;
   late TextEditingController _controller;
   bool _hasFocus = false;
+  bool get _isMultiline => widget.minLines != null && widget.minLines! > 1;
 
   @override
   void initState() {
@@ -175,8 +188,8 @@ class _InputFieldState extends State<InputField> {
             initialValue: widget.initialValue,
             builder: (FormFieldState<Object?> formFieldState) {
               return Container(
-                height: widget.size.size,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: widget.contentPadding,
+                height: _isMultiline ? null : widget.size.size,
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 2,
@@ -185,58 +198,84 @@ class _InputFieldState extends State<InputField> {
                   color: context.fieldColors.background,
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    if (widget.leadingIcon != null) ...[
-                      widget.leadingIcon!,
-                      const SizedBox(width: 8),
-                    ],
-                    Expanded(
-                      child: TextField(
-                        cursorHeight: 16,
-                        autocorrect: false,
-                        onTap: widget.onTap,
-                        focusNode: _focusNode,
-                        controller: _controller,
-                        enableSuggestions: false,
-                        enabled: widget.isEnabled,
-                        minLines: widget.minLines,
-                        maxLines: widget.maxLines,
-                        maxLength: widget.maxLength,
-                        cursorColor: Colors.black,
-                        readOnly: widget.readonly,
-                        autofocus: widget.autofocus,
-                        onChanged: widget.onChanged,
-                        textAlign: widget.textAlign,
-                        buildCounter: _buildCounter,
-                        obscureText: widget.obscureText,
-                        keyboardType: widget.keyboardType,
-                        decoration: _buildInputDecoration,
-                        style: context.titleTextStyle.main1,
-                        inputFormatters: widget.inputFormatters,
-                        textInputAction: widget.textInputAction,
-                        onEditingComplete: widget.onEditingComplete,
-                        textAlignVertical: TextAlignVertical.center,
-                        textCapitalization: widget.textCapitalization,
-                      ),
+                    Row(
+                      crossAxisAlignment: widget.iconsCrossAxisAlignment,
+                      children: [
+                        if (widget.leadingIcon != null) ...[
+                          widget.leadingIcon!,
+                          const SizedBox(width: 8),
+                        ],
+                        Expanded(
+                          child: TextField(
+                            cursorHeight: 16,
+                            autocorrect: false,
+                            onTap: widget.onTap,
+                            focusNode: _focusNode,
+                            controller: _controller,
+                            enableSuggestions: false,
+                            enabled: widget.isEnabled,
+                            minLines: widget.minLines,
+                            maxLines: widget.maxLines,
+                            maxLength: widget.maxLength,
+                            cursorColor: Colors.black,
+                            readOnly: widget.readonly,
+                            autofocus: widget.autofocus,
+                            onChanged: widget.onChanged,
+                            textAlign: widget.textAlign,
+                            buildCounter: _buildCounter,
+                            obscureText: widget.obscureText,
+                            keyboardType: widget.keyboardType,
+                            decoration: _buildInputDecoration,
+                            style: context.titleTextStyle.main1,
+                            inputFormatters: widget.inputFormatters,
+                            textInputAction: widget.textInputAction,
+                            onEditingComplete: widget.onEditingComplete,
+                            textAlignVertical: widget.textAlignVertical,
+                            textCapitalization: widget.textCapitalization,
+                          ),
+                        ),
+                        if (widget.suffixLabel != null ||
+                            widget.suffixValue != null) ...[
+                          _buildSuffix(),
+                          const SizedBox(width: 12),
+                        ],
+                        if (widget.isLoading) ...[
+                          const SizedBox(width: 8),
+                          const LoadingIndicator(),
+                        ],
+                        if (_shouldShowClear()) ...[
+                          const SizedBox(width: 8),
+                          _buildClearButton(),
+                        ],
+                        if (widget.trailingIcon != null) ...[
+                          const SizedBox(width: 8),
+                          widget.trailingIcon!,
+                        ],
+                      ],
                     ),
-                    if (widget.suffixLabel != null ||
-                        widget.suffixValue != null) ...[
-                      _buildSuffix(),
-                      const SizedBox(width: 12),
-                    ],
-                    if (widget.isLoading) ...[
-                      const SizedBox(width: 8),
-                      const LoadingIndicator(),
-                    ],
-                    if (_shouldShowClear()) ...[
-                      const SizedBox(width: 8),
-                      _buildClearButton(),
-                    ],
-                    if (widget.trailingIcon != null) ...[
-                      const SizedBox(width: 8),
-                      widget.trailingIcon!,
-                    ],
+                    if (widget.showCounter && _isMultiline)
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '${_controller.text.length}',
+                              style: context.subtitleTextStyle.medium2.copyWith(
+                                color: context.textColors.secondary,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '/${widget.maxLength}',
+                              style: context.subtitleTextStyle.medium2.copyWith(
+                                color: context.textColors.muted,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               );
@@ -251,6 +290,7 @@ class _InputFieldState extends State<InputField> {
   InputDecoration get _buildInputDecoration {
     return InputDecoration(
       contentPadding: const EdgeInsets.all(4),
+      floatingLabelBehavior: widget.floatingLabelBehavior,
       labelStyle: context.titleTextStyle.main1.copyWith(
         color: context.textColors.tertiary,
       ),

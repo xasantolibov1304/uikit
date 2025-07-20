@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
           darkTheme: uikit.darkTheme,
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: uikit.FocusRemover(
+            child: const MyHomePage(title: 'Flutter Demo Home Page'),
+          ),
         );
       },
     );
