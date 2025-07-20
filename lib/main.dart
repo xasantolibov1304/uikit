@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context) {
         return MaterialApp(
           title: 'Flutter Demo',
+          // ignore: deprecated_member_use
           useInheritedMediaQuery: true,
           theme: uikit.lightTheme,
           darkTheme: uikit.darkTheme,
@@ -52,9 +53,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+      appBar: uikit.AppBarInternal(
+        title: widget.title,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: context.surfaceColors.error,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -51,9 +51,10 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dropdowns Example'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      appBar: AppBarInternal(
+        title: 'Dropdowns Example',
+        centerTitle: true,
+        backgroundColor: context.surfaceColors.error,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
