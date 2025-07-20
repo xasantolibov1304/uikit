@@ -1,7 +1,12 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+
+// Package imports:
 import 'package:super_tooltip/super_tooltip.dart';
+
+// Project imports:
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+import 'package:iman_uikit/theme/color_theme_data.dart';
 
 class CustomTooltip extends StatefulWidget {
   const CustomTooltip({
