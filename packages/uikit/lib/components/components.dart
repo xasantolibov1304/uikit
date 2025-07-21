@@ -19,6 +19,9 @@ export 'banners/promo_banner_carousel.dart';
 export 'buttons/button.dart';
 export 'buttons/button_cell.dart';
 
+// Breadcrumb
+export 'breadcrumb/breadcrumb.dart';
+
 // Checkbox
 export 'checkbox/checkbox.dart';
 export 'checkbox/checkbox_card.dart';

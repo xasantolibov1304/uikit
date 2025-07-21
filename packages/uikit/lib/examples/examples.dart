@@ -17,3 +17,4 @@ export 'sliders_example_page.dart';
 export 'tab_bar_example_page.dart';
 export 'indicators_example_page.dart';
 export 'dropdowns_example_page.dart';
+export 'breadcrumb_example_page.dart';

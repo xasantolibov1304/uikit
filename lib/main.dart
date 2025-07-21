@@ -64,14 +64,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            uikit.EmptyState(
-              viewModelBuilder: (context) => uikit.EmptyStateModel(
-                title: 'No data',
-                description: 'No data found',
-                buttonText: 'AddCard',
-                onButtonPressed: () {},
-              ),
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),
@@ -242,6 +234,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       MaterialPageRoute(
                         builder: (context) =>
                             const uikit.DropdownsExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Breadcrumb Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const uikit.BreadcrumbExamplePage(),
                       ),
                     ),
                   ),
