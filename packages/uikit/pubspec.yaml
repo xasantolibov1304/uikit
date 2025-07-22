@@ -26,6 +26,7 @@ dependencies:
 
   # Utils
   intl: any
+  path: ^1.9.1
   sms_autofill: ^2.4.1
   in_date_utils: ^1.2.1
   flutter_multi_formatter: ^2.13.7
@@ -58,3 +59,4 @@ flutter:
     - assets/icons20/
     - assets/icons24/
     - assets/icons32/
+    - assets/icons40/

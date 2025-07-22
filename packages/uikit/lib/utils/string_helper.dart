@@ -3,8 +3,8 @@ import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
+import 'package:iman_uikit/utils/validation_helper.dart';
 import 'reg_exp_constants.dart';
-import 'validate_helper.dart';
 
 abstract class StringHelper {
   const StringHelper._();

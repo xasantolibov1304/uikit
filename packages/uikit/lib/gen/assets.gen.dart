@@ -39,11 +39,18 @@ class $AssetsIcons20Gen {
   /// File path: assets/icons20/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons20/close.svg');
 
+  /// File path: assets/icons20/icon_placeholder.svg
+  SvgGenImage get iconPlaceholder =>
+      const SvgGenImage('assets/icons20/icon_placeholder.svg');
+
   /// File path: assets/icons20/slider_02.svg
   SvgGenImage get slider02 => const SvgGenImage('assets/icons20/slider_02.svg');
 
   /// File path: assets/icons20/slider_03.svg
   SvgGenImage get slider03 => const SvgGenImage('assets/icons20/slider_03.svg');
+
+  /// File path: assets/icons20/trash.svg
+  SvgGenImage get trash => const SvgGenImage('assets/icons20/trash.svg');
 
   /// File path: assets/icons20/warning.svg
   SvgGenImage get warning => const SvgGenImage('assets/icons20/warning.svg');
@@ -54,8 +61,10 @@ class $AssetsIcons20Gen {
     check,
     chevronDown,
     close,
+    iconPlaceholder,
     slider02,
     slider03,
+    trash,
     warning,
   ];
 }
@@ -189,6 +198,34 @@ class $AssetsIcons32Gen {
   List<SvgGenImage> get values => [closeCircle];
 }
 
+class $AssetsIcons40Gen {
+  const $AssetsIcons40Gen();
+
+  /// File path: assets/icons40/doc_file.svg
+  SvgGenImage get docFile => const SvgGenImage('assets/icons40/doc_file.svg');
+
+  /// File path: assets/icons40/jpeg_file.svg
+  SvgGenImage get jpegFile => const SvgGenImage('assets/icons40/jpeg_file.svg');
+
+  /// File path: assets/icons40/pdf_file.svg
+  SvgGenImage get pdfFile => const SvgGenImage('assets/icons40/pdf_file.svg');
+
+  /// File path: assets/icons40/png_file.svg
+  SvgGenImage get pngFile => const SvgGenImage('assets/icons40/png_file.svg');
+
+  /// File path: assets/icons40/xlsx_file.svg
+  SvgGenImage get xlsxFile => const SvgGenImage('assets/icons40/xlsx_file.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+    docFile,
+    jpegFile,
+    pdfFile,
+    pngFile,
+    xlsxFile,
+  ];
+}
+
 class UikitAssets {
   const UikitAssets._();
 
@@ -198,6 +235,7 @@ class UikitAssets {
   static const $AssetsIcons20Gen icons20 = $AssetsIcons20Gen();
   static const $AssetsIcons24Gen icons24 = $AssetsIcons24Gen();
   static const $AssetsIcons32Gen icons32 = $AssetsIcons32Gen();
+  static const $AssetsIcons40Gen icons40 = $AssetsIcons40Gen();
 }
 
 class SvgGenImage {

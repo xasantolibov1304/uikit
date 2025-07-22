@@ -17,7 +17,8 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.onPop,
     this.backgroundColor,
-    this.textStyle,
+    this.titleTextStyle,
+    this.subtitleTextStyle,
     // this.iconColor,
     this.forceMaterialTransparency = true,
     super.key,
@@ -34,7 +35,8 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
 
   final Color? backgroundColor;
-  final TextStyle? textStyle;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subtitleTextStyle;
   // final SvgColors? iconColor;
 
   final void Function()? onPop;
@@ -62,14 +64,13 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Text(
                   title!,
-                  style: textStyle ?? context.titleTextStyle.main1,
+                  style: titleTextStyle ?? context.titleTextStyle.main1,
                 ),
                 if (subtitle != null) ...[
-                  const SizedBox(height: 4),
                   Text(
                     subtitle!,
                     maxLines: 1,
-                    style: context.subtitleTextStyle.compact1,
+                    style: subtitleTextStyle ?? context.subtitleTextStyle.main,
                   ),
                 ],
               ],

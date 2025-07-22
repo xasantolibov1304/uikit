@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/breadcrumb.dart';
+import 'package:iman_uikit/components/breadcrumb/breadcrumb.dart';
 
 class BreadcrumbExamplePage extends StatefulWidget {
   const BreadcrumbExamplePage({super.key});
