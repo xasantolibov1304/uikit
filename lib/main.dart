@@ -64,13 +64,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            uikit.CardBalanceMain(
-              balance: 100000000,
-              title: 'Total Balance',
-              onBalanceTap: () {},
-              isHidden: false,
-              currency: 'sum',
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),
@@ -250,6 +243,32 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       MaterialPageRoute(
                         builder: (context) =>
                             const uikit.BreadcrumbExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Balance Overview Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const uikit.BalanceOverviewExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'File Upload Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const uikit.FileUploadExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'Top Bar Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const uikit.TopBarExamplePage(),
                       ),
                     ),
                   ),

@@ -1,8 +1,10 @@
 // Project imports:
 export 'badge_example_page.dart';
+export 'balance_overview_example_page.dart';
 export 'buttons_example_page.dart';
 export 'button_cell_example_page.dart';
 export 'checkbox_example_page.dart';
+export 'file_upload_example_page.dart';
 export 'notice_example_page.dart';
 export 'accordion_example_page.dart';
 export 'filters_example_page.dart';
@@ -15,6 +17,7 @@ export 'text_example_page.dart';
 export 'snackbar_example_page.dart';
 export 'sliders_example_page.dart';
 export 'tab_bar_example_page.dart';
+export 'top_bar_example_page.dart';
 export 'indicators_example_page.dart';
 export 'dropdowns_example_page.dart';
 export 'breadcrumb_example_page.dart';
