@@ -15,11 +15,15 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIcons16Gen {
   const $AssetsIcons16Gen();
 
+  /// File path: assets/icons16/chevron_right.svg
+  SvgGenImage get chevronRight =>
+      const SvgGenImage('assets/icons16/chevron_right.svg');
+
   /// File path: assets/icons16/filter.svg
   SvgGenImage get filter => const SvgGenImage('assets/icons16/filter.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [filter];
+  List<SvgGenImage> get values => [chevronRight, filter];
 }
 
 class $AssetsIcons20Gen {

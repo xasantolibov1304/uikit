@@ -64,6 +64,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            uikit.CardBalanceMain(
+              balance: 100000000,
+              title: 'Total Balance',
+              onBalanceTap: () {},
+              isHidden: false,
+              currency: 'sum',
+            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),

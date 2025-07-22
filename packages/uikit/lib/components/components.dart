@@ -11,6 +11,10 @@ export 'avatar/avatar.dart';
 // Badge
 export 'badge/badge.dart';
 
+// Balance Overview
+export 'balance_overview/card_balance_main.dart';
+export 'balance_overview/card_balance_sub.dart';
+
 // Banners
 export 'banners/promo_banner.dart';
 export 'banners/promo_banner_carousel.dart';
@@ -68,6 +72,8 @@ export 'switcher/switcher_mini.dart';
 export 'switcher/switcher_card.dart';
 
 // Text
+export 'text/number_slide_animation.dart';
+export 'text/rich_text.dart';
 export 'text/text.dart';
 export 'text/text_highlight.dart';
 

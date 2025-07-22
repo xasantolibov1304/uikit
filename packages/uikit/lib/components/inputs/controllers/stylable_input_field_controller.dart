@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_part_style_definition.dart';
 import 'package:iman_uikit/components/inputs/controllers/text_style_matcher.dart';
 
-// Project imports:
-
 class StylableInputFieldController extends TextEditingController {
   StylableInputFieldController({
     required this.styles,
