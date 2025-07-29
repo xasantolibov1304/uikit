@@ -25,8 +25,18 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                uikit.CommonTooltip(
+                  title: 'Primary text',
+                  // subtitle: 'Secondary text',
+                  child: Icon(Icons.info, size: 24),
+                )
+              ],
+            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),

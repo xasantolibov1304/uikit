@@ -4,6 +4,5 @@ export 'theme/theme.dart';
 export 'examples/examples.dart';
 export 'utils/utils.dart';
 export 'gen/assets.gen.dart';
-export 'package:super_tooltip/super_tooltip.dart';
 export 'states/empty_state/empty_state.dart';
 export 'states/empty_state/models/empty_state_model.dart';
