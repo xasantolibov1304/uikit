@@ -8,6 +8,14 @@ export 'accordion/accordion.dart';
 // Avatar
 export 'avatar/avatar.dart';
 
+// Alerts
+export 'alerts/notice.dart';
+export 'alerts/info_alert.dart';
+
+// Bottom Nav Bar
+export 'bottom_nav_bar/bottom_navigation_bar.dart';
+export 'bottom_nav_bar/bottom_nav_bar_item.dart';
+
 // Badge
 export 'badge/badge.dart';
 
@@ -51,9 +59,6 @@ export 'inputs/inputs.dart';
 
 // File Upload
 export 'file_upload/file_upload.dart';
-
-// Notice
-export 'notice/notice.dart';
 
 // Sliders
 export 'sliders/input_slider.dart';

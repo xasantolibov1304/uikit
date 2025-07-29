@@ -116,7 +116,7 @@ class _BalanceOverviewExamplePageState
               });
             },
           ),
-          Text('${_balance.toStringAsFixed(0)}'),
+          Text(_balance.toStringAsFixed(0)),
         ),
         const SizedBox(height: 16),
 

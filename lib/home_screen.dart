@@ -1,0 +1,59 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:auto_route/auto_route.dart';
+import 'package:iman_uikit/uikit.dart' as uikit;
+
+// Project imports:
+import 'package:uikit/router/app_router.dart';
+
+@RoutePage()
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return AutoTabsScaffold(
+      backgroundColor: context.backgroundColors.primary,
+      appBarBuilder: (context, tabsRouter) => uikit.AppBarInternal(
+        title: 'UIKit Demo',
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: context.surfaceColors.primary,
+      ),
+      transitionBuilder: (_, Widget child, __) {
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          child: child,
+        );
+      },
+      routes: [
+        ButtonsRoute(),
+        SecondRoute(),
+      ],
+      bottomNavigationBuilder: (context, tabsRouter) =>
+          uikit.CommonBottomNavigationBar(
+        itemBuilder: (context) => [
+          uikit.BottomNavBarItem(
+            label: 'Buttons',
+            activeIcon: const Icon(Icons.widgets),
+            inactiveIcon: const Icon(Icons.widgets_outlined),
+          ),
+          uikit.BottomNavBarItem(
+            label: 'Second',
+            activeIcon: const Icon(Icons.star),
+            inactiveIcon: const Icon(Icons.star_outline),
+          ),
+        ],
+        currentIndex: tabsRouter.activeIndex,
+        onTap: (index) => tabsRouter.setActiveIndex(index),
+      ),
+    );
+  }
+}
