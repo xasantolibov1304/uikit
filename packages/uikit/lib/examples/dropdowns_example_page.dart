@@ -80,12 +80,10 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
                   const SizedBox(height: 16),
                   CommonDropdown(
                     items: _dropdownItems,
-                    selectedValue: _selectedValue,
-                    onSelected: (value) =>
+                    onValueChanged: (value) =>
                         setState(() => _selectedValue = value),
                     isEnabled: _isEnabled,
                     maxHeight: _maxHeight,
-                    menuPadding: _menuPadding,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 12),
@@ -133,8 +131,7 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
                   const SizedBox(height: 16),
                   CommonDropdown(
                     items: _customItems,
-                    selectedValue: _customSelectedValue,
-                    onSelected: (value) =>
+                    onValueChanged: (value) =>
                         setState(() => _customSelectedValue = value),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -198,8 +195,7 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
                   const SizedBox(height: 16),
                   CommonDropdown(
                     items: _countries,
-                    selectedValue: _selectedCountry,
-                    onSelected: (value) =>
+                    onValueChanged: (value) =>
                         setState(() => _selectedCountry = value),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
