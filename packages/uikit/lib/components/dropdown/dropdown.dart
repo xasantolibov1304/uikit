@@ -15,6 +15,7 @@ class CommonDropdown extends StatefulWidget {
     required this.items,
     this.onValueChanged,
     this.isEnabled = true,
+    this.minWidth,
     this.maxHeight,
     this.highlightSelectedItem = true,
     this.leadingIcon,
@@ -27,6 +28,7 @@ class CommonDropdown extends StatefulWidget {
     required this.items,
     this.onValueChanged,
     this.isEnabled = true,
+    this.minWidth,
     this.maxHeight,
     super.key,
   })  : _type = DropdownType.tick,
@@ -39,6 +41,7 @@ class CommonDropdown extends StatefulWidget {
     required this.items,
     this.onValueChanged,
     this.isEnabled = true,
+    this.minWidth,
     this.maxHeight,
     super.key,
   })  : _type = DropdownType.radio,
@@ -56,6 +59,7 @@ class CommonDropdown extends StatefulWidget {
   final bool isEnabled;
   final bool highlightSelectedItem;
 
+  final double? minWidth;
   final double? maxHeight;
 
   final DropdownType? _type;
@@ -71,8 +75,9 @@ class _CommonDropdownState extends State<CommonDropdown> {
   Widget build(BuildContext context) {
     return BaseDropdown(
       targetChild: widget.child,
-      isEnabled: widget.isEnabled,
+      minWidth: widget.minWidth,
       maxHeight: widget.maxHeight,
+      isEnabled: widget.isEnabled,
       itemCount: widget.items.length,
       menuPadding: const EdgeInsets.all(8.0),
       onSelected: (index) {
@@ -87,7 +92,9 @@ class _CommonDropdownState extends State<CommonDropdown> {
 
         return Container(
           padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.only(bottom: 10.0),
+          margin: EdgeInsets.only(
+            bottom: index == widget.items.length - 1 ? 0 : 10.0,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: widget.highlightSelectedItem && isSelected

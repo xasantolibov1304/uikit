@@ -26,7 +26,7 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
   EdgeInsets _menuPadding = const EdgeInsets.symmetric(vertical: 4);
 
   // Custom dropdown items
-  List<String> _customItems = [
+  final List<String> _customItems = [
     'Apple',
     'Banana',
     'Orange',
@@ -37,7 +37,7 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
   String? _customSelectedValue;
 
   // Countries dropdown
-  List<String> _countries = [
+  final List<String> _countries = [
     'USA',
     'Canada',
     'UK',
@@ -234,6 +234,197 @@ class _DropdownsExamplePageState extends State<DropdownsExamplePage> {
                         ],
                       ),
                     ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            // Dropdowns with Different Width and Height
+            _buildSectionTitle('Dropdowns with Different Width and Height'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  // Small Width Dropdown
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: CommonDropdown(
+                          items: ['Option 1', 'Option 2', 'Option 3'],
+                          onValueChanged: (value) => debugPrint('Small Width: $value'),
+                          minWidth: 120,
+                          maxHeight: 200,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: Colors.grey.shade300),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Small',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.grey.shade600,
+                                  size: 16,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      // Medium Width Dropdown
+                      Expanded(
+                        flex: 2,
+                        child: CommonDropdown(
+                          items: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+                          onValueChanged: (value) => debugPrint('Medium Width: $value'),
+                          minWidth: 200,
+                          maxHeight: 250,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.grey.shade300),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Medium Width',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.grey.shade600,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  // Large Width Dropdown
+                  CommonDropdown(
+                    items: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'],
+                    onValueChanged: (value) => debugPrint('Large Width: $value'),
+                    minWidth: 300,
+                    maxHeight: 300,
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 12),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Large Width Dropdown',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.grey.shade600,
+                            size: 24,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Different Heights Row
+                  Row(
+                    children: [
+                      // Short Height Dropdown
+                      Expanded(
+                        child: CommonDropdown(
+                          items: ['A', 'B', 'C'],
+                          onValueChanged: (value) => debugPrint('Short Height: $value'),
+                          maxHeight: 150,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.green.shade50,
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: Colors.green.shade300),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Short',
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.green.shade700,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.green.shade600,
+                                  size: 16,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      // Tall Height Dropdown
+                      Expanded(
+                        child: CommonDropdown(
+                          items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7'],
+                          onValueChanged: (value) => debugPrint('Tall Height: $value'),
+                          maxHeight: 400,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.purple.shade50,
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(color: Colors.purple.shade300),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Tall',
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.purple.shade700,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.purple.shade600,
+                                  size: 16,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

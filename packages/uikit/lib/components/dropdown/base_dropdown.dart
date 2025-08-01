@@ -10,6 +10,7 @@ class BaseDropdown extends StatefulWidget {
     required this.itemBuilder,
     this.onSelected,
     this.isEnabled = true,
+    this.minWidth,
     this.maxHeight,
     this.menuPadding,
     super.key,
@@ -23,6 +24,7 @@ class BaseDropdown extends StatefulWidget {
 
   final bool isEnabled;
 
+  final double? minWidth;
   final double? maxHeight;
 
   final EdgeInsets? menuPadding;
@@ -34,6 +36,7 @@ class BaseDropdown extends StatefulWidget {
 class _BaseDropdownState extends State<BaseDropdown> {
   final LayerLink _layerLink = LayerLink();
   OverlayEntry? _overlayEntry;
+  bool _isMenuOpen = false;
 
   void _updateState() {
     if (mounted) setState(() {});
@@ -42,6 +45,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
   @override
   void dispose() {
     _hideMenu();
+    _isMenuOpen = false;
     super.dispose();
   }
 
@@ -51,10 +55,10 @@ class _BaseDropdownState extends State<BaseDropdown> {
       link: _layerLink,
       child: CommonGestureDetector(
         onTap: () {
-          if (_overlayEntry == null) {
-            _showMenu();
-          } else {
+          if (_isMenuOpen) {
             _hideMenu();
+          } else {
+            _showMenu();
           }
         },
         child: widget.targetChild,
@@ -63,17 +67,22 @@ class _BaseDropdownState extends State<BaseDropdown> {
   }
 
   void _showMenu() {
-    if (!widget.isEnabled) return;
+    if (!widget.isEnabled || _isMenuOpen) return;
+    FocusScope.of(context).unfocus();
 
     _overlayEntry = _createOverlayEntry();
     Overlay.of(context).insert(_overlayEntry!);
+    _isMenuOpen = true;
     _updateState();
   }
 
   void _hideMenu() {
-    _overlayEntry?.remove();
-    _overlayEntry = null;
-    _updateState();
+    if (_overlayEntry != null) {
+      _overlayEntry!.remove();
+      _overlayEntry = null;
+      _isMenuOpen = false;
+      _updateState();
+    }
   }
 
   OverlayEntry _createOverlayEntry() {
@@ -97,13 +106,14 @@ class _BaseDropdownState extends State<BaseDropdown> {
             ),
             Positioned(
               left: offset.dx,
-              width: size.width,
               top: offset.dy + size.height + 8,
+              width: widget.minWidth ?? size.width,
               child: Material(
                 color: Colors.transparent,
                 child: Container(
                   constraints: BoxConstraints(
                     maxHeight: widget.maxHeight ?? 320,
+                    minWidth: widget.minWidth ?? size.width,
                   ),
                   decoration: BoxDecoration(
                     boxShadow: CommonShadows.baseShadow,

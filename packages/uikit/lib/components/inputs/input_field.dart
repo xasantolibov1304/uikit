@@ -198,86 +198,7 @@ class _InputFieldState extends State<InputField> {
                   color: context.fieldColors.background,
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      crossAxisAlignment: widget.iconsCrossAxisAlignment,
-                      children: [
-                        if (widget.leadingIcon != null) ...[
-                          widget.leadingIcon!,
-                          const SizedBox(width: 8),
-                        ],
-                        Expanded(
-                          child: TextField(
-                            cursorHeight: 16,
-                            autocorrect: false,
-                            onTap: widget.onTap,
-                            focusNode: _focusNode,
-                            controller: _controller,
-                            enableSuggestions: false,
-                            enabled: widget.isEnabled,
-                            minLines: widget.minLines,
-                            maxLines: widget.maxLines,
-                            maxLength: widget.maxLength,
-                            cursorColor: Colors.black,
-                            readOnly: widget.readonly,
-                            autofocus: widget.autofocus,
-                            onChanged: widget.onChanged,
-                            textAlign: widget.textAlign,
-                            buildCounter: _buildCounter,
-                            obscureText: widget.obscureText,
-                            keyboardType: widget.keyboardType,
-                            decoration: _buildInputDecoration,
-                            style: context.titleTextStyle.main1,
-                            inputFormatters: widget.inputFormatters,
-                            textInputAction: widget.textInputAction,
-                            onEditingComplete: widget.onEditingComplete,
-                            textAlignVertical: widget.textAlignVertical,
-                            textCapitalization: widget.textCapitalization,
-                          ),
-                        ),
-                        if (widget.suffixLabel != null ||
-                            widget.suffixValue != null) ...[
-                          _buildSuffix(),
-                          const SizedBox(width: 12),
-                        ],
-                        if (widget.isLoading) ...[
-                          const SizedBox(width: 8),
-                          const LoadingIndicator(),
-                        ],
-                        if (_shouldShowClear()) ...[
-                          const SizedBox(width: 8),
-                          _buildClearButton(),
-                        ],
-                        if (widget.trailingIcon != null) ...[
-                          const SizedBox(width: 8),
-                          widget.trailingIcon!,
-                        ],
-                      ],
-                    ),
-                    if (widget.showCounter && _isMultiline)
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: '${_controller.text.length}',
-                              style: context.subtitleTextStyle.medium2.copyWith(
-                                color: context.textColors.secondary,
-                              ),
-                            ),
-                            TextSpan(
-                              text: '/${widget.maxLength}',
-                              style: context.subtitleTextStyle.medium2.copyWith(
-                                color: context.textColors.muted,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
-                ),
+                child: _buildInputContent(),
               );
             },
           ),
@@ -474,5 +395,94 @@ class _InputFieldState extends State<InputField> {
     required bool isFocused,
   }) {
     return null;
+  }
+
+  Widget _buildInputContent() {
+    if (_isMultiline && widget.showCounter) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildInputRow(),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: '${_controller.text.length}',
+                  style: context.subtitleTextStyle.medium2.copyWith(
+                    color: context.textColors.secondary,
+                  ),
+                ),
+                TextSpan(
+                  text: '/${widget.maxLength}',
+                  style: context.subtitleTextStyle.medium2.copyWith(
+                    color: context.textColors.muted,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    }
+
+    return _buildInputRow();
+  }
+
+  Widget _buildInputRow() {
+    return Row(
+      crossAxisAlignment: widget.iconsCrossAxisAlignment,
+      children: [
+        if (widget.leadingIcon != null) ...[
+          widget.leadingIcon!,
+          const SizedBox(width: 8),
+        ],
+        Expanded(
+          child: TextField(
+            cursorHeight: 16,
+            autocorrect: false,
+            onTap: widget.onTap,
+            focusNode: _focusNode,
+            controller: _controller,
+            enableSuggestions: false,
+            enabled: widget.isEnabled,
+            minLines: widget.minLines,
+            maxLines: widget.maxLines,
+            maxLength: widget.maxLength,
+            cursorColor: Colors.black,
+            readOnly: widget.readonly,
+            autofocus: widget.autofocus,
+            onChanged: widget.onChanged,
+            textAlign: widget.textAlign,
+            buildCounter: _buildCounter,
+            obscureText: widget.obscureText,
+            keyboardType: widget.keyboardType,
+            decoration: _buildInputDecoration,
+            style: context.titleTextStyle.main1,
+            inputFormatters: widget.inputFormatters,
+            textInputAction: widget.textInputAction,
+            onEditingComplete: widget.onEditingComplete,
+            textAlignVertical: widget.textAlignVertical,
+            textCapitalization: widget.textCapitalization,
+          ),
+        ),
+        if (widget.suffixLabel != null || widget.suffixValue != null) ...[
+          _buildSuffix(),
+          const SizedBox(width: 12),
+        ],
+        if (widget.isLoading) ...[
+          const SizedBox(width: 8),
+          const LoadingIndicator(),
+        ],
+        if (_shouldShowClear()) ...[
+          const SizedBox(width: 8),
+          _buildClearButton(),
+        ],
+        if (widget.trailingIcon != null) ...[
+          const SizedBox(width: 8),
+          widget.trailingIcon!,
+        ],
+      ],
+    );
   }
 }

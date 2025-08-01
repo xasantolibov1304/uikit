@@ -13,25 +13,32 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final router = AppRouter().config();
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  final router = AppRouter().config();
+
+  @override
+  Widget build(BuildContext context) {
     return DevicePreview(
-      enabled: kReleaseMode,
+      enabled: !kReleaseMode,
       builder: (BuildContext context) {
-        return MaterialApp.router(
-          title: 'Flutter Demo',
-          // ignore: deprecated_member_use
-          useInheritedMediaQuery: true,
-          theme: uikit.lightTheme,
-          darkTheme: uikit.darkTheme,
-          themeMode: ThemeMode.light,
-          debugShowCheckedModeBanner: false,
-          routerConfig: router,
+        return uikit.FocusRemover(
+          child: MaterialApp.router(
+            title: 'Flutter Demo',
+            // ignore: deprecated_member_use
+            useInheritedMediaQuery: true,
+            theme: uikit.lightTheme,
+            darkTheme: uikit.darkTheme,
+            themeMode: ThemeMode.light,
+            debugShowCheckedModeBanner: false,
+            routerConfig: router,
+          ),
         );
       },
     );

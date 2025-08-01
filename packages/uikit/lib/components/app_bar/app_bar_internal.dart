@@ -19,7 +19,6 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.titleTextStyle,
     this.subtitleTextStyle,
-    // this.iconColor,
     this.forceMaterialTransparency = true,
     super.key,
   });
@@ -37,7 +36,6 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final TextStyle? titleTextStyle;
   final TextStyle? subtitleTextStyle;
-  // final SvgColors? iconColor;
 
   final void Function()? onPop;
 
@@ -70,7 +68,8 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
                   Text(
                     subtitle!,
                     maxLines: 1,
-                    style: subtitleTextStyle ?? context.subtitleTextStyle.main,
+                    style:
+                        subtitleTextStyle ?? context.subtitleTextStyle.medium2,
                   ),
                 ],
               ],
@@ -93,8 +92,7 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
               onTap: onPop ?? () => Navigator.of(context).pop(),
               child: UikitAssets.icons24.chevronLeft.svg(
                 colorFilter: ColorFilter.mode(
-                  context.iconColors
-                      .primary, //iconColor ?? context.iconColors.primary,
+                  context.iconColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
