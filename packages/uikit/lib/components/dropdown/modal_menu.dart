@@ -1,6 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+
+// Project imports:
 import 'package:iman_uikit/components/dropdown/base_dropdown.dart';
+import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 
 class ModalMenu extends StatelessWidget {
   const ModalMenu({

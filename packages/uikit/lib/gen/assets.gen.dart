@@ -146,6 +146,9 @@ class $AssetsIcons24Gen {
   SvgGenImage get infoFilled =>
       const SvgGenImage('assets/icons24/info_filled.svg');
 
+  /// Directory path: assets/icons24/menu
+  $AssetsIcons24MenuGen get menu => const $AssetsIcons24MenuGen();
+
   /// File path: assets/icons24/reload.svg
   SvgGenImage get reload => const SvgGenImage('assets/icons24/reload.svg');
 
@@ -227,6 +230,84 @@ class $AssetsIcons40Gen {
     pdfFile,
     pngFile,
     xlsxFile,
+  ];
+}
+
+class $AssetsIcons24MenuGen {
+  const $AssetsIcons24MenuGen();
+
+  /// File path: assets/icons24/menu/categories_off.svg
+  SvgGenImage get categoriesOff =>
+      const SvgGenImage('assets/icons24/menu/categories_off.svg');
+
+  /// File path: assets/icons24/menu/categories_on.svg
+  SvgGenImage get categoriesOn =>
+      const SvgGenImage('assets/icons24/menu/categories_on.svg');
+
+  /// File path: assets/icons24/menu/chat_off.svg
+  SvgGenImage get chatOff =>
+      const SvgGenImage('assets/icons24/menu/chat_off.svg');
+
+  /// File path: assets/icons24/menu/chat_on.svg
+  SvgGenImage get chatOn =>
+      const SvgGenImage('assets/icons24/menu/chat_on.svg');
+
+  /// File path: assets/icons24/menu/home_off.svg
+  SvgGenImage get homeOff =>
+      const SvgGenImage('assets/icons24/menu/home_off.svg');
+
+  /// File path: assets/icons24/menu/home_on.svg
+  SvgGenImage get homeOn =>
+      const SvgGenImage('assets/icons24/menu/home_on.svg');
+
+  /// File path: assets/icons24/menu/intelligence_off.svg
+  SvgGenImage get intelligenceOff =>
+      const SvgGenImage('assets/icons24/menu/intelligence_off.svg');
+
+  /// File path: assets/icons24/menu/intelligence_on.svg
+  SvgGenImage get intelligenceOn =>
+      const SvgGenImage('assets/icons24/menu/intelligence_on.svg');
+
+  /// File path: assets/icons24/menu/invest_off.svg
+  SvgGenImage get investOff =>
+      const SvgGenImage('assets/icons24/menu/invest_off.svg');
+
+  /// File path: assets/icons24/menu/invest_on.svg
+  SvgGenImage get investOn =>
+      const SvgGenImage('assets/icons24/menu/invest_on.svg');
+
+  /// File path: assets/icons24/menu/market_off.svg
+  SvgGenImage get marketOff =>
+      const SvgGenImage('assets/icons24/menu/market_off.svg');
+
+  /// File path: assets/icons24/menu/market_on.svg
+  SvgGenImage get marketOn =>
+      const SvgGenImage('assets/icons24/menu/market_on.svg');
+
+  /// File path: assets/icons24/menu/payments_off.svg
+  SvgGenImage get paymentsOff =>
+      const SvgGenImage('assets/icons24/menu/payments_off.svg');
+
+  /// File path: assets/icons24/menu/payments_on.svg
+  SvgGenImage get paymentsOn =>
+      const SvgGenImage('assets/icons24/menu/payments_on.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+    categoriesOff,
+    categoriesOn,
+    chatOff,
+    chatOn,
+    homeOff,
+    homeOn,
+    intelligenceOff,
+    intelligenceOn,
+    investOff,
+    investOn,
+    marketOff,
+    marketOn,
+    paymentsOff,
+    paymentsOn,
   ];
 }
 
