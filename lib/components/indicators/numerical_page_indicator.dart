@@ -151,9 +151,21 @@ class NumericalPageIndicator extends StatelessWidget {
     final icon = isPrevious
         ? UikitAssets.icons24.chevronLeft.svg(
             fit: BoxFit.contain,
+            colorFilter: canNavigate
+                ? null
+                : ColorFilter.mode(
+                    context.textColors.muted,
+                    BlendMode.srcIn,
+                  ),
           )
         : UikitAssets.icons24.chevronRight.svg(
             fit: BoxFit.contain,
+            colorFilter: canNavigate
+                ? null
+                : ColorFilter.mode(
+                    context.textColors.muted,
+                    BlendMode.srcIn,
+                  ),
           );
 
     return _buttonWidget(
@@ -186,10 +198,10 @@ class NumericalPageIndicator extends StatelessWidget {
   }
 
   Widget _ellipsis(BuildContext context) {
-    return _buttonWidget(
-      context,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Text(
-        '...',
+        '....',
         style: context.bodyTextStyle.medium1.copyWith(
           color: context.textColors.tertiary,
         ),
