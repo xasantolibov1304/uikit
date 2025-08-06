@@ -3,7 +3,6 @@ export 'inputs_example_page.dart';
 export 'dropdowns_example_page.dart';
 export 'info_alert_example_page.dart';
 export 'balance_overview_example_page.dart';
-export 'file_upload_example_page.dart';
 export 'top_bar_example_page.dart';
 export 'breadcrumb_example_page.dart';
 export 'sliders_example_page.dart';

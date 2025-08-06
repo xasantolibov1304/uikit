@@ -1,7 +1,4 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Project imports:
 import 'package:iman_uikit/uikit.dart';
 
 class IndicatorsExamplePage extends StatefulWidget {
@@ -38,18 +35,31 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
   // Segment Progress Indicator properties
   int _segmentCount = 5;
   double _segmentPercentage = 0.6;
-  SegmentProgressIndicatorType _segmentType =
-      SegmentProgressIndicatorType.neutral;
+  SegmentProgressIndicatorType _segmentType = SegmentProgressIndicatorType.info;
   bool _segmentAnimate = true;
   bool _segmentShowLabels = false;
   int _currentStepIndex = 2;
-  List<String> _segmentLabels = [
+  final List<String> _segmentLabels = [
     'Step 1',
     'Step 2',
     'Step 3',
     'Step 4',
     'Step 5'
   ];
+
+  // Linear Progress Indicator properties
+  double _linearProgress = 0.65;
+  LinearProgressIndicatorType _linearType = LinearProgressIndicatorType.neutral;
+  String _linearCaption = 'Upload Progress';
+  String _linearSubtitle = 'File upload in progress...';
+  String _linearAdditionalCaption = '65%';
+  String _linearAdditionalSubtitle = '2.3 MB';
+
+  // Rounded Progress Indicator properties
+  double _roundedProgress = 0.75;
+  double _roundedSize = 96.0;
+  double _roundedLineWidth = 8.0;
+  bool _roundedShowPercentage = true;
 
   @override
   Widget build(BuildContext context) {
@@ -375,11 +385,180 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
                     onChanged: (value) =>
                         setState(() => _segmentShowLabels = value),
                   ),
-                  _buildDropdownControl(
+                  _buildDropdownControl<SegmentProgressIndicatorType>(
                     label: 'Type',
                     value: _segmentType,
                     items: SegmentProgressIndicatorType.values,
                     onChanged: (value) => setState(() => _segmentType = value!),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            // Linear Progress Indicator Preview Section
+            _buildSectionTitle('Linear Progress Indicator Preview'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  _buildSubsectionTitle('Basic Linear Progress Indicator'),
+                  LinearProgressBarIndicator(
+                    percent: _linearProgress,
+                    caption: _linearCaption,
+                    subtitle: _linearSubtitle,
+                    additionalCaption: _linearAdditionalCaption,
+                    additionalSubtitle: _linearAdditionalSubtitle,
+                    type: _linearType,
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSubsectionTitle('Different Types'),
+                  LinearProgressBarIndicator(
+                    percent: 0.3,
+                    caption: 'Warning Progress',
+                    subtitle: 'Something needs attention',
+                    additionalCaption: '30%',
+                    type: LinearProgressIndicatorType.warning,
+                  ),
+                  const SizedBox(height: 16),
+                  LinearProgressBarIndicator(
+                    percent: 0.8,
+                    caption: 'Error Progress',
+                    subtitle: 'Upload failed',
+                    additionalCaption: '80%',
+                    type: LinearProgressIndicatorType.error,
+                  ),
+                  const SizedBox(height: 16),
+                  LinearProgressBarIndicator(
+                    percent: 1.0,
+                    caption: 'Success Progress',
+                    subtitle: 'Upload completed',
+                    additionalCaption: '100%',
+                    type: LinearProgressIndicatorType.neutral,
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSliderControl(
+                    label: 'Progress Percentage',
+                    value: _linearProgress,
+                    min: 0.0,
+                    max: 1.0,
+                    onChanged: (value) =>
+                        setState(() => _linearProgress = value),
+                  ),
+                  _buildDropdownControl(
+                    label: 'Type',
+                    value: _linearType,
+                    items: LinearProgressIndicatorType.values,
+                    onChanged: (value) => setState(() => _linearType = value!),
+                  ),
+                  _buildTextControl(
+                    label: 'Caption',
+                    value: _linearCaption,
+                    onChanged: (value) =>
+                        setState(() => _linearCaption = value),
+                  ),
+                  _buildTextControl(
+                    label: 'Subtitle',
+                    value: _linearSubtitle,
+                    onChanged: (value) =>
+                        setState(() => _linearSubtitle = value),
+                  ),
+                  _buildTextControl(
+                    label: 'Additional Caption',
+                    value: _linearAdditionalCaption,
+                    onChanged: (value) =>
+                        setState(() => _linearAdditionalCaption = value),
+                  ),
+                  _buildTextControl(
+                    label: 'Additional Subtitle',
+                    value: _linearAdditionalSubtitle,
+                    onChanged: (value) =>
+                        setState(() => _linearAdditionalSubtitle = value),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            // Rounded Progress Indicator Preview Section
+            _buildSectionTitle('Rounded Progress Indicator Preview'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  _buildSubsectionTitle('Basic Rounded Progress Indicator'),
+                  Center(
+                    child: RoundedProgressIndicator(
+                      percent: _roundedProgress,
+                      size: _roundedSize,
+                      lineWidth: _roundedLineWidth,
+                      showPercentage: _roundedShowPercentage,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSubsectionTitle('Different Sizes'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      RoundedProgressIndicator(
+                        percent: 0.25,
+                        size: 60.0,
+                        lineWidth: 6.0,
+                        showPercentage: false,
+                      ),
+                      RoundedProgressIndicator(
+                        percent: 0.5,
+                        size: 80.0,
+                        lineWidth: 8.0,
+                        showPercentage: true,
+                      ),
+                      RoundedProgressIndicator(
+                        percent: 0.75,
+                        size: 120.0,
+                        lineWidth: 12.0,
+                        showPercentage: true,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  _buildSliderControl(
+                    label: 'Progress Percentage',
+                    value: _roundedProgress,
+                    min: 0.0,
+                    max: 1.0,
+                    onChanged: (value) =>
+                        setState(() => _roundedProgress = value),
+                  ),
+                  _buildSliderControl(
+                    label: 'Size',
+                    value: _roundedSize,
+                    min: 40.0,
+                    max: 200.0,
+                    onChanged: (value) => setState(() => _roundedSize = value),
+                  ),
+                  _buildSliderControl(
+                    label: 'Line Width',
+                    value: _roundedLineWidth,
+                    min: 2.0,
+                    max: 20.0,
+                    onChanged: (value) =>
+                        setState(() => _roundedLineWidth = value),
+                  ),
+                  _buildSwitchControl(
+                    label: 'Show Percentage',
+                    value: _roundedShowPercentage,
+                    onChanged: (value) =>
+                        setState(() => _roundedShowPercentage = value),
                   ),
                 ],
               ),
@@ -518,6 +697,87 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           value: _badgeText,
           onChanged: (value) => setState(() => _badgeText = value),
         ),
+
+        const SizedBox(height: 24),
+
+        // Linear Progress Indicator Controls
+        _buildSubsectionTitle('Linear Progress Indicator Controls'),
+
+        _buildSliderControl(
+          label: 'Progress Percentage',
+          value: _linearProgress,
+          min: 0.0,
+          max: 1.0,
+          onChanged: (value) => setState(() => _linearProgress = value),
+        ),
+
+        _buildDropdownControl<LinearProgressIndicatorType>(
+          label: 'Type',
+          value: _linearType,
+          items: LinearProgressIndicatorType.values,
+          onChanged: (value) => setState(() => _linearType = value!),
+        ),
+
+        _buildTextControl(
+          label: 'Caption',
+          value: _linearCaption,
+          onChanged: (value) => setState(() => _linearCaption = value),
+        ),
+
+        _buildTextControl(
+          label: 'Subtitle',
+          value: _linearSubtitle,
+          onChanged: (value) => setState(() => _linearSubtitle = value),
+        ),
+
+        _buildTextControl(
+          label: 'Additional Caption',
+          value: _linearAdditionalCaption,
+          onChanged: (value) =>
+              setState(() => _linearAdditionalCaption = value),
+        ),
+
+        _buildTextControl(
+          label: 'Additional Subtitle',
+          value: _linearAdditionalSubtitle,
+          onChanged: (value) =>
+              setState(() => _linearAdditionalSubtitle = value),
+        ),
+
+        const SizedBox(height: 24),
+
+        // Rounded Progress Indicator Controls
+        _buildSubsectionTitle('Rounded Progress Indicator Controls'),
+
+        _buildSliderControl(
+          label: 'Progress Percentage',
+          value: _roundedProgress,
+          min: 0.0,
+          max: 1.0,
+          onChanged: (value) => setState(() => _roundedProgress = value),
+        ),
+
+        _buildSliderControl(
+          label: 'Size',
+          value: _roundedSize,
+          min: 40.0,
+          max: 200.0,
+          onChanged: (value) => setState(() => _roundedSize = value),
+        ),
+
+        _buildSliderControl(
+          label: 'Line Width',
+          value: _roundedLineWidth,
+          min: 2.0,
+          max: 20.0,
+          onChanged: (value) => setState(() => _roundedLineWidth = value),
+        ),
+
+        _buildSwitchControl(
+          label: 'Show Percentage',
+          value: _roundedShowPercentage,
+          onChanged: (value) => setState(() => _roundedShowPercentage = value),
+        ),
       ],
     );
   }
@@ -621,11 +881,11 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
     );
   }
 
-  Widget _buildDropdownControl({
+  Widget _buildDropdownControl<T>({
     required String label,
-    required SegmentProgressIndicatorType value,
-    required List<SegmentProgressIndicatorType> items,
-    required ValueChanged<SegmentProgressIndicatorType?> onChanged,
+    required T value,
+    required List<T> items,
+    required ValueChanged<T?> onChanged,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -637,15 +897,15 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
-          DropdownButtonFormField<SegmentProgressIndicatorType>(
+          DropdownButtonFormField<T>(
             value: value,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
             ),
             items: items.map((item) {
-              return DropdownMenuItem<SegmentProgressIndicatorType>(
+              return DropdownMenuItem<T>(
                 value: item,
-                child: Text(item.name),
+                child: Text(item.toString().split('.').last),
               );
             }).toList(),
             onChanged: onChanged,

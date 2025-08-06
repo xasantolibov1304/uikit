@@ -224,14 +224,6 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                     ),
                   ),
                   _buildExampleButton(
-                    'File Upload Example',
-                    () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const FileUploadExamplePage(),
-                      ),
-                    ),
-                  ),
-                  _buildExampleButton(
                     'Top Bar Example',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(

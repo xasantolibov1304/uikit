@@ -12,11 +12,16 @@ class OverlayLoader extends StatelessWidget {
   const OverlayLoader({
     this.title,
     this.description,
+    //
     this.progress,
+    this.progressColor,
+    this.progressBackgroundColor,
+    //
     this.buttonText,
     this.onButtonTap,
     this.buttonIconStart,
     this.buttonType,
+    //
     this.content,
     super.key,
   });
@@ -25,6 +30,8 @@ class OverlayLoader extends StatelessWidget {
   final String? description;
 
   final double? progress;
+  final Color? progressColor;
+  final Color? progressBackgroundColor;
 
   final String? buttonText;
   final VoidCallback? onButtonTap;
@@ -46,8 +53,8 @@ class OverlayLoader extends StatelessWidget {
               )
             : RoundedProgressIndicator(
                 percent: progress!,
-                size: 96,
-                lineWidth: 8,
+                progressColor: progressColor,
+                backgroundColor: progressBackgroundColor,
               ),
         if (title != null) ...[
           const SizedBox(height: 24),

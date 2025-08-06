@@ -158,6 +158,10 @@ class $AssetsIcons24Gen {
   /// File path: assets/icons24/eye_slash.svg
   SvgGenImage get eyeSlash => const SvgGenImage('assets/icons24/eye_slash.svg');
 
+  /// File path: assets/icons24/file_upload.svg
+  SvgGenImage get fileUpload =>
+      const SvgGenImage('assets/icons24/file_upload.svg');
+
   /// File path: assets/icons24/info.svg
   SvgGenImage get info => const SvgGenImage('assets/icons24/info.svg');
 
@@ -203,6 +207,7 @@ class $AssetsIcons24Gen {
     contact,
     eye,
     eyeSlash,
+    fileUpload,
     info,
     infoFilled,
     reload,

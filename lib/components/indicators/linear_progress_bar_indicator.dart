@@ -1,22 +1,19 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:iman_uikit/components/indicators/common_linear_progress_indicator.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
-enum LinearProgressIndicatorType {
-  neutral,
-  warning,
-  error,
-}
-
-class LinearProgressIndicator extends StatelessWidget {
-  const LinearProgressIndicator({
+class LinearProgressBarIndicator extends StatelessWidget {
+  const LinearProgressBarIndicator({
     required this.percent,
     this.caption,
     this.subtitle,
     this.additionalCaption,
     this.additionalSubtitle,
-    this.type = LinearProgressIndicatorType.neutral,
+    this.type = LinearProgressIndicatorType.success,
     super.key,
   });
 
@@ -40,14 +37,9 @@ class LinearProgressIndicator extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LinearPercentIndicator(
-            lineHeight: 4,
-            animation: true,
+          CommonLinearProgressIndicator(
+            type: type,
             percent: percent,
-            padding: EdgeInsets.zero,
-            barRadius: Radius.circular(4),
-            progressColor: _progressColor(context),
-            backgroundColor: context.borderColors.primary,
           ),
           SizedBox(height: 8),
           Row(
@@ -97,17 +89,6 @@ class LinearProgressIndicator extends StatelessWidget {
     );
   }
 
-  Color _progressColor(BuildContext context) {
-    switch (type) {
-      case LinearProgressIndicatorType.neutral:
-        return context.borderColors.success;
-      case LinearProgressIndicatorType.warning:
-        return context.borderColors.warning;
-      case LinearProgressIndicatorType.error:
-        return context.borderColors.error;
-    }
-  }
-
   Color _textColors(BuildContext context) {
     switch (type) {
       case LinearProgressIndicatorType.neutral:
@@ -116,6 +97,8 @@ class LinearProgressIndicator extends StatelessWidget {
         return context.textColors.warning;
       case LinearProgressIndicatorType.error:
         return context.textColors.error;
+      case LinearProgressIndicatorType.success:
+        return context.textColors.success;
     }
   }
 }

@@ -12,6 +12,7 @@ import 'package:iman_uikit/utils/file_helper.dart';
 
 const _iconSize = 40.0;
 
+@Deprecated('Use FileLoader instead')
 class FileUpload extends StatelessWidget {
   const FileUpload({
     required this.fileName,
