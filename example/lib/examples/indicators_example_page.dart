@@ -35,6 +35,22 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
   bool _showBadge = true;
   String _badgeText = '5';
 
+  // Segment Progress Indicator properties
+  int _segmentCount = 5;
+  double _segmentPercentage = 0.6;
+  SegmentProgressIndicatorType _segmentType =
+      SegmentProgressIndicatorType.neutral;
+  bool _segmentAnimate = true;
+  bool _segmentShowLabels = false;
+  int _currentStepIndex = 2;
+  List<String> _segmentLabels = [
+    'Step 1',
+    'Step 2',
+    'Step 3',
+    'Step 4',
+    'Step 5'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -298,6 +314,78 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
             ),
             const SizedBox(height: 24),
 
+            // Segment Progress Indicator Preview Section
+            _buildSectionTitle('Segment Progress Indicator Preview'),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Column(
+                children: [
+                  _buildSubsectionTitle('Basic Segment Progress Indicator'),
+                  SegmentProgressIndicator(
+                    type: _segmentType,
+                    segments: _segmentCount,
+                    currentStepIndex: _currentStepIndex,
+                    animate: _segmentAnimate,
+                    showLabels: _segmentShowLabels,
+                    labels: _segmentShowLabels ? _segmentLabels : null,
+                    caption: 'Progress Steps',
+                    subtitle:
+                        'Current step: ${_currentStepIndex + 1} of $_segmentCount',
+                  ),
+                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
+                  _buildSliderControl(
+                    label: 'Segment Count',
+                    value: _segmentCount.toDouble(),
+                    min: 1,
+                    max: 10,
+                    onChanged: (value) =>
+                        setState(() => _segmentCount = value.round()),
+                  ),
+                  _buildSliderControl(
+                    label: 'Current Step Index',
+                    value: _currentStepIndex.toDouble(),
+                    min: 0,
+                    max: (_segmentCount - 1).toDouble(),
+                    onChanged: (value) =>
+                        setState(() => _currentStepIndex = value.round()),
+                  ),
+                  _buildSliderControl(
+                    label: 'Percentage',
+                    value: _segmentPercentage,
+                    min: 0.0,
+                    max: 1.0,
+                    onChanged: (value) =>
+                        setState(() => _segmentPercentage = value),
+                  ),
+                  _buildSwitchControl(
+                    label: 'Animate',
+                    value: _segmentAnimate,
+                    onChanged: (value) =>
+                        setState(() => _segmentAnimate = value),
+                  ),
+                  _buildSwitchControl(
+                    label: 'Show Labels',
+                    value: _segmentShowLabels,
+                    onChanged: (value) =>
+                        setState(() => _segmentShowLabels = value),
+                  ),
+                  _buildDropdownControl(
+                    label: 'Type',
+                    value: _segmentType,
+                    items: SegmentProgressIndicatorType.values,
+                    onChanged: (value) => setState(() => _segmentType = value!),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+
             // Indicators Controls Section
             _buildSectionTitle('Indicators Controls'),
             _buildIndicatorsControls(),
@@ -526,6 +614,40 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           ),
           Switch(
             value: value,
+            onChanged: onChanged,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDropdownControl({
+    required String label,
+    required SegmentProgressIndicatorType value,
+    required List<SegmentProgressIndicatorType> items,
+    required ValueChanged<SegmentProgressIndicatorType?> onChanged,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          DropdownButtonFormField<SegmentProgressIndicatorType>(
+            value: value,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+            ),
+            items: items.map((item) {
+              return DropdownMenuItem<SegmentProgressIndicatorType>(
+                value: item,
+                child: Text(item.name),
+              );
+            }).toList(),
             onChanged: onChanged,
           ),
         ],

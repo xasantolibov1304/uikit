@@ -7,12 +7,12 @@ import 'package:iman_uikit/theme/color_theme_data.dart';
 
 class CommonProgressIndicator extends StatefulWidget {
   const CommonProgressIndicator({
-    super.key,
     required this.percentage,
     this.height = 8,
     this.backgroundColor,
     this.progressColor,
     this.percentageTextStyle,
+    super.key,
   });
 
   final double percentage;

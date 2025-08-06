@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 // Project imports:
 import 'package:iman_uikit/common/gesture_detector.dart';
 import 'package:iman_uikit/components/checkbox/checkbox.dart';
-import 'package:iman_uikit/components/indicators/loading_indicator.dart';
+import 'package:iman_uikit/components/loaders/loading_indicator.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 

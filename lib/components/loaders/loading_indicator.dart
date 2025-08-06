@@ -23,17 +23,16 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: size,
-        height: size,
-        margin: margin,
-        child: CircularProgressIndicator(
-          strokeWidth: strokeWidth,
-          strokeCap: StrokeCap.round,
-          valueColor: AlwaysStoppedAnimation<Color>(
-            color ?? context.iconColors.primary,
-          ),
+    return Container(
+      width: size,
+      height: size,
+      margin: margin,
+      child: CircularProgressIndicator(
+        padding: EdgeInsets.zero,
+        strokeWidth: strokeWidth,
+        strokeCap: StrokeCap.round,
+        valueColor: AlwaysStoppedAnimation<Color>(
+          color ?? context.iconColors.primary,
         ),
       ),
     );

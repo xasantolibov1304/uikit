@@ -49,13 +49,21 @@ export 'fields/info_field.dart';
 export 'filters/filter.dart';
 
 // Indicators
-export 'indicators/loading_indicator.dart';
 export 'indicators/page_indicator.dart';
 export 'indicators/numerical_page_indicator.dart';
 export 'indicators/step_indicator.dart';
 export 'indicators/badge_indicator.dart';
 export 'indicators/progress_indicator.dart';
+export 'indicators/rounded_progress_indicator.dart';
+export 'indicators/linear_progress_indicator.dart';
+export 'indicators/segment_progress_indicator.dart';
+
+// Inputs
 export 'inputs/inputs.dart';
+
+// Loaders
+export 'loaders/loading_indicator.dart';
+export 'loaders/overlay_loader.dart';
 
 // File Upload
 export 'file_upload/file_upload.dart';
