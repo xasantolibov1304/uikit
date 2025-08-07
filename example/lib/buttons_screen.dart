@@ -231,6 +231,22 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                       ),
                     ),
                   ),
+                  _buildExampleButton(
+                    'Overlay Loader Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const OverlayLoaderExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
+                    'File Upload Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const FileUploadExamplePage(),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -34,8 +34,8 @@ class RoundedProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      radius: (size + lineWidth) / 2,
       animation: true,
+      radius: size / 2,
       lineWidth: lineWidth,
       animateToInitialPercent: false,
       percent: percent.clamp(0.0, 1.0),

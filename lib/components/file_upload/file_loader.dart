@@ -15,6 +15,7 @@ class FileLoader extends StatelessWidget {
     required this.files,
     this.description,
     this.onSelectFile,
+    this.maxFiles = 3,
     super.key,
   });
 
@@ -26,6 +27,8 @@ class FileLoader extends StatelessWidget {
   final String selectFileText;
 
   final VoidCallback? onSelectFile;
+
+  final int maxFiles;
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +58,19 @@ class FileLoader extends StatelessWidget {
                     ),
                   ),
                 ],
-                const SizedBox(height: 12),
                 if (files.isNotEmpty) ...[
+                  const SizedBox(height: 12),
                   ...List.generate(
                     files.length,
                     (index) => FileLoaderItem(
                       model: files[index],
                     ),
                   ),
-                  const SizedBox(height: 12),
                 ],
-                _buildFileUpload(context),
+                if (files.length < maxFiles) ...[
+                  const SizedBox(height: 12),
+                  _buildFileUpload(context),
+                ],
               ],
             ),
           ),

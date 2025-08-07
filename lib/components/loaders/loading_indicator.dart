@@ -28,6 +28,7 @@ class LoadingIndicator extends StatelessWidget {
       height: size,
       margin: margin,
       child: CircularProgressIndicator(
+        strokeAlign: -1,
         padding: EdgeInsets.zero,
         strokeWidth: strokeWidth,
         strokeCap: StrokeCap.round,

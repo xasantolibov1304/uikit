@@ -13,11 +13,14 @@ class FileLoaderItemModel {
     required this.progress,
     required this.progressType,
     required this.statusText,
+    this.showProgress = false,
     this.trailingIcon,
     this.onClose,
   });
 
   final String fileName;
+
+  final bool showProgress;
   final double progress;
   final LinearProgressIndicatorType progressType;
 
@@ -51,7 +54,7 @@ class FileLoaderItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: context.subtitleTextStyle.medium1,
                 ),
-                if (model.progress != 1) ...[
+                if (model.showProgress && model.progress != 1) ...[
                   const SizedBox(height: 4),
                   CommonLinearProgressIndicator(
                     percent: model.progress,
@@ -64,7 +67,7 @@ class FileLoaderItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: context.subtitleTextStyle.compact1.copyWith(
-                    color: model.progress == 1
+                    color: model.showProgress && model.progress == 1
                         ? context.textColors.success
                         : context.textColors.secondary,
                   ),
