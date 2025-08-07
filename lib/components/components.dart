@@ -34,6 +34,9 @@ export 'breadcrumb/breadcrumb.dart';
 export 'buttons/button.dart';
 export 'buttons/button_cell.dart';
 
+// Pincode
+export 'pincode/pincode.dart';
+
 // Checkbox
 export 'checkbox/checkbox.dart';
 export 'checkbox/checkbox_card.dart';

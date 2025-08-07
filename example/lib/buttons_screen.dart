@@ -247,6 +247,14 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                       ),
                     ),
                   ),
+                  _buildExampleButton(
+                    'Pincode Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PincodeExamplePage(),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

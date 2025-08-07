@@ -221,12 +221,16 @@ class $AssetsIcons24Gen {
 class $AssetsIcons32Gen {
   const $AssetsIcons32Gen();
 
+  /// File path: assets/icons32/backspace.svg
+  SvgGenImage get backspace =>
+      const SvgGenImage('assets/icons32/backspace.svg');
+
   /// File path: assets/icons32/close_circle.svg
   SvgGenImage get closeCircle =>
       const SvgGenImage('assets/icons32/close_circle.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [closeCircle];
+  List<SvgGenImage> get values => [backspace, closeCircle];
 }
 
 class $AssetsIcons40Gen {

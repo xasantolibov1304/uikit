@@ -33,8 +33,6 @@ class _CommonRefresherState extends State<CommonRefresher> {
     controller = RefreshController();
   }
 
-  void updateState() => {if (mounted) setState(() {})};
-
   @override
   Widget build(BuildContext context) {
     if (widget.onRefresh == null) return widget.child;

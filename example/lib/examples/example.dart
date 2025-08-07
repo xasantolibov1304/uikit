@@ -22,3 +22,4 @@ export 'filters_example_page.dart';
 export 'button_cell_example_page.dart';
 export 'overlay_loader_example_page.dart';
 export 'file_upload_example_page.dart';
+export 'pincode_example_page.dart';
