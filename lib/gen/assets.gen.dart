@@ -12,6 +12,28 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsFlagsGen {
+  const $AssetsFlagsGen();
+
+  /// File path: assets/flags/kz.svg
+  SvgGenImage get kz => const SvgGenImage('assets/flags/kz.svg');
+
+  /// File path: assets/flags/ru.svg
+  SvgGenImage get ru => const SvgGenImage('assets/flags/ru.svg');
+
+  /// File path: assets/flags/uae.svg
+  SvgGenImage get uae => const SvgGenImage('assets/flags/uae.svg');
+
+  /// File path: assets/flags/usa.svg
+  SvgGenImage get usa => const SvgGenImage('assets/flags/usa.svg');
+
+  /// File path: assets/flags/uz.svg
+  SvgGenImage get uz => const SvgGenImage('assets/flags/uz.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [kz, ru, uae, usa, uz];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -169,9 +191,6 @@ class $AssetsIcons24Gen {
   SvgGenImage get infoFilled =>
       const SvgGenImage('assets/icons24/info_filled.svg');
 
-  /// Directory path: assets/icons24/menu
-  $AssetsIcons24MenuGen get menu => const $AssetsIcons24MenuGen();
-
   /// File path: assets/icons24/reload.svg
   SvgGenImage get reload => const SvgGenImage('assets/icons24/reload.svg');
 
@@ -261,64 +280,56 @@ class $AssetsIcons40Gen {
   ];
 }
 
-class $AssetsIcons24MenuGen {
-  const $AssetsIcons24MenuGen();
+class $AssetsMenuGen {
+  const $AssetsMenuGen();
 
-  /// File path: assets/icons24/menu/categories_off.svg
+  /// File path: assets/menu/categories_off.svg
   SvgGenImage get categoriesOff =>
-      const SvgGenImage('assets/icons24/menu/categories_off.svg');
+      const SvgGenImage('assets/menu/categories_off.svg');
 
-  /// File path: assets/icons24/menu/categories_on.svg
+  /// File path: assets/menu/categories_on.svg
   SvgGenImage get categoriesOn =>
-      const SvgGenImage('assets/icons24/menu/categories_on.svg');
+      const SvgGenImage('assets/menu/categories_on.svg');
 
-  /// File path: assets/icons24/menu/chat_off.svg
-  SvgGenImage get chatOff =>
-      const SvgGenImage('assets/icons24/menu/chat_off.svg');
+  /// File path: assets/menu/chat_off.svg
+  SvgGenImage get chatOff => const SvgGenImage('assets/menu/chat_off.svg');
 
-  /// File path: assets/icons24/menu/chat_on.svg
-  SvgGenImage get chatOn =>
-      const SvgGenImage('assets/icons24/menu/chat_on.svg');
+  /// File path: assets/menu/chat_on.svg
+  SvgGenImage get chatOn => const SvgGenImage('assets/menu/chat_on.svg');
 
-  /// File path: assets/icons24/menu/home_off.svg
-  SvgGenImage get homeOff =>
-      const SvgGenImage('assets/icons24/menu/home_off.svg');
+  /// File path: assets/menu/home_off.svg
+  SvgGenImage get homeOff => const SvgGenImage('assets/menu/home_off.svg');
 
-  /// File path: assets/icons24/menu/home_on.svg
-  SvgGenImage get homeOn =>
-      const SvgGenImage('assets/icons24/menu/home_on.svg');
+  /// File path: assets/menu/home_on.svg
+  SvgGenImage get homeOn => const SvgGenImage('assets/menu/home_on.svg');
 
-  /// File path: assets/icons24/menu/intelligence_off.svg
+  /// File path: assets/menu/intelligence_off.svg
   SvgGenImage get intelligenceOff =>
-      const SvgGenImage('assets/icons24/menu/intelligence_off.svg');
+      const SvgGenImage('assets/menu/intelligence_off.svg');
 
-  /// File path: assets/icons24/menu/intelligence_on.svg
+  /// File path: assets/menu/intelligence_on.svg
   SvgGenImage get intelligenceOn =>
-      const SvgGenImage('assets/icons24/menu/intelligence_on.svg');
+      const SvgGenImage('assets/menu/intelligence_on.svg');
 
-  /// File path: assets/icons24/menu/invest_off.svg
-  SvgGenImage get investOff =>
-      const SvgGenImage('assets/icons24/menu/invest_off.svg');
+  /// File path: assets/menu/invest_off.svg
+  SvgGenImage get investOff => const SvgGenImage('assets/menu/invest_off.svg');
 
-  /// File path: assets/icons24/menu/invest_on.svg
-  SvgGenImage get investOn =>
-      const SvgGenImage('assets/icons24/menu/invest_on.svg');
+  /// File path: assets/menu/invest_on.svg
+  SvgGenImage get investOn => const SvgGenImage('assets/menu/invest_on.svg');
 
-  /// File path: assets/icons24/menu/market_off.svg
-  SvgGenImage get marketOff =>
-      const SvgGenImage('assets/icons24/menu/market_off.svg');
+  /// File path: assets/menu/market_off.svg
+  SvgGenImage get marketOff => const SvgGenImage('assets/menu/market_off.svg');
 
-  /// File path: assets/icons24/menu/market_on.svg
-  SvgGenImage get marketOn =>
-      const SvgGenImage('assets/icons24/menu/market_on.svg');
+  /// File path: assets/menu/market_on.svg
+  SvgGenImage get marketOn => const SvgGenImage('assets/menu/market_on.svg');
 
-  /// File path: assets/icons24/menu/payments_off.svg
+  /// File path: assets/menu/payments_off.svg
   SvgGenImage get paymentsOff =>
-      const SvgGenImage('assets/icons24/menu/payments_off.svg');
+      const SvgGenImage('assets/menu/payments_off.svg');
 
-  /// File path: assets/icons24/menu/payments_on.svg
+  /// File path: assets/menu/payments_on.svg
   SvgGenImage get paymentsOn =>
-      const SvgGenImage('assets/icons24/menu/payments_on.svg');
+      const SvgGenImage('assets/menu/payments_on.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -344,12 +355,14 @@ class UikitAssets {
 
   static const String package = 'iman_uikit';
 
+  static const $AssetsFlagsGen flags = $AssetsFlagsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIcons16Gen icons16 = $AssetsIcons16Gen();
   static const $AssetsIcons20Gen icons20 = $AssetsIcons20Gen();
   static const $AssetsIcons24Gen icons24 = $AssetsIcons24Gen();
   static const $AssetsIcons32Gen icons32 = $AssetsIcons32Gen();
   static const $AssetsIcons40Gen icons40 = $AssetsIcons40Gen();
+  static const $AssetsMenuGen menu = $AssetsMenuGen();
 }
 
 class SvgGenImage {

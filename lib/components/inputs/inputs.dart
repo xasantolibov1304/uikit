@@ -1,7 +1,7 @@
 export 'account_input_field.dart';
 export 'amount_input_field.dart';
 export 'area_input_field.dart';
-export 'currency_input_field.dart';
+export 'currency/currency_input_field.dart';
 export 'date_input_field.dart';
 export 'double_parameter_input_field.dart';
 export 'expire_date_text_field.dart';

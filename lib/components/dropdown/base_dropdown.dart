@@ -16,6 +16,9 @@ class BaseDropdown extends StatefulWidget {
     this.minWidth,
     this.maxHeight,
     this.menuPadding,
+    this.contentPadding,
+    this.fitContent = true,
+    this.offset,
     super.key,
   });
 
@@ -26,11 +29,14 @@ class BaseDropdown extends StatefulWidget {
   final void Function(int)? onSelected;
 
   final bool isEnabled;
+  final bool fitContent;
 
+  final Offset? offset;
   final double? minWidth;
   final double? maxHeight;
 
   final EdgeInsets? menuPadding;
+  final EdgeInsets? contentPadding;
 
   @override
   State<BaseDropdown> createState() => _BaseDropdownState();
@@ -91,7 +97,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
   OverlayEntry _createOverlayEntry() {
     RenderBox renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
+    final offset = renderBox.localToGlobal(widget.offset ?? Offset.zero);
 
     return OverlayEntry(
       builder: (context) {
@@ -102,9 +108,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
               onPanDown: (_) => _hideMenu(),
               behavior: HitTestBehavior.translucent,
               child: IgnorePointer(
-                child: Container(
-                  color: Colors.transparent,
-                ),
+                child: Container(color: Colors.transparent),
               ),
             ),
             Positioned(
@@ -114,6 +118,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
               child: Material(
                 color: Colors.transparent,
                 child: Container(
+                  padding: widget.menuPadding ?? EdgeInsets.zero,
                   constraints: BoxConstraints(
                     maxHeight: widget.maxHeight ?? 320,
                     minWidth: widget.minWidth ?? size.width,
@@ -126,7 +131,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: widget.itemCount,
-                    padding: widget.menuPadding ?? const EdgeInsets.all(8),
+                    padding: widget.contentPadding ?? const EdgeInsets.all(8),
                     itemBuilder: (context, index) {
                       return CommonGestureDetector(
                         onTap: () {

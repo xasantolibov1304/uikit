@@ -13,8 +13,6 @@ import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 import 'package:iman_uikit/utils/reg_exp_constants.dart';
 
-const _maxLength = 10;
-
 class AmountInputField extends StatefulWidget {
   const AmountInputField({
     required this.label,
@@ -29,6 +27,8 @@ class AmountInputField extends StatefulWidget {
     this.captionText,
     this.captionHelperText,
     //
+    this.size = InputFieldSize.large,
+    //
     this.status = InputFieldStatus.info,
     //
     this.focusNode,
@@ -41,6 +41,8 @@ class AmountInputField extends StatefulWidget {
     this.readonly = false,
     this.isRequired = true,
     this.canClear = true,
+    //
+    this.maxLength = 11,
     //
     this.trailingIcon,
     //
@@ -57,6 +59,8 @@ class AmountInputField extends StatefulWidget {
   final String? currency;
   final TextStyle? currencyStyle;
 
+  final InputFieldSize size;
+
   final String? captionIconPath;
   final String? captionText;
   final String? captionHelperText;
@@ -72,6 +76,8 @@ class AmountInputField extends StatefulWidget {
   final bool readonly;
   final bool isRequired;
   final bool canClear;
+
+  final int maxLength;
 
   final Widget? trailingIcon;
 
@@ -105,6 +111,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
   @override
   Widget build(BuildContext context) {
     return InputField(
+      size: widget.size,
       label: widget.label,
       status: widget.status,
       readonly: widget.readonly,
@@ -132,7 +139,7 @@ class _AmountInputFieldState extends State<AmountInputField> {
           thousandSeparator: ThousandSeparator.Space,
         ),
       ],
-      maxLength: _maxLength + (widget.currency?.length ?? 0),
+      maxLength: widget.maxLength + (widget.currency?.length ?? 0),
     );
   }
 }

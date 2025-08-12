@@ -29,6 +29,10 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            uikit.CurrencyInputField(
+              label: 'Currency',
+              onSelectCurrencyTap: (value) {},
+            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),

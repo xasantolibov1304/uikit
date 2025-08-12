@@ -1,7 +1,4 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Project imports:
 import 'package:iman_uikit/components/dropdown/base_dropdown.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
@@ -10,6 +7,7 @@ import 'package:iman_uikit/theme/color_theme_data.dart';
 enum DropdownType {
   tick,
   radio,
+  builder,
 }
 
 class CommonDropdown extends StatefulWidget {
@@ -17,51 +15,75 @@ class CommonDropdown extends StatefulWidget {
     required this.child,
     required this.items,
     this.onValueChanged,
+    this.onSelected,
     this.isEnabled = true,
+    this.offset,
     this.minWidth,
     this.maxHeight,
     this.highlightSelectedItem = true,
-    this.leadingIcon,
-    this.trailingIcon,
     super.key,
-  }) : _type = null;
+  })  : _type = null,
+        itemCount = null,
+        itemBuilder = null;
 
   const CommonDropdown.tick({
     required this.child,
     required this.items,
     this.onValueChanged,
+    this.onSelected,
     this.isEnabled = true,
+    this.offset,
     this.minWidth,
     this.maxHeight,
     super.key,
   })  : _type = DropdownType.tick,
-        leadingIcon = null,
-        trailingIcon = null,
-        highlightSelectedItem = true;
+        highlightSelectedItem = true,
+        itemCount = null,
+        itemBuilder = null;
 
   const CommonDropdown.radio({
     required this.child,
     required this.items,
     this.onValueChanged,
+    this.onSelected,
     this.isEnabled = true,
+    this.offset,
     this.minWidth,
     this.maxHeight,
     super.key,
   })  : _type = DropdownType.radio,
-        leadingIcon = null,
-        trailingIcon = null,
-        highlightSelectedItem = true;
+        highlightSelectedItem = true,
+        itemCount = null,
+        itemBuilder = null;
+
+  const CommonDropdown.builder({
+    required this.child,
+    required this.itemBuilder,
+    required this.itemCount,
+    this.onSelected,
+    this.isEnabled = true,
+    this.offset,
+    this.minWidth,
+    this.maxHeight,
+    this.highlightSelectedItem = true,
+    super.key,
+  })  : _type = null,
+        items = const [],
+        onValueChanged = null;
 
   final Widget child;
   final List<String> items;
   final void Function(String)? onValueChanged;
+  final void Function(int)? onSelected;
 
-  final Widget? leadingIcon;
-  final Widget? trailingIcon;
+  final int? itemCount;
+  final Widget Function(BuildContext context, int index, bool isSelected)?
+      itemBuilder;
 
   final bool isEnabled;
   final bool highlightSelectedItem;
 
+  final Offset? offset;
   final double? minWidth;
   final double? maxHeight;
 
@@ -72,83 +94,96 @@ class CommonDropdown extends StatefulWidget {
 }
 
 class _CommonDropdownState extends State<CommonDropdown> {
-  String? selectedItem;
+  int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
+    final itemCount = widget.itemBuilder != null
+        ? widget.itemCount ?? 0
+        : widget.items.length;
+
     return BaseDropdown(
+      offset: widget.offset,
       targetChild: widget.child,
       minWidth: widget.minWidth,
       maxHeight: widget.maxHeight,
       isEnabled: widget.isEnabled,
-      itemCount: widget.items.length,
-      menuPadding: const EdgeInsets.all(8.0),
+      menuPadding: const EdgeInsets.symmetric(vertical: 8.0),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+      itemCount: itemCount,
       onSelected: (index) {
-        selectedItem = widget.items[index];
-        if (selectedItem != null) {
-          widget.onValueChanged?.call(selectedItem!);
+        selectedIndex = index;
+        if (widget.itemBuilder == null && widget.items.isNotEmpty) {
+          widget.onValueChanged?.call(widget.items[index]);
         }
+        widget.onSelected?.call(index);
       },
       itemBuilder: (context, index) {
-        final item = widget.items[index];
-        final isSelected = item == selectedItem;
+        final isSelected = selectedIndex == index;
+        final isLastItem = index == itemCount - 1;
 
         return Container(
           padding: const EdgeInsets.all(8.0),
-          margin: EdgeInsets.only(
-            bottom: index == widget.items.length - 1 ? 0 : 10.0,
-          ),
+          margin: EdgeInsets.only(bottom: isLastItem ? 0 : 10.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: widget.highlightSelectedItem && isSelected
                 ? context.surfaceColors.primary
                 : null,
           ),
-          child: Row(
-            children: [
-              _buildLeadingIcon(),
-              if (widget.leadingIcon != null) const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  item,
-                  style: context.subtitleTextStyle.medium2,
-                ),
-              ),
-              if (widget.trailingIcon != null) const SizedBox(width: 8),
-              _buildTrailingIcon(),
-            ],
-          ),
+          child: (widget.itemBuilder != null)
+              ? widget.itemBuilder!(context, index, isSelected)
+              : _buildDefaultItem(context, widget.items[index], isSelected),
         );
       },
     );
   }
 
-  Widget _buildLeadingIcon() {
-    if (widget._type == DropdownType.tick) {
-      return UikitAssets.icons20.check.svg(
-        colorFilter: ColorFilter.mode(
-          context.iconColors.secondary,
-          BlendMode.srcIn,
-        ),
-      );
-    }
-    return widget.leadingIcon ?? const SizedBox.shrink();
-  }
-
-  Widget _buildTrailingIcon() {
-    if (widget._type == DropdownType.radio) {
-      return Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(
-            width: 2,
-            color: context.borderColors.primary,
+  Widget _buildDefaultItem(BuildContext context, String text, bool isSelected) {
+    return Row(
+      children: [
+        if (widget._type == DropdownType.tick && isSelected) ...[
+          UikitAssets.icons20.check.svg(
+            colorFilter: ColorFilter.mode(
+              context.iconColors.secondary,
+              BlendMode.srcIn,
+            ),
+          ),
+          const SizedBox(width: 8),
+        ],
+        Expanded(
+          child: Text(
+            text,
+            style: context.subtitleTextStyle.medium2,
           ),
         ),
-      );
-    }
-    return widget.trailingIcon ?? const SizedBox.shrink();
+        if (widget._type == DropdownType.radio) ...[
+          const SizedBox(width: 8),
+          Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                width: 2,
+                color: context.borderColors.primary,
+              ),
+            ),
+            child: isSelected
+                ? Center(
+                    child: Container(
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: context.iconColors.secondary,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  )
+                : null,
+          ),
+        ],
+      ],
+    );
   }
 }

@@ -63,13 +63,14 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/fonts/
     - assets/icons16/
     - assets/icons20/
     - assets/icons24/
-    - assets/icons24/menu/
     - assets/icons32/
     - assets/icons40/
-    - assets/fonts/
+    - assets/menu/
+    - assets/flags/
 
   fonts:
     - family: AeonikPro

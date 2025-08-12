@@ -31,6 +31,7 @@ class ModalMenu extends StatelessWidget {
       maxHeight: maxHeight,
       itemCount: items.length,
       menuPadding: const EdgeInsets.symmetric(vertical: 8.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
       onSelected: (index) {
         onValueChanged?.call(items[index]);
       },
