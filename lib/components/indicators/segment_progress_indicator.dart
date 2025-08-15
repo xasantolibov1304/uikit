@@ -6,6 +6,7 @@ import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 enum SegmentProgressIndicatorType {
+  pirmary,
   success,
   warning,
   error,
@@ -20,7 +21,7 @@ class SegmentProgressIndicator extends StatefulWidget {
     this.type = SegmentProgressIndicatorType.info,
     this.animate = true,
     this.duration = const Duration(milliseconds: 200),
-    this.height = 8.0,
+    this.height = 4.0,
     this.spacing = 8.0,
     this.padding = EdgeInsets.zero,
     //
@@ -143,6 +144,8 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator> {
 
   Color _progressColor(BuildContext context) {
     switch (widget.type) {
+      case SegmentProgressIndicatorType.pirmary:
+        return context.borderColors.primary;
       case SegmentProgressIndicatorType.success:
         return context.borderColors.success;
       case SegmentProgressIndicatorType.warning:

@@ -164,17 +164,21 @@ class Button extends StatelessWidget {
                 ],
               )
             else
-              Column(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  LoadingIndicator(
-                    size: _loadingSize,
-                    color: _textColor(context),
+                  Column(
+                    children: [
+                      LoadingIndicator(
+                        size: _loadingSize,
+                        color: _textColor(context),
+                      ),
+                      if (showSubtext && subtext != null) ...[
+                        SizedBox(height: 4),
+                        _subtextWidget(context),
+                      ]
+                    ],
                   ),
-                  if (showSubtext && subtext != null) ...[
-                    SizedBox(height: 4),
-                    _subtextWidget(context),
-                  ]
                 ],
               ),
           ],
@@ -231,9 +235,9 @@ class Button extends StatelessWidget {
   }
 
   Color _textColor(BuildContext context) {
-    final textColors = Theme.of(context).textColors;
+    final textColors = context.textColors;
     if (!isEnabled) {
-      return textColors.tertiary.withValues(alpha: 0.5);
+      return textColors.tertiary;
     }
     if (textColor != null) {
       return textColor!;

@@ -61,6 +61,7 @@ export 'indicators/common_linear_progress_indicator.dart';
 export 'indicators/linear_progress_bar_indicator.dart';
 export 'indicators/numerical_page_indicator.dart';
 export 'indicators/page_indicator.dart';
+export 'indicators/paged_segment_progress_indicator.dart';
 export 'indicators/progress_indicator.dart';
 export 'indicators/rounded_progress_indicator.dart';
 export 'indicators/segment_progress_indicator.dart';

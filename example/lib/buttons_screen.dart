@@ -34,6 +34,15 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
                   _buildExampleButton(
+                    'Paged Segment Progress Indicator Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const PagedSegmentProgressIndicatorExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
                     'Buttons Example',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(
