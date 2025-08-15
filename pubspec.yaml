@@ -69,6 +69,7 @@ flutter:
     - assets/icons24/
     - assets/icons32/
     - assets/icons40/
+    - assets/icons96/
     - assets/menu/
     - assets/flags/
 

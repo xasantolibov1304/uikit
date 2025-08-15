@@ -24,11 +24,11 @@ You can run the following shell to generate files in the project:
 
 ```
 cd scripts && sh create_feature.sh <FeatureName> && cd ..
-cd scripts && sh generate_all.sh && cd ..
-cd scripts && sh generate_assets.sh && cd ..
-cd scripts && sh generate_localization.sh && cd ..
-cd scripts && sh generate_models.sh && cd ..
-cd scripts && sh sort_all_imports.sh && cd ..
+cd scripts/generate && sh generate_all.sh && cd ../..
+cd scripts/generate && sh generate_assets.sh && cd ../..
+cd scripts/generate && sh generate_localization.sh && cd ../..
+cd scripts/generate && sh generate_models.sh && cd ../..
+cd scripts/generate && sh sort_all_imports.sh && cd ../..
 cd scripts && sh update_dependencies.sh && cd ..
 ```
 

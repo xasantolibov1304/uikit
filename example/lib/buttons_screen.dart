@@ -29,14 +29,62 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            uikit.CurrencyInputField(
-              label: 'Currency',
-              onSelectCurrencyTap: (value) {},
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
+                  _buildExampleButton(
+                    'Buttons Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => uikit.StatusScreen.success(
+                          title: 'Success!',
+                          description:
+                              'Your action was completed successfully.',
+                          banner: uikit.PromoBannerCarousel(
+                            autoplay: true,
+                            children: [
+                              uikit.PromoBanner(
+                                title: 'Banner',
+                                description: 'This is a banner',
+                              ),
+                              uikit.PromoBanner(
+                                title: 'Banner',
+                                description: 'This is a banner',
+                              ),
+                              uikit.PromoBanner(
+                                title: 'Banner',
+                                description: 'This is a banner',
+                              ),
+                            ],
+                          ),
+                          actionButtons: [
+                            uikit.StatusActionButton(
+                              label: 'Information',
+                              icon: uikit.UikitAssets.icons24.info.svg(),
+                              onTap: () {},
+                            ),
+                            uikit.StatusActionButton(
+                              label: 'Information',
+                              icon: uikit.UikitAssets.icons24.info.svg(),
+                              onTap: () {},
+                            ),
+                            uikit.StatusActionButton(
+                              label: 'Information',
+                              icon: uikit.UikitAssets.icons24.info.svg(),
+                              onTap: () {},
+                            ),
+                          ],
+                          buttonCell: uikit.ButtonCell(
+                            primaryText: 'Continue',
+                            onPrimaryTap: () {},
+                            tertiaryText: 'Tertiary',
+                            onTertiaryTap: () {},
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   _buildExampleButton(
                     'Snackbar Example',
                     () => uikit.showTopSnack(

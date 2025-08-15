@@ -23,6 +23,7 @@ final lightTheme = createThemeData(
   statusColors: lightStatusColors,
   buttonColors: lightButtonColors,
   fieldColors: lightFieldColors,
+  brandColors: lightBrandColors,
 
   /// ---- Gradients ----
   appGradients: AppGradients(
@@ -55,6 +56,7 @@ final darkTheme = createThemeData(
   statusColors: darkStatusColors,
   buttonColors: darkButtonColors,
   fieldColors: darkFieldColors,
+  brandColors: darkBrandColors,
 
   /// ---- Gradients ----
   appGradients: AppGradients(
@@ -87,6 +89,7 @@ ThemeData createThemeData({
   required StatusColors statusColors,
   required ButtonColors buttonColors,
   required FieldColors fieldColors,
+  required BrandColors brandColors,
 
   /// ---- Gradients ----
   required AppGradients appGradients,
@@ -112,6 +115,7 @@ ThemeData createThemeData({
         statusColors,
         buttonColors,
         fieldColors,
+        brandColors,
 
         /// ---- Gradients ----
         appGradients,

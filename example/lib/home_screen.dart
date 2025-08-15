@@ -45,11 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
             activeIcon: const Icon(Icons.widgets),
             inactiveIcon: const Icon(Icons.widgets_outlined),
           ),
-          uikit.BottomNavBarItem(
-            label: 'Second',
-            activeIcon: const Icon(Icons.star),
-            inactiveIcon: const Icon(Icons.star_outline),
-          ),
+                  uikit.BottomNavBarItem(
+          label: 'Brand Colors',
+          activeIcon: const Icon(Icons.palette),
+          inactiveIcon: const Icon(Icons.palette_outlined),
+        ),
         ],
         currentIndex: tabsRouter.activeIndex,
         onTap: (index) => tabsRouter.setActiveIndex(index),

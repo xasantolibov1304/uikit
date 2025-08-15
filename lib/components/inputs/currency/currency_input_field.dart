@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:iman_uikit/components/dropdown/dropdown.dart';
 import 'package:iman_uikit/components/inputs/amount_input_field.dart';
-import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/components/inputs/currency/currency_type.dart';
+import 'package:iman_uikit/components/inputs/input_field.dart';
 import 'package:iman_uikit/gen/assets.gen.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';

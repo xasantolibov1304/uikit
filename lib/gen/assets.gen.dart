@@ -280,6 +280,16 @@ class $AssetsIcons40Gen {
   ];
 }
 
+class $AssetsIcons96Gen {
+  const $AssetsIcons96Gen();
+
+  /// File path: assets/icons96/recycle.svg
+  SvgGenImage get recycle => const SvgGenImage('assets/icons96/recycle.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [recycle];
+}
+
 class $AssetsMenuGen {
   const $AssetsMenuGen();
 
@@ -362,6 +372,7 @@ class UikitAssets {
   static const $AssetsIcons24Gen icons24 = $AssetsIcons24Gen();
   static const $AssetsIcons32Gen icons32 = $AssetsIcons32Gen();
   static const $AssetsIcons40Gen icons40 = $AssetsIcons40Gen();
+  static const $AssetsIcons96Gen icons96 = $AssetsIcons96Gen();
   static const $AssetsMenuGen menu = $AssetsMenuGen();
 }
 

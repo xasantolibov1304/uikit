@@ -28,6 +28,8 @@ extension ColorThemeDataExtension on ThemeData {
       extension<ButtonColors>() ?? lightButtonColors;
 
   FieldColors get fieldColors => extension<FieldColors>() ?? lightFieldColors;
+
+  BrandColors get brandColors => extension<BrandColors>() ?? lightBrandColors;
 }
 
 extension ColorThemeDataContextExtension on BuildContext {
@@ -48,4 +50,6 @@ extension ColorThemeDataContextExtension on BuildContext {
   ButtonColors get buttonColors => Theme.of(this).buttonColors;
 
   FieldColors get fieldColors => Theme.of(this).fieldColors;
+
+  BrandColors get brandColors => Theme.of(this).brandColors;
 }

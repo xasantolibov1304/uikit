@@ -12,32 +12,48 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: uikit.StatusScreen.success(
+        title: 'Success!',
+        description: 'Your action was completed successfully.',
+        banner: uikit.PromoBannerCarousel(
+          autoplay: true,
           children: [
-            const SizedBox(height: 20),
-            Text(
-              'Second Screen',
-              style: context.titleTextStyle.large2,
+            uikit.PromoBanner(
+              title: 'Banner',
+              description: 'This is a banner',
             ),
-            const SizedBox(height: 20),
-            Text(
-              'This is the second screen in the bottom navigation.',
-              style: context.bodyTextStyle.main,
+            uikit.PromoBanner(
+              title: 'Banner',
+              description: 'This is a banner',
             ),
-            const SizedBox(height: 20),
-            uikit.Button(
-              text: 'Example Button',
-              onTap: () {
-                uikit.showTopSnack(
-                  context,
-                  uikit.Snack.success('Success', 'Button tapped!'),
-                );
-              },
+            uikit.PromoBanner(
+              title: 'Banner',
+              description: 'This is a banner',
             ),
           ],
+        ),
+        actionButtons: [
+          uikit.StatusActionButton(
+            label: 'Information',
+            icon: uikit.UikitAssets.icons24.info.svg(),
+            onTap: () {},
+          ),
+          uikit.StatusActionButton(
+            label: 'Information',
+            icon: uikit.UikitAssets.icons24.info.svg(),
+            onTap: () {},
+          ),
+          uikit.StatusActionButton(
+            label: 'Information',
+            icon: uikit.UikitAssets.icons24.info.svg(),
+            onTap: () {},
+          ),
+        ],
+        buttonCell: uikit.ButtonCell(
+          primaryText: 'Continue',
+          onPrimaryTap: () {},
+          tertiaryText: 'Tertiary',
+          onTertiaryTap: () {},
         ),
       ),
     );
