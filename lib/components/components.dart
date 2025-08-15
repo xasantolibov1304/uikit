@@ -64,7 +64,7 @@ export 'indicators/page_indicator.dart';
 export 'indicators/progress_indicator.dart';
 export 'indicators/rounded_progress_indicator.dart';
 export 'indicators/segment_progress_indicator.dart';
-export 'indicators/step_indicator.dart';
+export 'indicators/horizontal_step_indicator.dart';
 
 // Inputs
 export 'inputs/inputs.dart';

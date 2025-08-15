@@ -218,7 +218,7 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 16),
-                  StepIndicator(
+                  HorizontalStepIndicator(
                     steps: List.generate(_totalSteps, (index) {
                       final stepNumber = index + 1;
                       StepStateType state;
