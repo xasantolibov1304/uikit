@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/common/safe_area.dart';
 
 // Project imports:
+import 'package:iman_uikit/common/safe_area.dart';
 import 'package:iman_uikit/uikit.dart';
 
 enum StatusScreenType {
