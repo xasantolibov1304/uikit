@@ -12,7 +12,7 @@ class CommonShadows {
       blurRadius: 10,
       spreadRadius: 1,
       offset: Offset(0, 1),
-      color: Color(0x1A000000),
+      color: Color(0x0D000000),
     ),
   ];
 
@@ -24,7 +24,6 @@ class CommonShadows {
     ),
     BoxShadow(
       blurRadius: 12,
-      spreadRadius: 1,
       offset: Offset(0, 6),
       color: Color(0x0D000000),
     ),
@@ -35,6 +34,19 @@ class CommonShadows {
       blurRadius: 16,
       offset: Offset(0, 4),
       color: Color(0x1A000000),
+    ),
+  ];
+
+  static const List<BoxShadow> focusShadow = [
+    BoxShadow(
+      blurRadius: 12,
+      offset: Offset(0, 6),
+      color: Color(0x1F000000),
+    ),
+    BoxShadow(
+      blurRadius: 4,
+      offset: Offset(0, 1),
+      color: Color(0x1F000000),
     ),
   ];
 
