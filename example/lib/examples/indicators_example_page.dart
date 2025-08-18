@@ -30,13 +30,12 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
   // Badge Indicator properties
   int _badgeCount = 5;
   bool _showBadge = true;
-  String _badgeText = '5';
 
   // Segment Progress Indicator properties
   int _segmentCount = 5;
-  double _segmentPercentage = 0.6;
   SegmentProgressIndicatorType _segmentType = SegmentProgressIndicatorType.info;
-  bool _segmentAnimate = true;
+  bool _segmentAutoplay = false;
+  Duration _segmentAutoplayDuration = const Duration(seconds: 3);
   bool _segmentShowLabels = false;
   int _currentStepIndex = 2;
   final List<String> _segmentLabels = [
@@ -46,6 +45,12 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
     'Step 4',
     'Step 5'
   ];
+
+  // Paged Segment Progress Indicator properties
+  int _pagedCurrentPageIndex = 0;
+  bool _pagedAutoplay = false;
+  Duration _pagedAutoplayDuration = const Duration(seconds: 3);
+  bool _pagedShowSegmentProgress = true;
 
   // Linear Progress Indicator properties
   double _linearProgress = 0.65;
@@ -61,6 +66,29 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
   double _roundedLineWidth = 8.0;
   bool _roundedShowPercentage = true;
 
+  final List<Widget> _pagedPages = [
+    _OnboardingPage(
+      title: 'Welcome!',
+      description: 'This is the first page of our demo',
+      icon: Icons.home,
+      color: Colors.blue,
+    ),
+    _OnboardingPage(
+      title: 'Features',
+      description: 'Discover amazing features',
+      icon: Icons.star,
+      color: Colors.green,
+    ),
+    _OnboardingPage(
+      title: 'Get Started',
+      description: 'Ready to begin your journey',
+      icon: Icons.rocket_launch,
+      color: Colors.orange,
+    ),
+  ];
+
+  final List<String> _pagedLabels = ['Welcome', 'Features', 'Start'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,525 +101,136 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Loading Indicator Preview Section
-            _buildSectionTitle('Loading Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Loading: $_isLoading',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      Switch(
-                        value: _isLoading,
-                        onChanged: (value) =>
-                            setState(() => _isLoading = value),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Center(
-                    child: _isLoading
-                        ? LoadingIndicator(size: _loadingSize)
-                        : const Text('Loading stopped'),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Size: ${_loadingSize.toStringAsFixed(1)}',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ),
+            // Loading Indicator Section
+            _buildIndicatorSection(
+              title: 'Loading Indicator',
+              child: _buildLoadingIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Page Indicator Preview Section
-            _buildSectionTitle('Page Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Page ${_currentPage + 1} of $_totalPages',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 16),
-                  PageIndicator(
-                    currentPage: _currentPage + 1,
-                    totalPages: _totalPages,
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: _currentPage > 0
-                            ? () => setState(() => _currentPage--)
-                            : null,
-                        child: const Text('Previous'),
-                      ),
-                      ElevatedButton(
-                        onPressed: _currentPage < _totalPages - 1
-                            ? () => setState(() => _currentPage++)
-                            : null,
-                        child: const Text('Next'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            // Page Indicator Section
+            _buildIndicatorSection(
+              title: 'Page Indicator',
+              child: _buildPageIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Numerical Page Indicator Preview Section
-            _buildSectionTitle('Numerical Page Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Page $_currentNumericalPage of $_totalNumericalPages',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 16),
-                  NumericalPageIndicator(
-                    currentPage: _currentNumericalPage,
-                    totalPages: _totalNumericalPages,
-                    onPageChanged: (page) =>
-                        setState(() => _currentNumericalPage = page),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: _currentNumericalPage > 1
-                            ? () => setState(() => _currentNumericalPage--)
-                            : null,
-                        child: const Text('Previous'),
-                      ),
-                      ElevatedButton(
-                        onPressed: _currentNumericalPage < _totalNumericalPages
-                            ? () => setState(() => _currentNumericalPage++)
-                            : null,
-                        child: const Text('Next'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            // Numerical Page Indicator Section
+            _buildIndicatorSection(
+              title: 'Numerical Page Indicator',
+              child: _buildNumericalPageIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Step Indicator Preview Section
-            _buildSectionTitle('Step Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    'Step $_currentStep of $_totalSteps',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 16),
-                  HorizontalStepIndicator(
-                    steps: List.generate(_totalSteps, (index) {
-                      final stepNumber = index + 1;
-                      StepStateType state;
-                      if (stepNumber < _currentStep) {
-                        state = StepStateType.completed;
-                      } else if (stepNumber == _currentStep) {
-                        state = StepStateType.active;
-                      } else {
-                        state = StepStateType.inactive;
-                      }
-                      return StepData(
-                        label: 'Step $stepNumber',
-                        state: state,
-                      );
-                    }),
-                    currentIndex: _currentStep - 1,
-                    onChanged: (index) =>
-                        setState(() => _currentStep = index + 1),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: _currentStep > 1
-                            ? () => setState(() => _currentStep--)
-                            : null,
-                        child: const Text('Previous'),
-                      ),
-                      ElevatedButton(
-                        onPressed: _currentStep < _totalSteps
-                            ? () => setState(() => _currentStep++)
-                            : null,
-                        child: const Text('Next'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            // Step Indicator Section
+            _buildIndicatorSection(
+              title: 'Step Indicator',
+              child: _buildStepIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Badge Indicator Preview Section
-            _buildSectionTitle('Badge Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Show Badge: $_showBadge',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      Switch(
-                        value: _showBadge,
-                        onChanged: (value) =>
-                            setState(() => _showBadge = value),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Center(
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: const Icon(
-                            Icons.notifications,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        ),
-                        if (_showBadge)
-                          Positioned(
-                            top: 0,
-                            right: 0,
-                            child: BadgeIndicator(
-                              count: _badgeCount,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Count: $_badgeCount',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ),
+            // Badge Indicator Section
+            _buildIndicatorSection(
+              title: 'Badge Indicator',
+              child: _buildBadgeIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Segment Progress Indicator Preview Section
-            _buildSectionTitle('Segment Progress Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  _buildSubsectionTitle('Basic Segment Progress Indicator'),
-                  SegmentProgressIndicator(
-                    type: _segmentType,
-                    segments: _segmentCount,
-                    currentStepIndex: _currentStepIndex,
-                    animate: _segmentAnimate,
-                    showLabels: _segmentShowLabels,
-                    labels: _segmentShowLabels ? _segmentLabels : null,
-                    caption: 'Progress Steps',
-                    subtitle:
-                        'Current step: ${_currentStepIndex + 1} of $_segmentCount',
-                  ),
-                  const SizedBox(height: 24),
-                  const SizedBox(height: 16),
-                  _buildSliderControl(
-                    label: 'Segment Count',
-                    value: _segmentCount.toDouble(),
-                    min: 1,
-                    max: 10,
-                    onChanged: (value) =>
-                        setState(() => _segmentCount = value.round()),
-                  ),
-                  _buildSliderControl(
-                    label: 'Current Step Index',
-                    value: _currentStepIndex.toDouble(),
-                    min: 0,
-                    max: (_segmentCount - 1).toDouble(),
-                    onChanged: (value) =>
-                        setState(() => _currentStepIndex = value.round()),
-                  ),
-                  _buildSliderControl(
-                    label: 'Percentage',
-                    value: _segmentPercentage,
-                    min: 0.0,
-                    max: 1.0,
-                    onChanged: (value) =>
-                        setState(() => _segmentPercentage = value),
-                  ),
-                  _buildSwitchControl(
-                    label: 'Animate',
-                    value: _segmentAnimate,
-                    onChanged: (value) =>
-                        setState(() => _segmentAnimate = value),
-                  ),
-                  _buildSwitchControl(
-                    label: 'Show Labels',
-                    value: _segmentShowLabels,
-                    onChanged: (value) =>
-                        setState(() => _segmentShowLabels = value),
-                  ),
-                  _buildDropdownControl<SegmentProgressIndicatorType>(
-                    label: 'Type',
-                    value: _segmentType,
-                    items: SegmentProgressIndicatorType.values,
-                    onChanged: (value) => setState(() => _segmentType = value!),
-                  ),
-                ],
-              ),
+            // Segment Progress Indicator Section
+            _buildIndicatorSection(
+              title: 'Segment Progress Indicator',
+              child: _buildSegmentProgressIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Linear Progress Indicator Preview Section
-            _buildSectionTitle('Linear Progress Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  _buildSubsectionTitle('Basic Linear Progress Indicator'),
-                  LinearProgressBarIndicator(
-                    percent: _linearProgress,
-                    caption: _linearCaption,
-                    subtitle: _linearSubtitle,
-                    additionalCaption: _linearAdditionalCaption,
-                    additionalSubtitle: _linearAdditionalSubtitle,
-                    type: _linearType,
-                  ),
-                  const SizedBox(height: 24),
-                  _buildSubsectionTitle('Different Types'),
-                  LinearProgressBarIndicator(
-                    percent: 0.3,
-                    caption: 'Warning Progress',
-                    subtitle: 'Something needs attention',
-                    additionalCaption: '30%',
-                    type: LinearProgressIndicatorType.warning,
-                  ),
-                  const SizedBox(height: 16),
-                  LinearProgressBarIndicator(
-                    percent: 0.8,
-                    caption: 'Error Progress',
-                    subtitle: 'Upload failed',
-                    additionalCaption: '80%',
-                    type: LinearProgressIndicatorType.error,
-                  ),
-                  const SizedBox(height: 16),
-                  LinearProgressBarIndicator(
-                    percent: 1.0,
-                    caption: 'Success Progress',
-                    subtitle: 'Upload completed',
-                    additionalCaption: '100%',
-                    type: LinearProgressIndicatorType.neutral,
-                  ),
-                  const SizedBox(height: 24),
-                  _buildSliderControl(
-                    label: 'Progress Percentage',
-                    value: _linearProgress,
-                    min: 0.0,
-                    max: 1.0,
-                    onChanged: (value) =>
-                        setState(() => _linearProgress = value),
-                  ),
-                  _buildDropdownControl(
-                    label: 'Type',
-                    value: _linearType,
-                    items: LinearProgressIndicatorType.values,
-                    onChanged: (value) => setState(() => _linearType = value!),
-                  ),
-                  _buildTextControl(
-                    label: 'Caption',
-                    value: _linearCaption,
-                    onChanged: (value) =>
-                        setState(() => _linearCaption = value),
-                  ),
-                  _buildTextControl(
-                    label: 'Subtitle',
-                    value: _linearSubtitle,
-                    onChanged: (value) =>
-                        setState(() => _linearSubtitle = value),
-                  ),
-                  _buildTextControl(
-                    label: 'Additional Caption',
-                    value: _linearAdditionalCaption,
-                    onChanged: (value) =>
-                        setState(() => _linearAdditionalCaption = value),
-                  ),
-                  _buildTextControl(
-                    label: 'Additional Subtitle',
-                    value: _linearAdditionalSubtitle,
-                    onChanged: (value) =>
-                        setState(() => _linearAdditionalSubtitle = value),
-                  ),
-                ],
-              ),
+            // Paged Segment Progress Indicator Section
+            _buildIndicatorSection(
+              title: 'Paged Segment Progress Indicator',
+              child: _buildPagedSegmentProgressIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Rounded Progress Indicator Preview Section
-            _buildSectionTitle('Rounded Progress Indicator Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Column(
-                children: [
-                  _buildSubsectionTitle('Basic Rounded Progress Indicator'),
-                  Center(
-                    child: RoundedProgressIndicator(
-                      percent: _roundedProgress,
-                      size: _roundedSize,
-                      lineWidth: _roundedLineWidth,
-                      showPercentage: _roundedShowPercentage,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  _buildSubsectionTitle('Different Sizes'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RoundedProgressIndicator(
-                        percent: 0.25,
-                        size: 60.0,
-                        lineWidth: 6.0,
-                        showPercentage: false,
-                      ),
-                      RoundedProgressIndicator(
-                        percent: 0.5,
-                        size: 80.0,
-                        lineWidth: 8.0,
-                        showPercentage: true,
-                      ),
-                      RoundedProgressIndicator(
-                        percent: 0.75,
-                        size: 120.0,
-                        lineWidth: 12.0,
-                        showPercentage: true,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 24),
-                  _buildSliderControl(
-                    label: 'Progress Percentage',
-                    value: _roundedProgress,
-                    min: 0.0,
-                    max: 1.0,
-                    onChanged: (value) =>
-                        setState(() => _roundedProgress = value),
-                  ),
-                  _buildSliderControl(
-                    label: 'Size',
-                    value: _roundedSize,
-                    min: 40.0,
-                    max: 200.0,
-                    onChanged: (value) => setState(() => _roundedSize = value),
-                  ),
-                  _buildSliderControl(
-                    label: 'Line Width',
-                    value: _roundedLineWidth,
-                    min: 2.0,
-                    max: 20.0,
-                    onChanged: (value) =>
-                        setState(() => _roundedLineWidth = value),
-                  ),
-                  _buildSwitchControl(
-                    label: 'Show Percentage',
-                    value: _roundedShowPercentage,
-                    onChanged: (value) =>
-                        setState(() => _roundedShowPercentage = value),
-                  ),
-                ],
-              ),
+            // Linear Progress Indicator Section
+            _buildIndicatorSection(
+              title: 'Linear Progress Indicator',
+              child: _buildLinearProgressIndicatorSection(),
             ),
             const SizedBox(height: 24),
 
-            // Indicators Controls Section
-            _buildSectionTitle('Indicators Controls'),
-            _buildIndicatorsControls(),
+            // Rounded Progress Indicator Section
+            _buildIndicatorSection(
+              title: 'Rounded Progress Indicator',
+              child: _buildRoundedProgressIndicatorSection(),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
+  Widget _buildIndicatorSection({
+    required String title,
+    required Widget child,
+  }) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey[50],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey[300]!),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              ),
             ),
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: child,
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildIndicatorsControls() {
+  Widget _buildLoadingIndicatorSection() {
     return Column(
       children: [
-        // Loading Indicator Controls
-        _buildSubsectionTitle('Loading Indicator Controls'),
-
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Loading: $_isLoading',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            Switch(
+              value: _isLoading,
+              onChanged: (value) => setState(() => _isLoading = value),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Center(
+          child: _isLoading
+              ? LoadingIndicator(size: _loadingSize)
+              : const Text('Loading stopped'),
+        ),
+        const SizedBox(height: 16),
         _buildSliderControl(
           label: 'Loading Size',
           value: _loadingSize,
@@ -599,28 +238,34 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 48.0,
           onChanged: (value) => setState(() => _loadingSize = value),
         ),
+      ],
+    );
+  }
 
-        const SizedBox(height: 24),
-
-        // Page Indicator Controls
-        _buildSubsectionTitle('Page Indicator Controls'),
-
+  Widget _buildPageIndicatorSection() {
+    return Column(
+      children: [
+        Center(
+          child: PageIndicator(
+            currentPage: _currentPage + 1,
+            totalPages: _totalPages,
+          ),
+        ),
+        const SizedBox(height: 16),
         _buildSliderControl(
           label: 'Current Page',
           value: _currentPage.toDouble(),
           min: 0.0,
           max: (_totalPages - 1).toDouble(),
-          onChanged: (value) => setState(() => _currentPage = value.toInt()),
+          onChanged: (value) => setState(() => _currentPage = value.round()),
         ),
-
         _buildSliderControl(
           label: 'Total Pages',
           value: _totalPages.toDouble(),
-          min: 2.0,
+          min: 1.0,
           max: 10.0,
-          onChanged: (value) => setState(() => _totalPages = value.toInt()),
+          onChanged: (value) => setState(() => _totalPages = value.round()),
         ),
-
         _buildSliderControl(
           label: 'Indicator Size',
           value: _pageIndicatorSize,
@@ -628,81 +273,302 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 16.0,
           onChanged: (value) => setState(() => _pageIndicatorSize = value),
         ),
+      ],
+    );
+  }
 
-        const SizedBox(height: 24),
-
-        // Numerical Page Indicator Controls
-        _buildSubsectionTitle('Numerical Page Indicator Controls'),
-
+  Widget _buildNumericalPageIndicatorSection() {
+    return Column(
+      children: [
+        Center(
+          child: NumericalPageIndicator(
+            currentPage: _currentNumericalPage,
+            totalPages: _totalNumericalPages,
+            onPageChanged: (page) =>
+                setState(() => _currentNumericalPage = page),
+          ),
+        ),
+        const SizedBox(height: 16),
         _buildSliderControl(
           label: 'Current Page',
           value: _currentNumericalPage.toDouble(),
           min: 1.0,
           max: _totalNumericalPages.toDouble(),
           onChanged: (value) =>
-              setState(() => _currentNumericalPage = value.toInt()),
+              setState(() => _currentNumericalPage = value.round()),
         ),
-
         _buildSliderControl(
           label: 'Total Pages',
           value: _totalNumericalPages.toDouble(),
-          min: 5.0,
+          min: 1.0,
           max: 20.0,
           onChanged: (value) =>
-              setState(() => _totalNumericalPages = value.toInt()),
+              setState(() => _totalNumericalPages = value.round()),
         ),
+      ],
+    );
+  }
 
-        const SizedBox(height: 24),
-
-        // Step Indicator Controls
-        _buildSubsectionTitle('Step Indicator Controls'),
-
+  Widget _buildStepIndicatorSection() {
+    return Column(
+      children: [
+        HorizontalStepIndicator(
+          steps: List.generate(_totalSteps, (index) {
+            final stepNumber = index + 1;
+            StepStateType state;
+            if (stepNumber < _currentStep) {
+              state = StepStateType.completed;
+            } else if (stepNumber == _currentStep) {
+              state = StepStateType.active;
+            } else {
+              state = StepStateType.inactive;
+            }
+            return StepData(
+              label: 'Step $stepNumber',
+              state: state,
+            );
+          }),
+          currentIndex: _currentStep - 1,
+          onChanged: (index) => setState(() => _currentStep = index + 1),
+        ),
+        const SizedBox(height: 16),
         _buildSliderControl(
           label: 'Current Step',
           value: _currentStep.toDouble(),
           min: 1.0,
           max: _totalSteps.toDouble(),
-          onChanged: (value) => setState(() => _currentStep = value.toInt()),
+          onChanged: (value) => setState(() => _currentStep = value.round()),
         ),
-
         _buildSliderControl(
           label: 'Total Steps',
           value: _totalSteps.toDouble(),
           min: 2.0,
           max: 8.0,
-          onChanged: (value) => setState(() => _totalSteps = value.toInt()),
+          onChanged: (value) => setState(() => _totalSteps = value.round()),
         ),
-
         _buildSwitchControl(
-          label: 'Show Step Labels',
+          label: 'Show Labels',
           value: _showStepLabels,
           onChanged: (value) => setState(() => _showStepLabels = value),
         ),
+      ],
+    );
+  }
 
-        const SizedBox(height: 24),
-
-        // Badge Indicator Controls
-        _buildSubsectionTitle('Badge Indicator Controls'),
-
+  Widget _buildBadgeIndicatorSection() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            BadgeIndicator(
+              count: _badgeCount,
+            ),
+            BadgeIndicator(
+              count: 0,
+            ),
+            BadgeIndicator(
+              count: 99,
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
         _buildSliderControl(
           label: 'Badge Count',
           value: _badgeCount.toDouble(),
           min: 0.0,
           max: 99.0,
-          onChanged: (value) => setState(() => _badgeCount = value.toInt()),
+          onChanged: (value) => setState(() => _badgeCount = value.round()),
         ),
-
-        _buildTextControl(
-          label: 'Badge Text',
-          value: _badgeText,
-          onChanged: (value) => setState(() => _badgeText = value),
+        _buildSwitchControl(
+          label: 'Show Badge',
+          value: _showBadge,
+          onChanged: (value) => setState(() => _showBadge = value),
         ),
+      ],
+    );
+  }
 
+  Widget _buildSegmentProgressIndicatorSection() {
+    return Column(
+      children: [
+        SegmentProgressIndicator(
+          type: _segmentType,
+          segments: _segmentCount,
+          currentStepIndex: _currentStepIndex,
+          autoplay: _segmentAutoplay,
+          autoplayDuration: _segmentAutoplayDuration,
+          showLabels: _segmentShowLabels,
+          labels: _segmentShowLabels ? _segmentLabels : null,
+          caption: 'Progress Steps',
+          subtitle: 'Current step: ${_currentStepIndex + 1} of $_segmentCount',
+        ),
+        const SizedBox(height: 16),
+        _buildSliderControl(
+          label: 'Segment Count',
+          value: _segmentCount.toDouble(),
+          min: 1.0,
+          max: 10.0,
+          onChanged: (value) => setState(() => _segmentCount = value.round()),
+        ),
+        _buildSliderControl(
+          label: 'Current Step',
+          value: _currentStepIndex.toDouble(),
+          min: 0.0,
+          max: (_segmentCount - 1).toDouble(),
+          onChanged: (value) =>
+              setState(() => _currentStepIndex = value.round()),
+        ),
+        _buildDropdownControl(
+          label: 'Type',
+          value: _segmentType,
+          items: SegmentProgressIndicatorType.values,
+          onChanged: (value) => setState(() => _segmentType = value!),
+        ),
+        _buildSwitchControl(
+          label: 'Autoplay',
+          value: _segmentAutoplay,
+          onChanged: (value) => setState(() => _segmentAutoplay = value),
+        ),
+        if (_segmentAutoplay)
+          _buildSliderControl(
+            label: 'Autoplay Duration (seconds)',
+            value: _segmentAutoplayDuration.inSeconds.toDouble(),
+            min: 1.0,
+            max: 10.0,
+            onChanged: (value) => setState(() =>
+                _segmentAutoplayDuration = Duration(seconds: value.round())),
+          ),
+        _buildSwitchControl(
+          label: 'Show Labels',
+          value: _segmentShowLabels,
+          onChanged: (value) => setState(() => _segmentShowLabels = value),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPagedSegmentProgressIndicatorSection() {
+    return Column(
+      children: [
+        // Paged Segment Progress Indicator
+        Container(
+          height: 300,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey[300]!),
+          ),
+          child: PagedSegmentProgressIndicator(
+            pages: _pagedPages,
+            currentPageIndex: _pagedCurrentPageIndex,
+            onPageChanged: (index) {
+              setState(() {
+                _pagedCurrentPageIndex = index;
+              });
+            },
+            showProgressIndicator: _pagedShowSegmentProgress,
+            segmentProgressIndicator: SegmentProgressIndicator(
+              labels: _pagedLabels,
+              showLabels: true,
+              segments: _pagedPages.length,
+              padding: const EdgeInsets.all(12),
+              currentStepIndex: _pagedCurrentPageIndex,
+              autoplay: _pagedAutoplay,
+              autoplayDuration: _pagedAutoplayDuration,
+              onSegmentChanged: (index) {
+                setState(() {
+                  _pagedCurrentPageIndex = index;
+                });
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // Controls
+        _buildSwitchControl(
+          label: 'Autoplay',
+          value: _pagedAutoplay,
+          onChanged: (value) => setState(() => _pagedAutoplay = value),
+        ),
+        if (_pagedAutoplay)
+          _buildSliderControl(
+            label: 'Autoplay Duration (seconds)',
+            value: _pagedAutoplayDuration.inSeconds.toDouble(),
+            min: 1.0,
+            max: 10.0,
+            onChanged: (value) => setState(() =>
+                _pagedAutoplayDuration = Duration(seconds: value.round())),
+          ),
+        _buildSwitchControl(
+          label: 'Show Segment Progress',
+          value: _pagedShowSegmentProgress,
+          onChanged: (value) =>
+              setState(() => _pagedShowSegmentProgress = value),
+        ),
+        // Navigation buttons
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: _pagedCurrentPageIndex > 0
+                  ? () => setState(() => _pagedCurrentPageIndex--)
+                  : null,
+              child: const Text('Previous'),
+            ),
+            Text('Page ${_pagedCurrentPageIndex + 1} of ${_pagedPages.length}'),
+            ElevatedButton(
+              onPressed: _pagedCurrentPageIndex < _pagedPages.length - 1
+                  ? () => setState(() => _pagedCurrentPageIndex++)
+                  : null,
+              child: const Text('Next'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLinearProgressIndicatorSection() {
+    return Column(
+      children: [
+        _buildSubsectionTitle('Basic Linear Progress Indicator'),
+        LinearProgressBarIndicator(
+          percent: _linearProgress,
+          caption: _linearCaption,
+          subtitle: _linearSubtitle,
+          additionalCaption: _linearAdditionalCaption,
+          additionalSubtitle: _linearAdditionalSubtitle,
+          type: _linearType,
+        ),
         const SizedBox(height: 24),
-
-        // Linear Progress Indicator Controls
-        _buildSubsectionTitle('Linear Progress Indicator Controls'),
-
+        _buildSubsectionTitle('Different Types'),
+        LinearProgressBarIndicator(
+          percent: 0.3,
+          caption: 'Warning Progress',
+          subtitle: 'Something needs attention',
+          additionalCaption: '30%',
+          type: LinearProgressIndicatorType.warning,
+        ),
+        const SizedBox(height: 16),
+        LinearProgressBarIndicator(
+          percent: 0.8,
+          caption: 'Error Progress',
+          subtitle: 'Upload failed',
+          additionalCaption: '80%',
+          type: LinearProgressIndicatorType.error,
+        ),
+        const SizedBox(height: 16),
+        LinearProgressBarIndicator(
+          percent: 1.0,
+          caption: 'Success Progress',
+          subtitle: 'Upload completed',
+          additionalCaption: '100%',
+          type: LinearProgressIndicatorType.neutral,
+        ),
+        const SizedBox(height: 24),
         _buildSliderControl(
           label: 'Progress Percentage',
           value: _linearProgress,
@@ -710,45 +576,76 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 1.0,
           onChanged: (value) => setState(() => _linearProgress = value),
         ),
-
-        _buildDropdownControl<LinearProgressIndicatorType>(
+        _buildDropdownControl(
           label: 'Type',
           value: _linearType,
           items: LinearProgressIndicatorType.values,
           onChanged: (value) => setState(() => _linearType = value!),
         ),
-
         _buildTextControl(
           label: 'Caption',
           value: _linearCaption,
           onChanged: (value) => setState(() => _linearCaption = value),
         ),
-
         _buildTextControl(
           label: 'Subtitle',
           value: _linearSubtitle,
           onChanged: (value) => setState(() => _linearSubtitle = value),
         ),
-
         _buildTextControl(
           label: 'Additional Caption',
           value: _linearAdditionalCaption,
           onChanged: (value) =>
               setState(() => _linearAdditionalCaption = value),
         ),
-
         _buildTextControl(
           label: 'Additional Subtitle',
           value: _linearAdditionalSubtitle,
           onChanged: (value) =>
               setState(() => _linearAdditionalSubtitle = value),
         ),
+      ],
+    );
+  }
 
+  Widget _buildRoundedProgressIndicatorSection() {
+    return Column(
+      children: [
+        _buildSubsectionTitle('Basic Rounded Progress Indicator'),
+        Center(
+          child: RoundedProgressIndicator(
+            percent: _roundedProgress,
+            size: _roundedSize,
+            lineWidth: _roundedLineWidth,
+            showPercentage: _roundedShowPercentage,
+          ),
+        ),
         const SizedBox(height: 24),
-
-        // Rounded Progress Indicator Controls
-        _buildSubsectionTitle('Rounded Progress Indicator Controls'),
-
+        _buildSubsectionTitle('Different Sizes'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            RoundedProgressIndicator(
+              percent: 0.25,
+              size: 60.0,
+              lineWidth: 6.0,
+              showPercentage: false,
+            ),
+            RoundedProgressIndicator(
+              percent: 0.5,
+              size: 80.0,
+              lineWidth: 8.0,
+              showPercentage: true,
+            ),
+            RoundedProgressIndicator(
+              percent: 0.75,
+              size: 120.0,
+              lineWidth: 12.0,
+              showPercentage: true,
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
         _buildSliderControl(
           label: 'Progress Percentage',
           value: _roundedProgress,
@@ -756,7 +653,6 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 1.0,
           onChanged: (value) => setState(() => _roundedProgress = value),
         ),
-
         _buildSliderControl(
           label: 'Size',
           value: _roundedSize,
@@ -764,7 +660,6 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 200.0,
           onChanged: (value) => setState(() => _roundedSize = value),
         ),
-
         _buildSliderControl(
           label: 'Line Width',
           value: _roundedLineWidth,
@@ -772,7 +667,6 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           max: 20.0,
           onChanged: (value) => setState(() => _roundedLineWidth = value),
         ),
-
         _buildSwitchControl(
           label: 'Show Percentage',
           value: _roundedShowPercentage,
@@ -784,7 +678,7 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
 
   Widget _buildSubsectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -909,6 +803,61 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
               );
             }).toList(),
             onChanged: onChanged,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _OnboardingPage extends StatelessWidget {
+  const _OnboardingPage({
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.color,
+  });
+
+  final String title;
+  final String description;
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(40),
+            ),
+            child: Icon(
+              icon,
+              size: 40,
+              color: color,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            description,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.grey[600],
+                ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

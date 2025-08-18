@@ -29,7 +29,7 @@ class PagedSegmentProgressIndicator extends StatefulWidget {
   /// Callback when page changes
   final ValueChanged<int> onPageChanged;
 
-  /// Segment progress indicator
+  /// Segment progress indicator with autoplay functionality
   final SegmentProgressIndicator segmentProgressIndicator;
 
   /// Position of the progress indicator
@@ -46,20 +46,24 @@ class PagedSegmentProgressIndicator extends StatefulWidget {
 class _PagedSegmentProgressIndicatorState
     extends State<PagedSegmentProgressIndicator> {
   late PageController _pageController;
+  int _currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
+    _currentPageIndex = widget.currentPageIndex;
     _pageController = PageController(initialPage: widget.currentPageIndex);
   }
 
   @override
   void didUpdateWidget(PagedSegmentProgressIndicator oldWidget) {
     super.didUpdateWidget(oldWidget);
+
     if (oldWidget.currentPageIndex != widget.currentPageIndex) {
+      _currentPageIndex = widget.currentPageIndex;
       _pageController.animateToPage(
         widget.currentPageIndex,
-        duration: widget.segmentProgressIndicator.duration,
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -69,6 +73,30 @@ class _PagedSegmentProgressIndicatorState
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  void _changePage(int pageIndex) {
+    if (pageIndex != _currentPageIndex &&
+        pageIndex >= 0 &&
+        pageIndex < widget.pages.length) {
+      _currentPageIndex = pageIndex;
+      _pageController.animateToPage(
+        pageIndex,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+
+      widget.onPageChanged(pageIndex);
+    }
+  }
+
+  void _handlePageChanged(int pageIndex) {
+    if (pageIndex != _currentPageIndex &&
+        pageIndex >= 0 &&
+        pageIndex < widget.pages.length) {
+      _currentPageIndex = pageIndex;
+      widget.onPageChanged(pageIndex);
+    }
   }
 
   @override
@@ -94,24 +122,31 @@ class _PagedSegmentProgressIndicatorState
   }
 
   Widget _buildProgressIndicator() {
-    return Padding(
+    return SegmentProgressIndicator(
+      segments: widget.pages.length,
+      currentStepIndex: widget.currentPageIndex,
+      autoplay: widget.segmentProgressIndicator.autoplay,
+      autoplayDuration: widget.segmentProgressIndicator.autoplayDuration,
+      type: widget.segmentProgressIndicator.type,
+      height: widget.segmentProgressIndicator.height,
+      spacing: widget.segmentProgressIndicator.spacing,
       padding: widget.segmentProgressIndicator.padding,
-      child: widget.segmentProgressIndicator,
+      showLabels: widget.segmentProgressIndicator.showLabels,
+      labels: widget.segmentProgressIndicator.labels,
+      caption: widget.segmentProgressIndicator.caption,
+      subtitle: widget.segmentProgressIndicator.subtitle,
+      onSegmentChanged: _changePage,
     );
   }
 
   Widget _buildPageContent() {
     return PageView.builder(
       controller: _pageController,
-      onPageChanged: (index) {
-        widget.onPageChanged(index);
-      },
+      onPageChanged: _handlePageChanged,
       itemCount: widget.pages.length,
       itemBuilder: (context, index) {
         return AnimatedSwitcher(
-          duration: widget.segmentProgressIndicator.animate
-              ? widget.segmentProgressIndicator.duration
-              : Duration.zero,
+          duration: const Duration(milliseconds: 300),
           child: Container(
             key: ValueKey(index),
             child: widget.pages[index],

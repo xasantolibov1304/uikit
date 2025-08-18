@@ -65,91 +65,28 @@ class _PagedSegmentProgressIndicatorExamplePageState
         backgroundColor: context.surfaceColors.primary,
         foregroundColor: context.textColors.primary,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: uikit.PagedSegmentProgressIndicator(
-              pages: _pages,
-              currentPageIndex: _currentPageIndex,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentPageIndex = index;
-                });
-              },
-              segmentProgressIndicator: uikit.SegmentProgressIndicator(
-                labels: _labels,
-                showLabels: true,
-                segments: _pages.length,
-                padding: const EdgeInsets.all(12),
-                currentStepIndex: _currentPageIndex,
-              ),
-            ),
-          ),
-          _buildCustomNavigation(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCustomNavigation() {
-    final isLastPage = _currentPageIndex == _pages.length - 1;
-
-    return Container(
-      padding: const EdgeInsets.all(24),
-      child: Row(
-        children: [
-          if (!isLastPage)
-            Expanded(
-              child: OutlinedButton(
-                onPressed: () {
-                  setState(() {
-                    _currentPageIndex = _pages.length - 1;
-                  });
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: context.textColors.secondary,
-                  side: BorderSide(
-                    color: context.borderColors.secondary,
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: const Text('Пропустить'),
-              ),
-            ),
-          if (!isLastPage) const SizedBox(width: 16),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () {
-                if (isLastPage) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Onboarding completed!'),
-                    ),
-                  );
-                } else {
-                  setState(() {
-                    _currentPageIndex++;
-                  });
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: context.borderColors.primary,
-                foregroundColor: context.textColors.invert,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                elevation: 2,
-              ),
-              child: Text(
-                isLastPage ? 'Завершить' : 'Дальше >',
-              ),
-            ),
-          ),
-        ],
+      body: uikit.PagedSegmentProgressIndicator(
+        pages: _pages,
+        currentPageIndex: _currentPageIndex,
+        onPageChanged: (index) {
+          setState(() {
+            _currentPageIndex = index;
+          });
+        },
+        segmentProgressIndicator: uikit.SegmentProgressIndicator(
+          labels: _labels,
+          showLabels: true,
+          segments: _pages.length,
+          padding: const EdgeInsets.all(12),
+          currentStepIndex: _currentPageIndex,
+          autoplay: true,
+          autoplayDuration: const Duration(seconds: 3),
+          onSegmentChanged: (index) {
+            setState(() {
+              _currentPageIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

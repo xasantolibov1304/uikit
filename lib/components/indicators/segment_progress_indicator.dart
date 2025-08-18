@@ -19,8 +19,9 @@ class SegmentProgressIndicator extends StatefulWidget {
     this.currentStepIndex = 0,
     //
     this.type = SegmentProgressIndicatorType.info,
-    this.animate = true,
-    this.duration = const Duration(milliseconds: 200),
+    this.autoplay = false,
+    this.autoplayDuration = const Duration(seconds: 3),
+    this.onSegmentChanged,
     this.height = 4.0,
     this.spacing = 8.0,
     this.padding = EdgeInsets.zero,
@@ -34,22 +35,42 @@ class SegmentProgressIndicator extends StatefulWidget {
     super.key,
   });
 
+  /// Number of segments
   final int segments;
+
+  /// Current step index
   final int currentStepIndex;
 
   final SegmentProgressIndicatorType type;
 
-  final bool animate;
-  final Duration duration;
+  /// Whether to automatically change the progress
+  final bool autoplay;
 
+  /// Duration for animating each segment during autoplay
+  final Duration autoplayDuration;
+
+  /// Callback when segment changes
+  final ValueChanged<int>? onSegmentChanged;
+
+  /// Height of the segment
   final double height;
+
+  /// Spacing between segments
   final double spacing;
+
+  /// Padding around the indicator
   final EdgeInsetsGeometry padding;
 
+  /// Whether to show labels
   final bool showLabels;
+
+  /// Labels for each segment
   final List<String>? labels;
 
+  /// Caption for the indicator
   final String? caption;
+
+  /// Subtitle for the indicator
   final String? subtitle;
 
   @override
@@ -57,7 +78,109 @@ class SegmentProgressIndicator extends StatefulWidget {
       _SegmentProgressIndicatorState();
 }
 
-class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator> {
+class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
+    with TickerProviderStateMixin {
+  double _currentProgress = 0.0;
+
+  late AnimationController _autoplayController;
+  late Animation<double> _autoplayAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentProgress = widget.currentStepIndex.toDouble();
+
+    if (widget.autoplay) {
+      _initAutoplay();
+    }
+  }
+
+  @override
+  void didUpdateWidget(SegmentProgressIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.currentStepIndex != oldWidget.currentStepIndex) {
+      _currentProgress = widget.currentStepIndex.toDouble();
+
+      if (widget.autoplay) {
+        _restartAutoplay();
+      }
+    }
+
+    if (widget.autoplay != oldWidget.autoplay) {
+      if (widget.autoplay) {
+        _initAutoplay();
+      } else {
+        _disposeAutoplay();
+      }
+    }
+
+    if (widget.autoplay &&
+        (widget.autoplayDuration != oldWidget.autoplayDuration ||
+            widget.segments != oldWidget.segments)) {
+      _updateAutoplay();
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.autoplay) {
+      _disposeAutoplay();
+    }
+    super.dispose();
+  }
+
+  void _initAutoplay() {
+    final remainingSegments = widget.segments - widget.currentStepIndex;
+    final totalDuration = Duration(
+      milliseconds: widget.autoplayDuration.inMilliseconds * remainingSegments,
+    );
+
+    _autoplayController = AnimationController(
+      duration: totalDuration,
+      vsync: this,
+    );
+
+    _autoplayAnimation = Tween<double>(
+      begin: widget.currentStepIndex.toDouble(),
+      end: widget.segments.toDouble(),
+    ).animate(CurvedAnimation(
+      parent: _autoplayController,
+      curve: Curves.linear,
+    ));
+
+    _autoplayAnimation.addListener(() {
+      setState(() {
+        _currentProgress = _autoplayAnimation.value;
+      });
+
+      // Notify when segment changes
+      final currentSegment = _autoplayAnimation.value.floor();
+      if (widget.onSegmentChanged != null &&
+          currentSegment != widget.currentStepIndex) {
+        widget.onSegmentChanged!(currentSegment);
+      }
+    });
+
+    _autoplayController.forward();
+  }
+
+  void _disposeAutoplay() {
+    _autoplayController.dispose();
+  }
+
+  void _updateAutoplay() {
+    _disposeAutoplay();
+    _initAutoplay();
+  }
+
+  void _restartAutoplay() {
+    if (widget.autoplay) {
+      _disposeAutoplay();
+      _initAutoplay();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -126,18 +249,55 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator> {
   }
 
   Widget _buildSegment(int index) {
-    final validStepIndex =
-        widget.currentStepIndex.clamp(0, widget.segments - 1);
-    final isCompleted = index <= validStepIndex;
+    final progress =
+        widget.autoplay ? _currentProgress : widget.currentStepIndex.toDouble();
 
-    return AnimatedContainer(
-      duration: widget.animate ? widget.duration : Duration.zero,
+    final segmentStart = index.toDouble();
+    final segmentEnd = (index + 1).toDouble();
+
+    if (progress >= segmentEnd) {
+      return Container(
+        height: widget.height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          color: _progressColor(context),
+        ),
+      );
+    }
+
+    if (progress > segmentStart) {
+      final fillPercentage = (progress - segmentStart).clamp(0.0, 1.0);
+
+      return Stack(
+        children: [
+          // Background (unfilled part)
+          Container(
+            height: widget.height,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+              color: context.borderColors.primary,
+            ),
+          ),
+          // Filled part
+          FractionallySizedBox(
+            widthFactor: fillPercentage,
+            child: Container(
+              height: widget.height,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: _progressColor(context),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    return Container(
       height: widget.height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        color: isCompleted
-            ? _progressColor(context)
-            : context.borderColors.primary,
+        color: context.borderColors.primary,
       ),
     );
   }

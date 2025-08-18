@@ -34,63 +34,11 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
                   _buildExampleButton(
-                    'Paged Segment Progress Indicator Example',
+                    'Paged Segment',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) =>
                             const PagedSegmentProgressIndicatorExamplePage(),
-                      ),
-                    ),
-                  ),
-                  _buildExampleButton(
-                    'Buttons Example',
-                    () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => uikit.StatusScreen.success(
-                          title: 'Success!',
-                          description:
-                              'Your action was completed successfully.',
-                          banner: uikit.PromoBannerCarousel(
-                            autoplay: true,
-                            children: [
-                              uikit.PromoBanner(
-                                title: 'Banner',
-                                description: 'This is a banner',
-                              ),
-                              uikit.PromoBanner(
-                                title: 'Banner',
-                                description: 'This is a banner',
-                              ),
-                              uikit.PromoBanner(
-                                title: 'Banner',
-                                description: 'This is a banner',
-                              ),
-                            ],
-                          ),
-                          actionButtons: [
-                            uikit.StatusActionButton(
-                              label: 'Information',
-                              icon: uikit.UikitAssets.icons24.info.svg(),
-                              onTap: () {},
-                            ),
-                            uikit.StatusActionButton(
-                              label: 'Information',
-                              icon: uikit.UikitAssets.icons24.info.svg(),
-                              onTap: () {},
-                            ),
-                            uikit.StatusActionButton(
-                              label: 'Information',
-                              icon: uikit.UikitAssets.icons24.info.svg(),
-                              onTap: () {},
-                            ),
-                          ],
-                          buttonCell: uikit.ButtonCell(
-                            primaryText: 'Continue',
-                            onPrimaryTap: () {},
-                            tertiaryText: 'Tertiary',
-                            onTertiaryTap: () {},
-                          ),
-                        ),
                       ),
                     ),
                   ),
