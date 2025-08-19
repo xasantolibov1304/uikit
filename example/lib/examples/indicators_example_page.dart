@@ -87,8 +87,6 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
     ),
   ];
 
-  final List<String> _pagedLabels = ['Welcome', 'Features', 'Start'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -468,20 +466,17 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
               });
             },
             showProgressIndicator: _pagedShowSegmentProgress,
-            segmentProgressIndicator: SegmentProgressIndicator(
-              labels: _pagedLabels,
-              showLabels: true,
-              segments: _pagedPages.length,
-              padding: const EdgeInsets.all(12),
-              currentStepIndex: _pagedCurrentPageIndex,
-              autoplay: _pagedAutoplay,
-              autoplayDuration: _pagedAutoplayDuration,
-              onSegmentChanged: (index) {
-                setState(() {
-                  _pagedCurrentPageIndex = index;
-                });
-              },
-            ),
+            autoplay: _pagedAutoplay,
+            autoplayDuration: _pagedAutoplayDuration,
+            onComplete: () {
+              // Handle completion
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('All pages completed!'),
+                  backgroundColor: Colors.green,
+                ),
+              );
+            },
           ),
         ),
         const SizedBox(height: 16),
@@ -502,7 +497,7 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
                 _pagedAutoplayDuration = Duration(seconds: value.round())),
           ),
         _buildSwitchControl(
-          label: 'Show Segment Progress',
+          label: 'Show Progress Indicator',
           value: _pagedShowSegmentProgress,
           onChanged: (value) =>
               setState(() => _pagedShowSegmentProgress = value),
@@ -526,6 +521,14 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
               child: const Text('Next'),
             ),
           ],
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Tip: Tap left/right sides to navigate • Hold to pause timer',
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Colors.grey[600],
+              ),
+          textAlign: TextAlign.center,
         ),
       ],
     );

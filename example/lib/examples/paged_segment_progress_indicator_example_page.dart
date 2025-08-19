@@ -15,6 +15,8 @@ class PagedSegmentProgressIndicatorExamplePage extends StatefulWidget {
 class _PagedSegmentProgressIndicatorExamplePageState
     extends State<PagedSegmentProgressIndicatorExamplePage> {
   int _currentPageIndex = 0;
+  bool _autoplay = true;
+  Duration _autoplayDuration = const Duration(seconds: 3);
 
   final List<Widget> _pages = [
     _OnboardingPage(
@@ -49,14 +51,6 @@ class _PagedSegmentProgressIndicatorExamplePageState
     ),
   ];
 
-  final List<String> _labels = [
-    'Вклады',
-    'Устройство',
-    'Выгода',
-    'Правила',
-    'Старт',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,28 +59,122 @@ class _PagedSegmentProgressIndicatorExamplePageState
         backgroundColor: context.surfaceColors.primary,
         foregroundColor: context.textColors.primary,
       ),
-      body: uikit.PagedSegmentProgressIndicator(
-        pages: _pages,
-        currentPageIndex: _currentPageIndex,
-        onPageChanged: (index) {
-          setState(() {
-            _currentPageIndex = index;
-          });
-        },
-        segmentProgressIndicator: uikit.SegmentProgressIndicator(
-          labels: _labels,
-          showLabels: true,
-          segments: _pages.length,
-          padding: const EdgeInsets.all(12),
-          currentStepIndex: _currentPageIndex,
-          autoplay: true,
-          autoplayDuration: const Duration(seconds: 3),
-          onSegmentChanged: (index) {
-            setState(() {
-              _currentPageIndex = index;
-            });
-          },
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: uikit.PagedSegmentProgressIndicator(
+              pages: _pages,
+              currentPageIndex: _currentPageIndex,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPageIndex = index;
+                });
+              },
+              autoplay: _autoplay,
+              autoplayDuration: _autoplayDuration,
+              onComplete: () {
+                // Handle completion
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('All pages completed!'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              },
+            ),
+          ),
+
+          // Controls
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                _buildSwitchControl(
+                  label: 'Autoplay',
+                  value: _autoplay,
+                  onChanged: (value) => setState(() => _autoplay = value),
+                ),
+                if (_autoplay)
+                  _buildSliderControl(
+                    label: 'Autoplay Duration (seconds)',
+                    value: _autoplayDuration.inSeconds.toDouble(),
+                    min: 1.0,
+                    max: 10.0,
+                    onChanged: (value) => setState(() =>
+                        _autoplayDuration = Duration(seconds: value.round())),
+                  ),
+
+                // Navigation info
+                const SizedBox(height: 16),
+                Text(
+                  'Page ${_currentPageIndex + 1} of ${_pages.length}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Tap left/right sides to navigate • Hold to pause timer',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Colors.grey[600],
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSwitchControl({
+    required String label,
+    required bool value,
+    required ValueChanged<bool> onChanged,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          Switch(
+            value: value,
+            onChanged: onChanged,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSliderControl({
+    required String label,
+    required double value,
+    required double min,
+    required double max,
+    required ValueChanged<double> onChanged,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          Slider(
+            value: value,
+            min: min,
+            max: max,
+            divisions: (max - min).round(),
+            onChanged: onChanged,
+          ),
+          Text('${value.round()} seconds'),
+        ],
       ),
     );
   }
