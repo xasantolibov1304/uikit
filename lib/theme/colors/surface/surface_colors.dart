@@ -8,6 +8,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
     required this.tertiary,
     required this.grey,
     required this.muted,
+    required this.dark,
     required this.info,
     required this.error,
     required this.warning,
@@ -19,6 +20,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
   final Color tertiary;
   final Color grey;
   final Color muted;
+  final Color dark;
   final Color info;
   final Color error;
   final Color warning;
@@ -31,6 +33,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
     Color? tertiary,
     Color? grey,
     Color? muted,
+    Color? dark,
     Color? info,
     Color? error,
     Color? warning,
@@ -42,6 +45,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
         tertiary: tertiary ?? this.tertiary,
         grey: grey ?? this.grey,
         muted: muted ?? this.muted,
+        dark: dark ?? this.dark,
         info: info ?? this.info,
         error: error ?? this.error,
         warning: warning ?? this.warning,
@@ -62,6 +66,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       muted: Color.lerp(muted, other.muted, t)!,
+      dark: Color.lerp(dark, other.dark, t)!,
       info: Color.lerp(info, other.info, t)!,
       error: Color.lerp(error, other.error, t)!,
       warning: Color.lerp(warning, other.warning, t)!,

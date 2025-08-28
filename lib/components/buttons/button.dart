@@ -296,39 +296,30 @@ class Button extends StatelessWidget {
   Color _hoverColor(BuildContext context) {
     final buttonColors = Theme.of(context).buttonColors;
     return switch (type) {
-      ButtonType.primary => buttonColors.primaryHover,
-      ButtonType.secondary => buttonColors.secondaryHover,
-      ButtonType.tertiary => buttonColors.tertiaryHover,
-      ButtonType.inverted => buttonColors.invertedHover,
-      ButtonType.ghost => buttonColors.ghostHover,
-      ButtonType.positive => buttonColors.positiveHover,
-      ButtonType.negative => buttonColors.negativeHover,
+      ButtonType.primary => buttonColors.primary,
+      ButtonType.secondary => buttonColors.secondary,
+      ButtonType.tertiary => buttonColors.tertiary,
+      ButtonType.inverted => buttonColors.inverted,
+      ButtonType.ghost => buttonColors.ghost,
+      ButtonType.positive => buttonColors.positive,
+      ButtonType.negative => buttonColors.negative,
     };
   }
 
   Color _splashColor(BuildContext context) {
     final buttonColors = Theme.of(context).buttonColors;
     return switch (type) {
-      ButtonType.primary => buttonColors.primaryPressed,
-      ButtonType.secondary => buttonColors.secondaryPressed,
-      ButtonType.tertiary => buttonColors.tertiaryPressed,
-      ButtonType.inverted => buttonColors.invertedPressed,
-      ButtonType.ghost => buttonColors.ghostPressed,
-      ButtonType.positive => buttonColors.positivePressed,
-      ButtonType.negative => buttonColors.negativePressed,
+      ButtonType.primary => buttonColors.primary,
+      ButtonType.secondary => buttonColors.secondary,
+      ButtonType.tertiary => buttonColors.tertiary,
+      ButtonType.inverted => buttonColors.inverted,
+      ButtonType.ghost => buttonColors.ghost,
+      ButtonType.positive => buttonColors.positive,
+      ButtonType.negative => buttonColors.negative,
     };
   }
 
   Color _disabledColor(BuildContext context) {
-    final buttonColors = Theme.of(context).buttonColors;
-    return switch (type) {
-      ButtonType.primary => buttonColors.primaryDisable,
-      ButtonType.secondary => buttonColors.secondaryDisable,
-      ButtonType.tertiary => buttonColors.tertiaryDisable,
-      ButtonType.inverted => buttonColors.invertedDisable,
-      ButtonType.ghost => buttonColors.ghostDisable,
-      ButtonType.positive => buttonColors.positiveDisable,
-      ButtonType.negative => buttonColors.negativeDisable,
-    };
+    return Theme.of(context).buttonColors.disabled;
   }
 }

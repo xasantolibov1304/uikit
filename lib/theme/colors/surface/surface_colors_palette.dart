@@ -11,27 +11,29 @@ final darkSurfaceColors = _generatePaletteFromBrightness(Brightness.dark);
 SurfaceColors _generatePaletteFromBrightness(Brightness brightness) {
   if (brightness == Brightness.light) {
     return SurfaceColors(
-      primary: Palette.gray[10]!,
-      secondary: Palette.coolGray[10]!,
+      primary: Palette.gray[0]!,
+      secondary: Palette.gray[10]!,
       tertiary: Palette.gray[0]!,
       grey: Palette.gray[20]!,
       muted: Palette.gray[30]!,
-      info: Palette.cyan[10]!,
-      error: Palette.red[10]!,
-      warning: Palette.yellow[10]!,
-      success: Palette.green[10]!,
+      dark: Palette.gray[100]!,
+      info: Palette.cyan[60]!.withValues(alpha: 0.1),
+      error: Palette.red[60]!.withValues(alpha: 0.1),
+      warning: Palette.yellow[40]!.withValues(alpha: 0.1),
+      success: Palette.green[50]!.withValues(alpha: 0.1),
     );
   } else {
     return SurfaceColors(
-      primary: Palette.gray[10]!,
-      secondary: Palette.coolGray[10]!,
+      primary: Palette.gray[0]!,
+      secondary: Palette.gray[10]!,
       tertiary: Palette.gray[0]!,
       grey: Palette.gray[20]!,
       muted: Palette.gray[30]!,
-      info: Palette.cyan[40]!,
-      error: Palette.red[40]!,
-      warning: Palette.yellow[30]!,
-      success: Palette.green[40]!,
+      dark: Palette.gray[100]!,
+      info: Palette.cyan[60]!.withValues(alpha: 0.1),
+      error: Palette.red[60]!.withValues(alpha: 0.1),
+      warning: Palette.yellow[40]!.withValues(alpha: 0.1),
+      success: Palette.green[50]!.withValues(alpha: 0.1),
     );
   }
 }
