@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/theme/colors/brand/super_app/super_app_brand_colors.dart';
 
 // Project imports:
+import 'package:iman_uikit/theme/colors/brand/super_app/super_app_brand_colors.dart';
 
 final lightSuperAppBrandColors = _generatePaletteFromBrightness(Brightness.light);
 final darkSuperAppBrandColors = _generatePaletteFromBrightness(Brightness.dark);

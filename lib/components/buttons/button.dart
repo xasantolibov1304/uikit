@@ -320,15 +320,7 @@ class Button extends StatelessWidget {
   }
 
   Color _disabledColor(BuildContext context) {
-    final buttonColors = Theme.of(context).buttonColors;
-    return switch (type) {
-      ButtonType.primary => buttonColors.disabled,
-      ButtonType.secondary => buttonColors.secondary,
-      ButtonType.tertiary => buttonColors.tertiary,
-      ButtonType.inverted => buttonColors.inverted,
-      ButtonType.ghost => buttonColors.ghost,
-      ButtonType.positive => buttonColors.positive,
-      ButtonType.negative => buttonColors.negative,
+    return Theme.of(context).buttonColors.disabled;
     };
   }
 }
