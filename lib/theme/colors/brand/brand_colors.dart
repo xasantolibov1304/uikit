@@ -7,6 +7,7 @@ import 'package:iman_uikit/theme/colors/brand/fin_health/fin_health_brand_colors
 import 'package:iman_uikit/theme/colors/brand/installment/installment_brand_colors.dart';
 import 'package:iman_uikit/theme/colors/brand/invest/invest_brand_colors.dart';
 import 'package:iman_uikit/theme/colors/brand/payment/payment_brand_colors.dart';
+import 'package:iman_uikit/theme/colors/brand/super_app/super_app_brand_colors.dart';
 
 // Export all brand color classes
 export 'invest/invest_brand_colors.dart';
@@ -17,6 +18,7 @@ export 'fin_health/fin_health_brand_colors.dart';
 
 class BrandColors extends ThemeExtension<BrandColors> {
   const BrandColors({
+    required this.superApp,
     required this.invest,
     required this.installment,
     required this.payment,
@@ -24,6 +26,7 @@ class BrandColors extends ThemeExtension<BrandColors> {
     required this.finHealth,
   });
 
+  final SuperAppBrandColors superApp;
   final InvestBrandColors invest;
   final InstallmentBrandColors installment;
   final PaymentBrandColors payment;
@@ -37,6 +40,7 @@ class BrandColors extends ThemeExtension<BrandColors> {
     PaymentBrandColors? payment,
     BankingBrandColors? banking,
     FinHealthBrandColors? finHealth,
+    SuperAppBrandColors? superApp,
   }) =>
       BrandColors(
         invest: invest ?? this.invest,
@@ -44,6 +48,7 @@ class BrandColors extends ThemeExtension<BrandColors> {
         payment: payment ?? this.payment,
         banking: banking ?? this.banking,
         finHealth: finHealth ?? this.finHealth,
+        superApp: superApp ?? this.superApp,
       );
 
   @override
@@ -56,11 +61,11 @@ class BrandColors extends ThemeExtension<BrandColors> {
     }
     return BrandColors(
       invest: invest.lerp(other.invest, t) as InvestBrandColors,
-      installment:
-          installment.lerp(other.installment, t) as InstallmentBrandColors,
+      installment: installment.lerp(other.installment, t) as InstallmentBrandColors,
       payment: payment.lerp(other.payment, t) as PaymentBrandColors,
       banking: banking.lerp(other.banking, t) as BankingBrandColors,
       finHealth: finHealth.lerp(other.finHealth, t) as FinHealthBrandColors,
+      superApp: superApp.lerp(other.superApp, t) as SuperAppBrandColors,
     );
   }
 }

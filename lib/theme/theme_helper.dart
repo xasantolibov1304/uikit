@@ -257,8 +257,8 @@ ThemeData createThemeData({
           surface: backgroundColors.primary,
           onSurface: textColors.primary,
         ),
-        disabledColor: buttonColors.primaryDisable,
-        focusColor: buttonColors.primaryPressed,
+        disabledColor: buttonColors.disabled,
+        focusColor: buttonColors.primary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

@@ -67,7 +67,7 @@ class Filter extends StatelessWidget {
             padding: _padding,
             focusNode: focusNode,
             color: context.buttonColors.secondary,
-            splashColor: context.buttonColors.secondaryPressed,
+            splashColor: context.buttonColors.secondary,
             border: focusNode?.hasFocus == true
                 ? Border.all(
                     width: 1.5,
