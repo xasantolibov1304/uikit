@@ -321,6 +321,5 @@ class Button extends StatelessWidget {
 
   Color _disabledColor(BuildContext context) {
     return Theme.of(context).buttonColors.disabled;
-    };
   }
 }
