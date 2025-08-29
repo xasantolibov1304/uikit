@@ -14,14 +14,14 @@ final lightTheme = createThemeData(
   brightness: Brightness.light,
 
   /// ---- Colors ----
-  systemColors: lightSystemColors,
-  surfaceColors: lightSurfaceColors,
-  textColors: lightTextColors,
-  iconColors: lightIconColors,
+  additionalColors: lightAdditionalColors,
   borderColors: lightBorderColors,
-  statusColors: lightStatusColors,
-  buttonColors: lightButtonColors,
   brandColors: lightBrandColors,
+  buttonColors: lightButtonColors,
+  iconColors: lightIconColors,
+  surfaceColors: lightSurfaceColors,
+  systemColors: lightSystemColors,
+  textColors: lightTextColors,
 
   /// ---- Gradients ----
   appGradients: AppGradients(
@@ -43,14 +43,14 @@ final darkTheme = createThemeData(
   brightness: Brightness.dark,
 
   /// ---- Colors ----
-  systemColors: darkSystemColors,
-  surfaceColors: darkSurfaceColors,
-  textColors: darkTextColors,
-  iconColors: darkIconColors,
+  additionalColors: darkAdditionalColors,
   borderColors: darkBorderColors,
-  statusColors: darkStatusColors,
-  buttonColors: darkButtonColors,
   brandColors: darkBrandColors,
+  buttonColors: darkButtonColors,
+  iconColors: darkIconColors,
+  surfaceColors: darkSurfaceColors,
+  systemColors: darkSystemColors,
+  textColors: darkTextColors,
 
   /// ---- Gradients ----
   appGradients: AppGradients(
@@ -72,14 +72,14 @@ ThemeData createThemeData({
   required Brightness brightness,
 
   /// ---- Colors ----
-  required SystemColors systemColors,
-  required SurfaceColors surfaceColors,
-  required TextColors textColors,
-  required IconColors iconColors,
+  required AdditionalColors additionalColors,
   required BorderColors borderColors,
-  required StatusColors statusColors,
-  required ButtonColors buttonColors,
   required BrandColors brandColors,
+  required ButtonColors buttonColors,
+  required IconColors iconColors,
+  required SurfaceColors surfaceColors,
+  required SystemColors systemColors,
+  required TextColors textColors,
 
   /// ---- Gradients ----
   required AppGradients appGradients,
@@ -94,14 +94,14 @@ ThemeData createThemeData({
       brightness: brightness,
       extensions: {
         /// ---- Colors ----
-        systemColors,
-        surfaceColors,
-        textColors,
-        iconColors,
+        additionalColors,
         borderColors,
-        statusColors,
-        buttonColors,
         brandColors,
+        buttonColors,
+        iconColors,
+        surfaceColors,
+        systemColors,
+        textColors,
 
         /// ---- Gradients ----
         appGradients,

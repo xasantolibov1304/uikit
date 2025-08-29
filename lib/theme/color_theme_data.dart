@@ -5,37 +5,37 @@ import 'package:flutter/material.dart';
 import 'package:iman_uikit/theme/colors/colors.dart';
 
 extension ColorThemeDataExtension on ThemeData {
-  SystemColors get systemColors => extension<SystemColors>() ?? lightSystemColors;
-
-  SurfaceColors get surfaceColors => extension<SurfaceColors>() ?? lightSurfaceColors;
-
-  TextColors get textColors => extension<TextColors>() ?? lightTextColors;
-
-  IconColors get iconColors => extension<IconColors>() ?? lightIconColors;
+  AdditionalColors get additionalColors => extension<AdditionalColors>() ?? lightAdditionalColors;
 
   BorderColors get borderColors => extension<BorderColors>() ?? lightBorderColors;
 
-  StatusColors get statusColors => extension<StatusColors>() ?? lightStatusColors;
+  BrandColors get brandColors => extension<BrandColors>() ?? lightBrandColors;
 
   ButtonColors get buttonColors => extension<ButtonColors>() ?? lightButtonColors;
 
-  BrandColors get brandColors => extension<BrandColors>() ?? lightBrandColors;
+  IconColors get iconColors => extension<IconColors>() ?? lightIconColors;
+
+  SurfaceColors get surfaceColors => extension<SurfaceColors>() ?? lightSurfaceColors;
+
+  SystemColors get systemColors => extension<SystemColors>() ?? lightSystemColors;
+
+  TextColors get textColors => extension<TextColors>() ?? lightTextColors;
 }
 
 extension ColorThemeDataContextExtension on BuildContext {
-  SystemColors get systemColors => Theme.of(this).systemColors;
-
-  SurfaceColors get surfaceColors => Theme.of(this).surfaceColors;
-
-  TextColors get textColors => Theme.of(this).textColors;
+  AdditionalColors get additionalColors => Theme.of(this).additionalColors;
 
   BorderColors get borderColors => Theme.of(this).borderColors;
 
-  IconColors get iconColors => Theme.of(this).iconColors;
-
-  StatusColors get statusColors => Theme.of(this).statusColors;
+  BrandColors get brandColors => Theme.of(this).brandColors;
 
   ButtonColors get buttonColors => Theme.of(this).buttonColors;
 
-  BrandColors get brandColors => Theme.of(this).brandColors;
+  IconColors get iconColors => Theme.of(this).iconColors;
+
+  SurfaceColors get surfaceColors => Theme.of(this).surfaceColors;
+
+  SystemColors get systemColors => Theme.of(this).systemColors;
+
+  TextColors get textColors => Theme.of(this).textColors;
 }

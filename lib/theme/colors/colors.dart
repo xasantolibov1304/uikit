@@ -10,10 +10,6 @@ export 'button/button_colors_palette.dart';
 export 'icon/icon_colors.dart';
 export 'icon/icon_colors_palette.dart';
 
-// Status
-export 'status/status_colors.dart';
-export 'status/status_colors_palette.dart';
-
 // Surface
 export 'surface/surface_colors.dart';
 export 'surface/surface_colors_palette.dart';
@@ -34,3 +30,7 @@ export 'brand/installment/installment_brand_colors_palette.dart';
 export 'brand/payment/payment_brand_colors_palette.dart';
 export 'brand/banking/banking_brand_colors_palette.dart';
 export 'brand/fin_health/fin_health_brand_colors_palette.dart';
+
+// Additional
+export 'additional/additional_colors.dart';
+export 'additional/additional_colors_palette.dart';

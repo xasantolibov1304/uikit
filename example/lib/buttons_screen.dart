@@ -37,8 +37,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                     'Paged Segment',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const PagedSegmentProgressIndicatorExamplePage(),
+                        builder: (context) => const PagedSegmentProgressIndicatorExamplePage(),
                       ),
                     ),
                   ),
@@ -227,8 +226,7 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                     'Balance Overview Example',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const BalanceOverviewExamplePage(),
+                        builder: (context) => const BalanceOverviewExamplePage(),
                       ),
                     ),
                   ),
