@@ -15,14 +15,12 @@ final lightTheme = createThemeData(
 
   /// ---- Colors ----
   systemColors: lightSystemColors,
-  backgroundColors: lightBackgroundColors,
   surfaceColors: lightSurfaceColors,
   textColors: lightTextColors,
   iconColors: lightIconColors,
   borderColors: lightBorderColors,
   statusColors: lightStatusColors,
   buttonColors: lightButtonColors,
-  fieldColors: lightFieldColors,
   brandColors: lightBrandColors,
 
   /// ---- Gradients ----
@@ -46,14 +44,12 @@ final darkTheme = createThemeData(
 
   /// ---- Colors ----
   systemColors: darkSystemColors,
-  backgroundColors: darkBackgroundColors,
   surfaceColors: darkSurfaceColors,
   textColors: darkTextColors,
   iconColors: darkIconColors,
   borderColors: darkBorderColors,
   statusColors: darkStatusColors,
   buttonColors: darkButtonColors,
-  fieldColors: darkFieldColors,
   brandColors: darkBrandColors,
 
   /// ---- Gradients ----
@@ -77,14 +73,12 @@ ThemeData createThemeData({
 
   /// ---- Colors ----
   required SystemColors systemColors,
-  required BackgroundColors backgroundColors,
   required SurfaceColors surfaceColors,
   required TextColors textColors,
   required IconColors iconColors,
   required BorderColors borderColors,
   required StatusColors statusColors,
   required ButtonColors buttonColors,
-  required FieldColors fieldColors,
   required BrandColors brandColors,
 
   /// ---- Gradients ----
@@ -101,14 +95,12 @@ ThemeData createThemeData({
       extensions: {
         /// ---- Colors ----
         systemColors,
-        backgroundColors,
         surfaceColors,
         textColors,
         iconColors,
         borderColors,
         statusColors,
         buttonColors,
-        fieldColors,
         brandColors,
 
         /// ---- Gradients ----
@@ -123,8 +115,8 @@ ThemeData createThemeData({
       fontFamily: _fontFamily,
       dividerColor: borderColors.primary,
       disabledColor: surfaceColors.muted,
-      primaryColor: backgroundColors.primary,
-      scaffoldBackgroundColor: backgroundColors.primary,
+      primaryColor: surfaceColors.primary,
+      scaffoldBackgroundColor: surfaceColors.primary,
 
       /// ---- Text Theme ----
       textTheme: TextTheme(
@@ -164,7 +156,7 @@ ThemeData createThemeData({
 
       /// ---- App Bar Theme ----
       appBarTheme: AppBarTheme(
-        backgroundColor: backgroundColors.primary,
+        backgroundColor: surfaceColors.primary,
         elevation: 0,
         centerTitle: true,
         systemOverlayStyle:
@@ -181,7 +173,7 @@ ThemeData createThemeData({
       /// ---- Tooltip Theme ----
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: backgroundColors.primary,
+          color: surfaceColors.dark,
           borderRadius: BorderRadius.circular(8),
         ),
         textStyle: baseTextStyles.base2.copyWith(
@@ -253,7 +245,7 @@ ThemeData createThemeData({
           onSecondary: Colors.white,
           tertiary: buttonColors.tertiary,
           onTertiary: Colors.white,
-          surface: backgroundColors.primary,
+          surface: surfaceColors.primary,
           onSurface: textColors.primary,
         ),
         disabledColor: buttonColors.disabled,
@@ -281,7 +273,7 @@ ThemeData createThemeData({
         disabledBorder: InputBorder.none,
         focusedBorder: InputBorder.none,
         errorBorder: InputBorder.none,
-        hoverColor: fieldColors.borderHover,
+        hoverColor: borderColors.secondary,
       ),
 
       /// Checkbox Theme
@@ -318,8 +310,8 @@ ThemeData createThemeData({
 
       /// Bottom Sheet Theme
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: backgroundColors.primary,
-        surfaceTintColor: backgroundColors.primary,
+        backgroundColor: surfaceColors.primary,
+        surfaceTintColor: surfaceColors.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),

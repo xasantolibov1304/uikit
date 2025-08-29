@@ -1,7 +1,3 @@
-// Background
-export 'background/background_colors.dart';
-export 'background/background_colors_palette.dart';
-
 // Border
 export 'border/border_colors.dart';
 export 'border/border_colors_palette.dart';
@@ -9,10 +5,6 @@ export 'border/border_colors_palette.dart';
 // Button
 export 'button/button_colors.dart';
 export 'button/button_colors_palette.dart';
-
-// Field
-export 'field/field_colors.dart';
-export 'field/field_colors_palette.dart';
 
 // Icon
 export 'icon/icon_colors.dart';
