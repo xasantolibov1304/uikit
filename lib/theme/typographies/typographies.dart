@@ -6,18 +6,11 @@ export 'display/display_theme.dart';
 export 'title/title_text_styles.dart';
 export 'title/title_theme.dart';
 
-// Subtitle
-export 'subtitle/subtitle_text_styles.dart';
-export 'subtitle/subtitle_theme.dart';
+// Base
+export 'base/body_text_styles.dart';
+export 'base/body_theme.dart';
 
-// Label
-export 'label/label_text_styles.dart';
-export 'label/label_theme.dart';
+// Others
+export 'others/others_text_styles.dart';
+export 'others/others_theme.dart';
 
-// Body
-export 'body/body_text_styles.dart';
-export 'body/body_theme.dart';
-
-// Button
-export 'button/button_text_styles.dart';
-export 'button/button_theme.dart';

@@ -37,10 +37,8 @@ final lightTheme = createThemeData(
   /// ---- Typographies ----
   displayTextStyles: lightDisplayTextStyle,
   titleTextStyles: lightTitleTextStyles,
-  subtitleTextStyles: lightSubtitleTextStyles,
-  labelTextStyles: lightLabelTextStyles,
-  bodyTextStyles: lightBodyTextStyles,
-  buttonTextStyles: lightButtonTextStyles,
+  baseTextStyles: lightBaseTextStyles,
+  othersTextStyles: lightOthersTextStyles,
 );
 
 final darkTheme = createThemeData(
@@ -70,10 +68,8 @@ final darkTheme = createThemeData(
   /// ---- Typographies ----
   displayTextStyles: darkDisplayTextStyle,
   titleTextStyles: darkTitleTextStyles,
-  subtitleTextStyles: darkSubtitleTextStyles,
-  labelTextStyles: darkLabelTextStyles,
-  bodyTextStyles: darkBodyTextStyles,
-  buttonTextStyles: darkButtonTextStyles,
+  baseTextStyles: darkBaseTextStyles,
+  othersTextStyles: darkOthersTextStyles,
 );
 
 ThemeData createThemeData({
@@ -97,10 +93,8 @@ ThemeData createThemeData({
   /// ---- Typographies ----
   required DisplayTextStyles displayTextStyles,
   required TitleTextStyles titleTextStyles,
-  required SubtitleTextStyles subtitleTextStyles,
-  required LabelTextStyles labelTextStyles,
-  required BodyTextStyles bodyTextStyles,
-  required ButtonTextStyles buttonTextStyles,
+  required BaseTextStyles baseTextStyles,
+  required OthersTextStyles othersTextStyles,
 }) =>
     ThemeData(
       brightness: brightness,
@@ -119,6 +113,12 @@ ThemeData createThemeData({
 
         /// ---- Gradients ----
         appGradients,
+
+        /// ---- Typographies ----
+        displayTextStyles,
+        titleTextStyles,
+        baseTextStyles,
+        othersTextStyles,
       },
       fontFamily: _fontFamily,
       dividerColor: borderColors.primary,
@@ -128,38 +128,38 @@ ThemeData createThemeData({
 
       /// ---- Text Theme ----
       textTheme: TextTheme(
-        displayLarge: displayTextStyles.large,
-        displayMedium: displayTextStyles.main,
-        displaySmall: displayTextStyles.main,
-        headlineLarge: titleTextStyles.large1,
-        headlineMedium: titleTextStyles.medium1,
-        headlineSmall: titleTextStyles.compact1,
-        titleLarge: titleTextStyles.main1,
-        titleMedium: titleTextStyles.medium1,
-        titleSmall: titleTextStyles.compact1,
-        bodyLarge: bodyTextStyles.large,
-        bodyMedium: bodyTextStyles.medium2,
-        bodySmall: bodyTextStyles.compact1,
-        labelLarge: labelTextStyles.large,
-        labelMedium: labelTextStyles.medium1,
-        labelSmall: labelTextStyles.main1,
+        displayLarge: displayTextStyles.display1,
+        displayMedium: displayTextStyles.display2,
+        displaySmall: displayTextStyles.display3,
+        headlineLarge: titleTextStyles.title1,
+        headlineMedium: titleTextStyles.title2,
+        headlineSmall: titleTextStyles.title3,
+        titleLarge: titleTextStyles.title1,
+        titleMedium: titleTextStyles.title2,
+        titleSmall: titleTextStyles.title3,
+        bodyLarge: baseTextStyles.base1,
+        bodyMedium: baseTextStyles.base2,
+        bodySmall: baseTextStyles.base3,
+        labelLarge: baseTextStyles.base4,
+        labelMedium: baseTextStyles.base5,
+        labelSmall: baseTextStyles.base6,
       ),
       primaryTextTheme: TextTheme(
-        displayLarge: displayTextStyles.large,
-        displayMedium: displayTextStyles.main,
-        displaySmall: displayTextStyles.main,
-        headlineLarge: titleTextStyles.large1,
-        headlineMedium: titleTextStyles.medium1,
-        headlineSmall: titleTextStyles.compact1,
-        titleLarge: titleTextStyles.main1,
-        titleMedium: titleTextStyles.medium1,
-        titleSmall: titleTextStyles.compact1,
-        bodyLarge: bodyTextStyles.large,
-        bodyMedium: bodyTextStyles.medium2,
-        bodySmall: bodyTextStyles.compact1,
-        labelLarge: labelTextStyles.large,
-        labelMedium: labelTextStyles.medium1,
-        labelSmall: labelTextStyles.main1,
+        displayLarge: displayTextStyles.display1,
+        displayMedium: displayTextStyles.display2,
+        displaySmall: displayTextStyles.display3,
+        headlineLarge: titleTextStyles.title1,
+        headlineMedium: titleTextStyles.title2,
+        headlineSmall: titleTextStyles.title3,
+        titleLarge: titleTextStyles.title1,
+        titleMedium: titleTextStyles.title2,
+        titleSmall: titleTextStyles.title3,
+        bodyLarge: baseTextStyles.base1,
+        bodyMedium: baseTextStyles.base2,
+        bodySmall: baseTextStyles.base3,
+        labelLarge: baseTextStyles.base4,
+        labelMedium: baseTextStyles.base5,
+        labelSmall: baseTextStyles.base6,
       ),
 
       /// ---- App Bar Theme ----
@@ -167,10 +167,9 @@ ThemeData createThemeData({
         backgroundColor: backgroundColors.primary,
         elevation: 0,
         centerTitle: true,
-        systemOverlayStyle: brightness == Brightness.light
-            ? AppSystemUiOverlayStyle.light
-            : AppSystemUiOverlayStyle.dark,
-        titleTextStyle: titleTextStyles.large1.bold.copyWith(
+        systemOverlayStyle:
+            brightness == Brightness.light ? AppSystemUiOverlayStyle.light : AppSystemUiOverlayStyle.dark,
+        titleTextStyle: titleTextStyles.title1.bold.copyWith(
           color: textColors.primary,
         ),
         iconTheme: IconThemeData(
@@ -185,7 +184,7 @@ ThemeData createThemeData({
           color: backgroundColors.primary,
           borderRadius: BorderRadius.circular(8),
         ),
-        textStyle: bodyTextStyles.medium2.copyWith(
+        textStyle: baseTextStyles.base2.copyWith(
           color: textColors.primary,
         ),
         padding: const EdgeInsets.symmetric(
@@ -211,10 +210,10 @@ ThemeData createThemeData({
           vertical: 8,
           horizontal: 12,
         ),
-        labelStyle: bodyTextStyles.compact1.copyWith(
+        labelStyle: baseTextStyles.base4.copyWith(
           color: textColors.primary,
         ),
-        secondaryLabelStyle: bodyTextStyles.compact1.copyWith(
+        secondaryLabelStyle: baseTextStyles.base4.copyWith(
           color: Colors.white,
         ),
         shape: RoundedRectangleBorder(
@@ -269,7 +268,7 @@ ThemeData createThemeData({
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: titleTextStyles.medium1.copyWith(
+          textStyle: titleTextStyles.title3.copyWith(
             fontWeight: FontWeight.w600,
           ),
         ),

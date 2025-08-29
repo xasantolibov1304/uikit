@@ -24,23 +24,13 @@ extension TextStyleExtension on TextStyle {
 }
 
 extension AppTypographyThemeDataExtension on ThemeData {
-  DisplayTextStyles get displayTextStyle =>
-      extension<DisplayTextStyles>() ?? lightDisplayTextStyle;
+  DisplayTextStyles get displayTextStyle => extension<DisplayTextStyles>() ?? lightDisplayTextStyle;
 
-  TitleTextStyles get titleTextStyle =>
-      extension<TitleTextStyles>() ?? lightTitleTextStyles;
+  TitleTextStyles get titleTextStyle => extension<TitleTextStyles>() ?? lightTitleTextStyles;
 
-  SubtitleTextStyles get subtitleTextStyle =>
-      extension<SubtitleTextStyles>() ?? lightSubtitleTextStyles;
+  BaseTextStyles get baseTextStyle => extension<BaseTextStyles>() ?? lightBaseTextStyles;
 
-  LabelTextStyles get labelTextStyle =>
-      extension<LabelTextStyles>() ?? lightLabelTextStyles;
-
-  BodyTextStyles get bodyTextStyle =>
-      extension<BodyTextStyles>() ?? lightBodyTextStyles;
-
-  ButtonTextStyles get buttonTextStyle =>
-      extension<ButtonTextStyles>() ?? lightButtonTextStyles;
+  OthersTextStyles get othersTextStyle => extension<OthersTextStyles>() ?? lightOthersTextStyles;
 }
 
 extension AppTypographyThemeDataContextExtension on BuildContext {
@@ -48,11 +38,7 @@ extension AppTypographyThemeDataContextExtension on BuildContext {
 
   TitleTextStyles get titleTextStyle => Theme.of(this).titleTextStyle;
 
-  SubtitleTextStyles get subtitleTextStyle => Theme.of(this).subtitleTextStyle;
+  BaseTextStyles get baseTextStyle => Theme.of(this).baseTextStyle;
 
-  LabelTextStyles get labelTextStyle => Theme.of(this).labelTextStyle;
-
-  BodyTextStyles get bodyTextStyle => Theme.of(this).bodyTextStyle;
-
-  ButtonTextStyles get buttonTextStyle => Theme.of(this).buttonTextStyle;
+  OthersTextStyles get othersTextStyle => Theme.of(this).othersTextStyle;
 }

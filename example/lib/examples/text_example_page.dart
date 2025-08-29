@@ -12,21 +12,11 @@ class TextExamplePage extends StatefulWidget {
 }
 
 class _TextExamplePageState extends State<TextExamplePage> {
-  // Text properties
-  String _text =
-      'This is a sample text with detailed information for the "TextWidget" component. This text demonstrates how the component handles long content and provides expand/collapse functionality. You can customize various properties like max lines, button text, and styling.';
-  String _startButtonText = 'Show More';
-  String _endButtonText = 'Show Less';
-  int _maxLines = 3;
-  bool _isCollapsed = true;
-  bool _showStartButton = true;
-  bool _showEndButton = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Text Example'),
+        title: const Text('Typography Example'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
@@ -34,28 +24,14 @@ class _TextExamplePageState extends State<TextExamplePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Text Preview Section
-            _buildSectionTitle('Text Preview'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: TextWidget(
-                text: _text,
-                maxLines: _maxLines,
-                isCollapsed: _isCollapsed,
-                startButtonText: _showStartButton ? _startButtonText : null,
-                endButtonText: _showEndButton ? _endButtonText : null,
-              ),
-            ),
-            const SizedBox(height: 24),
-
-            // Text Controls Section
-            _buildSectionTitle('Text Controls'),
-            _buildTextControls(),
+            _buildSectionTitle('Display Typography'),
+            _buildDisplaySection(),
+            const SizedBox(height: 32),
+            _buildSectionTitle('Title Typography'),
+            _buildTitleSection(),
+            const SizedBox(height: 32),
+            _buildSectionTitle('Base Typography'),
+            _buildBaseSection(),
           ],
         ),
       ),
@@ -67,153 +43,120 @@ class _TextExamplePageState extends State<TextExamplePage> {
       padding: const EdgeInsets.only(bottom: 16),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+        style: context.titleTextStyle.title1.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
 
-  Widget _buildTextControls() {
-    return Column(
-      children: [
-        // Text
-        _buildTextControl(
-          label: 'Text',
-          value: _text,
-          onChanged: (value) => setState(() => _text = value),
-          maxLines: 3,
-        ),
-
-        // Start Button Text
-        _buildTextControl(
-          label: 'Start Button',
-          value: _startButtonText,
-          onChanged: (value) => setState(() => _startButtonText = value),
-        ),
-
-        // End Button Text
-        _buildTextControl(
-          label: 'End Button',
-          value: _endButtonText,
-          onChanged: (value) => setState(() => _endButtonText = value),
-        ),
-
-        // Max Lines
-        _buildNumberControl(
-          label: 'Max Lines',
-          value: _maxLines.toString(),
-          onChanged: (value) =>
-              setState(() => _maxLines = int.tryParse(value) ?? 3),
-        ),
-
-        // Boolean controls
-        _buildSwitchControl(
-          label: 'Collapsed',
-          value: _isCollapsed,
-          onChanged: (value) => setState(() => _isCollapsed = value),
-        ),
-
-        _buildSwitchControl(
-          label: 'Show Start Button',
-          value: _showStartButton,
-          onChanged: (value) => setState(() => _showStartButton = value),
-        ),
-
-        _buildSwitchControl(
-          label: 'Show End Button',
-          value: _showEndButton,
-          onChanged: (value) => setState(() => _showEndButton = value),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTextControl({
-    required String label,
-    required String value,
-    required ValueChanged<String> onChanged,
-    int maxLines = 1,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
+  Widget _buildDisplaySection() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.w500),
-            ),
-          ),
-          Expanded(
-            child: TextFormField(
-              initialValue: value,
-              onChanged: onChanged,
-              maxLines: maxLines,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              ),
-            ),
-          ),
+          _buildTypographyRow('Display 1', context.displayTextStyle.display1, 'Display'),
+          _buildTypographyRow('Display 2', context.displayTextStyle.display2, 'Display'),
+          _buildTypographyRow('Display 3', context.displayTextStyle.display3, 'Display'),
+          _buildTypographyRow('Display 4', context.displayTextStyle.display4, 'Display'),
+          _buildTypographyRow('Display 5', context.displayTextStyle.display5, 'Display'),
         ],
       ),
     );
   }
 
-  Widget _buildNumberControl({
-    required String label,
-    required String value,
-    required ValueChanged<String> onChanged,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
+  Widget _buildTitleSection() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.w500),
-            ),
-          ),
-          Expanded(
-            child: TextFormField(
-              initialValue: value,
-              onChanged: onChanged,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              ),
-            ),
-          ),
+          _buildTypographyRow('Title 1', context.titleTextStyle.title1, 'Title'),
+          _buildTypographyRow('Title 2', context.titleTextStyle.title2, 'Title'),
+          _buildTypographyRow('Title 3', context.titleTextStyle.title3, 'Title'),
+          _buildTypographyRow('Title 4', context.titleTextStyle.title4, 'Title'),
         ],
       ),
     );
   }
 
-  Widget _buildSwitchControl({
-    required String label,
-    required bool value,
-    required ValueChanged<bool> onChanged,
-  }) {
+  Widget _buildBaseSection() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTypographyRow('Base 1 - Regular', context.baseTextStyle.base1Regular, 'Title'),
+          _buildTypographyRow('Base 1 - Medium', context.baseTextStyle.base1Medium, 'Title'),
+          _buildTypographyRow('Base 2 - Regular', context.baseTextStyle.base2Regular, 'Title'),
+          _buildTypographyRow('Base 2 - Medium', context.baseTextStyle.base2Medium, 'Title'),
+          _buildTypographyRow('Base 3 - Regular', context.baseTextStyle.base3Regular, 'Title'),
+          _buildTypographyRow('Base 3 - Medium', context.baseTextStyle.base3Medium, 'Title'),
+          _buildTypographyRow('Base 4 - Regular', context.baseTextStyle.base4Regular, 'Title'),
+          _buildTypographyRow('Base 4 - Medium', context.baseTextStyle.base4Medium, 'Title'),
+          _buildTypographyRow('Base 5 - Regular', context.baseTextStyle.base5Regular, 'Title'),
+          _buildTypographyRow('Base 5 - Medium', context.baseTextStyle.base5Medium, 'Title'),
+          _buildTypographyRow('Base 6 - Regular', context.baseTextStyle.base6Regular, 'Title'),
+          _buildTypographyRow('Base 6 - Medium', context.baseTextStyle.base6Medium, 'Title'),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTypographyRow(String label, TextStyle style, String previewText) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          SizedBox(
+            width: 140,
             child: Text(
               label,
-              style: const TextStyle(fontWeight: FontWeight.w500),
+              style: context.baseTextStyle.base3Medium.copyWith(
+                color: Colors.grey[600],
+              ),
             ),
           ),
-          Switch(
-            value: value,
-            onChanged: onChanged,
+          Expanded(
+            child: Text(
+              previewText,
+              style: style,
+            ),
+          ),
+          SizedBox(
+            width: 120,
+            child: Text(
+              '${style.fontSize?.toInt()}px',
+              style: context.baseTextStyle.base4Regular.copyWith(
+                color: Colors.grey[600],
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 80,
+            child: Text(
+              '${style.fontWeight?.index == 3 ? "400" : style.fontWeight?.index == 4 ? "500" : style.fontWeight?.index == 5 ? "600" : "700"}',
+              style: context.baseTextStyle.base4Regular.copyWith(
+                color: Colors.grey[600],
+              ),
+            ),
           ),
         ],
       ),

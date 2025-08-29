@@ -80,7 +80,7 @@ flutter:
           weight: 400
         - asset: assets/fonts/AeonikPro-Medium.otf
           weight: 500
-        # - asset: assets/fonts/AeonikPro-Semibold.otf
-        #   weight: 600
+        - asset: assets/fonts/AeonikPro-Semibold.otf
+          weight: 600
         - asset: assets/fonts/AeonikPro-Bold.otf
           weight: 700

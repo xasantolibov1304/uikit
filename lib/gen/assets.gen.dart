@@ -49,8 +49,17 @@ class $AssetsFontsGen {
   String get aeonikProRegular =>
       'packages/iman_uikit/assets/fonts/AeonikPro-Regular.otf';
 
+  /// File path: assets/fonts/AeonikPro-SemiBold.otf
+  String get aeonikProSemiBold =>
+      'packages/iman_uikit/assets/fonts/AeonikPro-SemiBold.otf';
+
   /// List of all assets
-  List<String> get values => [aeonikProBold, aeonikProMedium, aeonikProRegular];
+  List<String> get values => [
+    aeonikProBold,
+    aeonikProMedium,
+    aeonikProRegular,
+    aeonikProSemiBold,
+  ];
 }
 
 class $AssetsIcons16Gen {

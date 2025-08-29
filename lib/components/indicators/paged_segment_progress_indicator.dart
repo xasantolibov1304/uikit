@@ -1,7 +1,10 @@
-// Flutter imports:
+// Dart imports:
 import 'dart:async';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
 const _indicatorHeight = 4.0;
