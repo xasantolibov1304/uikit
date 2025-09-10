@@ -19,7 +19,6 @@ class _FieldsExamplePageState extends State<FieldsExamplePage> {
   String _valueThrough = 'Strikethrough';
   String _suffixValueThrough = 'Suffix Strikethrough';
   String _captionText = 'Caption text';
-  InfoFieldSize _size = InfoFieldSize.small;
   bool _isEnabled = true;
   bool _showSuffixValue = true;
   bool _showValueThrough = false;
@@ -54,17 +53,11 @@ class _FieldsExamplePageState extends State<FieldsExamplePage> {
                 label: _label,
                 value: _value,
                 suffixValue: _showSuffixValue ? _suffixValue : null,
-                valueThrough: _showValueThrough ? _valueThrough : null,
                 suffixValueThrough:
                     _showSuffixValueThrough ? _suffixValueThrough : null,
                 captionText: _showCaptionText ? _captionText : null,
-                size: _size,
-                isEnabled: _isEnabled,
                 leftIcon:
                     _showLeftIcon ? Icon(Icons.info, color: Colors.blue) : null,
-                rightIcon: _showRightIcon
-                    ? Icon(Icons.check, color: Colors.green)
-                    : null,
                 trailingIcon: _showTrailingIcon
                     ? Icon(Icons.arrow_forward_ios, color: Colors.grey)
                     : null,
@@ -96,15 +89,6 @@ class _FieldsExamplePageState extends State<FieldsExamplePage> {
   Widget _buildFieldsControls() {
     return Column(
       children: [
-        // Size
-        _buildDropdownControl<InfoFieldSize>(
-          label: 'Size',
-          value: _size,
-          items: InfoFieldSize.values,
-          onChanged: (value) => setState(() => _size = value!),
-          itemBuilder: (size) => size.name.toUpperCase(),
-        ),
-
         // Label
         _buildTextControl(
           label: 'Label',
@@ -196,46 +180,6 @@ class _FieldsExamplePageState extends State<FieldsExamplePage> {
           onChanged: (value) => setState(() => _showTrailingIcon = value),
         ),
       ],
-    );
-  }
-
-  Widget _buildDropdownControl<T>({
-    required String label,
-    required T value,
-    required List<T> items,
-    required ValueChanged<T?> onChanged,
-    required String Function(T) itemBuilder,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 120,
-            child: Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.w500),
-            ),
-          ),
-          Expanded(
-            child: DropdownButtonFormField<T>(
-              value: value,
-              items: items.map((item) {
-                return DropdownMenuItem<T>(
-                  value: item,
-                  child: Text(itemBuilder(item)),
-                );
-              }).toList(),
-              onChanged: onChanged,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 

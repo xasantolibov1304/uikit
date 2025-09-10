@@ -5,14 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:iman_uikit/theme/app_typography_theme_data.dart';
 import 'package:iman_uikit/theme/color_theme_data.dart';
 
-const _height = 86.0;
-
-enum InfoFieldSize {
-  small,
-  medium,
-  large,
-  extraLarge,
-}
 
 class InfoField extends StatelessWidget {
   const InfoField({
@@ -20,13 +12,9 @@ class InfoField extends StatelessWidget {
     required this.value,
     this.captionText,
     this.suffixValue,
-    this.valueThrough,
     this.suffixValueThrough,
     this.leftIcon,
-    this.rightIcon,
     this.trailingIcon,
-    this.isEnabled = true,
-    this.size = InfoFieldSize.small,
     super.key,
   });
 
@@ -34,35 +22,23 @@ class InfoField extends StatelessWidget {
   final String value;
   final String? suffixValue;
 
-  final String? valueThrough;
   final String? suffixValueThrough;
 
   final String? captionText;
 
   final Widget? leftIcon;
-  final Widget? rightIcon;
 
   final Widget? trailingIcon;
 
-  final bool isEnabled;
-
-  final InfoFieldSize size;
 
   @override
   Widget build(BuildContext context) {
-    final canShowIcon = size != InfoFieldSize.extraLarge;
-
     return Container(
-      height: _height,
       decoration: BoxDecoration(
-        color: isEnabled ? context.surfaceColors.primary : context.surfaceColors.muted,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: isEnabled ? context.borderColors.primary : context.borderColors.muted,
-        ),
+        color: context.surfaceColors.primary,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Column(
@@ -75,50 +51,47 @@ class InfoField extends StatelessWidget {
                     color: context.textColors.tertiary,
                   ),
                 ),
+                const SizedBox(height: 4),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (leftIcon != null && canShowIcon) ...[
+                    if (leftIcon != null) ...[
                       leftIcon!,
                       const SizedBox(width: 4),
                     ],
-                    if (suffixValue != null) ...[
-                      Text(
-                        suffixValue!,
-                        style: context.baseTextStyle.base3,
+                    Text(
+                      value,
+                      style: context.titleTextStyle.title3.copyWith(
+                        color: context.textColors.primary,
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: context.textColors.tertiary,
                       ),
-                    ],
-                    if (valueThrough != null) ...[
+                    ),
+                    if (suffixValue != null) ...[
                       const SizedBox(width: 4),
                       Text(
-                        valueThrough!,
+                        suffixValue!,
                         style: context.baseTextStyle.base1.copyWith(
                           color: context.textColors.tertiary,
-                          decoration: TextDecoration.lineThrough,
-                          decorationColor: context.textColors.tertiary,
                         ),
                       ),
                     ],
                     if (suffixValueThrough != null) ...[
-                      const SizedBox(width: 2),
+                      const SizedBox(width: 4),
                       Text(
                         suffixValueThrough!,
                         style: context.baseTextStyle.base1.copyWith(
                           color: context.textColors.tertiary,
-                          decoration: TextDecoration.lineThrough,
-                          decorationColor: context.textColors.tertiary,
                         ),
                       ),
-                    ],
-                    if (rightIcon != null && canShowIcon) ...[
-                      const SizedBox(width: 4),
-                      rightIcon!,
                     ],
                   ],
                 ),
                 if (captionText != null) ...[
+                  const SizedBox(height: 4),
                   Text(
                     captionText!,
-                    style: context.baseTextStyle.base1.copyWith(
+                    style: context.baseTextStyle.base4.copyWith(
                       color: context.textColors.tertiary,
                     ),
                   ),
@@ -127,24 +100,12 @@ class InfoField extends StatelessWidget {
             ),
           ),
           if (trailingIcon != null) ...[
-            const SizedBox(width: 4),
+            const SizedBox(width: 9),
             trailingIcon!,
+            const SizedBox(width: 6),
           ],
         ],
       ),
     );
   }
-
-  // TextStyle _getStyle(BuildContext context) {
-  //   switch (size) {
-  //     case InfoFieldSize.small:
-  //       return context.titleTextStyle.compact1;
-  //     case InfoFieldSize.medium:
-  //       return context.titleTextStyle.medium1;
-  //     case InfoFieldSize.large:
-  //       return context.titleTextStyle.large1;
-  //     case InfoFieldSize.extraLarge:
-  //       return context.titleTextStyle.extraLarge;
-  //   }
-  // }
 }
