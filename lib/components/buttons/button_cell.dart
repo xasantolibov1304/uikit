@@ -61,7 +61,7 @@ class ButtonCell extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: context.backgroundColors.primary,
+        color: context.buttonColors.primary,
       ),
       child: Column(
         children: [
@@ -71,9 +71,9 @@ class ButtonCell extends StatelessWidget {
               child: TextHighlight(
                 text: captionText!,
                 onHighlightTap: onCaptionTap,
-                textStyle: context.labelTextStyle.main1,
+                textStyle: context.baseTextStyle.base4,
                 highlights: [captionHighlight ?? ''],
-                highlightStyle: context.labelTextStyle.medium1.copyWith(
+                highlightStyle: context.baseTextStyle.base1.copyWith(
                   color: context.textColors.info,
                 ),
               ),
@@ -132,7 +132,9 @@ class _AnchorWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: context.labelTextStyle.medium1,
+              style: context.baseTextStyle.base4.copyWith(
+                color: context.textColors.tertiary,
+              ),
             ),
             if (icon != null) ...[
               const SizedBox(width: 6),
@@ -262,7 +264,9 @@ class _InformativeWidget extends StatelessWidget {
           ],
           Text(
             title,
-            style: context.labelTextStyle.medium1,
+            style: context.baseTextStyle.base4.copyWith(
+              color: context.textColors.tertiary,
+            ),
           ),
         ],
       ),

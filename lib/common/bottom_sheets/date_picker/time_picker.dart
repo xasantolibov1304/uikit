@@ -48,10 +48,9 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
           child: CupertinoTheme(
             data: CupertinoThemeData(
               textTheme: CupertinoTextThemeData(
-                dateTimePickerTextStyle: context.titleTextStyle.large2,
+                dateTimePickerTextStyle: context.titleTextStyle.title3,
               ),
-              barBackgroundColor: context.backgroundColors.primary,
-              scaffoldBackgroundColor: context.backgroundColors.primary,
+              barBackgroundColor: context.surfaceColors.primary,
             ),
             child: Stack(
               alignment: Alignment.center,

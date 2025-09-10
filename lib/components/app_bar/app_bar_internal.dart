@@ -52,7 +52,7 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
       forceMaterialTransparency: forceMaterialTransparency,
       automaticallyImplyLeading: automaticallyImplyLeading,
       leading: automaticallyImplyLeading ? _leading(context) : null,
-      backgroundColor: backgroundColor ?? context.backgroundColors.primary,
+      backgroundColor: backgroundColor ?? context.surfaceColors.primary,
       title: title == null
           ? null
           : Column(
@@ -62,14 +62,16 @@ class AppBarInternal extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Text(
                   title!,
-                  style: titleTextStyle ?? context.titleTextStyle.main1,
+                  style: titleTextStyle ?? context.baseTextStyle.base1,
                 ),
                 if (subtitle != null) ...[
                   Text(
                     subtitle!,
                     maxLines: 1,
                     style:
-                        subtitleTextStyle ?? context.subtitleTextStyle.medium2,
+                        subtitleTextStyle ?? context.baseTextStyle.base3.copyWith(
+                          color: context.textColors.tertiary,
+                        ),
                   ),
                 ],
               ],

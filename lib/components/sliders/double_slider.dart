@@ -45,7 +45,7 @@ class DoubleSlider extends StatelessWidget {
         minThumbSeparation: (max - min) / 2,
         valueIndicatorColor: context.surfaceColors.tertiary,
         valueIndicatorStrokeColor: context.borderColors.primary,
-        valueIndicatorTextStyle: context.titleTextStyle.compact1,
+        valueIndicatorTextStyle: context.titleTextStyle.title3,
         rangeValueIndicatorShape: _RangeSliderValueIndicatorShape(),
         overlayColor: context.borderColors.success.withValues(alpha: 0.1),
       ),

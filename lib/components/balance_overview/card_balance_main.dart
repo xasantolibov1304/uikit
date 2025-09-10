@@ -64,7 +64,7 @@ class CardBalanceMain extends StatelessWidget {
                       Text(
                         title,
                         style:
-                            titleTextStyle ?? context.subtitleTextStyle.medium2,
+                            titleTextStyle ?? context.baseTextStyle.base3,
                       ),
                       if (onTitleTap != null) ...[
                         const SizedBox(width: 4),
@@ -83,7 +83,7 @@ class CardBalanceMain extends StatelessWidget {
                           ? Text(
                               _hiddenBalance,
                               style: balanceTextStyle ??
-                                  context.displayTextStyle.compact,
+                                  context.displayTextStyle.display3,
                             )
                           : NumberSlideAnimation(
                               number: balance,
@@ -91,14 +91,14 @@ class CardBalanceMain extends StatelessWidget {
                               curve: Curves.easeInOut,
                               duration: _animationDuration,
                               textStyle: balanceTextStyle ??
-                                  context.displayTextStyle.compact,
+                                  context.displayTextStyle.display3,
                             ),
                       if (currency != null && !isHidden) ...[
                         const SizedBox(width: 8),
                         Text(
                           currency!,
                           style: currencyTextStyle ??
-                              context.displayTextStyle.compact.copyWith(
+                              context.displayTextStyle.display3.copyWith(
                                 color: context.textColors.muted,
                               ),
                         ),

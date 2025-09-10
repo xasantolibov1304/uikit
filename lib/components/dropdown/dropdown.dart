@@ -157,7 +157,7 @@ class _CommonDropdownState extends State<CommonDropdown> {
         Expanded(
           child: Text(
             text,
-            style: context.subtitleTextStyle.medium2,
+            style: context.baseTextStyle.base3,
           ),
         ),
         if (widget._type == DropdownType.radio) ...[

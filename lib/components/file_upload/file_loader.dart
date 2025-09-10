@@ -39,7 +39,7 @@ class FileLoader extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: context.backgroundColors.primary,
+              color: context.surfaceColors.primary,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -47,13 +47,13 @@ class FileLoader extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: context.titleTextStyle.compact1,
+                  style: context.titleTextStyle.title3,
                 ),
                 if (description != null) ...[
                   const SizedBox(height: 12),
                   Text(
                     description!,
-                    style: context.bodyTextStyle.compact2.copyWith(
+                    style: context.baseTextStyle.base3.copyWith(
                       color: context.textColors.tertiary,
                     ),
                   ),
@@ -89,7 +89,7 @@ class FileLoader extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: context.backgroundColors.secondary,
+                color: context.surfaceColors.secondary,
               ),
               child: Column(
                 children: [
@@ -97,14 +97,14 @@ class FileLoader extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: context.backgroundColors.primary,
+                      color: context.surfaceColors.primary,
                     ),
                     child: UikitAssets.icons24.fileUpload.svg(),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     selectFileText,
-                    style: context.subtitleTextStyle.medium2,
+                    style: context.baseTextStyle.base3,
                   ),
                 ],
               ),

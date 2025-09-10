@@ -40,8 +40,8 @@ class CardBalanceSub extends StatelessWidget {
       isHidden: isHidden,
       onBalanceTap: onBalanceTap,
       titleTextStyle: titleTextStyle ??
-          context.subtitleTextStyle.large1.copyWith(
-            color: context.textColors.tertiary,
+          context.baseTextStyle.base3.copyWith(
+            color: context.textColors.primary,
           ),
       balanceTextStyle: balanceTextStyle ?? context.displayTextStyle.large,
       currencyTextStyle: currencyTextStyle ??

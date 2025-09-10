@@ -13,6 +13,7 @@ SurfaceColors _generatePaletteFromBrightness(Brightness brightness) {
     return SurfaceColors(
       primary: Palette.gray[0]!,
       secondary: Palette.gray[10]!,
+      elevated: Palette.gray[0]!,
       tertiary: Palette.gray[0]!,
       grey: Palette.gray[20]!,
       muted: Palette.gray[30]!,
@@ -26,6 +27,7 @@ SurfaceColors _generatePaletteFromBrightness(Brightness brightness) {
     return SurfaceColors(
       primary: Palette.gray[0]!,
       secondary: Palette.gray[10]!,
+      elevated: Palette.gray[0]!,
       tertiary: Palette.gray[0]!,
       grey: Palette.gray[20]!,
       muted: Palette.gray[30]!,

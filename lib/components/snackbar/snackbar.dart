@@ -129,7 +129,7 @@ void showTopSnack(
                 children: [
                   Text(
                     snack.title,
-                    style: context.titleTextStyle.compact1.copyWith(
+                    style: context.baseTextStyle.base1.copyWith(
                       color: context.textColors.invert,
                     ),
                   ),
@@ -137,7 +137,7 @@ void showTopSnack(
                     const SizedBox(height: 4),
                     Text(
                       snack.message ?? '',
-                      style: context.bodyTextStyle.main.copyWith(
+                      style: context.baseTextStyle.base4.copyWith(
                         color: context.textColors.tertiary,
                       ),
                     ),

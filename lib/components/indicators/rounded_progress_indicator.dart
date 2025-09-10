@@ -45,12 +45,12 @@ class RoundedProgressIndicator extends StatelessWidget {
               '${(percent * 100).toInt()}%',
               textAlign: TextAlign.center,
               style: textStyle ??
-                  context.titleTextStyle.large1.copyWith(
+                  context.displayTextStyle.display1.copyWith(
                     color: context.textColors.success,
                   ),
             )
           : null,
-      progressColor: progressColor ?? context.statusColors.success,
+      progressColor: progressColor ?? context.surfaceColors.success,
       backgroundColor: backgroundColor ?? context.borderColors.muted,
     );
   }

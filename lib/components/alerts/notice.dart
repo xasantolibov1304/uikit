@@ -61,7 +61,7 @@ class Notice extends StatelessWidget {
                 if (title != null) ...[
                   Text(
                     title!,
-                    style: context.titleTextStyle.main1,
+                    style: context.titleTextStyle.title3,
                   ),
                 ],
                 if (title != null && description != null) ...[
@@ -70,9 +70,9 @@ class Notice extends StatelessWidget {
                 if (description != null) ...[
                   Text(
                     description!,
-                    style: context.bodyTextStyle.main.copyWith(
+                    style: context.baseTextStyle.base4.copyWith(
                       color: context.textColors.secondary,
-                    ),
+                    )
                   ),
                 ],
                 if (buttonText != null) ...[

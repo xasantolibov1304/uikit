@@ -43,14 +43,14 @@ class EmptyState extends StatelessWidget {
             Text(
               viewModel.title,
               textAlign: TextAlign.center,
-              style: context.displayTextStyle.compact,
+              style: context.displayTextStyle.display4,
             ),
             if (viewModel.description != null) ...[
               const SizedBox(height: 12),
               Text(
                 viewModel.description!,
                 textAlign: TextAlign.center,
-                style: context.bodyTextStyle.medium2.copyWith(
+                style: context.baseTextStyle.base1.copyWith(
                   color: context.textColors.secondary,
                 ),
               ),

@@ -48,12 +48,14 @@ class SwitcherCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: context.titleTextStyle.main1,
+                    style: context.baseTextStyle.base1,
                   ),
                   if (subtitle != null)
                     Text(
                       subtitle!,
-                      style: context.subtitleTextStyle.compact2.regular,
+                      style: context.baseTextStyle.base4.regular.copyWith(
+                        color: context.textColors.tertiary,
+                      ),
                     ),
                 ],
               ),

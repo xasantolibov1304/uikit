@@ -101,9 +101,9 @@ class _CommonBottomNavigationBarState extends State<CommonBottomNavigationBar>
           overlayColor: WidgetStateProperty.all(
             context.surfaceColors.secondary.withValues(alpha: 0.1),
           ),
-          labelStyle: context.buttonTextStyle.subtext.medium,
-          unselectedLabelStyle: context.buttonTextStyle.subtext.copyWith(
-            color: context.textColors.secondary,
+          labelStyle: context.baseTextStyle.base5,
+          unselectedLabelStyle: context.baseTextStyle.base5.copyWith(
+            color: context.textColors.tertiary,
           ),
         ),
       ),

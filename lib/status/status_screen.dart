@@ -107,13 +107,13 @@ class StatusScreen extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           title,
-          style: context.titleTextStyle.large2,
+          style: context.titleTextStyle.title1,
         ),
         if (description != null) ...[
           const SizedBox(height: 4),
           Text(
             description!,
-            style: context.subtitleTextStyle.large1.copyWith(
+            style: context.baseTextStyle.base2.copyWith(
               color: context.textColors.secondary,
             ),
           ),

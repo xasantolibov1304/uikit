@@ -54,12 +54,12 @@ class RadioCard extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: context.titleTextStyle.main1,
+                        style: context.titleTextStyle.title3,
                       ),
                       if (subtitle != null)
                         Text(
                           subtitle!,
-                          style: context.subtitleTextStyle.compact2.regular,
+                          style: context.baseTextStyle.base4.regular,
                         ),
                     ],
                   ),

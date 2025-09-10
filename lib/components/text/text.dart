@@ -55,7 +55,7 @@ class _TextWidgetState extends State<TextWidget> {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: context.backgroundColors.primary,
+            color: context.surfaceColors.primary,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,13 +65,13 @@ class _TextWidgetState extends State<TextWidget> {
                   widget.text,
                   maxLines: widget.maxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: widget.style ?? context.bodyTextStyle.main,
+                  style: widget.style ?? context.baseTextStyle.base2,
                 ),
                 secondChild: Column(
                   children: [
                     Text(
                       widget.text,
-                      style: widget.style ?? context.bodyTextStyle.main,
+                      style: widget.style ?? context.baseTextStyle.base2,
                     ),
                     if (_isExpanded) ...[
                       const SizedBox(height: 36),

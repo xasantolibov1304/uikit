@@ -99,7 +99,7 @@ class BrandColorsExamplePage extends StatelessWidget {
       children: [
         Text(
           title,
-          style: context.titleTextStyle.large1.bold,
+          style: context.titleTextStyle.title1.bold,
         ),
         const SizedBox(height: 16),
         Wrap(

@@ -82,7 +82,7 @@ class _CommonProgressIndicatorState extends State<CommonProgressIndicator>
                     height: widget.height,
                     decoration: BoxDecoration(
                       color: widget.backgroundColor ??
-                          context.backgroundColors.secondary,
+                          context.surfaceColors.secondary,
                       borderRadius: BorderRadius.circular(100),
                     ),
                   ),
@@ -93,7 +93,7 @@ class _CommonProgressIndicatorState extends State<CommonProgressIndicator>
                       height: widget.height,
                       decoration: BoxDecoration(
                         color: widget.progressColor ??
-                            context.statusColors.success,
+                            context.surfaceColors.success,
                         borderRadius: BorderRadius.circular(100),
                       ),
                     ),
@@ -109,7 +109,7 @@ class _CommonProgressIndicatorState extends State<CommonProgressIndicator>
           builder: (context, child) {
             return Text(
               '${(_animation.value * 100).round()}%',
-              style: widget.percentageTextStyle ?? context.labelTextStyle.main1,
+              style: widget.percentageTextStyle ?? context.baseTextStyle.base3,
             );
           },
         ),

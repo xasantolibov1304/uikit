@@ -65,7 +65,7 @@ class StepIndicator extends StatelessWidget {
               .map((step) => Text(
                     step.label,
                     style: labelStyle ??
-                        context.labelTextStyle.main1.copyWith(
+                        context.baseTextStyle.base4.copyWith(
                           color: context.textColors.tertiary,
                         ),
                   ))

@@ -195,7 +195,7 @@ class _InputFieldState extends State<InputField> {
                     width: 2,
                     color: _borderColor,
                   ),
-                  color: context.fieldColors.background,
+                  color: context.surfaceColors.secondary,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: _buildInputContent(),
@@ -212,15 +212,15 @@ class _InputFieldState extends State<InputField> {
     return InputDecoration(
       contentPadding: const EdgeInsets.all(4),
       floatingLabelBehavior: widget.floatingLabelBehavior,
-      labelStyle: context.titleTextStyle.main1.copyWith(
+      labelStyle: context.baseTextStyle.base4.copyWith(
         color: context.textColors.tertiary,
       ),
-      helperStyle: context.subtitleTextStyle.compact2,
-      counterStyle: context.subtitleTextStyle.compact2,
-      hintStyle: context.titleTextStyle.main1.copyWith(
+      helperStyle: context.baseTextStyle.base4,
+      counterStyle: context.baseTextStyle.base4,
+      hintStyle: context.baseTextStyle.base1.copyWith(
         color: context.textColors.tertiary,
       ),
-      floatingLabelStyle: context.labelTextStyle.main1.copyWith(
+      floatingLabelStyle: context.baseTextStyle.base4.copyWith(
         color: context.textColors.tertiary,
       ),
       label: widget.label != null ? _buildLabel() : null,
@@ -234,14 +234,14 @@ class _InputFieldState extends State<InputField> {
       children: [
         Text(
           widget.label!,
-          style: context.titleTextStyle.main1.copyWith(
+          style: context.baseTextStyle.base4.copyWith(
             color: context.textColors.tertiary,
           ),
         ),
         if (widget.isRequired)
           Text(
             '*',
-            style: context.titleTextStyle.main1.copyWith(
+            style: context.baseTextStyle.base4.copyWith(
               color: context.textColors.error,
             ),
           ),
@@ -257,14 +257,14 @@ class _InputFieldState extends State<InputField> {
         if (widget.suffixLabel != null)
           Text(
             widget.suffixLabel!,
-            style: context.labelTextStyle.main1.copyWith(
+            style: context.baseTextStyle.base4.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
         if (widget.suffixValue != null)
           Text(
             widget.suffixValue!,
-            style: context.titleTextStyle.main1.copyWith(
+            style: context.baseTextStyle.base1.copyWith(
               color: context.textColors.tertiary,
             ),
           ),
@@ -322,7 +322,7 @@ class _InputFieldState extends State<InputField> {
                 child: Text(
                   validationText ?? widget.captionText ?? '',
                   maxLines: 1,
-                  style: context.subtitleTextStyle.compact2.copyWith(
+                  style: context.baseTextStyle.base4.copyWith(
                     color: _captionColor,
                   ),
                 ),
@@ -331,7 +331,7 @@ class _InputFieldState extends State<InputField> {
                 Text(
                   widget.captionHelperText!,
                   maxLines: 1,
-                  style: context.subtitleTextStyle.compact2.copyWith(
+                  style: context.baseTextStyle.base4.copyWith(
                     color: _captionColor,
                   ),
                 ),
@@ -350,15 +350,15 @@ class _InputFieldState extends State<InputField> {
   Color get _borderColor {
     if (!widget.isEnabled) return Colors.transparent;
 
-    if (_hasFocus) return context.fieldColors.borderFocused;
+    if (_hasFocus) return context.borderColors.secondary;
 
     switch (_inputStatus) {
       case InputFieldStatus.error:
-        return context.fieldColors.error;
+        return context.surfaceColors.error;
       case InputFieldStatus.warning:
-        return context.fieldColors.warning;
+        return context.surfaceColors.warning;
       case InputFieldStatus.success:
-        return context.fieldColors.success;
+        return context.surfaceColors.success;
       default:
         return Colors.transparent;
     }
@@ -409,13 +409,13 @@ class _InputFieldState extends State<InputField> {
               children: [
                 TextSpan(
                   text: '${_controller.text.length}',
-                  style: context.subtitleTextStyle.medium2.copyWith(
+                  style: context.baseTextStyle.base4.copyWith(
                     color: context.textColors.secondary,
                   ),
                 ),
                 TextSpan(
                   text: '/${widget.maxLength}',
-                  style: context.subtitleTextStyle.medium2.copyWith(
+                  style: context.baseTextStyle.base4.copyWith(
                     color: context.textColors.muted,
                   ),
                 ),
@@ -458,7 +458,7 @@ class _InputFieldState extends State<InputField> {
             obscureText: widget.obscureText,
             keyboardType: widget.keyboardType,
             decoration: _buildInputDecoration,
-            style: context.titleTextStyle.main1,
+            style: context.baseTextStyle.base1,
             inputFormatters: widget.inputFormatters,
             textInputAction: widget.textInputAction,
             onEditingComplete: widget.onEditingComplete,

@@ -5,6 +5,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
   const SurfaceColors({
     required this.primary,
     required this.secondary,
+    required this.elevated,
     required this.tertiary,
     required this.grey,
     required this.muted,
@@ -17,6 +18,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
 
   final Color primary;
   final Color secondary;
+  final Color elevated;
   final Color tertiary;
   final Color grey;
   final Color muted;
@@ -30,6 +32,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
   ThemeExtension<SurfaceColors> copyWith({
     Color? primary,
     Color? secondary,
+    Color? elevated,
     Color? tertiary,
     Color? grey,
     Color? muted,
@@ -42,6 +45,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
       SurfaceColors(
         primary: primary ?? this.primary,
         secondary: secondary ?? this.secondary,
+        elevated: elevated ?? this.elevated,
         tertiary: tertiary ?? this.tertiary,
         grey: grey ?? this.grey,
         muted: muted ?? this.muted,
@@ -63,6 +67,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
     return SurfaceColors(
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
+      elevated: Color.lerp(elevated, other.elevated, t)!,
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,
       grey: Color.lerp(grey, other.grey, t)!,
       muted: Color.lerp(muted, other.muted, t)!,

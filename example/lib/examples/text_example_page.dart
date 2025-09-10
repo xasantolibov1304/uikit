@@ -102,18 +102,18 @@ class _TextExamplePageState extends State<TextExamplePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildTypographyRow('Base 1 - Regular', context.baseTextStyle.base1Regular, 'Title'),
-          _buildTypographyRow('Base 1 - Medium', context.baseTextStyle.base1Medium, 'Title'),
-          _buildTypographyRow('Base 2 - Regular', context.baseTextStyle.base2Regular, 'Title'),
-          _buildTypographyRow('Base 2 - Medium', context.baseTextStyle.base2Medium, 'Title'),
-          _buildTypographyRow('Base 3 - Regular', context.baseTextStyle.base3Regular, 'Title'),
-          _buildTypographyRow('Base 3 - Medium', context.baseTextStyle.base3Medium, 'Title'),
-          _buildTypographyRow('Base 4 - Regular', context.baseTextStyle.base4Regular, 'Title'),
-          _buildTypographyRow('Base 4 - Medium', context.baseTextStyle.base4Medium, 'Title'),
-          _buildTypographyRow('Base 5 - Regular', context.baseTextStyle.base5Regular, 'Title'),
-          _buildTypographyRow('Base 5 - Medium', context.baseTextStyle.base5Medium, 'Title'),
-          _buildTypographyRow('Base 6 - Regular', context.baseTextStyle.base6Regular, 'Title'),
-          _buildTypographyRow('Base 6 - Medium', context.baseTextStyle.base6Medium, 'Title'),
+          _buildTypographyRow('Base 1 - Regular', context.baseTextStyle.base1.regular, 'Title'),
+          _buildTypographyRow('Base 1 - Medium', context.baseTextStyle.base1, 'Title'),
+          _buildTypographyRow('Base 2 - Regular', context.baseTextStyle.base2.regular, 'Title'),
+          _buildTypographyRow('Base 2 - Medium', context.baseTextStyle.base2, 'Title'),
+          _buildTypographyRow('Base 3 - Regular', context.baseTextStyle.base3.regular, 'Title'),
+          _buildTypographyRow('Base 3 - Medium', context.baseTextStyle.base3, 'Title'),
+          _buildTypographyRow('Base 4 - Regular', context.baseTextStyle.base4.regular, 'Title'),
+          _buildTypographyRow('Base 4 - Medium', context.baseTextStyle.base4, 'Title'),
+          _buildTypographyRow('Base 5 - Regular', context.baseTextStyle.base5.regular, 'Title'),
+          _buildTypographyRow('Base 5 - Medium', context.baseTextStyle.base5, 'Title'),
+          _buildTypographyRow('Base 6 - Regular', context.baseTextStyle.base6.regular, 'Title'),
+          _buildTypographyRow('Base 6 - Medium', context.baseTextStyle.base6, 'Title'),
         ],
       ),
     );
@@ -129,7 +129,7 @@ class _TextExamplePageState extends State<TextExamplePage> {
             width: 140,
             child: Text(
               label,
-              style: context.baseTextStyle.base3Medium.copyWith(
+              style: context.baseTextStyle.base3.copyWith(
                 color: Colors.grey[600],
               ),
             ),
@@ -144,7 +144,7 @@ class _TextExamplePageState extends State<TextExamplePage> {
             width: 120,
             child: Text(
               '${style.fontSize?.toInt()}px',
-              style: context.baseTextStyle.base4Regular.copyWith(
+              style: context.baseTextStyle.base4.regular.copyWith(
                 color: Colors.grey[600],
               ),
             ),
@@ -152,8 +152,8 @@ class _TextExamplePageState extends State<TextExamplePage> {
           SizedBox(
             width: 80,
             child: Text(
-              '${style.fontWeight?.index == 3 ? "400" : style.fontWeight?.index == 4 ? "500" : style.fontWeight?.index == 5 ? "600" : "700"}',
-              style: context.baseTextStyle.base4Regular.copyWith(
+              style.fontWeight?.index == 3 ? "400" : style.fontWeight?.index == 4 ? "500" : style.fontWeight?.index == 5 ? "600" : "700",
+              style: context.baseTextStyle.base4.regular.copyWith(
                 color: Colors.grey[600],
               ),
             ),

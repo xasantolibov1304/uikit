@@ -53,7 +53,7 @@ class CommonTooltip extends StatelessWidget {
           children: [
             Text(
               title,
-              style: context.titleTextStyle.compact1.copyWith(
+              style: context.baseTextStyle.base1.copyWith(
                 color: context.textColors.invert,
               ),
             ),
@@ -61,7 +61,7 @@ class CommonTooltip extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 subtitle!,
-                style: context.bodyTextStyle.main.copyWith(
+                style: context.baseTextStyle.base2.copyWith(
                   color: context.textColors.tertiary,
                 ),
               ),

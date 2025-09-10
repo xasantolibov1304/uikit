@@ -43,13 +43,13 @@ class _AccordionExamplePageState extends State<AccordionExamplePage> {
               child: Accordion(
                 title: Text(
                   _title,
-                  style: context.bodyTextStyle.medium2.copyWith(
+                  style: context.titleTextStyle.title1.copyWith(
                     color: Colors.black,
                   ),
                 ),
                 content: Text(
                   _content,
-                  style: context.labelTextStyle.main1.copyWith(
+                  style: context.titleTextStyle.title1.copyWith(
                     color: Colors.black,
                   ),
                 ),

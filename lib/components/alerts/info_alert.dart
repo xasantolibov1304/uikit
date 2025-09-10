@@ -53,7 +53,7 @@ class InfoAlert extends StatelessWidget {
                 if (title != null) ...[
                   Text(
                     title!,
-                    style: context.titleTextStyle.main2,
+                    style: context.titleTextStyle.title2,
                   ),
                 ],
                 if (title != null && description != null) ...[
@@ -62,8 +62,8 @@ class InfoAlert extends StatelessWidget {
                 if (description != null) ...[
                   Text(
                     description!,
-                    style: context.bodyTextStyle.compact2.copyWith(
-                      color: context.textColors.secondary,
+                    style: context.baseTextStyle.base2.copyWith(
+                      color: context.textColors.tertiary,
                     ),
                   ),
                 ],

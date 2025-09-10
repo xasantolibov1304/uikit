@@ -45,7 +45,7 @@ class ModalMenu extends StatelessWidget {
               Expanded(
                 child: Text(
                   item,
-                  style: context.titleTextStyle.compact1,
+                  style: context.baseTextStyle.base3,
                 ),
               ),
             ],

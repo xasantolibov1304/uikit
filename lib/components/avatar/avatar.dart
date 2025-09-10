@@ -94,7 +94,7 @@ class AvatarWidget extends StatelessWidget {
                       height: _statusSize,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: context.statusColors.success,
+                        color: context.additionalColors.additional4,
                         border: Border.all(
                           width: 2,
                           color: context.borderColors.invert,
@@ -115,7 +115,7 @@ class AvatarWidget extends StatelessWidget {
       AvatarType.initials => Center(
           child: Text(
             initials ?? '',
-            style: context.titleTextStyle.main1.copyWith(
+            style: context.titleTextStyle.title3.copyWith(
               color: context.textColors.info,
             ),
           ),

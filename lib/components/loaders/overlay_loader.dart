@@ -61,7 +61,7 @@ class OverlayLoader extends StatelessWidget {
           Text(
             title!,
             textAlign: TextAlign.center,
-            style: context.titleTextStyle.large2,
+            style: context.titleTextStyle.title1,
           ),
         ],
         if (description != null) ...[
@@ -69,7 +69,7 @@ class OverlayLoader extends StatelessWidget {
           Text(
             description!,
             textAlign: TextAlign.center,
-            style: context.bodyTextStyle.medium2,
+            style: context.baseTextStyle.base1,
           ),
         ],
         if (buttonText != null) ...[

@@ -191,7 +191,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
           if (widget.caption != null) ...[
             Text(
               widget.caption!,
-              style: context.bodyTextStyle.main.copyWith(
+              style: context.baseTextStyle.base4.copyWith(
                 color: context.textColors.primary,
               ),
             ),
@@ -222,7 +222,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
                     ),
                     child: Text(
                       widget.labels![index],
-                      style: context.bodyTextStyle.compact2.copyWith(
+                      style: context.baseTextStyle.base2.copyWith(
                         color: context.textColors.primary,
                       ),
                       maxLines: 1,
@@ -238,7 +238,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
             const SizedBox(height: 4),
             Text(
               widget.subtitle!,
-              style: context.bodyTextStyle.compact2.copyWith(
+              style: context.baseTextStyle.base3.copyWith(
                 color: context.textColors.primary,
               ),
             ),

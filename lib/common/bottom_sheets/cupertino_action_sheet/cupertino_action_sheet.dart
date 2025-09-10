@@ -27,7 +27,7 @@ class CommonCupertinoActionSheet extends StatelessWidget {
         title: title != null
             ? Text(
                 title!,
-                style: context.titleTextStyle.large2,
+                style: context.titleTextStyle.title3,
               )
             : null,
         cancelButton: cancelButton,

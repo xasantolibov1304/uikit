@@ -40,7 +40,7 @@ class CustomAlertDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
-      backgroundColor: context.backgroundColors.primary,
+      backgroundColor: context.surfaceColors.elevated,
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -49,14 +49,14 @@ class CustomAlertDialog extends StatelessWidget {
           children: [
             Text(
               title,
-              style: context.titleTextStyle.medium2,
+              style: context.titleTextStyle.title3,
             ),
             if (description != null) ...[
               SizedBox(height: 8),
               Text(
                 description!,
-                style: context.bodyTextStyle.main.copyWith(
-                  color: context.textColors.tertiary,
+                style: context.baseTextStyle.base3.copyWith(
+                  color: context.textColors.secondary,
                 ),
               ),
             ],

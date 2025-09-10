@@ -48,7 +48,7 @@ class _CommonRefresherState extends State<CommonRefresher> {
       scrollController: widget.scrollController,
       header: MaterialClassicHeader(
         color: context.iconColors.success,
-        backgroundColor: context.backgroundColors.primary,
+        backgroundColor: context.surfaceColors.primary,
       ),
       child: widget.child,
     );

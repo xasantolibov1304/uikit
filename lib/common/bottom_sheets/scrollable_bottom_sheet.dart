@@ -68,7 +68,7 @@ class ScrollableBottomSheet extends StatelessWidget {
                               child: Text(
                                 title!,
                                 textAlign: TextAlign.center,
-                                style: context.titleTextStyle.large1,
+                                style: context.titleTextStyle.title2,
                               ),
                             ),
                             const SizedBox(width: 16),

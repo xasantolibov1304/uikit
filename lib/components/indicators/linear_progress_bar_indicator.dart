@@ -52,14 +52,14 @@ class LinearProgressBarIndicator extends StatelessWidget {
                     if (caption != null)
                       Text(
                         caption!,
-                        style: context.bodyTextStyle.main.copyWith(
+                        style: context.baseTextStyle.base2.copyWith(
                           color: _textColors(context),
                         ),
                       ),
                     if (subtitle != null)
                       Text(
                         subtitle!,
-                        style: context.bodyTextStyle.main.copyWith(
+                        style: context.baseTextStyle.base3.copyWith(
                           color: _textColors(context),
                         ),
                       ),
@@ -73,12 +73,12 @@ class LinearProgressBarIndicator extends StatelessWidget {
                   if (additionalCaption != null)
                     Text(
                       additionalCaption!,
-                      style: context.bodyTextStyle.main,
+                      style: context.baseTextStyle.base2,
                     ),
                   if (additionalSubtitle != null)
                     Text(
                       additionalSubtitle!,
-                      style: context.bodyTextStyle.main,
+                      style: context.baseTextStyle.base3,
                     ),
                 ],
               ),

@@ -44,7 +44,7 @@ class PinDisplayItem extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             errorMessage!,
-            style: context.subtitleTextStyle.medium2.copyWith(
+            style: context.baseTextStyle.base3.copyWith(
               color: context.textColors.error,
             ),
           ),

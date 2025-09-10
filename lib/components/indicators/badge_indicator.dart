@@ -50,7 +50,7 @@ class BadgeIndicator extends StatelessWidget {
       badgeAnimation: const badges.BadgeAnimation.scale(),
       badgeContent: Text(
         '${count > _maxCount ? '$_maxCount+' : count}',
-        style: context.labelTextStyle.medium2.copyWith(
+        style: context.baseTextStyle.base4.copyWith(
           height: _textHeight,
           color: _textColor(context),
         ),
@@ -73,13 +73,13 @@ class BadgeIndicator extends StatelessWidget {
   Color _badgeColor(BuildContext context) {
     switch (type) {
       case BadgeIndicatorType.danger:
-        return context.statusColors.error;
+        return context.surfaceColors.error;
       case BadgeIndicatorType.success:
-        return context.statusColors.success;
+        return context.surfaceColors.success;
       case BadgeIndicatorType.warning:
-        return context.statusColors.warning;
+        return context.surfaceColors.warning;
       case BadgeIndicatorType.info:
-        return context.statusColors.info;
+        return context.surfaceColors.info;
     }
   }
 }

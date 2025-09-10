@@ -40,11 +40,11 @@ class CommonTabBar extends StatelessWidget {
         labelColor: context.textColors.primary,
         indicatorPadding: const EdgeInsets.all(2),
         splashBorderRadius: BorderRadius.circular(8),
-        labelStyle: context.subtitleTextStyle.medium2,
+        labelStyle: context.baseTextStyle.base3,
         indicatorColor: context.surfaceColors.primary,
         unselectedLabelColor: context.textColors.primary,
-        dividerColor: context.backgroundColors.transparent,
-        unselectedLabelStyle: context.subtitleTextStyle.medium2,
+        dividerColor: context.systemColors.transparent,
+        unselectedLabelStyle: context.baseTextStyle.base3,
         indicator: BoxDecoration(
           color: context.surfaceColors.tertiary,
           borderRadius: BorderRadius.circular(8),
@@ -54,7 +54,7 @@ class CommonTabBar extends StatelessWidget {
             .map((item) => Tab(text: item, height: _defaultHeight))
             .toList(),
         overlayColor:
-            WidgetStateProperty.all(context.backgroundColors.transparent),
+            WidgetStateProperty.all(context.systemColors.transparent),
       ),
     );
   }

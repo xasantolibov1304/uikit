@@ -24,7 +24,7 @@ class CupertinoActionItem extends StatelessWidget {
       child: Text(
         label,
         style: textStyle ??
-            context.bodyTextStyle.medium2.copyWith(
+            context.titleTextStyle.title3.copyWith(
               color: context.textColors.info,
             ),
       ),

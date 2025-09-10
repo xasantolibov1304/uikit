@@ -55,14 +55,10 @@ class InfoField extends StatelessWidget {
     return Container(
       height: _height,
       decoration: BoxDecoration(
-        color: isEnabled
-            ? context.fieldColors.background
-            : context.fieldColors.backgroundDisabled,
+        color: isEnabled ? context.surfaceColors.primary : context.surfaceColors.muted,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isEnabled
-              ? context.fieldColors.border
-              : context.fieldColors.borderDisabled,
+          color: isEnabled ? context.borderColors.primary : context.borderColors.muted,
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -75,7 +71,7 @@ class InfoField extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: context.labelTextStyle.main1.copyWith(
+                  style: context.baseTextStyle.base4.copyWith(
                     color: context.textColors.tertiary,
                   ),
                 ),
@@ -88,16 +84,14 @@ class InfoField extends StatelessWidget {
                     if (suffixValue != null) ...[
                       Text(
                         suffixValue!,
-                        style: _getStyle(context).copyWith(
-                          color: context.textColors.tertiary,
-                        ),
+                        style: context.baseTextStyle.base3,
                       ),
                     ],
                     if (valueThrough != null) ...[
                       const SizedBox(width: 4),
                       Text(
                         valueThrough!,
-                        style: _getStyle(context).copyWith(
+                        style: context.baseTextStyle.base1.copyWith(
                           color: context.textColors.tertiary,
                           decoration: TextDecoration.lineThrough,
                           decorationColor: context.textColors.tertiary,
@@ -108,7 +102,7 @@ class InfoField extends StatelessWidget {
                       const SizedBox(width: 2),
                       Text(
                         suffixValueThrough!,
-                        style: _getStyle(context).copyWith(
+                        style: context.baseTextStyle.base1.copyWith(
                           color: context.textColors.tertiary,
                           decoration: TextDecoration.lineThrough,
                           decorationColor: context.textColors.tertiary,
@@ -124,7 +118,7 @@ class InfoField extends StatelessWidget {
                 if (captionText != null) ...[
                   Text(
                     captionText!,
-                    style: context.subtitleTextStyle.compact1.copyWith(
+                    style: context.baseTextStyle.base1.copyWith(
                       color: context.textColors.tertiary,
                     ),
                   ),
@@ -141,16 +135,16 @@ class InfoField extends StatelessWidget {
     );
   }
 
-  TextStyle _getStyle(BuildContext context) {
-    switch (size) {
-      case InfoFieldSize.small:
-        return context.titleTextStyle.compact1;
-      case InfoFieldSize.medium:
-        return context.titleTextStyle.medium1;
-      case InfoFieldSize.large:
-        return context.titleTextStyle.large1;
-      case InfoFieldSize.extraLarge:
-        return context.titleTextStyle.extraLarge;
-    }
-  }
+  // TextStyle _getStyle(BuildContext context) {
+  //   switch (size) {
+  //     case InfoFieldSize.small:
+  //       return context.titleTextStyle.compact1;
+  //     case InfoFieldSize.medium:
+  //       return context.titleTextStyle.medium1;
+  //     case InfoFieldSize.large:
+  //       return context.titleTextStyle.large1;
+  //     case InfoFieldSize.extraLarge:
+  //       return context.titleTextStyle.extraLarge;
+  //   }
+  // }
 }

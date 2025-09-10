@@ -51,9 +51,9 @@ class PromoBanner extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: context.backgroundColors.primary,
+        color: context.surfaceColors.secondary,
         border: Border.all(
-          color: context.fieldColors.border,
+          color: context.borderColors.secondary,
           width: 1,
         ),
       ),
@@ -78,14 +78,16 @@ class PromoBanner extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: context.titleTextStyle.medium1,
+                        style: context.titleTextStyle.title1,
                       ),
                       if (description != null) ...[
                         const SizedBox(height: 12),
                         Expanded(
                           child: Text(
                             description ?? '',
-                            style: context.bodyTextStyle.compact2,
+                            style: context.titleTextStyle.title2.copyWith(
+                              color: context.textColors.tertiary,
+                            ),
                           ),
                         ),
                       ],

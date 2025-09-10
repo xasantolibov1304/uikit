@@ -52,7 +52,7 @@ class BadgeWidget extends StatelessWidget {
           if (title != null) ...[
             Text(
               title!,
-              style: context.labelTextStyle.main2.copyWith(
+              style: context.baseTextStyle.base4.copyWith(
                 color: _textColor(context),
               ),
             ),
@@ -70,7 +70,7 @@ class BadgeWidget extends StatelessWidget {
               ),
               child: Text(
                 '$count',
-                style: context.labelTextStyle.medium2.copyWith(
+                style: context.baseTextStyle.base3.copyWith(
                   color: _indicatorTextColor(context),
                 ),
               ),
@@ -83,7 +83,7 @@ class BadgeWidget extends StatelessWidget {
 
   Color _textColor(BuildContext context) {
     if (!isEnabled) {
-      return context.textColors.muted;
+      return context.textColors.tertiary;
     }
     return context.textColors.primary;
   }

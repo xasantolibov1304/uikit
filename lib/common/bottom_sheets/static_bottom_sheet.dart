@@ -35,7 +35,7 @@ class StaticBottomSheet extends StatelessWidget {
       child: Container(
         height: fixedHeight,
         decoration: BoxDecoration(
-          color: context.backgroundColors.primary,
+          color: context.systemColors.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
         ),
         child: Column(
@@ -50,7 +50,7 @@ class StaticBottomSheet extends StatelessWidget {
                     child: Text(
                       title!,
                       textAlign: TextAlign.center,
-                      style: context.titleTextStyle.large1,
+                      style: context.titleTextStyle.title2,
                     ),
                   ),
                   const SizedBox(width: 16),

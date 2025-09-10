@@ -41,7 +41,7 @@ class Breadcrumb extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: Text(
                     '/',
-                    style: context.labelTextStyle.main1.copyWith(
+                    style: context.baseTextStyle.base1.copyWith(
                       color: context.textColors.muted,
                     ),
                   ),
@@ -72,8 +72,8 @@ class Breadcrumb extends StatelessWidget {
         child: Text(
           item.label,
           style: isActive
-              ? context.labelTextStyle.main1
-              : context.labelTextStyle.main1.copyWith(
+              ? context.baseTextStyle.base4
+              : context.baseTextStyle.base4.copyWith(
                   color: context.textColors.tertiary,
                 ),
         ),

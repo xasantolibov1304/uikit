@@ -42,7 +42,7 @@ class StatusActionButton extends StatelessWidget {
             maxLines: 2,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
-            style: context.labelTextStyle.main2,
+            style: context.baseTextStyle.base4,
           ),
         ],
       ),

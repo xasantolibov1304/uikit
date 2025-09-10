@@ -149,7 +149,7 @@ class _CurrencyInputFieldState extends State<CurrencyInputField> {
                         Expanded(
                           child: Text(
                             currencyType.name,
-                            style: context.subtitleTextStyle.medium2,
+                            style: context.titleTextStyle.title3,
                           ),
                         ),
                       ],
@@ -161,7 +161,7 @@ class _CurrencyInputFieldState extends State<CurrencyInputField> {
                       const SizedBox(width: 6),
                       Text(
                         _selectedCurrency.name,
-                        style: context.titleTextStyle.main1,
+                        style: context.titleTextStyle.title3,
                       ),
                       const SizedBox(width: 6),
                       UikitAssets.icons24.arrowDown.svg(),

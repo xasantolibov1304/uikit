@@ -189,8 +189,8 @@ class NumericalPageIndicator extends StatelessWidget {
       child: Text(
         '$page',
         style: isCurrent
-            ? context.titleTextStyle.compact1.copyWith()
-            : context.bodyTextStyle.medium1.copyWith(
+            ? context.baseTextStyle.base2
+            : context.baseTextStyle.base2.copyWith(
                 color: context.textColors.tertiary,
               ),
       ),
@@ -202,7 +202,7 @@ class NumericalPageIndicator extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Text(
         '....',
-        style: context.bodyTextStyle.medium1.copyWith(
+        style: context.baseTextStyle.base1.copyWith(
           color: context.textColors.tertiary,
         ),
       ),

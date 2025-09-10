@@ -34,7 +34,7 @@ class FileUpload extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: context.backgroundColors.primary,
+        color: context.surfaceColors.primary,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: context.borderColors.primary,
@@ -50,7 +50,7 @@ class FileUpload extends StatelessWidget {
               children: [
                 Text(
                   fileName,
-                  style: context.titleTextStyle.compact1,
+                  style: context.baseTextStyle.base3,
                 ),
                 if (percentage != null) ...[
                   const SizedBox(height: 8),
@@ -61,7 +61,7 @@ class FileUpload extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     fileSize ?? '',
-                    style: context.bodyTextStyle.compact2.copyWith(
+                    style: context.baseTextStyle.base5.copyWith(
                       color: context.textColors.tertiary,
                     ),
                   ),
@@ -92,7 +92,7 @@ class FileUpload extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: context.backgroundColors.secondary,
+            color: context.surfaceColors.secondary,
             border: Border.all(
               color: context.borderColors.primary,
             ),

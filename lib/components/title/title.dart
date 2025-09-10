@@ -42,7 +42,7 @@ class TitleWidget extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: context.backgroundColors.transparent,
+        color: context.systemColors.transparent,
         borderRadius: BorderRadius.circular(16),
       ),
       padding: const EdgeInsets.only(
@@ -75,7 +75,7 @@ class TitleWidget extends StatelessWidget {
                     ),
                     child: Text(
                       subtitle ?? '',
-                      style: context.subtitleTextStyle.medium1.copyWith(
+                      style: context.baseTextStyle.base3.copyWith(
                         color: context.textColors.tertiary,
                       ),
                     ),
@@ -111,11 +111,11 @@ class TitleWidget extends StatelessWidget {
   TextStyle _getTitleStyle(BuildContext context) {
     switch (size) {
       case TitleWidgetSize.small:
-        return context.titleTextStyle.main2.bold;
+        return context.titleTextStyle.title4.bold;
       case TitleWidgetSize.medium:
-        return context.titleTextStyle.medium2.bold;
+        return context.titleTextStyle.title3.bold;
       case TitleWidgetSize.large:
-        return context.titleTextStyle.large2.bold;
+        return context.titleTextStyle.title2.bold;
     }
   }
 }

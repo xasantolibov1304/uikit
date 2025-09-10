@@ -154,7 +154,7 @@ class Button extends StatelessWidget {
                             child: Text(
                               '$count',
                               maxLines: 1,
-                              style: context.buttonTextStyle.count,
+                              style: context.titleTextStyle.title3,
                             ),
                           ),
                         ),
@@ -195,7 +195,7 @@ class Button extends StatelessWidget {
     return Text(
       subtext ?? '',
       overflow: TextOverflow.ellipsis,
-      style: context.buttonTextStyle.subtext.copyWith(
+      style: context.baseTextStyle.base5.copyWith(
         color: _textColor(context),
       ),
     );
@@ -229,7 +229,7 @@ class Button extends StatelessWidget {
   ///
 
   TextStyle _textStyle(BuildContext context) {
-    return context.buttonTextStyle.main.copyWith(
+    return context.titleTextStyle.title3.copyWith(
       color: _textColor(context),
     );
   }

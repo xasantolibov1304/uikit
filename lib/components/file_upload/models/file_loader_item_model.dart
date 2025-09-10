@@ -52,7 +52,7 @@ class FileLoaderItem extends StatelessWidget {
                   model.fileName,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: context.subtitleTextStyle.medium1,
+                  style: context.baseTextStyle.base3,
                 ),
                 if (model.showProgress && model.progress != 1) ...[
                   const SizedBox(height: 4),
@@ -66,7 +66,7 @@ class FileLoaderItem extends StatelessWidget {
                   model.statusText,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: context.subtitleTextStyle.compact1.copyWith(
+                  style: context.baseTextStyle.base5.copyWith(
                     color: model.showProgress && model.progress == 1
                         ? context.textColors.success
                         : context.textColors.secondary,
