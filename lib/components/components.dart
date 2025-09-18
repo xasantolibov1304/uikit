@@ -41,6 +41,9 @@ export 'pincode/pincode.dart';
 export 'checkbox/checkbox.dart';
 export 'checkbox/checkbox_card.dart';
 
+// Card select
+export 'card_select/card_select.dart';
+
 // Dropdown
 export 'dropdown/dropdown.dart';
 export 'dropdown/modal_menu.dart';
@@ -98,6 +101,7 @@ export 'text/number_slide_animation.dart';
 export 'text/rich_text.dart';
 export 'text/text.dart';
 export 'text/text_highlight.dart';
+export 'text/text_display.dart';
 
 // Title
 export 'title/title.dart';
