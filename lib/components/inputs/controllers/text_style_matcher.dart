@@ -1,7 +1,7 @@
 // Project imports:
 
 // Project imports:
-import 'package:iman_uikit/components/inputs/controllers/text_part_style_definition.dart';
+import 'package:uikit/components/inputs/controllers/text_part_style_definition.dart';
 
 class TextStyleMatcher {
   const TextStyleMatcher({required this.definitionList});

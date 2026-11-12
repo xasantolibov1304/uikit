@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // Project imports:
-import 'package:iman_uikit/uikit.dart';
+import 'package:uikit/uikit.dart';
 
 const _badgeHeight = 32.0;
 

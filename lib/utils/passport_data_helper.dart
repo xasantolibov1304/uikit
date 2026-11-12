@@ -1,6 +1,6 @@
 // Project imports:
-import 'package:iman_uikit/utils/date/date_formatter.dart';
-import 'package:iman_uikit/utils/reg_exp_constants.dart';
+import 'package:uikit/utils/date/date_formatter.dart';
+import 'package:uikit/utils/reg_exp_constants.dart';
 
 const _pinflLength = 14;
 

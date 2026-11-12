@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/bottom_sheets/scroll_indicator.dart';
-import 'package:iman_uikit/common/focus_remover.dart';
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/common/safe_area.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/utils/media_helper.dart';
+import 'package:uikit/common/bottom_sheets/scroll_indicator.dart';
+import 'package:uikit/common/focus_remover.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/common/safe_area.dart';
+import 'package:uikit/gen/assets.gen.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
+import 'package:uikit/utils/media_helper.dart';
 
 class StaticBottomSheet extends StatelessWidget {
   const StaticBottomSheet({

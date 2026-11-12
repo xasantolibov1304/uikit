@@ -16,7 +16,7 @@ dependencies:
   auto_route: ^10.1.0+1
 
   # UIKit
-  iman_uikit:
+  uikit:
     path: ../
 
   device_preview: ^1.3.1

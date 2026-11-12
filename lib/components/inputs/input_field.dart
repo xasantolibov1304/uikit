@@ -6,11 +6,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/components/loaders/loading_indicator.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/components/loaders/loading_indicator.dart';
+import 'package:uikit/gen/assets.gen.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 
 const _iconSize = 24.0;
 

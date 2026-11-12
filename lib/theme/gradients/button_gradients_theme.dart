@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/gradients/button_gradient_colors_palette.dart';
-import 'package:iman_uikit/theme/gradients/button_gradients.dart';
+import 'package:uikit/theme/gradients/button_gradient_colors_palette.dart';
+import 'package:uikit/theme/gradients/button_gradients.dart';
 
 final lightButtonGradients = _generateGradientFromBrightness(Brightness.light);
 final darkButtonGradients = _generateGradientFromBrightness(Brightness.dark);

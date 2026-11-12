@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_item.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_item.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
 
 class CommonCupertinoActionSheet extends StatelessWidget {
   const CommonCupertinoActionSheet({

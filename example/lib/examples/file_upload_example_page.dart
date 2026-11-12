@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
 // Project imports:
-import 'package:iman_uikit/uikit.dart';
+import 'package:uikit/uikit.dart';
 
 class FileUploadExamplePage extends StatefulWidget {
   const FileUploadExamplePage({super.key});

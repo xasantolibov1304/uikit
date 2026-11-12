@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/color_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 
 const _indicatorSize = Size(36, 5);
 

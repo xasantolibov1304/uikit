@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/brand/invest/invest_brand_colors.dart';
+import 'package:uikit/theme/colors/brand/invest/invest_brand_colors.dart';
 
 final lightInvestBrandColors = _generatePaletteFromBrightness(Brightness.light);
 final darkInvestBrandColors = _generatePaletteFromBrightness(Brightness.dark);

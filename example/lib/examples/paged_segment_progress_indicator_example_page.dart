@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/uikit.dart' as uikit;
+import 'package:uikit/uikit.dart' as uikit;
 
 class PagedSegmentProgressIndicatorExamplePage extends StatefulWidget {
   const PagedSegmentProgressIndicatorExamplePage({super.key});

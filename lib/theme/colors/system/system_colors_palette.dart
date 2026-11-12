@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/colors.dart';
+import 'package:uikit/theme/colors/colors.dart';
 
 final lightSystemColors = _generatePaletteFromBrightness(Brightness.light);
 final darkSystemColors = _generatePaletteFromBrightness(Brightness.dark);

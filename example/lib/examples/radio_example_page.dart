@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/radio/radio.dart';
-import 'package:iman_uikit/components/radio/radio_card.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:uikit/components/radio/radio.dart';
+import 'package:uikit/components/radio/radio_card.dart';
+import 'package:uikit/gen/assets.gen.dart';
 
 class RadioExamplePage extends StatefulWidget {
   const RadioExamplePage({super.key});

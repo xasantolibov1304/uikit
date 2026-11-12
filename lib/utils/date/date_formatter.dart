@@ -6,7 +6,7 @@ import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:intl/intl.dart';
 
 // Project imports:
-import 'package:iman_uikit/utils/date/date_format_constants.dart';
+import 'package:uikit/utils/date/date_format_constants.dart';
 
 class DateFormatterHelper {
   const DateFormatterHelper._();

@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/theme/shadows/shadows.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
+import 'package:uikit/theme/shadows/shadows.dart';
 
 const _defaultHeight = 40.0;
 

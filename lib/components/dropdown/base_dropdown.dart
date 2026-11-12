@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/common.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/theme/shadows/shadows.dart';
+import 'package:uikit/common/common.dart';
+import 'package:uikit/theme/color_theme_data.dart';
+import 'package:uikit/theme/shadows/shadows.dart';
 
 class BaseDropdown extends StatefulWidget {
   const BaseDropdown({

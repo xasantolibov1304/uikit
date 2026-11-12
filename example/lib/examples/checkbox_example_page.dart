@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/checkbox/checkbox.dart';
-import 'package:iman_uikit/components/checkbox/checkbox_card.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:uikit/components/checkbox/checkbox.dart';
+import 'package:uikit/components/checkbox/checkbox_card.dart';
+import 'package:uikit/gen/assets.gen.dart';
 
 class CheckboxExamplePage extends StatefulWidget {
   const CheckboxExamplePage({super.key});

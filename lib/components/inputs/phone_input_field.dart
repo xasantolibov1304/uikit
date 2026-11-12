@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/components/inputs/input_field.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/utils/string_helper.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/components/inputs/input_field.dart';
+import 'package:uikit/gen/assets.gen.dart';
+import 'package:uikit/utils/string_helper.dart';
 
 const _phoneCode = '998';
 const _uzPhoneCode = 'UZ';

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/badge/badge.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
+import 'package:uikit/components/badge/badge.dart';
+import 'package:uikit/gen/assets.gen.dart';
 
 class BadgeExamplePage extends StatefulWidget {
   const BadgeExamplePage({super.key});

@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/components/inputs/input_field.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/utils/utils.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/components/inputs/input_field.dart';
+import 'package:uikit/gen/assets.gen.dart';
+import 'package:uikit/utils/utils.dart';
 
 class DateInputField extends StatelessWidget {
   const DateInputField({

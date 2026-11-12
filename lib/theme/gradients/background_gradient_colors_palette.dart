@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/gradients/background_gradient_colors.dart';
-import 'package:iman_uikit/theme/palette.dart';
+import 'package:uikit/theme/gradients/background_gradient_colors.dart';
+import 'package:uikit/theme/palette.dart';
 
 final lightBackgroundGradientColors =
     _generatePaletteFromBrightness(Brightness.light);

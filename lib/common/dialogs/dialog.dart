@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/dialogs/alert_dialog.dart';
-import 'package:iman_uikit/components/buttons/button.dart';
+import 'package:uikit/common/dialogs/alert_dialog.dart';
+import 'package:uikit/components/buttons/button.dart';
 
 class CustomDialog {
   static Future<T?> showAlertDialog<T>(

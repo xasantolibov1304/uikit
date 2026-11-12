@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/gradients/gradients.dart';
+import 'package:uikit/theme/gradients/gradients.dart';
 
 class AppGradients extends ThemeExtension<AppGradients> {
   const AppGradients({

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/typographies/typographies.dart';
+import 'package:uikit/theme/typographies/typographies.dart';
 
 extension TextStyleExtension on TextStyle {
   TextStyle get regular => copyWith(

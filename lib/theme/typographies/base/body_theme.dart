@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/text/text_colors_palette.dart';
-import 'package:iman_uikit/theme/typographies/base/body_text_styles.dart';
+import 'package:uikit/theme/colors/text/text_colors_palette.dart';
+import 'package:uikit/theme/typographies/base/body_text_styles.dart';
 
-const _fontFamily = 'Aeonik Pro';
+const _fontFamily = 'AeonikPro';
+const _fontPackage = 'uikit';
 
 final lightBaseTextStyles = _generateTypographyFromBrightness(Brightness.light);
 final darkBaseTextStyles = _generateTypographyFromBrightness(Brightness.dark);
@@ -83,5 +84,6 @@ BaseTextStyles _generateTypographyFromBrightness(Brightness brightness) {
 const _baseTypography = TextStyle(
   fontWeight: FontWeight.w400,
   fontFamily: _fontFamily,
+  package: _fontPackage,
   letterSpacing: 0,
 );

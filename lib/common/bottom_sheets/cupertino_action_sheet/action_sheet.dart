@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_item.dart';
-import 'package:iman_uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_sheet.dart';
+import 'package:uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_item.dart';
+import 'package:uikit/common/bottom_sheets/cupertino_action_sheet/cupertino_action_sheet.dart';
 
 class CustomActionSheet {
   static Future<T?> showCupertinoActionSheet<T>(

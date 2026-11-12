@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:auto_route/auto_route.dart';
-import 'package:iman_uikit/uikit.dart' as uikit;
+import 'package:uikit/uikit.dart' as uikit;
 
 // Project imports:
 import 'package:uikit_example/router/app_router.dart';

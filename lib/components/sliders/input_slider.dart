@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/color_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 
 const _dividerSize = Size(2, 3);
 const _thumbSize = Size(20, 8);

@@ -6,7 +6,7 @@ import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:flutter_multi_formatter/formatters/money_input_enums.dart';
 
 // Project imports:
-import 'package:iman_uikit/utils/number_formatter.dart';
+import 'package:uikit/utils/number_formatter.dart';
 
 class NumberSlideAnimation extends StatefulWidget {
   const NumberSlideAnimation({

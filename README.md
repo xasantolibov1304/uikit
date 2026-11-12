@@ -1,115 +1,70 @@
-# UIKit
+# uikit
 
-Skeleton project with architecture and dependencies.
+Design system for Flutter: theme (colors, gradients, typography, shadows),
+components (buttons, inputs, bottom sheets, indicators, …), common widgets,
+utils and services. Ships the **Aeonik Pro** font and all icons/flags as package assets.
 
-![Version](https://img.shields.io/badge/version-1.0.0%2B6-red)
-![Version](https://img.shields.io/badge/flutter-3.32.4-blue)
+Requires Flutter `>=3.32.0`, Dart `>=3.6.0`.
 
-After cloning the project, you need to run the following command to generate the files:
+## Installation
 
-```
-dart pub global activate mason_cli
-cd modules/core && mason init && mason get && cd ../..
-```
+Add to the consuming app's `pubspec.yaml` (pin a tag so builds are reproducible):
 
-If you have create_feature.sh: line 20: mason: command not found, then run:
-
-```
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-```
----
-# Generate Files
-
-You can run the following shell to generate files in the project:
-
-```
-cd scripts && sh create_feature.sh <FeatureName> && cd ..
-cd scripts/generate && sh generate_all.sh && cd ../..
-cd scripts/generate && sh generate_assets.sh && cd ../..
-cd scripts/generate && sh generate_localization.sh && cd ../..
-cd scripts/generate && sh generate_models.sh && cd ../..
-cd scripts/generate && sh sort_all_imports.sh && cd ../..
-cd scripts && sh update_dependencies.sh && cd ..
+```yaml
+dependencies:
+  uikit:
+    git:
+      url: https://github.com/xasantolibov1304/uikit.git
+      ref: v1.0.0   # tag, branch or commit SHA
 ```
 
---- 
-# Build
-Run the following command to build the project:
+For local development side-by-side:
 
-## Android
-
-```
-cd scripts && cd builds && sh build_apk_prod.sh && cd .. && cd ..
-cd scripts && cd builds && sh build_apk_dev.sh && cd .. && cd ..
-cd scripts && cd builds && sh build_appbundle_release.sh && cd .. && cd ..
+```yaml
+dependencies:
+  uikit:
+    path: ../uikit
 ```
 
-## iOS
+Then run `flutter pub get`.
 
-```
-cd scripts && cd builds && sh build_ios_prod.sh && cd .. && cd ..
-cd scripts && cd builds && sh build_ios_dev.sh && cd .. && cd ..
-```
----
-# General commands
+> If the repository is private, every machine/CI that builds the app needs git access
+> to it (SSH key or a token in the URL, e.g. `git@github.com:xasantolibov1304/uikit.git`).
 
-You can run the following command to clean up the project:
+## Usage
 
-```
-fvm flutter pub cache repair && fvm flutter clean && fvm flutter pub get
+```dart
+import 'package:uikit/uikit.dart';
 ```
 
-or
+Fonts and assets are resolved from the package automatically — the consuming app does
+**not** need to declare them. Generated asset accessors are available via `UikitAssets`:
 
+```dart
+UikitAssets.icons24.arrowDown.svg(width: 24, height: 24);
 ```
-fvm dart run build_runner build --delete-conflicting-outputs &&
-fvm flutter pub run import_sorter:main && # generate files
 
-cd packages/localization &&
-fvm dart run slang && cd ../.. && # generate localization files
+## Native setup required in the consuming app
 
-cd packages/uikit &&
-fvm dart run build_runner build --delete-conflicting-outputs &&
-fvm flutter pub run import_sorter:main && cd ../.. # generate assets in uikit
+Some dependencies are plugins that need platform configuration in the **app**:
 
-fvm flutter clean
+| Feature | Plugin | What to add |
+|---|---|---|
+| Camera / gallery | `image_picker` | iOS `Info.plist`: `NSCameraUsageDescription`, `NSPhotoLibraryUsageDescription` |
+| Biometrics | `local_auth` | iOS: `NSFaceIDUsageDescription`; Android: `MainActivity` extends `FlutterFragmentActivity`, `USE_BIOMETRIC` permission |
+| Permissions | `permission_handler` | iOS `Podfile` `GCC_PREPROCESSOR_DEFINITIONS` for used permissions; Android manifest permissions |
+| Links | `url_launcher` | Android `<queries>` / iOS `LSApplicationQueriesSchemes` for custom schemes |
+
+## Development
+
+```bash
 fvm flutter pub get
-fvm flutter build apk --release --no-tree-shake-icons # build APK
-fvm flutter build ios --release --no-tree-shake-icons # build iOS
-
-fvm flutter run lib/main_prod.dart --flavor production --dart-define=environment=production -t lib/main_prod.dart # run production
-fvm flutter run lib/main_dev.dart --flavor development --dart-define=environment=development -t lib/main_dev.dart # run development
-```
----
-
-# Otp hash string
-
-To get the debug hash string, you can use the following code in your otp screen:
-
-```
-SmsAutoFill().getAppSignature.then((value) => print('signature: ' + value));
+fvm dart run build_runner build --delete-conflicting-outputs   # regenerate lib/gen
+cd example && fvm flutter run                                    # showcase app
 ```
 
-Before you can use the SMS Retriever API, you need to generate a hash string that includes your app's package name and the signing certificate. To generate the hash string, do the following:
+## Releasing a new version
 
-1. Add your key.properties to android folder with the following content:
-
-```
-storePassword=your_store_password
-keyPassword=your_key_password
-keyAlias=your_key_alias
-storeFile=your_store_file
-```
-
-2. Download your app signing certificate ([deployment_cert.der](https://play.google.com/apps/publish/)) from the App signing section of the Google Play console.
-3. Get your deployment_cert.der file and place it in the scripts folder.
-4. Run the following command in BASH only to generate the hash string:
-
-```
-cd scripts && source generate_otp_hash.sh && cd ..
-```
-
-5. Paste the keyPassword in the terminal and press Enter. After the key is generated, your deployment_cert.der file will be deleted.
-6. Copy the hash string and add it to your sms.
-
-P.S. This only works with build from the Play Store.
+1. Bump `version` in `pubspec.yaml` and add an entry to `CHANGELOG.md`.
+2. Commit, then tag: `git tag v1.1.0 && git push origin v1.1.0`.
+3. In consuming apps update `ref:` to the new tag.

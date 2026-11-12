@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/additional/additional_colors.dart';
-import 'package:iman_uikit/theme/palette.dart';
+import 'package:uikit/theme/colors/additional/additional_colors.dart';
+import 'package:uikit/theme/palette.dart';
 
 final lightAdditionalColors = _generatePaletteFromBrightness(Brightness.light);
 final darkAdditionalColors = _generatePaletteFromBrightness(Brightness.dark);

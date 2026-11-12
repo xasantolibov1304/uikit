@@ -629,13 +629,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
-  iman_uikit:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "1.0.0+1"
   import_sorter:
     dependency: "direct dev"
     description:
@@ -1321,6 +1314,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  uikit:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "1.0.0+1"
   url_launcher:
     dependency: transitive
     description:

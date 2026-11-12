@@ -2,13 +2,14 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
-import 'package:iman_uikit/theme/colors/colors.dart';
-import 'package:iman_uikit/theme/gradients/gradients.dart';
-import 'package:iman_uikit/theme/system_overlay.dart';
-import 'package:iman_uikit/theme/typographies/typographies.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/colors/colors.dart';
+import 'package:uikit/theme/gradients/gradients.dart';
+import 'package:uikit/theme/system_overlay.dart';
+import 'package:uikit/theme/typographies/typographies.dart';
 
-const _fontFamily = 'Aeonik Pro';
+// Package fonts must be referenced with the 'packages/<name>/' prefix.
+const _fontFamily = 'packages/uikit/AeonikPro';
 
 final lightTheme = createThemeData(
   brightness: Brightness.light,

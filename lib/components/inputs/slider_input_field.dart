@@ -2,15 +2,15 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/inputs/amount_input_field.dart';
-import 'package:iman_uikit/components/inputs/controllers/stylable_input_field_controller.dart';
-import 'package:iman_uikit/components/inputs/controllers/text_part_style_definition.dart';
-import 'package:iman_uikit/components/inputs/controllers/text_style_matcher.dart';
-import 'package:iman_uikit/components/inputs/input_field.dart';
-import 'package:iman_uikit/components/sliders/input_slider.dart';
-import 'package:iman_uikit/theme/app_typography_theme_data.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
-import 'package:iman_uikit/utils/reg_exp_constants.dart';
+import 'package:uikit/components/inputs/amount_input_field.dart';
+import 'package:uikit/components/inputs/controllers/stylable_input_field_controller.dart';
+import 'package:uikit/components/inputs/controllers/text_part_style_definition.dart';
+import 'package:uikit/components/inputs/controllers/text_style_matcher.dart';
+import 'package:uikit/components/inputs/input_field.dart';
+import 'package:uikit/components/sliders/input_slider.dart';
+import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
+import 'package:uikit/utils/reg_exp_constants.dart';
 
 class SliderInputField extends StatefulWidget {
   const SliderInputField({

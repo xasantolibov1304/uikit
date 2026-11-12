@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/bottom_sheets/scrollable_bottom_sheet.dart';
-import 'package:iman_uikit/common/bottom_sheets/static_bottom_sheet.dart';
+import 'package:uikit/common/bottom_sheets/scrollable_bottom_sheet.dart';
+import 'package:uikit/common/bottom_sheets/static_bottom_sheet.dart';
 
 class CustomBottomSheet {
   static Future<T?> showStaticBottomSheet<T>(

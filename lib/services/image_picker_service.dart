@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 // Project imports:
-import 'package:iman_uikit/services/permission_service.dart';
+import 'package:uikit/services/permission_service.dart';
 
 enum AppImageSource {
   camera,

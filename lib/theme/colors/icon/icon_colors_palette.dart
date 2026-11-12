@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/icon/icon_colors.dart';
-import 'package:iman_uikit/theme/palette.dart';
+import 'package:uikit/theme/colors/icon/icon_colors.dart';
+import 'package:uikit/theme/palette.dart';
 
 final lightIconColors = _generatePaletteFromBrightness(Brightness.light);
 final darkIconColors = _generatePaletteFromBrightness(Brightness.dark);

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/gradients/gradients.dart';
-import 'package:iman_uikit/theme/gradients/toast_gradient_colors_palette.dart';
+import 'package:uikit/theme/gradients/gradients.dart';
+import 'package:uikit/theme/gradients/toast_gradient_colors_palette.dart';
 
 final lightToastGradients = _generateGradientFromBrightness(Brightness.light);
 final darkToastGradients = _generateGradientFromBrightness(Brightness.dark);

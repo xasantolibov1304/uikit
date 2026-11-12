@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/gradients/gradients.dart';
-import 'package:iman_uikit/theme/gradients/shimmer_gradient_colors_palette.dart';
+import 'package:uikit/theme/gradients/gradients.dart';
+import 'package:uikit/theme/gradients/shimmer_gradient_colors_palette.dart';
 
 final lightShimmerGradients = _generateGradientFromBrightness(Brightness.light);
 final darkShimmerGradients = _generateGradientFromBrightness(Brightness.dark);

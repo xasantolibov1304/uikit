@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/uikit.dart';
+import 'package:uikit/uikit.dart';
 
 class NoticeExamplePage extends StatefulWidget {
   const NoticeExamplePage({super.key});

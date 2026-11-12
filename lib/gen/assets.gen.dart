@@ -38,20 +38,19 @@ class $AssetsFontsGen {
   const $AssetsFontsGen();
 
   /// File path: assets/fonts/AeonikPro-Bold.otf
-  String get aeonikProBold =>
-      'packages/iman_uikit/assets/fonts/AeonikPro-Bold.otf';
+  String get aeonikProBold => 'packages/uikit/assets/fonts/AeonikPro-Bold.otf';
 
   /// File path: assets/fonts/AeonikPro-Medium.otf
   String get aeonikProMedium =>
-      'packages/iman_uikit/assets/fonts/AeonikPro-Medium.otf';
+      'packages/uikit/assets/fonts/AeonikPro-Medium.otf';
 
   /// File path: assets/fonts/AeonikPro-Regular.otf
   String get aeonikProRegular =>
-      'packages/iman_uikit/assets/fonts/AeonikPro-Regular.otf';
+      'packages/uikit/assets/fonts/AeonikPro-Regular.otf';
 
   /// File path: assets/fonts/AeonikPro-SemiBold.otf
   String get aeonikProSemiBold =>
-      'packages/iman_uikit/assets/fonts/AeonikPro-SemiBold.otf';
+      'packages/uikit/assets/fonts/AeonikPro-SemiBold.otf';
 
   /// List of all assets
   List<String> get values => [
@@ -372,7 +371,7 @@ class $AssetsMenuGen {
 class UikitAssets {
   const UikitAssets._();
 
-  static const String package = 'iman_uikit';
+  static const String package = 'uikit';
 
   static const $AssetsFlagsGen flags = $AssetsFlagsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
@@ -397,7 +396,7 @@ class SvgGenImage {
   final Set<String> flavors;
   final bool _isVecFormat;
 
-  static const String package = 'iman_uikit';
+  static const String package = 'uikit';
 
   _svg.SvgPicture svg({
     Key? key,
@@ -457,5 +456,5 @@ class SvgGenImage {
 
   String get path => _assetName;
 
-  String get keyName => 'packages/iman_uikit/$_assetName';
+  String get keyName => 'packages/uikit/$_assetName';
 }

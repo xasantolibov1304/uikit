@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/bottom_sheets/bottom_sheet.dart';
-import 'package:iman_uikit/common/bottom_sheets/date_picker/time_picker.dart';
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/components/inputs/input_field.dart';
-import 'package:iman_uikit/gen/assets.gen.dart';
-import 'package:iman_uikit/utils/date/date_format_constants.dart';
-import 'package:iman_uikit/utils/date/date_formatter.dart';
+import 'package:uikit/common/bottom_sheets/bottom_sheet.dart';
+import 'package:uikit/common/bottom_sheets/date_picker/time_picker.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/components/inputs/input_field.dart';
+import 'package:uikit/gen/assets.gen.dart';
+import 'package:uikit/utils/date/date_format_constants.dart';
+import 'package:uikit/utils/date/date_formatter.dart';
 
 class TimeInputField extends StatelessWidget {
   const TimeInputField({

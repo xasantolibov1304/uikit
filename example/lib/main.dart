@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:device_preview/device_preview.dart';
-import 'package:iman_uikit/uikit.dart' as uikit;
+import 'package:uikit/uikit.dart' as uikit;
 
 // Project imports:
 import 'package:uikit_example/router/app_router.dart';

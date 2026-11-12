@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/button/button_colors.dart';
-import 'package:iman_uikit/theme/palette.dart';
+import 'package:uikit/theme/colors/button/button_colors.dart';
+import 'package:uikit/theme/palette.dart';
 
 final lightButtonColors = _generatePaletteFromBrightness(Brightness.light);
 final darkButtonColors = _generatePaletteFromBrightness(Brightness.dark);

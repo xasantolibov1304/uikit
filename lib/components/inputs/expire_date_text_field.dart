@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 // Project imports:
-import 'package:iman_uikit/components/inputs/input_field.dart';
+import 'package:uikit/components/inputs/input_field.dart';
 
 class ExpireDateTextField extends StatelessWidget {
   const ExpireDateTextField({

@@ -1,48 +1,48 @@
-name: iman_uikit
-description: UI kit
+name: uikit
+description: Design system UI kit (theme, typography, components, utils).
 publish_to: none
 
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
-  flutter: "3.32.8"
+  flutter: ">=3.32.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   # Widgets
-  badges: 3.1.2
-  lottie: 3.3.1
-  shimmer: 3.0.0
-  flutter_svg: 2.0.17
-  pull_to_refresh: 2.0.0
-  pin_code_fields: 8.0.1
-  percent_indicator: 4.2.5
-  cached_network_image: 3.3.1
+  badges: ^3.1.2
+  lottie: ^3.3.1
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.17
+  pull_to_refresh: ^2.0.0
+  pin_code_fields: ^8.0.1
+  percent_indicator: ^4.2.5
+  cached_network_image: ^3.3.1
 
   # Utils
-  intl: 0.20.2
-  path: 1.9.1
-  local_auth: 2.3.0
-  url_launcher: 6.3.2
-  file_picker: 10.2.1
-  image_picker: 1.1.2
-  in_date_utils: 1.2.1
-  device_info_plus: 11.5.0
-  package_info_plus: 8.3.0
-  permission_handler: 12.0.1
-  flutter_multi_formatter: 2.13.7
-  mask_text_input_formatter: 2.9.0
+  intl: ^0.20.2
+  path: ^1.9.1
+  local_auth: ^2.3.0
+  url_launcher: ^6.3.2
+  file_picker: ^10.2.1
+  image_picker: ^1.1.2
+  in_date_utils: ^1.2.1
+  device_info_plus: ^11.5.0
+  package_info_plus: ^8.3.0
+  permission_handler: ^12.0.1
+  flutter_multi_formatter: ^2.13.7
+  mask_text_input_formatter: ^2.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 6.0.0
-  import_sorter: 4.6.0
-  build_runner: 2.4.15
-  flutter_gen_runner: 5.10.0
+  flutter_lints: ^6.0.0
+  import_sorter: ^4.6.0
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.10.0
 
 flutter_gen:
   output: lib/gen
@@ -80,7 +80,7 @@ flutter:
           weight: 400
         - asset: assets/fonts/AeonikPro-Medium.otf
           weight: 500
-        - asset: assets/fonts/AeonikPro-Semibold.otf
+        - asset: assets/fonts/AeonikPro-SemiBold.otf
           weight: 600
         - asset: assets/fonts/AeonikPro-Bold.otf
           weight: 700

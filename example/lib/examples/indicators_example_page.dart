@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iman_uikit/uikit.dart';
+import 'package:uikit/uikit.dart';
 
 class IndicatorsExamplePage extends StatefulWidget {
   const IndicatorsExamplePage({super.key});

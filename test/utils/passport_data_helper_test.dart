@@ -2,7 +2,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
-import 'package:iman_uikit/utils/passport_data_helper.dart';
+import 'package:uikit/utils/passport_data_helper.dart';
 
 void main() {
   group('Pinfl Tests', () {

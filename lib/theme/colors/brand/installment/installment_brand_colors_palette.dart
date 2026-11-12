@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/brand/installment/installment_brand_colors.dart';
+import 'package:uikit/theme/colors/brand/installment/installment_brand_colors.dart';
 
 final lightInstallmentBrandColors =
     _generatePaletteFromBrightness(Brightness.light);

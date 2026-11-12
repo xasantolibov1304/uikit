@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/theme/colors/colors.dart';
+import 'package:uikit/theme/colors/colors.dart';
 
 extension ColorThemeDataExtension on ThemeData {
   AdditionalColors get additionalColors => extension<AdditionalColors>() ?? lightAdditionalColors;

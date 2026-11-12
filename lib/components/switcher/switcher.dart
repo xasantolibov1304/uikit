@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:iman_uikit/common/gesture_detector.dart';
-import 'package:iman_uikit/theme/color_theme_data.dart';
+import 'package:uikit/common/gesture_detector.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 
 const _switchWidth = 68.0;
 const _switchHeight = 32.0;
