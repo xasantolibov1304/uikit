@@ -220,7 +220,7 @@ class _BadgeExamplePageState extends State<BadgeExamplePage> {
           ),
           Expanded(
             child: DropdownButtonFormField<T>(
-              value: value,
+              initialValue: value,
               items: items.map((item) {
                 return DropdownMenuItem<T>(
                   value: item,

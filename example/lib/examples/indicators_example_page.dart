@@ -795,7 +795,7 @@ class _IndicatorsExamplePageState extends State<IndicatorsExamplePage> {
           ),
           const SizedBox(height: 8),
           DropdownButtonFormField<T>(
-            value: value,
+            initialValue: value,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
             ),

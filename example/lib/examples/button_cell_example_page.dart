@@ -356,7 +356,7 @@ class _ButtonCellExamplePageState extends State<ButtonCellExamplePage> {
           ),
           Expanded(
             child: DropdownButtonFormField<T>(
-              value: value,
+              initialValue: value,
               items: items.map((item) {
                 return DropdownMenuItem<T>(
                   value: item,

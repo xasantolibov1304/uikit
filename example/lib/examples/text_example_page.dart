@@ -152,7 +152,7 @@ class _TextExamplePageState extends State<TextExamplePage> {
           SizedBox(
             width: 80,
             child: Text(
-              style.fontWeight?.index == 3 ? "400" : style.fontWeight?.index == 4 ? "500" : style.fontWeight?.index == 5 ? "600" : "700",
+              style.fontWeight?.value == 400 ? "400" : style.fontWeight?.value == 500 ? "500" : style.fontWeight?.value == 600 ? "600" : "700",
               style: context.baseTextStyle.base4.regular.copyWith(
                 color: Colors.grey[600],
               ),

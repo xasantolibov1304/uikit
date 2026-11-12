@@ -342,7 +342,7 @@ class _CheckboxExamplePageState extends State<CheckboxExamplePage> {
           ),
           Expanded(
             child: DropdownButtonFormField<T>(
-              value: value,
+              initialValue: value,
               items: items.map((item) {
                 return DropdownMenuItem<T>(
                   value: item,

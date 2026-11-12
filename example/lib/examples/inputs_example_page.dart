@@ -407,7 +407,7 @@ class _InputsExamplePageState extends State<InputsExamplePage> {
           ),
           Expanded(
             child: DropdownButtonFormField<T>(
-              value: value,
+              initialValue: value,
               items: items.map((item) {
                 return DropdownMenuItem<T>(
                   value: item,

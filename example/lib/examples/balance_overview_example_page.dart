@@ -142,7 +142,7 @@ class _BalanceOverviewExamplePageState
         _buildControlItem(
           'Currency',
           DropdownButtonFormField<String>(
-            value: _currency,
+            initialValue: _currency,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
             ),
