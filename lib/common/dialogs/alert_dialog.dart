@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/components/buttons/button.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
@@ -38,7 +39,7 @@ class CustomAlertDialog extends StatelessWidget {
         horizontal: 32,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(context.radii.xl),
       ),
       backgroundColor: context.surfaceColors.elevated,
       child: Padding(

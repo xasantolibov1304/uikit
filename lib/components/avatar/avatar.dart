@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
@@ -121,7 +122,7 @@ class AvatarWidget extends StatelessWidget {
           ),
         ),
       AvatarType.image => ClipRRect(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(context.radii.full),
           child: CachedNetworkImage(
             fit: BoxFit.cover,
             imageUrl: imageUrl!,

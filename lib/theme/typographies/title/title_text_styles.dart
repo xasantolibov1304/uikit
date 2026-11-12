@@ -22,7 +22,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
   final TextStyle title4;
 
   @override
-  ThemeExtension<TitleTextStyles> copyWith({
+  TitleTextStyles copyWith({
     TextStyle? title1,
     TextStyle? title2,
     TextStyle? title3,
@@ -37,7 +37,7 @@ class TitleTextStyles extends ThemeExtension<TitleTextStyles> {
   }
 
   @override
-  ThemeExtension<TitleTextStyles> lerp(
+  TitleTextStyles lerp(
     covariant ThemeExtension<TitleTextStyles>? other,
     double t,
   ) {

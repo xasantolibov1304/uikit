@@ -2,6 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/switcher/switcher.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -33,7 +34,7 @@ class SwitcherCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: context.surfaceColors.primary,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(context.radii.xl),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(

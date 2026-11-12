@@ -141,7 +141,7 @@ class _RectangularSliderThumbShape extends SliderComponentShape {
     final Canvas canvas = context.canvas;
 
     final Paint paint = Paint()
-      ..color = sliderTheme.thumbColor ?? Colors.green
+      ..color = sliderTheme.thumbColor!
       ..style = PaintingStyle.fill;
 
     final Rect thumbRect = Rect.fromCenter(

@@ -10,7 +10,7 @@ class OthersTextStyles extends ThemeExtension<OthersTextStyles> {
   final TextStyle cardBank;
 
   @override
-  ThemeExtension<OthersTextStyles> copyWith({
+  OthersTextStyles copyWith({
     TextStyle? cardBank,
   }) {
     return OthersTextStyles(
@@ -19,7 +19,7 @@ class OthersTextStyles extends ThemeExtension<OthersTextStyles> {
   }
 
   @override
-  ThemeExtension<OthersTextStyles> lerp(
+  OthersTextStyles lerp(
     covariant ThemeExtension<OthersTextStyles>? other,
     double t,
   ) {

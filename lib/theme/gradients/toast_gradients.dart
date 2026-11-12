@@ -9,7 +9,7 @@ class ToastGradients extends ThemeExtension<ToastGradients> {
   final LinearGradient primary;
 
   @override
-  ThemeExtension<ToastGradients> copyWith({
+  ToastGradients copyWith({
     LinearGradient? primary,
   }) {
     return ToastGradients(

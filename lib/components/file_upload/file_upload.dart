@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/components/indicators/progress_indicator.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -35,7 +36,7 @@ class FileUpload extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: context.surfaceColors.primary,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(context.radii.md),
         border: Border.all(
           color: context.borderColors.primary,
         ),

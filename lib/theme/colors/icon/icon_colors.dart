@@ -25,7 +25,7 @@ class IconColors extends ThemeExtension<IconColors> {
   final Color invert;
 
   @override
-  ThemeExtension<IconColors> copyWith({
+  IconColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -49,7 +49,7 @@ class IconColors extends ThemeExtension<IconColors> {
       );
 
   @override
-  ThemeExtension<IconColors> lerp(
+  IconColors lerp(
     covariant ThemeExtension<IconColors>? other,
     double t,
   ) {

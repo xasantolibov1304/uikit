@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
 const _indicatorHeight = 4.0;
@@ -227,9 +228,9 @@ class _PagedSegmentProgressIndicatorState
                 ),
                 decoration: BoxDecoration(
                   color: isCompleted
-                      ? const Color(0xFF222222)
+                      ? context.surfaceColors.dark
                       : context.borderColors.primary,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(context.radii.xs),
                 ),
                 child: isCurrentPage
                     ? AnimatedBuilder(
@@ -240,8 +241,8 @@ class _PagedSegmentProgressIndicatorState
                             widthFactor: _timerAnimation.value,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: const Color(0xFF222222),
-                                borderRadius: BorderRadius.circular(2),
+                                color: context.surfaceColors.dark,
+                                borderRadius: BorderRadius.circular(context.radii.xs),
                               ),
                             ),
                           );

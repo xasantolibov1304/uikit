@@ -2,6 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/checkbox/checkbox.dart';
 import 'package:uikit/components/loaders/loading_indicator.dart';
@@ -38,7 +39,7 @@ class CheckboxCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: context.surfaceColors.primary,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(context.radii.xl),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(

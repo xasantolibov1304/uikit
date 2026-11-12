@@ -39,7 +39,7 @@ class BadgeWidget extends StatelessWidget {
       height: _badgeHeight,
       decoration: BoxDecoration(
         color: _backgroundColor(context),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(context.radii.lg),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Row(
@@ -66,7 +66,7 @@ class BadgeWidget extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: context.surfaceColors.tertiary,
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(context.radii.full),
               ),
               child: Text(
                 '$count',

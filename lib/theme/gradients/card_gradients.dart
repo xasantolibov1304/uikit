@@ -13,7 +13,7 @@ class CardGradients extends ThemeExtension<CardGradients> {
   final LinearGradient accent;
 
   @override
-  ThemeExtension<CardGradients> copyWith({
+  CardGradients copyWith({
     LinearGradient? primary,
     LinearGradient? secondary,
     LinearGradient? accent,

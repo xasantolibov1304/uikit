@@ -2,6 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -83,7 +84,7 @@ class _CommonProgressIndicatorState extends State<CommonProgressIndicator>
                     decoration: BoxDecoration(
                       color: widget.backgroundColor ??
                           context.surfaceColors.secondary,
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(context.radii.full),
                     ),
                   ),
                   FractionallySizedBox(
@@ -94,7 +95,7 @@ class _CommonProgressIndicatorState extends State<CommonProgressIndicator>
                       decoration: BoxDecoration(
                         color: widget.progressColor ??
                             context.surfaceColors.success,
-                        borderRadius: BorderRadius.circular(100),
+                        borderRadius: BorderRadius.circular(context.radii.full),
                       ),
                     ),
                   ),

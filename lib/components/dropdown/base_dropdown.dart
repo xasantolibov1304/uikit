@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/common.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 import 'package:uikit/theme/shadows/shadows.dart';
@@ -126,7 +127,7 @@ class _BaseDropdownState extends State<BaseDropdown> {
                   decoration: BoxDecoration(
                     boxShadow: CommonShadows.baseShadow,
                     color: context.surfaceColors.tertiary,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(context.radii.xl),
                   ),
                   child: ListView.builder(
                     shrinkWrap: true,

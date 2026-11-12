@@ -25,7 +25,7 @@ class TextColors extends ThemeExtension<TextColors> {
   final Color invert;
 
   @override
-  ThemeExtension<TextColors> copyWith({
+  TextColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -49,7 +49,7 @@ class TextColors extends ThemeExtension<TextColors> {
       );
 
   @override
-  ThemeExtension<TextColors> lerp(
+  TextColors lerp(
     covariant ThemeExtension<TextColors>? other,
     double t,
   ) {

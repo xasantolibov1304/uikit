@@ -20,7 +20,7 @@ class AppGradients extends ThemeExtension<AppGradients> {
   final CardGradients card;
 
   @override
-  ThemeExtension<AppGradients> copyWith({
+  AppGradients copyWith({
     ToastGradients? toast,
     ShimmerGradients? shimmer,
     ButtonGradients? button,

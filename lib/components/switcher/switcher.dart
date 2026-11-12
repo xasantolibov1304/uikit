@@ -74,7 +74,7 @@ class Switcher extends StatelessWidget {
                           BoxShadow(
                             blurRadius: 4,
                             offset: const Offset(0, 2),
-                            color: Colors.black.withValues(alpha: 0.15),
+                            color: context.systemColors.black.withValues(alpha: 0.15),
                           ),
                         ],
                       ),

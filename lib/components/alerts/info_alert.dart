@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -39,7 +40,7 @@ class InfoAlert extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: CommonShadows.baseShadow,
         color: context.surfaceColors.tertiary,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(context.radii.xl),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
@@ -66,7 +67,7 @@ class Breadcrumb extends StatelessWidget {
         decoration: isActive
             ? BoxDecoration(
                 color: context.surfaceColors.grey,
-                borderRadius: BorderRadius.circular(100),
+                borderRadius: BorderRadius.circular(context.radii.full),
               )
             : null,
         child: Text(

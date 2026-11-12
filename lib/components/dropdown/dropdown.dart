@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/components/dropdown/base_dropdown.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -129,7 +130,7 @@ class _CommonDropdownState extends State<CommonDropdown> {
           padding: const EdgeInsets.all(8.0),
           margin: EdgeInsets.only(bottom: isLastItem ? 0 : 10.0),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(context.radii.lg),
             color: widget.highlightSelectedItem && isSelected
                 ? context.surfaceColors.primary
                 : null,

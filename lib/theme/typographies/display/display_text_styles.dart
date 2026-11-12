@@ -30,7 +30,7 @@ class DisplayTextStyles extends ThemeExtension<DisplayTextStyles> {
   TextStyle get compact => display5;
 
   @override
-  ThemeExtension<DisplayTextStyles> copyWith({
+  DisplayTextStyles copyWith({
     TextStyle? display1,
     TextStyle? display2,
     TextStyle? display3,
@@ -47,7 +47,7 @@ class DisplayTextStyles extends ThemeExtension<DisplayTextStyles> {
   }
 
   @override
-  ThemeExtension<DisplayTextStyles> lerp(
+  DisplayTextStyles lerp(
     covariant ThemeExtension<DisplayTextStyles>? other,
     double t,
   ) {

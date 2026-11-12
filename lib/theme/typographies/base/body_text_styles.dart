@@ -30,7 +30,7 @@ class BaseTextStyles extends ThemeExtension<BaseTextStyles> {
   final TextStyle base6;
 
   @override
-  ThemeExtension<BaseTextStyles> copyWith({
+  BaseTextStyles copyWith({
     TextStyle? base1,
     TextStyle? base2,
     TextStyle? base3,
@@ -49,7 +49,7 @@ class BaseTextStyles extends ThemeExtension<BaseTextStyles> {
   }
 
   @override
-  ThemeExtension<BaseTextStyles> lerp(
+  BaseTextStyles lerp(
     covariant ThemeExtension<BaseTextStyles>? other,
     double t,
   ) {

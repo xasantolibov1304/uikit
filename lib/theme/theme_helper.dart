@@ -5,69 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/colors/colors.dart';
 import 'package:uikit/theme/gradients/gradients.dart';
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/system_overlay.dart';
 import 'package:uikit/theme/typographies/typographies.dart';
+import 'package:uikit/theme/uikit_theme.dart';
 
-// Package fonts must be referenced with the 'packages/<name>/' prefix.
-const _fontFamily = 'packages/uikit/AeonikPro';
-
-final lightTheme = createThemeData(
-  brightness: Brightness.light,
-
-  /// ---- Colors ----
-  additionalColors: lightAdditionalColors,
-  borderColors: lightBorderColors,
-  brandColors: lightBrandColors,
-  buttonColors: lightButtonColors,
-  iconColors: lightIconColors,
-  surfaceColors: lightSurfaceColors,
-  systemColors: lightSystemColors,
-  textColors: lightTextColors,
-
-  /// ---- Gradients ----
-  appGradients: AppGradients(
-    toast: lightToastGradients,
-    shimmer: lightShimmerGradients,
-    button: lightButtonGradients,
-    background: lightBackgroundGradients,
-    card: lightCardGradients,
-  ),
-
-  /// ---- Typographies ----
-  displayTextStyles: lightDisplayTextStyle,
-  titleTextStyles: lightTitleTextStyles,
-  baseTextStyles: lightBaseTextStyles,
-  othersTextStyles: lightOthersTextStyles,
-);
-
-final darkTheme = createThemeData(
-  brightness: Brightness.dark,
-
-  /// ---- Colors ----
-  additionalColors: darkAdditionalColors,
-  borderColors: darkBorderColors,
-  brandColors: darkBrandColors,
-  buttonColors: darkButtonColors,
-  iconColors: darkIconColors,
-  surfaceColors: darkSurfaceColors,
-  systemColors: darkSystemColors,
-  textColors: darkTextColors,
-
-  /// ---- Gradients ----
-  appGradients: AppGradients(
-    toast: darkToastGradients,
-    shimmer: darkShimmerGradients,
-    button: darkButtonGradients,
-    background: darkBackgroundGradients,
-    card: darkCardGradients,
-  ),
-
-  /// ---- Typographies ----
-  displayTextStyles: darkDisplayTextStyle,
-  titleTextStyles: darkTitleTextStyles,
-  baseTextStyles: darkBaseTextStyles,
-  othersTextStyles: darkOthersTextStyles,
-);
+/// uikit's default themes. Use [UikitTheme] to customize tokens per app.
+final lightTheme = UikitTheme.light();
+final darkTheme = UikitTheme.dark();
 
 ThemeData createThemeData({
   required Brightness brightness,
@@ -75,7 +20,6 @@ ThemeData createThemeData({
   /// ---- Colors ----
   required AdditionalColors additionalColors,
   required BorderColors borderColors,
-  required BrandColors brandColors,
   required ButtonColors buttonColors,
   required IconColors iconColors,
   required SurfaceColors surfaceColors,
@@ -90,6 +34,19 @@ ThemeData createThemeData({
   required TitleTextStyles titleTextStyles,
   required BaseTextStyles baseTextStyles,
   required OthersTextStyles othersTextStyles,
+
+  /// ---- Shape ----
+  UikitRadii radii = const UikitRadii(),
+
+  /// ---- App extensions ----
+  /// Extra [ThemeExtension]s owned by the app (e.g. its own brand colors).
+  Iterable<ThemeExtension<dynamic>> extensions = const [],
+
+  /// ---- Font ----
+  /// Font for Material widgets that don't use uikit text styles.
+  /// Pass `fontPackage: null` for a font declared in the app itself.
+  String fontFamily = UikitFont.family,
+  String? fontPackage = UikitFont.package,
 }) =>
     ThemeData(
       brightness: brightness,
@@ -97,7 +54,6 @@ ThemeData createThemeData({
         /// ---- Colors ----
         additionalColors,
         borderColors,
-        brandColors,
         buttonColors,
         iconColors,
         surfaceColors,
@@ -112,8 +68,14 @@ ThemeData createThemeData({
         titleTextStyles,
         baseTextStyles,
         othersTextStyles,
+
+        /// ---- Shape ----
+        radii,
+
+        /// ---- App extensions ----
+        ...extensions,
       },
-      fontFamily: _fontFamily,
+      fontFamily: UikitFont.resolve(fontFamily, fontPackage),
       dividerColor: borderColors.primary,
       disabledColor: surfaceColors.muted,
       primaryColor: surfaceColors.primary,

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/buttons/button.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -47,7 +48,7 @@ class Notice extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: _backgroundColor(context),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(context.radii.xl),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

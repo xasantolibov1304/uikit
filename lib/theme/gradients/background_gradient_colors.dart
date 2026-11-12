@@ -20,7 +20,7 @@ class BackgroundGradientColors
   final Color accentEnd;
 
   @override
-  ThemeExtension<BackgroundGradientColors> copyWith({
+  BackgroundGradientColors copyWith({
     Color? primaryStart,
     Color? primaryEnd,
     Color? secondaryStart,
@@ -38,7 +38,7 @@ class BackgroundGradientColors
       );
 
   @override
-  ThemeExtension<BackgroundGradientColors> lerp(
+  BackgroundGradientColors lerp(
     covariant ThemeExtension<BackgroundGradientColors>? other,
     double t,
   ) {

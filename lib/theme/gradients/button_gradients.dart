@@ -13,7 +13,7 @@ class ButtonGradients extends ThemeExtension<ButtonGradients> {
   final LinearGradient success;
 
   @override
-  ThemeExtension<ButtonGradients> copyWith({
+  ButtonGradients copyWith({
     LinearGradient? primary,
     LinearGradient? secondary,
     LinearGradient? success,

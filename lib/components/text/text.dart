@@ -54,7 +54,7 @@ class _TextWidgetState extends State<TextWidget> {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(context.radii.xl),
             color: context.surfaceColors.primary,
           ),
           child: Column(

@@ -29,7 +29,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
   final Color success;
 
   @override
-  ThemeExtension<SurfaceColors> copyWith({
+  SurfaceColors copyWith({
     Color? primary,
     Color? secondary,
     Color? elevated,
@@ -57,7 +57,7 @@ class SurfaceColors extends ThemeExtension<SurfaceColors> {
       );
 
   @override
-  ThemeExtension<SurfaceColors> lerp(
+  SurfaceColors lerp(
     covariant ThemeExtension<SurfaceColors>? other,
     double t,
   ) {

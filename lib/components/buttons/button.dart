@@ -99,7 +99,7 @@ class Button extends StatelessWidget {
         padding: padding,
         height: size.height,
         onLongPress: onLongPress,
-        borderRadius: _borderRadius,
+        borderRadius: _borderRadius(context),
         splashColor: _splashColor(context),
         onTap: isEnabled && !isLoading ? onTap : null,
         hoverColor: isEnabled || isLoading ? _hoverColor(context) : null,
@@ -144,7 +144,7 @@ class Button extends StatelessWidget {
                       width: _badgeSize,
                       height: _badgeSize,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
+                        borderRadius: BorderRadius.circular(context.radii.full),
                         child: ColorFiltered(
                           colorFilter: ColorFilter.mode(
                             _badgeColor(context),
@@ -205,9 +205,9 @@ class Button extends StatelessWidget {
   /// Button Border Radius
   ///
 
-  BorderRadius get _borderRadius => switch (size) {
-        ButtonSize.small => BorderRadius.circular(12),
-        ButtonSize.large || ButtonSize.medium => BorderRadius.circular(16),
+  BorderRadius _borderRadius(BuildContext context) => switch (size) {
+        ButtonSize.small => BorderRadius.circular(context.radii.lg),
+        ButtonSize.large || ButtonSize.medium => BorderRadius.circular(context.radii.xl),
       };
 
   ///
@@ -268,11 +268,11 @@ class Button extends StatelessWidget {
       ButtonType.inverted ||
       ButtonType.positive ||
       ButtonType.negative =>
-        Colors.white,
+        context.textColors.invert,
       ButtonType.secondary ||
       ButtonType.tertiary ||
       ButtonType.ghost =>
-        Colors.black,
+        context.textColors.primary,
     };
   }
 

@@ -9,8 +9,6 @@ extension ColorThemeDataExtension on ThemeData {
 
   BorderColors get borderColors => extension<BorderColors>() ?? lightBorderColors;
 
-  BrandColors get brandColors => extension<BrandColors>() ?? lightBrandColors;
-
   ButtonColors get buttonColors => extension<ButtonColors>() ?? lightButtonColors;
 
   IconColors get iconColors => extension<IconColors>() ?? lightIconColors;
@@ -26,8 +24,6 @@ extension ColorThemeDataContextExtension on BuildContext {
   AdditionalColors get additionalColors => Theme.of(this).additionalColors;
 
   BorderColors get borderColors => Theme.of(this).borderColors;
-
-  BrandColors get brandColors => Theme.of(this).brandColors;
 
   ButtonColors get buttonColors => Theme.of(this).buttonColors;
 

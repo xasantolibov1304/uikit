@@ -13,7 +13,7 @@ class BackgroundGradients extends ThemeExtension<BackgroundGradients> {
   final LinearGradient accent;
 
   @override
-  ThemeExtension<BackgroundGradients> copyWith({
+  BackgroundGradients copyWith({
     LinearGradient? primary,
     LinearGradient? secondary,
     LinearGradient? accent,

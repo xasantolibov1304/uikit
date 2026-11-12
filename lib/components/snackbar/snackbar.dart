@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -111,13 +112,13 @@ void showTopSnack(
       backgroundColor: Colors.transparent,
       padding: EdgeInsets.symmetric(horizontal: 16),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(context.radii.lg),
       ),
       content: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         decoration: BoxDecoration(
           color: context.borderColors.black,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(context.radii.lg),
         ),
         child: Row(
           children: [

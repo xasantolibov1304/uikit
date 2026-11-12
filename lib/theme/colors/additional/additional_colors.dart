@@ -15,7 +15,7 @@ class AdditionalColors extends ThemeExtension<AdditionalColors> {
   final Color additional4;
 
   @override
-  ThemeExtension<AdditionalColors> copyWith({
+  AdditionalColors copyWith({
     Color? additional1,
     Color? additional2,
     Color? additional3,
@@ -29,7 +29,7 @@ class AdditionalColors extends ThemeExtension<AdditionalColors> {
       );
 
   @override
-  ThemeExtension<AdditionalColors> lerp(
+  AdditionalColors lerp(
     covariant ThemeExtension<AdditionalColors>? other,
     double t,
   ) {
