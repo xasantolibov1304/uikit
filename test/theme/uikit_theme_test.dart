@@ -7,6 +7,19 @@ import 'package:flutter_test/flutter_test.dart';
 // Project imports:
 import 'package:uikit/uikit.dart';
 
+class _AppBrand extends ThemeExtension<_AppBrand> {
+  const _AppBrand(this.accent);
+
+  final Color accent;
+
+  @override
+  _AppBrand copyWith({Color? accent}) => _AppBrand(accent ?? this.accent);
+
+  @override
+  _AppBrand lerp(covariant _AppBrand? other, double t) =>
+      other == null ? this : _AppBrand(Color.lerp(accent, other.accent, t)!);
+}
+
 void main() {
   group('UikitTheme', () {
     test('defaults match uikit tokens', () {
@@ -75,6 +88,14 @@ void main() {
         await alertRadius(const UikitRadii(xl: 4)),
         BorderRadius.circular(4),
       );
+    });
+
+    test('app extensions are added next to uikit tokens', () {
+      final theme = UikitTheme.light(
+        extensions: const [_AppBrand(Color(0xFFFF5722))],
+      );
+      expect(theme.extension<_AppBrand>()?.accent, const Color(0xFFFF5722));
+      expect(theme.buttonColors, same(lightButtonColors));
     });
 
     testWidgets('components read overridden tokens', (tester) async {

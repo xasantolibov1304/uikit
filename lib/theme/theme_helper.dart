@@ -20,7 +20,6 @@ ThemeData createThemeData({
   /// ---- Colors ----
   required AdditionalColors additionalColors,
   required BorderColors borderColors,
-  required BrandColors brandColors,
   required ButtonColors buttonColors,
   required IconColors iconColors,
   required SurfaceColors surfaceColors,
@@ -39,6 +38,10 @@ ThemeData createThemeData({
   /// ---- Shape ----
   UikitRadii radii = const UikitRadii(),
 
+  /// ---- App extensions ----
+  /// Extra [ThemeExtension]s owned by the app (e.g. its own brand colors).
+  Iterable<ThemeExtension<dynamic>> extensions = const [],
+
   /// ---- Font ----
   /// Font for Material widgets that don't use uikit text styles.
   /// Pass `fontPackage: null` for a font declared in the app itself.
@@ -51,7 +54,6 @@ ThemeData createThemeData({
         /// ---- Colors ----
         additionalColors,
         borderColors,
-        brandColors,
         buttonColors,
         iconColors,
         surfaceColors,
@@ -69,6 +71,9 @@ ThemeData createThemeData({
 
         /// ---- Shape ----
         radii,
+
+        /// ---- App extensions ----
+        ...extensions,
       },
       fontFamily: UikitFont.resolve(fontFamily, fontPackage),
       dividerColor: borderColors.primary,

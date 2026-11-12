@@ -27,11 +27,13 @@ import 'package:uikit/theme/typographies/typographies.dart';
 /// [fontFamily], [fontPackage] and [textColors] are also applied to the
 /// default typography. Passing explicit text styles (e.g. [baseTextStyles])
 /// replaces that group entirely. [radii] overrides corner radius tokens.
+///
+/// [extensions] adds the app's own [ThemeExtension]s (e.g. its brand colors)
+/// next to uikit's, readable via `Theme.of(context).extension<T>()`.
 abstract final class UikitTheme {
   static ThemeData light({
     AdditionalColors? additionalColors,
     BorderColors? borderColors,
-    BrandColors? brandColors,
     ButtonColors? buttonColors,
     IconColors? iconColors,
     SurfaceColors? surfaceColors,
@@ -43,6 +45,7 @@ abstract final class UikitTheme {
     BaseTextStyles? baseTextStyles,
     OthersTextStyles? othersTextStyles,
     UikitRadii? radii,
+    Iterable<ThemeExtension<dynamic>> extensions = const [],
     String fontFamily = UikitFont.family,
     String? fontPackage = UikitFont.package,
   }) =>
@@ -50,7 +53,6 @@ abstract final class UikitTheme {
         brightness: Brightness.light,
         additionalColors: additionalColors,
         borderColors: borderColors,
-        brandColors: brandColors,
         buttonColors: buttonColors,
         iconColors: iconColors,
         surfaceColors: surfaceColors,
@@ -62,6 +64,7 @@ abstract final class UikitTheme {
         baseTextStyles: baseTextStyles,
         othersTextStyles: othersTextStyles,
         radii: radii,
+        extensions: extensions,
         fontFamily: fontFamily,
         fontPackage: fontPackage,
       );
@@ -69,7 +72,6 @@ abstract final class UikitTheme {
   static ThemeData dark({
     AdditionalColors? additionalColors,
     BorderColors? borderColors,
-    BrandColors? brandColors,
     ButtonColors? buttonColors,
     IconColors? iconColors,
     SurfaceColors? surfaceColors,
@@ -81,6 +83,7 @@ abstract final class UikitTheme {
     BaseTextStyles? baseTextStyles,
     OthersTextStyles? othersTextStyles,
     UikitRadii? radii,
+    Iterable<ThemeExtension<dynamic>> extensions = const [],
     String fontFamily = UikitFont.family,
     String? fontPackage = UikitFont.package,
   }) =>
@@ -88,7 +91,6 @@ abstract final class UikitTheme {
         brightness: Brightness.dark,
         additionalColors: additionalColors,
         borderColors: borderColors,
-        brandColors: brandColors,
         buttonColors: buttonColors,
         iconColors: iconColors,
         surfaceColors: surfaceColors,
@@ -100,6 +102,7 @@ abstract final class UikitTheme {
         baseTextStyles: baseTextStyles,
         othersTextStyles: othersTextStyles,
         radii: radii,
+        extensions: extensions,
         fontFamily: fontFamily,
         fontPackage: fontPackage,
       );
@@ -108,7 +111,6 @@ abstract final class UikitTheme {
     required Brightness brightness,
     AdditionalColors? additionalColors,
     BorderColors? borderColors,
-    BrandColors? brandColors,
     ButtonColors? buttonColors,
     IconColors? iconColors,
     SurfaceColors? surfaceColors,
@@ -120,6 +122,7 @@ abstract final class UikitTheme {
     BaseTextStyles? baseTextStyles,
     OthersTextStyles? othersTextStyles,
     UikitRadii? radii,
+    Iterable<ThemeExtension<dynamic>> extensions = const [],
     String fontFamily = UikitFont.family,
     String? fontPackage = UikitFont.package,
   }) {
@@ -135,7 +138,6 @@ abstract final class UikitTheme {
           (isLight ? lightAdditionalColors : darkAdditionalColors),
       borderColors:
           borderColors ?? (isLight ? lightBorderColors : darkBorderColors),
-      brandColors: brandColors ?? (isLight ? lightBrandColors : darkBrandColors),
       buttonColors:
           buttonColors ?? (isLight ? lightButtonColors : darkButtonColors),
       iconColors: iconColors ?? (isLight ? lightIconColors : darkIconColors),
@@ -180,6 +182,9 @@ abstract final class UikitTheme {
 
       /// ---- Shape ----
       radii: radii ?? const UikitRadii(),
+
+      /// ---- App extensions ----
+      extensions: extensions,
 
       /// ---- Font ----
       fontFamily: fontFamily,

@@ -1320,7 +1320,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0+1"
+    version: "2.0.0"
   url_launcher:
     dependency: transitive
     description:

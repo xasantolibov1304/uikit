@@ -22,15 +22,6 @@ export 'system/system_colors_palette.dart';
 export 'text/text_colors.dart';
 export 'text/text_colors_palette.dart';
 
-// Brand
-export 'brand/brand_colors.dart';
-export 'brand/brand_colors_palette.dart';
-export 'brand/invest/invest_brand_colors_palette.dart';
-export 'brand/installment/installment_brand_colors_palette.dart';
-export 'brand/payment/payment_brand_colors_palette.dart';
-export 'brand/banking/banking_brand_colors_palette.dart';
-export 'brand/fin_health/fin_health_brand_colors_palette.dart';
-
 // Additional
 export 'additional/additional_colors.dart';
 export 'additional/additional_colors_palette.dart';

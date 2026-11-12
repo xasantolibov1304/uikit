@@ -15,7 +15,7 @@ dependencies:
   uikit:
     git:
       url: https://github.com/xasantolibov1304/uikit.git
-      ref: v1.0.0   # tag, branch or commit SHA
+      ref: v2.0.0   # tag, branch or commit SHA
 ```
 
 For local development side-by-side:
@@ -65,6 +65,14 @@ MaterialApp(
 `fontFamily`, `fontPackage` and `textColors` are applied to all default text
 styles automatically. For finer control use `createBaseTextStyles`,
 `createTitleTextStyles`, `createDisplayTextStyles`, `createOthersTextStyles`.
+
+App-specific tokens (e.g. brand colors) live in the app as its own
+`ThemeExtension` and are passed alongside uikit's:
+
+```dart
+UikitTheme.light(extensions: const [MyBrandColors(accent: Color(0xFFFF5722))]);
+// Theme.of(context).extension<MyBrandColors>()!.accent
+```
 
 ## Native setup required in the consuming app
 
