@@ -3,7 +3,7 @@
 Makes uikit themeable per project. See README → "Customizing per project".
 
 ### Breaking
-* Package renamed `iman_uikit` → `uikit` (`import 'package:uikit/uikit.dart'`).
+* Package renamed to `uikit` (`import 'package:uikit/uikit.dart'`).
 * Removed `BrandColors` (`context.brandColors`, `lightBrandColors`, …).
   Apps that need brand colors define their own `ThemeExtension` and pass it
   via `UikitTheme.light(extensions: [...])`.
