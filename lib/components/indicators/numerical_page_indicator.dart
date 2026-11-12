@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/ink_well.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -220,7 +221,7 @@ class NumericalPageIndicator extends StatelessWidget {
       color: color,
       width: _buttonSize,
       height: _buttonSize,
-      borderRadius: BorderRadius.circular(8.0),
+      borderRadius: BorderRadius.circular(context.radii.md),
       child: Center(child: child),
     );
   }

@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/components/buttons/button.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
@@ -43,7 +44,7 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
         Container(
           height: MediaQuery.of(context).copyWith().size.height / 5,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(context.radii.xl),
           ),
           child: CupertinoTheme(
             data: CupertinoThemeData(
@@ -81,7 +82,7 @@ class _TimePickerSheetState extends State<TimePickerSheet> {
                     child: Container(
                       decoration: BoxDecoration(
                         color: CupertinoColors.tertiarySystemFill,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(context.radii.md),
                       ),
                     ),
                   ),

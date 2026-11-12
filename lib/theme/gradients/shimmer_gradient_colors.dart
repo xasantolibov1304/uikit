@@ -20,7 +20,7 @@ class ShimmerGradientColors extends ThemeExtension<ShimmerGradientColors> {
   final Color secondaryEnd;
 
   @override
-  ThemeExtension<ShimmerGradientColors> copyWith({
+  ShimmerGradientColors copyWith({
     Color? primaryStart,
     Color? primaryCenter,
     Color? primaryEnd,
@@ -38,7 +38,7 @@ class ShimmerGradientColors extends ThemeExtension<ShimmerGradientColors> {
       );
 
   @override
-  ThemeExtension<ShimmerGradientColors> lerp(
+  ShimmerGradientColors lerp(
     covariant ThemeExtension<ShimmerGradientColors>? other,
     double t,
   ) {

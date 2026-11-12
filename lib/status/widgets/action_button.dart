@@ -30,7 +30,7 @@ class StatusActionButton extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: context.surfaceColors.success,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(context.radii.lg),
                 ),
                 child: Center(child: icon),
               ),

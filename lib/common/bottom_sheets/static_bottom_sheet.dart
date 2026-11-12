@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/bottom_sheets/scroll_indicator.dart';
 import 'package:uikit/common/focus_remover.dart';
 import 'package:uikit/common/gesture_detector.dart';
@@ -36,7 +37,7 @@ class StaticBottomSheet extends StatelessWidget {
         height: fixedHeight,
         decoration: BoxDecoration(
           color: context.systemColors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(context.radii.xl)),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

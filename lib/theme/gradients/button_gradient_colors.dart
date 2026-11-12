@@ -19,7 +19,7 @@ class ButtonGradientColors extends ThemeExtension<ButtonGradientColors> {
   final Color successEnd;
 
   @override
-  ThemeExtension<ButtonGradientColors> copyWith({
+  ButtonGradientColors copyWith({
     Color? primaryStart,
     Color? primaryEnd,
     Color? secondaryStart,
@@ -37,7 +37,7 @@ class ButtonGradientColors extends ThemeExtension<ButtonGradientColors> {
       );
 
   @override
-  ThemeExtension<ButtonGradientColors> lerp(
+  ButtonGradientColors lerp(
     covariant ThemeExtension<ButtonGradientColors>? other,
     double t,
   ) {

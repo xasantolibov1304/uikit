@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/loaders/loading_indicator.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -196,7 +197,7 @@ class _InputFieldState extends State<InputField> {
                     color: _borderColor,
                   ),
                   color: context.surfaceColors.secondary,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(context.radii.xl),
                 ),
                 child: _buildInputContent(),
               );
@@ -449,7 +450,7 @@ class _InputFieldState extends State<InputField> {
             minLines: widget.minLines,
             maxLines: widget.maxLines,
             maxLength: widget.maxLength,
-            cursorColor: Colors.black,
+            cursorColor: context.textColors.primary,
             readOnly: widget.readonly,
             autofocus: widget.autofocus,
             onChanged: widget.onChanged,

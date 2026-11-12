@@ -13,7 +13,7 @@ class FinHealthBrandColors extends ThemeExtension<FinHealthBrandColors> {
   final Color tertiary;
 
   @override
-  ThemeExtension<FinHealthBrandColors> copyWith({
+  FinHealthBrandColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -25,7 +25,7 @@ class FinHealthBrandColors extends ThemeExtension<FinHealthBrandColors> {
       );
 
   @override
-  ThemeExtension<FinHealthBrandColors> lerp(
+  FinHealthBrandColors lerp(
     covariant ThemeExtension<FinHealthBrandColors>? other,
     double t,
   ) {

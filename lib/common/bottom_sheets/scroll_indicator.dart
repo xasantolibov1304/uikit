@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
 const _indicatorSize = Size(36, 5);
@@ -17,7 +18,7 @@ class ScrollIndicator extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         color: context.borderColors.primary,
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(context.radii.full),
       ),
     );
   }

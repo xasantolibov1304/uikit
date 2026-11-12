@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/components/buttons/button.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
@@ -43,7 +44,7 @@ class TitleWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: context.systemColors.transparent,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(context.radii.xl),
       ),
       padding: const EdgeInsets.only(
         top: 8,

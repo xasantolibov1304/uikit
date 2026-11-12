@@ -15,7 +15,7 @@ class SuperAppBrandColors extends ThemeExtension<SuperAppBrandColors> {
   final Color transparent;
 
   @override
-  ThemeExtension<SuperAppBrandColors> copyWith({
+  SuperAppBrandColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -29,7 +29,7 @@ class SuperAppBrandColors extends ThemeExtension<SuperAppBrandColors> {
       );
 
   @override
-  ThemeExtension<SuperAppBrandColors> lerp(
+  SuperAppBrandColors lerp(
       covariant ThemeExtension<SuperAppBrandColors>? other,
       double t,
       ) {

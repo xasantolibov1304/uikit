@@ -13,7 +13,7 @@ class ShimmerGradients extends ThemeExtension<ShimmerGradients> {
   final LinearGradient secondary;
 
   @override
-  ThemeExtension<ShimmerGradients> copyWith({
+  ShimmerGradients copyWith({
     LinearGradient? base,
     LinearGradient? primary,
     LinearGradient? secondary,

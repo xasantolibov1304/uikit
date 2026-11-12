@@ -11,7 +11,7 @@ class ToastGradientColors extends ThemeExtension<ToastGradientColors> {
   final Color grayEnd;
 
   @override
-  ThemeExtension<ToastGradientColors> copyWith({
+  ToastGradientColors copyWith({
     Color? grayStart,
     Color? grayEnd,
   }) =>
@@ -21,7 +21,7 @@ class ToastGradientColors extends ThemeExtension<ToastGradientColors> {
       );
 
   @override
-  ThemeExtension<ToastGradientColors> lerp(
+  ToastGradientColors lerp(
     covariant ThemeExtension<ToastGradientColors>? other,
     double t,
   ) {

@@ -13,7 +13,7 @@ class InstallmentBrandColors extends ThemeExtension<InstallmentBrandColors> {
   final Color tertiary;
 
   @override
-  ThemeExtension<InstallmentBrandColors> copyWith({
+  InstallmentBrandColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -25,7 +25,7 @@ class InstallmentBrandColors extends ThemeExtension<InstallmentBrandColors> {
       );
 
   @override
-  ThemeExtension<InstallmentBrandColors> lerp(
+  InstallmentBrandColors lerp(
     covariant ThemeExtension<InstallmentBrandColors>? other,
     double t,
   ) {

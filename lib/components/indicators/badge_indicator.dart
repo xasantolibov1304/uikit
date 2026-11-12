@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -44,7 +45,7 @@ class BadgeIndicator extends StatelessWidget {
         elevation: 0,
         shape: badges.BadgeShape.square,
         badgeColor: _badgeColor(context),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(context.radii.full),
         padding: const EdgeInsets.symmetric(horizontal: 6),
       ),
       badgeAnimation: const badges.BadgeAnimation.scale(),

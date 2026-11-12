@@ -27,7 +27,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
   final Color black;
 
   @override
-  ThemeExtension<BorderColors> copyWith({
+  BorderColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -53,7 +53,7 @@ class BorderColors extends ThemeExtension<BorderColors> {
       );
 
   @override
-  ThemeExtension<BorderColors> lerp(
+  BorderColors lerp(
     covariant ThemeExtension<BorderColors>? other,
     double t,
   ) {

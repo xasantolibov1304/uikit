@@ -19,7 +19,7 @@ class CardGradientColors extends ThemeExtension<CardGradientColors> {
   final Color accentEnd;
 
   @override
-  ThemeExtension<CardGradientColors> copyWith({
+  CardGradientColors copyWith({
     Color? primaryStart,
     Color? primaryEnd,
     Color? secondaryStart,
@@ -37,7 +37,7 @@ class CardGradientColors extends ThemeExtension<CardGradientColors> {
       );
 
   @override
-  ThemeExtension<CardGradientColors> lerp(
+  CardGradientColors lerp(
     covariant ThemeExtension<CardGradientColors>? other,
     double t,
   ) {

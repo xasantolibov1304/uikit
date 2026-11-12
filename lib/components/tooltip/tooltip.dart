@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -42,7 +43,7 @@ class CommonTooltip extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: context.borderColors.black,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(context.radii.lg),
       ),
       richMessage: WidgetSpan(
         baseline: TextBaseline.alphabetic,

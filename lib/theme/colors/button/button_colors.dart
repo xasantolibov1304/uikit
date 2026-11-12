@@ -23,7 +23,7 @@ class ButtonColors extends ThemeExtension<ButtonColors> {
   final Color disabled;
 
   @override
-  ThemeExtension<ButtonColors> copyWith({
+  ButtonColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -45,7 +45,7 @@ class ButtonColors extends ThemeExtension<ButtonColors> {
       );
 
   @override
-  ThemeExtension<ButtonColors> lerp(
+  ButtonColors lerp(
     covariant ThemeExtension<ButtonColors>? other,
     double t,
   ) {

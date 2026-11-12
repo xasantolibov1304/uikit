@@ -15,7 +15,7 @@ class SystemColors extends ThemeExtension<SystemColors> {
   final Color red;
 
   @override
-  ThemeExtension<SystemColors> copyWith({
+  SystemColors copyWith({
     Color? white,
     Color? black,
     Color? transparent,
@@ -29,7 +29,7 @@ class SystemColors extends ThemeExtension<SystemColors> {
       );
 
   @override
-  ThemeExtension<SystemColors> lerp(
+  SystemColors lerp(
     covariant ThemeExtension<SystemColors>? other,
     double t,
   ) {

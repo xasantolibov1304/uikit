@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/common.dart';
 import 'package:uikit/components/pincode/items/pin_display_item.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -149,7 +150,7 @@ class _PincodeState extends State<Pincode> {
       height: _kButtonSize,
       onLongPress: onLongPress,
       splashColor: context.surfaceColors.grey,
-      borderRadius: BorderRadius.circular(100),
+      borderRadius: BorderRadius.circular(context.radii.full),
       color: color ?? context.surfaceColors.primary,
       child: Center(child: child),
     );

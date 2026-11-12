@@ -14,3 +14,5 @@ export 'base/body_theme.dart';
 export 'others/others_text_styles.dart';
 export 'others/others_theme.dart';
 
+// Font
+export 'uikit_font.dart';

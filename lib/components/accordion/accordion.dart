@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/buttons/button.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -69,7 +70,7 @@ class _AccordionState extends State<Accordion>
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           color: context.surfaceColors.secondary,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(context.radii.xl),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

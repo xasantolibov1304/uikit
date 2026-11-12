@@ -13,7 +13,7 @@ class BankingBrandColors extends ThemeExtension<BankingBrandColors> {
   final Color tertiary;
 
   @override
-  ThemeExtension<BankingBrandColors> copyWith({
+  BankingBrandColors copyWith({
     Color? primary,
     Color? secondary,
     Color? tertiary,
@@ -25,7 +25,7 @@ class BankingBrandColors extends ThemeExtension<BankingBrandColors> {
       );
 
   @override
-  ThemeExtension<BankingBrandColors> lerp(
+  BankingBrandColors lerp(
     covariant ThemeExtension<BankingBrandColors>? other,
     double t,
   ) {

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/components/file_upload/models/file_loader_item_model.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -40,7 +41,7 @@ class FileLoader extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: context.surfaceColors.primary,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(context.radii.lg),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +89,7 @@ class FileLoader extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(context.radii.lg),
                 color: context.surfaceColors.secondary,
               ),
               child: Column(

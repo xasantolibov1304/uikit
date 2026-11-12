@@ -2,12 +2,14 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/bottom_sheets/scroll_indicator.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/common/safe_area.dart';
 import 'package:uikit/components/loaders/loading_indicator.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 import 'package:uikit/utils/media_helper.dart';
 
 class ScrollableBottomSheet extends StatelessWidget {
@@ -48,9 +50,9 @@ class ScrollableBottomSheet extends StatelessWidget {
       maxChildSize: maxChildSize,
       initialChildSize: isKeyboardVisible ? 0.95 : initialChildSize,
       builder: (_, controller) => Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        decoration: BoxDecoration(
+          color: context.surfaceColors.primary,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(context.radii.xl)),
         ),
         child: Column(
           children: [

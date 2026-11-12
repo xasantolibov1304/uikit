@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -259,7 +260,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
       return Container(
         height: widget.height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(context.radii.sm),
           color: _progressColor(context),
         ),
       );
@@ -274,7 +275,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
           Container(
             height: widget.height,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(context.radii.sm),
               color: context.borderColors.primary,
             ),
           ),
@@ -284,7 +285,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
             child: Container(
               height: widget.height,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(context.radii.sm),
                 color: _progressColor(context),
               ),
             ),
@@ -296,7 +297,7 @@ class _SegmentProgressIndicatorState extends State<SegmentProgressIndicator>
     return Container(
       height: widget.height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(context.radii.sm),
         color: context.borderColors.primary,
       ),
     );

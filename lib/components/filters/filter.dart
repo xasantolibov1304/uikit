@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/ink_well.dart';
 import 'package:uikit/components/indicators/badge_indicator.dart';
 import 'package:uikit/gen/assets.gen.dart';
@@ -74,13 +75,13 @@ class Filter extends StatelessWidget {
                     color: context.buttonColors.positive,
                   )
                 : null,
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(context.radii.full),
             hoverColor: context.buttonColors.secondary,
             child: Row(
               children: [
                 UikitAssets.icons16.filter.svg(
                   colorFilter: ColorFilter.mode(
-                    _color,
+                    _color(context),
                     BlendMode.srcIn,
                   ),
                 ),
@@ -89,7 +90,7 @@ class Filter extends StatelessWidget {
                   Text(
                     title!,
                     style: context.titleTextStyle.title4.copyWith(
-                      color: _color,
+                      color: _color(context),
                     ),
                   ),
                 ],
@@ -97,7 +98,7 @@ class Filter extends StatelessWidget {
                   const SizedBox(width: 4),
                   UikitAssets.icons20.chevronDown.svg(
                     colorFilter: ColorFilter.mode(
-                      _color,
+                      _color(context),
                       BlendMode.srcIn,
                     ),
                   ),
@@ -138,10 +139,10 @@ class Filter extends StatelessWidget {
     }
   }
 
-  Color get _color {
+  Color _color(BuildContext context) {
     if (!isEnabled) {
-      return const Color(0xFFC4C4C4);
+      return context.iconColors.muted;
     }
-    return const Color(0xFF344054);
+    return context.iconColors.secondary;
   }
 }

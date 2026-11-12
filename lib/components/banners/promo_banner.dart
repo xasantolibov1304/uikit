@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/common/gesture_detector.dart';
 import 'package:uikit/gen/assets.gen.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
@@ -50,7 +51,7 @@ class PromoBanner extends StatelessWidget {
       margin: margin,
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(context.radii.xl),
         color: context.surfaceColors.secondary,
         border: Border.all(
           color: context.borderColors.secondary,
@@ -62,7 +63,7 @@ class PromoBanner extends StatelessWidget {
           if (type == PromoBannerType.filled && imageUrl != null)
             Positioned.fill(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(context.radii.xl),
                 child: _cachedImageWidget,
               ),
             ),
@@ -101,9 +102,9 @@ class PromoBanner extends StatelessWidget {
                   child: SizedBox(
                     height: height,
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topRight: Radius.circular(16),
-                        bottomRight: Radius.circular(16),
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(context.radii.xl),
+                        bottomRight: Radius.circular(context.radii.xl),
                       ),
                       child: _cachedImageWidget,
                     ),

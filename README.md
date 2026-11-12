@@ -44,6 +44,28 @@ Fonts and assets are resolved from the package automatically — the consuming a
 UikitAssets.icons24.arrowDown.svg(width: 24, height: 24);
 ```
 
+## Customizing per project
+
+Never edit uikit for a single app. Each app passes its own tokens; anything
+omitted falls back to uikit defaults:
+
+```dart
+MaterialApp(
+  theme: UikitTheme.light(
+    fontFamily: 'Inter',     // font declared in the app's pubspec.yaml
+    fontPackage: null,       // null = app font, default = uikit's AeonikPro
+    textColors: lightTextColors.copyWith(primary: const Color(0xFF0A2540)),
+    buttonColors: myButtonColors,
+    radii: const UikitRadii(xl: 12), // corner radius tokens: xs, sm, md, lg, xl, full
+  ),
+  darkTheme: UikitTheme.dark(fontFamily: 'Inter', fontPackage: null),
+);
+```
+
+`fontFamily`, `fontPackage` and `textColors` are applied to all default text
+styles automatically. For finer control use `createBaseTextStyles`,
+`createTitleTextStyles`, `createDisplayTextStyles`, `createOthersTextStyles`.
+
 ## Native setup required in the consuming app
 
 Some dependencies are plugins that need platform configuration in the **app**:

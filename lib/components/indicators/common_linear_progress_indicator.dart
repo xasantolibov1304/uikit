@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
 enum LinearProgressIndicatorType {
@@ -32,7 +33,7 @@ class CommonLinearProgressIndicator extends StatelessWidget {
       animation: true,
       percent: percent,
       padding: EdgeInsets.zero,
-      barRadius: Radius.circular(4),
+      barRadius: Radius.circular(context.radii.sm),
       progressColor: _progressColor(context),
       backgroundColor: context.borderColors.primary,
     );

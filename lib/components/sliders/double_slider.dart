@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -46,7 +47,10 @@ class DoubleSlider extends StatelessWidget {
         valueIndicatorColor: context.surfaceColors.tertiary,
         valueIndicatorStrokeColor: context.borderColors.primary,
         valueIndicatorTextStyle: context.titleTextStyle.title3,
-        rangeValueIndicatorShape: _RangeSliderValueIndicatorShape(),
+        rangeValueIndicatorShape: _RangeSliderValueIndicatorShape(
+          shadowColor: context.systemColors.black.withValues(alpha: 0.05),
+          radius: context.radii.md,
+        ),
         overlayColor: context.borderColors.success.withValues(alpha: 0.1),
       ),
       child: RangeSlider(
@@ -70,6 +74,14 @@ class DoubleSlider extends StatelessWidget {
 }
 
 class _RangeSliderValueIndicatorShape extends RangeSliderValueIndicatorShape {
+  const _RangeSliderValueIndicatorShape({
+    required this.shadowColor,
+    required this.radius,
+  });
+
+  final Color shadowColor;
+  final double radius;
+
   @override
   Size getPreferredSize(
     bool isEnabled,
@@ -112,7 +124,7 @@ class _RangeSliderValueIndicatorShape extends RangeSliderValueIndicatorShape {
       ..strokeWidth = 1;
 
     final Paint shadowPaint = Paint()
-      ..color = const Color(0x0D000000)
+      ..color = shadowColor
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12);
 
     final double indicatorHeight = labelPainter.height + 16;
@@ -127,7 +139,7 @@ class _RangeSliderValueIndicatorShape extends RangeSliderValueIndicatorShape {
         width: labelPainter.width + 24,
         height: indicatorHeight,
       ),
-      const Radius.circular(8),
+      Radius.circular(radius),
     );
 
     final RRect shadowRect = indicatorRect.shift(const Offset(0, 4));

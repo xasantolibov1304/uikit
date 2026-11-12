@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:uikit/theme/radii/uikit_radii.dart';
 import 'package:uikit/theme/app_typography_theme_data.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 import 'package:uikit/theme/shadows/shadows.dart';
@@ -28,7 +29,7 @@ class CommonTabBar extends StatelessWidget {
       margin: margin,
       decoration: BoxDecoration(
         color: context.surfaceColors.primary,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(context.radii.lg),
       ),
       child: TabBar(
         onTap: onTap,
@@ -39,7 +40,7 @@ class CommonTabBar extends StatelessWidget {
         indicatorSize: TabBarIndicatorSize.tab,
         labelColor: context.textColors.primary,
         indicatorPadding: const EdgeInsets.all(2),
-        splashBorderRadius: BorderRadius.circular(8),
+        splashBorderRadius: BorderRadius.circular(context.radii.md),
         labelStyle: context.baseTextStyle.base3,
         indicatorColor: context.surfaceColors.primary,
         unselectedLabelColor: context.textColors.primary,
@@ -47,7 +48,7 @@ class CommonTabBar extends StatelessWidget {
         unselectedLabelStyle: context.baseTextStyle.base3,
         indicator: BoxDecoration(
           color: context.surfaceColors.tertiary,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(context.radii.md),
           boxShadow: CommonShadows.compactShadow,
         ),
         tabs: tabLabels

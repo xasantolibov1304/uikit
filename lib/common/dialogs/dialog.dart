@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:uikit/common/dialogs/alert_dialog.dart';
 import 'package:uikit/components/buttons/button.dart';
+import 'package:uikit/theme/color_theme_data.dart';
 
 class CustomDialog {
   static Future<T?> showAlertDialog<T>(
@@ -21,7 +22,7 @@ class CustomDialog {
       context: context,
       useSafeArea: true,
       barrierDismissible: true,
-      barrierColor: Colors.black.withValues(alpha: 0.8),
+      barrierColor: context.systemColors.black.withValues(alpha: 0.8),
       builder: (context) {
         return CustomAlertDialog(
           axis: axis,

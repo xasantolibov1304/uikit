@@ -34,7 +34,7 @@ class BrandColors extends ThemeExtension<BrandColors> {
   final FinHealthBrandColors finHealth;
 
   @override
-  ThemeExtension<BrandColors> copyWith({
+  BrandColors copyWith({
     SuperAppBrandColors? superApp,
     InvestBrandColors? invest,
     InstallmentBrandColors? installment,
@@ -52,7 +52,7 @@ class BrandColors extends ThemeExtension<BrandColors> {
       );
 
   @override
-  ThemeExtension<BrandColors> lerp(
+  BrandColors lerp(
     covariant ThemeExtension<BrandColors>? other,
     double t,
   ) {
@@ -60,12 +60,12 @@ class BrandColors extends ThemeExtension<BrandColors> {
       return this;
     }
     return BrandColors(
-      superApp: superApp.lerp(other.superApp, t) as SuperAppBrandColors,
-      invest: invest.lerp(other.invest, t) as InvestBrandColors,
-      installment: installment.lerp(other.installment, t) as InstallmentBrandColors,
-      payment: payment.lerp(other.payment, t) as PaymentBrandColors,
-      banking: banking.lerp(other.banking, t) as BankingBrandColors,
-      finHealth: finHealth.lerp(other.finHealth, t) as FinHealthBrandColors,
+      superApp: superApp.lerp(other.superApp, t),
+      invest: invest.lerp(other.invest, t),
+      installment: installment.lerp(other.installment, t),
+      payment: payment.lerp(other.payment, t),
+      banking: banking.lerp(other.banking, t),
+      finHealth: finHealth.lerp(other.finHealth, t),
     );
   }
 }
