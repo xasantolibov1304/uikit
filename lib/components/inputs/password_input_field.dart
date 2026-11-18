@@ -91,6 +91,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       isRequired: widget.isRequired,
       captionText: widget.captionText,
       initialValue: widget.initialValue,
+      controller: widget.controller,
       trailingIcon: CommonGestureDetector(
         onTap: _toggleVisibility,
         child: _isVisible
@@ -100,7 +101,9 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       captionIconPath: widget.captionIconPath,
       textInputAction: widget.textInputAction,
       captionHelperText: widget.captionHelperText,
-      textCapitalization: TextCapitalization.characters,
+      // A password is typed exactly as it is; the keyboard must not change
+      // its case.
+      textCapitalization: TextCapitalization.none,
       keyboardType:
           _isVisible ? TextInputType.visiblePassword : TextInputType.text,
     );

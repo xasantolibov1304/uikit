@@ -1,3 +1,16 @@
+## 2.0.1
+
+### Fixed
+* `PasswordInputField` ignored its `controller` — the text never reached it.
+* `PasswordInputField` forced `TextCapitalization.characters`, so the keyboard
+  upper-cased every letter (`Demo-4Prep` was typed as `DEMO-4PREP`). It is now
+  `TextCapitalization.none`.
+* `InputField` disposed a `controller` / `focusNode` passed in by the caller,
+  which then failed with "used after being disposed" when the caller disposed
+  it too. It now disposes only what it created.
+* `InputField` cleared a passed-in `controller`'s text when no `initialValue`
+  was given.
+
 ## 2.0.0
 
 Makes uikit themeable per project. See README → "Customizing per project".

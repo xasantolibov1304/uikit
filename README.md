@@ -7,7 +7,7 @@ inputs, bottom sheets, indicators, …), common widgets, utils and services.
 One codebase, many apps: every app plugs in its own colors, font and corner
 radii through the theme. **uikit itself is never edited per project.**
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![Version](https://img.shields.io/badge/version-2.0.1-blue)
 ![Flutter](https://img.shields.io/badge/flutter-%3E%3D3.32.0-02569B)
 ![Dart](https://img.shields.io/badge/dart-%3E%3D3.6.0-0175C2)
 
@@ -75,7 +75,7 @@ dependencies:
   uikit:
     git:
       url: https://github.com/xasantolibov1304/uikit.git
-      ref: v2.0.0   # tag, branch or commit SHA
+      ref: v2.0.1   # tag, branch or commit SHA
 ```
 
 ```bash

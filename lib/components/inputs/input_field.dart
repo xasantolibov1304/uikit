@@ -154,7 +154,9 @@ class _InputFieldState extends State<InputField> {
       _focusNode.addListener(_updateState);
     }
 
-    _controller.text = widget.initialValue ?? '';
+    // A controller handed in already holds the caller's text; only an
+    // explicit initialValue may replace it.
+    if (widget.initialValue != null) _controller.text = widget.initialValue!;
 
     _focusNode.addListener(_onFocusChange);
   }
@@ -172,8 +174,11 @@ class _InputFieldState extends State<InputField> {
       _controller.removeListener(_updateState);
       _focusNode.removeListener(_updateState);
     }
-    _focusNode.dispose();
-    _controller.dispose();
+    // Dispose only what this widget created. A controller or focus node
+    // handed in belongs to the caller, who disposes it.
+    _focusNode.removeListener(_onFocusChange);
+    if (widget.focusNode == null) _focusNode.dispose();
+    if (widget.controller == null) _controller.dispose();
     super.dispose();
   }
 
