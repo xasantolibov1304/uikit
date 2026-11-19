@@ -4,9 +4,6 @@ import 'dart:async';
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-
 // Project imports:
 import 'package:uikit/theme/color_theme_data.dart';
 
@@ -14,12 +11,16 @@ import 'package:uikit/theme/color_theme_data.dart';
 ///
 /// The indicator stays on screen until the [Future] returned by [onRefresh]
 /// completes, then hides. A callback that returns nothing hides it at once.
-class CommonRefresher extends StatefulWidget {
+///
+/// A [child] that does not set its own `physics` can be pulled even when its
+/// content is shorter than the screen (an empty list, a single card).
+class CommonRefresher extends StatelessWidget {
   const CommonRefresher({
     super.key,
     required this.child,
     required this.onRefresh,
     //
+    @Deprecated('Not used any more — pass the controller to the child scroll view.')
     this.scrollController,
   });
 
@@ -27,42 +28,32 @@ class CommonRefresher extends StatefulWidget {
   final FutureOr<void> Function()? onRefresh;
   final ScrollController? scrollController;
 
-  @override
-  State<CommonRefresher> createState() => _CommonRefresherState();
-}
-
-class _CommonRefresherState extends State<CommonRefresher> {
-  final RefreshController controller = RefreshController();
-
   Future<void> _refresh() async {
     try {
-      await widget.onRefresh?.call();
-      if (mounted) controller.refreshCompleted();
+      await onRefresh?.call();
     } catch (_) {
-      if (mounted) controller.refreshFailed();
+      // A failed refresh only hides the indicator; the caller reports errors.
     }
   }
 
   @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (widget.onRefresh == null) return widget.child;
+    if (onRefresh == null) return child;
 
-    return SmartRefresher(
-      enablePullDown: true,
+    // The app's own scroll behavior, made always scrollable so a short list
+    // can be pulled too.
+    final behavior = ScrollConfiguration.of(context);
+
+    return RefreshIndicator(
       onRefresh: _refresh,
-      controller: controller,
-      scrollController: widget.scrollController,
-      header: MaterialClassicHeader(
-        color: context.iconColors.success,
-        backgroundColor: context.surfaceColors.primary,
+      color: context.iconColors.success,
+      backgroundColor: context.surfaceColors.primary,
+      child: ScrollConfiguration(
+        behavior: behavior.copyWith(
+          physics: AlwaysScrollableScrollPhysics(parent: behavior.getScrollPhysics(context)),
+        ),
+        child: child,
       ),
-      child: widget.child,
     );
   }
 }

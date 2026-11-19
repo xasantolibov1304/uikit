@@ -1,3 +1,18 @@
+## 2.0.3
+
+### Fixed
+* `CommonRefresher` made the page jump once after the indicator hid.
+  `pull_to_refresh` swaps the scroll physics twice when a refresh completes,
+  and every swap rebuilds the scroll position. `CommonRefresher` is now built
+  on Flutter's own `RefreshIndicator`, which looks the same and waits for
+  `onRefresh`'s `Future`.
+* A child without its own `physics` can now be pulled when its content is
+  shorter than the screen.
+
+### Deprecated
+* `CommonRefresher.scrollController` is ignored. Pass the controller to the
+  child scroll view.
+
 ## 2.0.2
 
 ### Fixed
