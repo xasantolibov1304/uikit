@@ -1,3 +1,6 @@
+// Dart imports:
+import 'dart:async';
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
@@ -7,6 +10,10 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 // Project imports:
 import 'package:uikit/theme/color_theme_data.dart';
 
+/// Pull-to-refresh around a scrollable [child].
+///
+/// The indicator stays on screen until the [Future] returned by [onRefresh]
+/// completes, then hides. A callback that returns nothing hides it at once.
 class CommonRefresher extends StatefulWidget {
   const CommonRefresher({
     super.key,
@@ -17,7 +24,7 @@ class CommonRefresher extends StatefulWidget {
   });
 
   final Widget child;
-  final void Function()? onRefresh;
+  final FutureOr<void> Function()? onRefresh;
   final ScrollController? scrollController;
 
   @override
@@ -25,12 +32,21 @@ class CommonRefresher extends StatefulWidget {
 }
 
 class _CommonRefresherState extends State<CommonRefresher> {
-  late final RefreshController controller;
+  final RefreshController controller = RefreshController();
+
+  Future<void> _refresh() async {
+    try {
+      await widget.onRefresh?.call();
+      if (mounted) controller.refreshCompleted();
+    } catch (_) {
+      if (mounted) controller.refreshFailed();
+    }
+  }
 
   @override
-  void initState() {
-    super.initState();
-    controller = RefreshController();
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,11 +55,7 @@ class _CommonRefresherState extends State<CommonRefresher> {
 
     return SmartRefresher(
       enablePullDown: true,
-      enableTwoLevel: true,
-      onRefresh: () {
-        widget.onRefresh?.call();
-        controller.refreshCompleted();
-      },
+      onRefresh: _refresh,
       controller: controller,
       scrollController: widget.scrollController,
       header: MaterialClassicHeader(

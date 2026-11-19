@@ -467,7 +467,7 @@ CustomDialog.showAlertDialog(
 | `TimePickerSheet` | Time picker sheet |
 | `CustomDialog` | Alert dialogs |
 | `CommonInkWell`, `CommonGestureDetector` | Tap handling with consistent feedback |
-| `CommonRefresher` | Pull-to-refresh |
+| `CommonRefresher` | Pull-to-refresh; `onRefresh` may return a `Future` — the indicator stays until it completes |
 | `LazyLoadScrollView` | Infinite scroll / pagination |
 | `FocusRemover` | Hides keyboard on outside tap |
 

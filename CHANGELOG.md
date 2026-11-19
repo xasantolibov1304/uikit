@@ -1,3 +1,15 @@
+## 2.0.2
+
+### Fixed
+* `CommonRefresher` froze when pulled far down: `enableTwoLevel` was on, so a
+  pull past 150 px opened the unused "second floor" instead of refreshing, and
+  `onRefresh` was never called. Two-level mode is now off.
+* `CommonRefresher` hid its indicator the moment `onRefresh` was called, so the
+  list jumped when the data arrived afterwards. `onRefresh` may now return a
+  `Future` (`FutureOr<void> Function()`); the indicator stays until it
+  completes. A plain `void` callback still works and hides at once.
+* `CommonRefresher` never disposed its `RefreshController`.
+
 ## 2.0.1
 
 ### Fixed
