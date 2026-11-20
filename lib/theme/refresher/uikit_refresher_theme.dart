@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 /// ```dart
 /// UikitTheme.light(
 ///   extensions: [
-///     UikitRefresherTheme(lottieAsset: 'assets/lottie/logo.json', lottiePullEnd: 0.5),
+///     UikitRefresherTheme(lottieAsset: 'assets/lottie/logo.json'),
 ///   ],
 /// );
 /// ```
@@ -19,6 +19,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
   const UikitRefresherTheme({
     this.lottieAsset,
     this.lottiePackage,
+    this.lottieScrubOnPull = false,
     this.lottiePullEnd = 1,
     this.logo,
     this.color,
@@ -30,7 +31,14 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
   /// Package bundling [lottieAsset]; `null` for the app's own assets.
   final String? lottiePackage;
 
-  /// Part of the Lottie timeline played while pulling (see [LottieLoader.pullEnd]).
+  /// `false` (default): the Lottie plays on its own as soon as the indicator
+  /// appears and loops until the refresh completes.
+  /// `true`: while pulling, the Lottie follows the finger up to
+  /// [lottiePullEnd]; it loops only after release.
+  final bool lottieScrubOnPull;
+
+  /// Part of the Lottie timeline played while pulling when
+  /// [lottieScrubOnPull] is `true` (see [LottieLoader.pullEnd]).
   final double lottiePullEnd;
 
   /// Logo shown inside the indicator. Any widget: `Image.asset`,
@@ -45,6 +53,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
   UikitRefresherTheme copyWith({
     String? lottieAsset,
     String? lottiePackage,
+    bool? lottieScrubOnPull,
     double? lottiePullEnd,
     Widget? logo,
     Color? color,
@@ -52,6 +61,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
     return UikitRefresherTheme(
       lottieAsset: lottieAsset ?? this.lottieAsset,
       lottiePackage: lottiePackage ?? this.lottiePackage,
+      lottieScrubOnPull: lottieScrubOnPull ?? this.lottieScrubOnPull,
       lottiePullEnd: lottiePullEnd ?? this.lottiePullEnd,
       logo: logo ?? this.logo,
       color: color ?? this.color,
@@ -70,6 +80,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
     return UikitRefresherTheme(
       lottieAsset: current.lottieAsset,
       lottiePackage: current.lottiePackage,
+      lottieScrubOnPull: current.lottieScrubOnPull,
       lottiePullEnd: current.lottiePullEnd,
       logo: current.logo,
       color: Color.lerp(color, other.color, t),

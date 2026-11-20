@@ -34,12 +34,11 @@ class _MyAppState extends State<MyApp> {
             // ignore: deprecated_member_use
             useInheritedMediaQuery: true,
             // Lottie logo as the pull-to-refresh indicator (CommonRefresher):
-            // drawn while pulling (first half of the animation), loops while loading.
+            // plays as soon as the indicator appears and loops until refresh ends.
             theme: uikit.UikitTheme.light(
               extensions: const [
                 uikit.UikitRefresherTheme(
                   lottieAsset: 'assets/lottie/4prep_logo.json',
-                  lottiePullEnd: 0.5,
                 ),
               ],
             ),

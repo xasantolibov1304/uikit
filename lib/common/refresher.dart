@@ -90,12 +90,15 @@ class CommonRefresher extends StatelessWidget {
             : controller.value.clamp(0.0, 1.0);
 
         if (lottieAsset != null) {
+          // Plays on its own from the moment the indicator appears (or follows
+          // the finger with lottieScrubOnPull); paused while hidden.
+          final scrub = style?.lottieScrubOnPull ?? false;
           return LottieLoader(
             asset: lottieAsset,
             package: style?.lottiePackage,
             pullEnd: style?.lottiePullEnd ?? 1,
             size: size,
-            progress: progress,
+            progress: controller.isIdle ? 0 : (scrub ? progress : null),
           );
         }
         return LogoLoader(logo: logo!, color: color, size: size, progress: progress);

@@ -148,6 +148,49 @@ void main() {
       expect(controllerValue(tester), isNot(before));
     });
 
+    Future<TestGesture> dragWithoutRelease(WidgetTester tester, UikitRefresherTheme style) async {
+      await tester.pumpWidget(
+        DefaultAssetBundle(
+          bundle: _TestBundle(),
+          child: _app(onRefresh: () async {}, extensions: [style]),
+        ),
+      );
+      final gesture = await tester.startGesture(tester.getCenter(find.text('item')));
+      for (var i = 0; i < 4; i++) {
+        await gesture.moveBy(const Offset(0, 15));
+        await tester.pump();
+      }
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 200)));
+      await tester.pump();
+      return gesture;
+    }
+
+    testWidgets('Lottie already plays while the user is still pulling', (tester) async {
+      final gesture = await dragWithoutRelease(
+        tester,
+        const UikitRefresherTheme(lottieAsset: _lottieAsset),
+      );
+      final loader = tester.widget<LottieLoader>(find.byType(LottieLoader));
+      expect(loader.progress, isNull, reason: 'loops during the drag, before release');
+      final before = controllerValue(tester);
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(controllerValue(tester), isNot(before));
+      await gesture.up();
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('lottieScrubOnPull follows the finger instead', (tester) async {
+      final gesture = await dragWithoutRelease(
+        tester,
+        const UikitRefresherTheme(lottieAsset: _lottieAsset, lottieScrubOnPull: true, lottiePullEnd: 0.5),
+      );
+      final loader = tester.widget<LottieLoader>(find.byType(LottieLoader));
+      expect(loader.progress, isNotNull);
+      expect(loader.progress, greaterThan(0));
+      await gesture.up();
+      await tester.pumpAndSettle();
+    });
+
     testWidgets('refresher uses the theme Lottie while refreshing', (tester) async {
       final completer = Completer<void>();
       await tester.pumpWidget(
