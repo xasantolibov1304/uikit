@@ -265,6 +265,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
+  custom_refresh_indicator:
+    dependency: transitive
+    description:
+      name: custom_refresh_indicator
+      sha256: "4b570ec0b526631b49de22c861a129e04572bbd76c24f0772dbd703a0822b4f3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
   dart_style:
     dependency: transitive
     description:
@@ -1320,7 +1328,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.0.1"
+    version: "2.1.0"
   url_launcher:
     dependency: transitive
     description:

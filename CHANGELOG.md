@@ -1,3 +1,20 @@
+## 2.1.0
+
+### Added
+* `CommonRefresher` can show a Lottie animation or the app's logo instead of
+  the spinner. Set it once for the app with `UikitRefresherTheme` in
+  `UikitTheme.light(extensions: [...])`:
+  `lottieAsset` / `lottiePackage` / `lottiePullEnd` (takes priority) or
+  `logo` / `color`. A single refresher can pass `logo:`.
+  Without either the refresher is unchanged (Flutter `RefreshIndicator`).
+* `LottieLoader`: plays a Lottie as a loader. While pulling, the animation
+  follows the finger up to `pullEnd` of its timeline; while loading, it loops
+  from there.
+* `LogoLoader`: animated logo loader. While pulling, the logo spins in and
+  the ring fills with the pull progress; while loading, the ring rotates and
+  the logo pulses. Usable on its own as a loader.
+* New dependency: `custom_refresh_indicator`.
+
 ## 2.0.3
 
 ### Fixed
