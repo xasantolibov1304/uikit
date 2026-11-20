@@ -1,3 +1,13 @@
+## 2.1.1
+
+### Changed
+* Lottie refresher: the animation now plays on its own as soon as the
+  indicator appears and loops until the refresh completes. Before, it only
+  followed the finger while pulling, so it looked frozen until release.
+  The old behavior is available with `UikitRefresherTheme(lottieScrubOnPull: true)`
+  (`lottiePullEnd` applies only then).
+* The Lottie is paused while the indicator is hidden.
+
 ## 2.1.0
 
 ### Added

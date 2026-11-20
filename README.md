@@ -7,7 +7,7 @@ inputs, bottom sheets, indicators, …), common widgets, utils and services.
 One codebase, many apps: every app plugs in its own colors, font and corner
 radii through the theme. **uikit itself is never edited per project.**
 
-![Version](https://img.shields.io/badge/version-2.1.0-blue)
+![Version](https://img.shields.io/badge/version-2.1.1-blue)
 ![Flutter](https://img.shields.io/badge/flutter-%3E%3D3.32.0-02569B)
 ![Dart](https://img.shields.io/badge/dart-%3E%3D3.6.0-0175C2)
 
@@ -75,7 +75,7 @@ dependencies:
   uikit:
     git:
       url: https://github.com/xasantolibov1304/uikit.git
-      ref: v2.1.0   # tag, branch or commit SHA
+      ref: v2.1.1   # tag, branch or commit SHA
 ```
 
 ```bash
@@ -246,10 +246,9 @@ once for the whole app:
 ```dart
 UikitTheme.light(
   extensions: const [
-    // Lottie: follows the finger while pulling, loops while loading
+    // Lottie: plays as soon as the indicator appears, loops until refresh ends
     UikitRefresherTheme(
       lottieAsset: 'assets/lottie/logo.json', // in the app's pubspec assets
-      lottiePullEnd: 0.5,                     // part of the timeline played while pulling
     ),
   ],
 )
@@ -269,9 +268,11 @@ with `CommonRefresher(logo: ...)`. Both animations work as standalone
 loaders too: `LottieLoader(asset: ...)`, `LogoLoader(logo: ...)` — pass
 `progress` (`0..1`) for a determinate state, omit it to loop.
 
-**Designing the Lottie:** make the first part of the timeline (up to
-`lottiePullEnd`) build up the logo, and make the whole animation loop
-seamlessly (end frame = start frame).
+To make the Lottie follow the finger while pulling instead (loop only after
+release), add `lottieScrubOnPull: true` and `lottiePullEnd` (the part of the
+timeline played by a full pull, e.g. `0.5`).
+
+**Designing the Lottie:** make it loop seamlessly (end frame = start frame).
 
 ### Recommended setup in an app
 
