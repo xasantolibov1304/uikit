@@ -7,7 +7,7 @@ inputs, bottom sheets, indicators, …), common widgets, utils and services.
 One codebase, many apps: every app plugs in its own colors, font and corner
 radii through the theme. **uikit itself is never edited per project.**
 
-![Version](https://img.shields.io/badge/version-2.0.1-blue)
+![Version](https://img.shields.io/badge/version-2.1.0-blue)
 ![Flutter](https://img.shields.io/badge/flutter-%3E%3D3.32.0-02569B)
 ![Dart](https://img.shields.io/badge/dart-%3E%3D3.6.0-0175C2)
 
@@ -75,7 +75,7 @@ dependencies:
   uikit:
     git:
       url: https://github.com/xasantolibov1304/uikit.git
-      ref: v2.0.1   # tag, branch or commit SHA
+      ref: v2.1.0   # tag, branch or commit SHA
 ```
 
 ```bash
@@ -237,6 +237,41 @@ UikitTheme.light(extensions: const [BrandColors(accent: Color(0xFFFF5722))]);
 // usage
 final accent = Theme.of(context).extension<BrandColors>()!.accent;
 ```
+
+### Pull-to-refresh with your Lottie or logo
+
+`CommonRefresher` shows the standard spinner by default. Set your animation
+once for the whole app:
+
+```dart
+UikitTheme.light(
+  extensions: const [
+    // Lottie: follows the finger while pulling, loops while loading
+    UikitRefresherTheme(
+      lottieAsset: 'assets/lottie/logo.json', // in the app's pubspec assets
+      lottiePullEnd: 0.5,                     // part of the timeline played while pulling
+    ),
+  ],
+)
+```
+
+or a static logo animated by uikit (spin-in + progress ring):
+
+```dart
+UikitRefresherTheme(
+  logo: Image.asset('assets/images/logo.png'), // any widget, clipped to a circle
+  color: const Color(0xFF40DBC2),              // ring color (default: iconColors.success)
+)
+```
+
+Priority: `lottieAsset` → `logo` → spinner. A single refresher can override
+with `CommonRefresher(logo: ...)`. Both animations work as standalone
+loaders too: `LottieLoader(asset: ...)`, `LogoLoader(logo: ...)` — pass
+`progress` (`0..1`) for a determinate state, omit it to loop.
+
+**Designing the Lottie:** make the first part of the timeline (up to
+`lottiePullEnd`) build up the logo, and make the whole animation loop
+seamlessly (end frame = start frame).
 
 ### Recommended setup in an app
 
@@ -405,6 +440,8 @@ TextInputField(
 | `Notice` | Notice block (`NoticeType`) |
 | `CommonTooltip` | Tooltip |
 | `LoadingIndicator` / `OverlayLoader` | Spinner, full-screen loader overlay |
+| `LogoLoader` | Animated app logo loader (determinate `progress` or looping) |
+| `LottieLoader` | Lottie animation as a loader (scrubbed by `progress` or looping) |
 | `EmptyState` + `EmptyStateModel` | Empty list / no data screen |
 | `StatusScreen` + `StatusActionButton` | Success / error result screens (`StatusScreenType`) |
 
@@ -467,7 +504,7 @@ CustomDialog.showAlertDialog(
 | `TimePickerSheet` | Time picker sheet |
 | `CustomDialog` | Alert dialogs |
 | `CommonInkWell`, `CommonGestureDetector` | Tap handling with consistent feedback |
-| `CommonRefresher` | Pull-to-refresh; `onRefresh` may return a `Future` — the indicator stays until it completes |
+| `CommonRefresher` | Pull-to-refresh; `onRefresh` may return a `Future` — the indicator stays until it completes. Shows a Lottie or the app logo when `UikitRefresherTheme` is set |
 | `LazyLoadScrollView` | Infinite scroll / pagination |
 | `FocusRemover` | Hides keyboard on outside tap |
 

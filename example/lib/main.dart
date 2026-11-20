@@ -33,7 +33,16 @@ class _MyAppState extends State<MyApp> {
             title: 'Flutter Demo',
             // ignore: deprecated_member_use
             useInheritedMediaQuery: true,
-            theme: uikit.lightTheme,
+            // Lottie logo as the pull-to-refresh indicator (CommonRefresher):
+            // drawn while pulling (first half of the animation), loops while loading.
+            theme: uikit.UikitTheme.light(
+              extensions: const [
+                uikit.UikitRefresherTheme(
+                  lottieAsset: 'assets/lottie/4prep_logo.json',
+                  lottiePullEnd: 0.5,
+                ),
+              ],
+            ),
             darkTheme: uikit.darkTheme,
             themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,

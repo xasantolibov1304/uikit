@@ -2,7 +2,7 @@ name: uikit
 description: Design system UI kit (theme, typography, components, utils).
 publish_to: none
 
-version: 2.0.3
+version: 2.1.0
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
@@ -35,6 +35,7 @@ dependencies:
   permission_handler: ^12.0.1
   flutter_multi_formatter: ^2.13.7
   mask_text_input_formatter: ^2.9.0
+  custom_refresh_indicator: ^4.0.2
 
 dev_dependencies:
   flutter_test:

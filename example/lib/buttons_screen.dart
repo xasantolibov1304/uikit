@@ -37,6 +37,14 @@ class _ButtonsScreenState extends State<ButtonsScreen> {
                 padding: const EdgeInsets.all(16),
                 children: <Widget>[
                   _buildExampleButton(
+                    'Refresher (logo) Example',
+                    () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const RefresherExamplePage(),
+                      ),
+                    ),
+                  ),
+                  _buildExampleButton(
                     'Paged Segment',
                     () => Navigator.of(context).push(
                       MaterialPageRoute(

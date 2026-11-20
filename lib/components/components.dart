@@ -75,6 +75,8 @@ export 'inputs/inputs.dart';
 
 // Loaders
 export 'loaders/loading_indicator.dart';
+export 'loaders/logo_loader.dart';
+export 'loaders/lottie_loader.dart';
 export 'loaders/overlay_loader.dart';
 
 // Radio
