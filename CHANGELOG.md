@@ -1,3 +1,19 @@
+## 2.2.0
+
+### Added
+* `CommonRefresher` drips out of the Dynamic Island on an iPhone that has
+  one (`IslandRefresher`): a black drop swells out of the island on a gooey
+  neck and follows the finger; at the trigger point the neck snaps with a
+  haptic tick and the drop wobbles free; it hangs below the island while
+  the refresh runs and is sucked back in when `onRefresh` completes. The
+  drop shows the same indicator as elsewhere — the theme Lottie, the logo,
+  or a spinner.
+  Only in portrait, with system animations on; Android, notched iPhones,
+  iPads and landscape keep the indicator they had.
+  Opt out with `UikitRefresherTheme(dynamicIsland: false)`.
+* `DynamicIsland.rectOf(context)`: the island's rectangle on screen, or
+  `null` when the device has none.
+
 ## 2.1.1
 
 ### Changed

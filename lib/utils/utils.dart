@@ -10,3 +10,4 @@ export 'reg_exp_constants.dart';
 export 'string_helper.dart';
 export 'text_mask_constants.dart';
 export 'file_helper.dart';
+export 'dynamic_island.dart';

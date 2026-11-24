@@ -86,6 +86,98 @@ void main() {
     });
   });
 
+  group('Dynamic Island', () {
+    final iOS = TargetPlatformVariant.only(TargetPlatform.iOS);
+
+    /// A phone in portrait with a status bar of [statusBar] pt.
+    void phone(WidgetTester tester, {required double statusBar}) {
+      tester.view
+        ..devicePixelRatio = 3
+        ..physicalSize = const Size(1179, 2556)
+        ..viewPadding = FakeViewPadding(top: statusBar * 3)
+        ..padding = FakeViewPadding(top: statusBar * 3);
+      addTearDown(tester.view.reset);
+    }
+
+    testWidgets('iPhone with a Dynamic Island uses IslandRefresher', variant: iOS, (tester) async {
+      phone(tester, statusBar: 59);
+      await tester.pumpWidget(_app(onRefresh: () async {}));
+      expect(find.byType(IslandRefresher), findsOneWidget);
+      expect(find.byType(RefreshIndicator), findsNothing);
+
+      final island = tester.widget<IslandRefresher>(find.byType(IslandRefresher)).island;
+      expect(island.center.dx, closeTo(1179 / 3 / 2, 1e-9));
+      expect(island.width, DynamicIsland.width);
+    });
+
+    testWidgets('a notched iPhone keeps the standard indicator', variant: iOS, (tester) async {
+      phone(tester, statusBar: 47);
+      await tester.pumpWidget(_app(onRefresh: () async {}));
+      expect(find.byType(IslandRefresher), findsNothing);
+      expect(find.byType(RefreshIndicator), findsOneWidget);
+    });
+
+    testWidgets('Android keeps the standard indicator', variant: TargetPlatformVariant.only(TargetPlatform.android),
+        (tester) async {
+      phone(tester, statusBar: 59);
+      await tester.pumpWidget(_app(onRefresh: () async {}));
+      expect(find.byType(IslandRefresher), findsNothing);
+    });
+
+    testWidgets('landscape keeps the standard indicator', variant: iOS, (tester) async {
+      phone(tester, statusBar: 59);
+      tester.view.physicalSize = const Size(2556, 1179);
+      await tester.pumpWidget(_app(onRefresh: () async {}));
+      expect(find.byType(IslandRefresher), findsNothing);
+    });
+
+    testWidgets('dynamicIsland: false turns it off', variant: iOS, (tester) async {
+      phone(tester, statusBar: 59);
+      await tester.pumpWidget(
+        _app(onRefresh: () async {}, extensions: const [UikitRefresherTheme(dynamicIsland: false)]),
+      );
+      expect(find.byType(IslandRefresher), findsNothing);
+    });
+
+    testWidgets('the drop loops while refreshing and goes back into the island', variant: iOS, (tester) async {
+      phone(tester, statusBar: 59);
+      final completer = Completer<void>();
+      var calls = 0;
+      await tester.pumpWidget(
+        _app(
+          onRefresh: () {
+            calls++;
+            return completer.future;
+          },
+          extensions: const [UikitRefresherTheme(logo: ColoredBox(key: _logoKey, color: Colors.teal))],
+        ),
+      );
+
+      // A slow pull: iOS bouncing physics springs a fling back too early.
+      final gesture = await tester.startGesture(tester.getCenter(find.text('item')));
+      for (var i = 0; i < 20; i++) {
+        await gesture.moveBy(const Offset(0, 20));
+        await tester.pump(const Duration(milliseconds: 16));
+      }
+      final pulling = tester.widget<LogoLoader>(find.byType(LogoLoader));
+      expect(pulling.progress, 1, reason: 'armed: the ring is full');
+      await gesture.up();
+      for (var i = 0; i < 8; i++) {
+        await tester.pump(const Duration(milliseconds: 50)); // spring back, settle, load
+      }
+      expect(calls, 1);
+      final loader = tester.widget<LogoLoader>(find.byType(LogoLoader));
+      expect(loader.progress, isNull, reason: 'loading = indeterminate animation');
+
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.byType(LogoLoader), findsOneWidget, reason: 'stays until onRefresh completes');
+
+      completer.complete();
+      await tester.pumpAndSettle();
+      expect(find.byType(LogoLoader), findsNothing);
+    });
+  });
+
   group('LogoLoader', () {
     final theme = UikitTheme.light();
 

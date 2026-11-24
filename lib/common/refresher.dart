@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 
 // Project imports:
+import 'package:uikit/common/island_refresher/island_refresher.dart';
 import 'package:uikit/components/loaders/logo_loader.dart';
 import 'package:uikit/components/loaders/lottie_loader.dart';
 import 'package:uikit/theme/color_theme_data.dart';
 import 'package:uikit/theme/refresher/uikit_refresher_theme.dart';
+import 'package:uikit/utils/dynamic_island.dart';
 
 /// Pull-to-refresh around a scrollable [child].
 ///
@@ -24,6 +26,10 @@ import 'package:uikit/theme/refresher/uikit_refresher_theme.dart';
 /// The indicator is the standard spinner, or — when set once for the whole
 /// app with [UikitRefresherTheme] — a Lottie animation ([LottieLoader]) or
 /// the app's logo ([LogoLoader]). [logo] overrides the theme logo here.
+///
+/// On an iPhone with a Dynamic Island (portrait, system animations on) the
+/// same indicator drips out of the island instead ([IslandRefresher]).
+/// Turn that off with `UikitRefresherTheme(dynamicIsland: false)`.
 class CommonRefresher extends StatelessWidget {
   const CommonRefresher({
     super.key,
@@ -69,6 +75,48 @@ class CommonRefresher extends StatelessWidget {
     final color = style?.color ?? context.iconColors.success;
     final logo = this.logo ?? style?.logo;
     final lottieAsset = this.logo == null ? style?.lottieAsset : null;
+    final scrub = style?.lottieScrubOnPull ?? false;
+
+    /// What the indicator shows: [progress] `0..1` while pulling, `null`
+    /// while refreshing.
+    Widget content(double? progress, double size) {
+      if (lottieAsset != null) {
+        // Plays on its own from the moment the indicator appears (or follows
+        // the finger with lottieScrubOnPull).
+        return LottieLoader(
+          asset: lottieAsset,
+          package: style?.lottiePackage,
+          pullEnd: style?.lottiePullEnd ?? 1,
+          size: size,
+          progress: scrub ? progress : null,
+        );
+      }
+      if (logo != null) {
+        return LogoLoader(logo: logo, color: color, size: size, progress: progress);
+      }
+      // Only inside the Dynamic Island drop: elsewhere the spinner-only
+      // case is Flutter's RefreshIndicator.
+      return Padding(
+        padding: EdgeInsets.all(size * 0.22),
+        child: CircularProgressIndicator(
+          value: progress,
+          color: color,
+          strokeWidth: 2.5,
+          strokeCap: StrokeCap.round,
+        ),
+      );
+    }
+
+    final useIsland = (style?.dynamicIsland ?? true) && !MediaQuery.disableAnimationsOf(context);
+    final island = useIsland ? DynamicIsland.rectOf(context) : null;
+    if (island != null) {
+      return IslandRefresher(
+        island: island,
+        onRefresh: _refresh,
+        indicatorBuilder: (context, progress, size) => content(progress, size),
+        child: scrollable,
+      );
+    }
 
     if (lottieAsset == null && logo == null) {
       return RefreshIndicator(
@@ -89,19 +137,17 @@ class CommonRefresher extends StatelessWidget {
             ? null
             : controller.value.clamp(0.0, 1.0);
 
-        if (lottieAsset != null) {
-          // Plays on its own from the moment the indicator appears (or follows
-          // the finger with lottieScrubOnPull); paused while hidden.
-          final scrub = style?.lottieScrubOnPull ?? false;
+        // The Lottie is paused while the indicator is hidden.
+        if (lottieAsset != null && controller.isIdle) {
           return LottieLoader(
             asset: lottieAsset,
             package: style?.lottiePackage,
             pullEnd: style?.lottiePullEnd ?? 1,
             size: size,
-            progress: controller.isIdle ? 0 : (scrub ? progress : null),
+            progress: 0,
           );
         }
-        return LogoLoader(logo: logo!, color: color, size: size, progress: progress);
+        return content(progress, size);
       },
       child: scrollable,
     );

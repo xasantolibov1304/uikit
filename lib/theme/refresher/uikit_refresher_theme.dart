@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 /// - [lottieAsset]: a Lottie animation played by [LottieLoader];
 /// - [logo]: the app's logo animated by [LogoLoader].
 ///
+/// On an iPhone with a Dynamic Island the indicator drips out of the island
+/// ([IslandRefresher]) unless [dynamicIsland] is `false`.
+///
 /// ```dart
 /// UikitTheme.light(
 ///   extensions: [
@@ -23,6 +26,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
     this.lottiePullEnd = 1,
     this.logo,
     this.color,
+    this.dynamicIsland = true,
   });
 
   /// Lottie JSON asset shown inside the indicator (takes priority over [logo]).
@@ -49,6 +53,11 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
   /// spinner). Defaults to `context.iconColors.success`.
   final Color? color;
 
+  /// `true` (default): on an iPhone with a Dynamic Island (portrait, system
+  /// animations on) the indicator is a drop pulled out of the island
+  /// ([IslandRefresher]). `false`: the same indicator as on other devices.
+  final bool dynamicIsland;
+
   @override
   UikitRefresherTheme copyWith({
     String? lottieAsset,
@@ -57,6 +66,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
     double? lottiePullEnd,
     Widget? logo,
     Color? color,
+    bool? dynamicIsland,
   }) {
     return UikitRefresherTheme(
       lottieAsset: lottieAsset ?? this.lottieAsset,
@@ -65,6 +75,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
       lottiePullEnd: lottiePullEnd ?? this.lottiePullEnd,
       logo: logo ?? this.logo,
       color: color ?? this.color,
+      dynamicIsland: dynamicIsland ?? this.dynamicIsland,
     );
   }
 
@@ -84,6 +95,7 @@ class UikitRefresherTheme extends ThemeExtension<UikitRefresherTheme> {
       lottiePullEnd: current.lottiePullEnd,
       logo: current.logo,
       color: Color.lerp(color, other.color, t),
+      dynamicIsland: current.dynamicIsland,
     );
   }
 }
