@@ -75,7 +75,7 @@ dependencies:
   uikit:
     git:
       url: https://github.com/xasantolibov1304/uikit.git
-      ref: v2.1.1   # tag, branch or commit SHA
+      ref: v2.2.0   # tag, branch or commit SHA
 ```
 
 ```bash
@@ -271,6 +271,22 @@ loaders too: `LottieLoader(asset: ...)`, `LogoLoader(logo: ...)` — pass
 To make the Lottie follow the finger while pulling instead (loop only after
 release), add `lottieScrubOnPull: true` and `lottiePullEnd` (the part of the
 timeline played by a full pull, e.g. `0.5`).
+
+#### Dynamic Island
+
+On an iPhone with a Dynamic Island, `CommonRefresher` needs nothing more: the
+indicator above is drawn inside a black drop pulled out of the island, which
+hangs below it while refreshing and is sucked back in when `onRefresh`
+completes (with haptics). Android, notched iPhones, iPads, landscape and
+"reduce motion" keep the regular indicator. To keep the regular one
+everywhere:
+
+```dart
+UikitRefresherTheme(logo: ..., dynamicIsland: false)
+```
+
+The island is detected by the status bar height (59 pt and up); use
+`DynamicIsland.rectOf(context)` to get its rectangle yourself.
 
 **Designing the Lottie:** make it loop seamlessly (end frame = start frame).
 
@@ -505,7 +521,7 @@ CustomDialog.showAlertDialog(
 | `TimePickerSheet` | Time picker sheet |
 | `CustomDialog` | Alert dialogs |
 | `CommonInkWell`, `CommonGestureDetector` | Tap handling with consistent feedback |
-| `CommonRefresher` | Pull-to-refresh; `onRefresh` may return a `Future` — the indicator stays until it completes. Shows a Lottie or the app logo when `UikitRefresherTheme` is set |
+| `CommonRefresher` | Pull-to-refresh; `onRefresh` may return a `Future` — the indicator stays until it completes. Shows a Lottie or the app logo when `UikitRefresherTheme` is set; drips out of the Dynamic Island on iPhones that have one |
 | `LazyLoadScrollView` | Infinite scroll / pagination |
 | `FocusRemover` | Hides keyboard on outside tap |
 

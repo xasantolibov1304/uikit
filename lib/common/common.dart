@@ -15,4 +15,5 @@ export 'focus_remover.dart';
 export 'ink_well.dart';
 export 'dialogs/dialog.dart';
 export 'refresher.dart';
+export 'island_refresher/island_refresher.dart';
 export 'lazy_load_scroll_view.dart';
