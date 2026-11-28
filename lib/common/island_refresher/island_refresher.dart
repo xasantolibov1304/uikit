@@ -67,8 +67,15 @@ class _IslandRefresherState extends State<IslandRefresher> with TickerProviderSt
     completeDuration: _absorbDuration,
   );
 
-  final _portal = OverlayPortalController();
   final _indicator = IndicatorController();
+
+  /// The drop, on the root overlay while a pull or refresh is under way.
+  ///
+  /// A plain [OverlayEntry], not an [OverlayPortal]: an OverlayPortal wraps
+  /// the scroll view for good, and once a route has been pushed and popped
+  /// over it, showing its overlay child during a scroll breaks the semantics
+  /// tree ('!child.attached' / 'node.built' assertions).
+  OverlayEntry? _entry;
 
   // Created in initState, not lazily: a lazy one first touched in dispose()
   // would look up TickerMode on a deactivated element.
@@ -87,7 +94,17 @@ class _IslandRefresherState extends State<IslandRefresher> with TickerProviderSt
   }
 
   @override
+  void didUpdateWidget(covariant IslandRefresher oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_entry == null) return;
+    // The entry is built by the overlay, not by this widget: rebuild it after
+    // this frame so it picks up a new island or indicator.
+    SchedulerBinding.instance.addPostFrameCallback((_) => _entry?.markNeedsBuild());
+  }
+
+  @override
   void dispose() {
+    _removeEntry();
     _absorbCurve.dispose();
     _snap.dispose();
     _absorb.dispose();
@@ -127,12 +144,45 @@ class _IslandRefresherState extends State<IslandRefresher> with TickerProviderSt
       });
       return;
     }
-    if (_portal.isShowing == visible) return;
+    if ((_entry != null) == visible) return;
     if (visible) {
-      _portal.show();
+      _insertEntry();
     } else {
-      _portal.hide();
+      _removeEntry();
     }
+  }
+
+  /// Puts the drop on the root overlay: the island is above any app bar or
+  /// nested navigator.
+  void _insertEntry() {
+    final overlay = Overlay.maybeOf(context, rootOverlay: true);
+    if (overlay == null) return;
+
+    _entry = OverlayEntry(
+      // The overlay sits above this widget, so the themes in between are
+      // carried over to the drop.
+      builder: (_) => InheritedTheme.captureAll(
+        context,
+        IslandRefreshOverlay(
+          snap: _snap,
+          absorb: _absorbCurve,
+          island: widget.island,
+          indicator: _indicator,
+          indicatorBuilder: widget.indicatorBuilder,
+        ),
+        to: overlay.context,
+      ),
+    );
+    overlay.insert(_entry!);
+  }
+
+  void _removeEntry() {
+    final entry = _entry;
+    if (entry == null) return;
+    _entry = null;
+    entry
+      ..remove()
+      ..dispose();
   }
 
   @override
@@ -144,21 +194,7 @@ class _IslandRefresherState extends State<IslandRefresher> with TickerProviderSt
       offsetToArmed: _offsetToArmed,
       onStateChanged: _onStateChanged,
       durations: _durations,
-      // Drawn on the root overlay: the island is above any app bar or nested
-      // navigator. `targetsRootOverlay` keeps Flutter 3.32 supported; it is
-      // `OverlayPortal(overlayLocation: rootOverlay)` from 3.35 on.
-      // ignore: deprecated_member_use
-      builder: (context, child, controller) => OverlayPortal.targetsRootOverlay(
-        controller: _portal,
-        overlayChildBuilder: (context) => IslandRefreshOverlay(
-          snap: _snap,
-          absorb: _absorbCurve,
-          island: widget.island,
-          indicator: controller,
-          indicatorBuilder: widget.indicatorBuilder,
-        ),
-        child: child,
-      ),
+      builder: (context, child, controller) => child,
       child: widget.child,
     );
   }
