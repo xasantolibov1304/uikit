@@ -22,14 +22,16 @@ ButtonColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return ButtonColors(
-      primary: Palette.gray[80]!,
-      secondary: Palette.gray[20]!,
-      tertiary: Palette.gray[0]!,
-      inverted: Palette.gray[100]!,
+      // Primary, inverted, positive and negative buttons carry
+      // `textColors.invert` — dark here — so their fills are the light ends.
+      primary: Palette.gray[10]!,
+      secondary: Palette.gray[80]!,
+      tertiary: Palette.gray[90]!,
+      inverted: Palette.gray[0]!,
       ghost: const Color(0x00000000),
-      positive: Palette.green[50]!,
-      negative: Palette.red[60]!,
-      disabled: Palette.gray[40]!,
+      positive: Palette.green[40]!,
+      negative: Palette.red[40]!,
+      disabled: Palette.gray[70]!,
     );
   }
 }

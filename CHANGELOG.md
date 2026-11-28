@@ -1,3 +1,24 @@
+## 2.3.0
+
+### Changed
+* Real dark defaults. `darkSurfaceColors`, `darkTextColors`,
+  `darkIconColors`, `darkBorderColors` and `darkButtonColors` were copies of
+  the light palettes, so `UikitTheme.dark()` looked light. They are now the
+  gray scale turned over — dark surfaces (`gray 100`/`90`/`80`), light text
+  and icons — with the lighter step of each accent (`cyan 40`, `red 40`,
+  `yellow 30`, `green 40`) so it reads on dark.
+* Dark primary, inverted, positive and negative buttons have light fills:
+  their text is `textColors.invert`, which is dark in the dark theme.
+* `systemColors` and `additionalColors` are unchanged.
+
+### Fixed
+* `StaticBottomSheet` was always white (`systemColors.white`); it now takes
+  `surfaceColors.primary` like `ScrollableBottomSheet`, so it is dark in the
+  dark theme. Unchanged in light, where that token is white too.
+
+Apps that already pass their own dark tokens to `UikitTheme.dark(...)` see
+no change.
+
 ## 2.2.0
 
 ### Added

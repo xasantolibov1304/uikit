@@ -23,15 +23,15 @@ TextColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return TextColors(
-      primary: Palette.gray[100]!,
-      secondary: Palette.gray[70]!,
+      primary: Palette.gray[0]!,
+      secondary: Palette.gray[30]!,
       tertiary: Palette.gray[50]!,
-      muted: Palette.gray[30]!,
-      info: Palette.cyan[60]!,
-      error: Palette.red[60]!,
-      warning: Palette.yellow[40]!,
-      success: Palette.green[50]!,
-      invert: Palette.gray[0]!,
+      muted: Palette.gray[70]!,
+      info: Palette.cyan[40]!,
+      error: Palette.red[40]!,
+      warning: Palette.yellow[30]!,
+      success: Palette.green[40]!,
+      invert: Palette.gray[100]!,
     );
   }
 }

@@ -24,16 +24,16 @@ BorderColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return BorderColors(
-      primary: Palette.gray[20]!,
-      secondary: Palette.gray[40]!,
+      primary: Palette.gray[80]!,
+      secondary: Palette.gray[70]!,
       tertiary: Palette.gray[40]!,
-      muted: Palette.gray[20]!,
-      info: Palette.cyan[60]!,
-      error: Palette.red[60]!,
-      warning: Palette.yellow[40]!,
-      success: Palette.green[70]!,
-      invert: Palette.gray[0]!,
-      black: Palette.gray[100]!,
+      muted: Palette.gray[80]!,
+      info: Palette.cyan[40]!,
+      error: Palette.red[40]!,
+      warning: Palette.yellow[30]!,
+      success: Palette.green[40]!,
+      invert: Palette.gray[100]!,
+      black: Palette.gray[0]!,
     );
   }
 }
