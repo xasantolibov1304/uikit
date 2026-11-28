@@ -25,17 +25,17 @@ SurfaceColors _generatePaletteFromBrightness(Brightness brightness) {
     );
   } else {
     return SurfaceColors(
-      primary: Palette.gray[0]!,
-      secondary: Palette.gray[10]!,
-      elevated: Palette.gray[0]!,
-      tertiary: Palette.gray[0]!,
-      grey: Palette.gray[20]!,
-      muted: Palette.gray[30]!,
-      dark: Palette.gray[100]!,
-      info: Palette.cyan[60]!.withValues(alpha: 0.1),
-      error: Palette.red[60]!.withValues(alpha: 0.1),
-      warning: Palette.yellow[40]!.withValues(alpha: 0.1),
-      success: Palette.green[50]!.withValues(alpha: 0.1),
+      primary: Palette.gray[100]!,
+      secondary: Palette.gray[90]!,
+      elevated: Palette.gray[90]!,
+      tertiary: Palette.gray[80]!,
+      grey: Palette.gray[80]!,
+      muted: Palette.gray[70]!,
+      dark: Palette.gray[90]!,
+      info: Palette.cyan[40]!.withValues(alpha: 0.16),
+      error: Palette.red[40]!.withValues(alpha: 0.16),
+      warning: Palette.yellow[30]!.withValues(alpha: 0.16),
+      success: Palette.green[40]!.withValues(alpha: 0.16),
     );
   }
 }

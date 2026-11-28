@@ -32,6 +32,23 @@ void main() {
       expect(UikitTheme.dark().brightness, Brightness.dark);
     });
 
+    test('dark defaults are their own palettes', () {
+      final theme = UikitTheme.dark();
+      expect(theme.surfaceColors, same(darkSurfaceColors));
+      expect(theme.textColors, same(darkTextColors));
+      expect(theme.buttonColors, same(darkButtonColors));
+      // Light content on dark surfaces — not the light palettes again.
+      expect(darkSurfaceColors.primary, isNot(lightSurfaceColors.primary));
+      expect(darkTextColors.primary, isNot(lightTextColors.primary));
+      expect(darkIconColors.primary, isNot(lightIconColors.primary));
+      expect(darkBorderColors.primary, isNot(lightBorderColors.primary));
+      expect(darkButtonColors.primary, isNot(lightButtonColors.primary));
+      expect(
+        darkSurfaceColors.primary.computeLuminance(),
+        lessThan(darkTextColors.primary.computeLuminance()),
+      );
+    });
+
     test('overrides only what is passed', () {
       final buttons = lightButtonColors.copyWith(
         primary: const Color(0xFF6200EE),

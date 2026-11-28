@@ -36,7 +36,7 @@ class StaticBottomSheet extends StatelessWidget {
       child: Container(
         height: fixedHeight,
         decoration: BoxDecoration(
-          color: context.systemColors.white,
+          color: context.surfaceColors.primary,
           borderRadius: BorderRadius.vertical(top: Radius.circular(context.radii.xl)),
         ),
         child: Column(

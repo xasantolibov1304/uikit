@@ -667,7 +667,7 @@ Full list in [CHANGELOG.md](CHANGELOG.md).
 
 ## Known limitations
 
-- **Dark theme:** default dark palettes are currently identical to light
-  ones. Pass your own dark tokens to `UikitTheme.dark(...)` until real dark
-  palettes are added.
+- **Dark theme:** the default dark palettes (since 2.3.0) are the gray
+  scale turned over, with the lighter step of each accent; they are not
+  from a design yet. Override any group via `UikitTheme.dark(...)`.
 - `CommonShadows` are constants, not theme tokens yet.
