@@ -37,34 +37,44 @@ class IslandRefreshOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
-      child: AnimatedBuilder(
-        animation: Listenable.merge([snap, absorb, indicator]),
-        builder: (context, _) {
-          final pull = indicator.value * (1 - absorb.value);
-          final drop = IslandDrop.of(island: island, pull: pull, snap: snap.value);
-          final bounds = drop.bounds;
-          final spinning = indicator.isSettling || indicator.isLoading;
+    // Pure decoration, so it adds nothing to the semantics tree: semantics
+    // nodes built on the root overlay break the tree once a route has been
+    // pushed and popped over the refresher ('!child.attached' / 'node.built'
+    // assertions on the next scroll).
+    return ExcludeSemantics(
+      child: IgnorePointer(
+        child: _drop(),
+      ),
+    );
+  }
 
-          return Stack(
-            children: [
-              Positioned.fill(
-                child: CustomPaint(
-                  painter: IslandDropPainter(drop: drop, color: DynamicIsland.color),
+  Widget _drop() {
+    return AnimatedBuilder(
+      animation: Listenable.merge([snap, absorb, indicator]),
+      builder: (context, _) {
+        final pull = indicator.value * (1 - absorb.value);
+        final drop = IslandDrop.of(island: island, pull: pull, snap: snap.value);
+        final bounds = drop.bounds;
+        final spinning = indicator.isSettling || indicator.isLoading;
+
+        return Stack(
+          children: [
+            Positioned.fill(
+              child: CustomPaint(
+                painter: IslandDropPainter(drop: drop, color: DynamicIsland.color),
+              ),
+            ),
+            if (drop.radius >= _minContentRadius)
+              Positioned.fromRect(
+                rect: bounds,
+                child: Opacity(
+                  opacity: (1 - absorb.value).clamp(0.0, 1.0),
+                  child: indicatorBuilder(context, spinning ? null : drop.progress, bounds.shortestSide),
                 ),
               ),
-              if (drop.radius >= _minContentRadius)
-                Positioned.fromRect(
-                  rect: bounds,
-                  child: Opacity(
-                    opacity: (1 - absorb.value).clamp(0.0, 1.0),
-                    child: indicatorBuilder(context, spinning ? null : drop.progress, bounds.shortestSide),
-                  ),
-                ),
-            ],
-          );
-        },
-      ),
+          ],
+        );
+      },
     );
   }
 }
