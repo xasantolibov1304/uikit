@@ -2,7 +2,7 @@ name: uikit
 description: Design system UI kit (theme, typography, components, utils).
 publish_to: none
 
-version: 2.3.0
+version: 2.3.1
 
 environment:
   sdk: '>=3.6.0 <4.0.0'
